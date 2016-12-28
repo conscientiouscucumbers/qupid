@@ -1,0 +1,3 @@
+rootProject.name = 'iHearth'
+
+include ':app'
