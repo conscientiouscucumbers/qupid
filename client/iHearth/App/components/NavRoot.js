@@ -11,7 +11,7 @@ const {
   CardStack: NavigationCardStack
 } = NavigationExperimental;
 
-class NavRoot extends Component {
+export default class NavRoot extends Component {
   constructor(props) {
     super(props);
     this._renderScene = this._renderScene.bind(this);
@@ -29,11 +29,11 @@ class NavRoot extends Component {
   _renderScene(props) {
     const { route } = props.scene;
     switch (route.key) {
-      case 'ListView':
+      case 'list':
         return (
           <ListView _handleNavigate= { this._handleNavigate.bind(this) } />
         )
-      case 'CouponView':
+      case 'coupon':
         return (
           <CouponView _goBack={ this._handleBackAction.bind(this) } />
         )
