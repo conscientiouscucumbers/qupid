@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   coupon: {
     height: 70,
+    width: 340,
     backgroundColor: '#22a3ed',
     justifyContent: 'center',
     alignItems: 'center'
@@ -10,7 +11,7 @@ const styles = StyleSheet.create({
   button: {
     height: 70,
     width: 100,
-    backgroundColor: '#22a3ed',
+    backgroundColor: 'steelblue',
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -23,7 +24,10 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   container: {
-    paddingTop: 60
+    paddingTop: 60,
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 });
 
