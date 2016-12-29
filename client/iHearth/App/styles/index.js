@@ -1,8 +1,15 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+  coupon: {
+    height: 70,
+    backgroundColor: '#22a3ed',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   button: {
     height: 70,
+    width: 100,
     backgroundColor: '#22a3ed',
     justifyContent: 'center',
     alignItems: 'center'
