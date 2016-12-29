@@ -19,11 +19,11 @@ class NavRoot extends Component {
   }
 
   componentDidMount(){
-    //BackAndroid
+    // Add BackAndroid listener
   }
 
   componentWillUnmount(){
-    //
+    // Remove BackAndroid listener 
   }
 
   _renderScene(props) {
