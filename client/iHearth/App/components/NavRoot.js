@@ -63,4 +63,14 @@ export default class NavRoot extends Component {
         return false;
     }
   }
+
+  render() {
+    return (
+      <NavigationCardStack
+      direction='vertical'
+      navigationState={ this.props.navigation } // set as navReducer
+      onNavigate={ this._handleNavigate.bind(this) }
+      renderScene={ this._renderScene } />
+    )
+  } 
 }
