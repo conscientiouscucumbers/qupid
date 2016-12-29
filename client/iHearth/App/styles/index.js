@@ -29,6 +29,17 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
   },
+  container: {
+    flex: 1,
+    backgroundColor: '#10a2f0',
+    alignItems: 'center'
+  },
+  text: {
+    color: 'white',
+    marginTop: 100,
+    fontSize: 24,
+    textAlign: 'center'
+  },
 });
 
 export default styles;
