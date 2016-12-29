@@ -39,4 +39,28 @@ export default class NavRoot extends Component {
         )
     }
   }
+
+  _handleBackAction() {
+    if (this.props.navigation.index === 0) {
+      return false;
+    }
+    this.props.popRoute();
+    return true;
+  }
+
+  _handleNavigate(action) {
+    switch (action && action.type) {
+      case 'push':
+        this.props.pushRoute(action.route);
+        return true;
+
+      case 'back':
+
+      case 'pop':
+        return this._handleBackAction();
+
+      default:
+        return false;
+    }
+  }
 }
