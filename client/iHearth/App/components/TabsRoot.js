@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { TabBarIOS } from 'react-native';
 
 import Home from '../containers/NavRootContainer';
-import Settings from './Settings';
+import Settings from '../components/Settings';
 
 class Tabs extends Component {
   _changeTab(i) {
@@ -28,6 +28,7 @@ class Tabs extends Component {
           title={ tab.title }
           onPress={ () => this._changeTab(i) }
           selected={ this.props.tabs.index === i } >
+          {this._renderTabContent(tab.key)}
         </TabBarIOS.Item>
       )
     })

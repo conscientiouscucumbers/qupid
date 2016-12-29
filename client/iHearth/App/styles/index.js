@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
   },
-  container: {
+  containerSettings: {
     flex: 1,
     backgroundColor: '#10a2f0',
     alignItems: 'center'
