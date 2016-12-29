@@ -5,11 +5,13 @@ import configureStore from './App/store/configureStore';
 const store = configureStore();
 
 import NavRootContainer from './App/containers/NavRootContainer';
+import tabsRootContainer from './App/containers/tabsRootContainer'
 import { Provider } from 'react-redux';
-
+// <NavRootContainer />
 const iHearth = () => (
   <Provider store={ store }>
-    <NavRootContainer />
+
+    <tabsRootContainer />
   </Provider>
 )
 
