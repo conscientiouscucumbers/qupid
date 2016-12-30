@@ -38,7 +38,7 @@ export default class LoginNavRoot extends Component {
         return (
           <SignupView _goBack={ this._handleBackAction.bind(this) } />
         )
-      case 'home':
+      case 'list':
         return (
           <Home />
         )
@@ -46,7 +46,7 @@ export default class LoginNavRoot extends Component {
   }
 
   _handleBackAction() {
-    if (this.props.loginNavigation.index === 0) {
+    if (this.props.navigation.index === 0) {
       return false;
     }
     this.props.popRoute();
@@ -70,11 +70,10 @@ export default class LoginNavRoot extends Component {
   }
 
   render() {
-    console.log(this.props, '......PROPS AT LOGINNAVROOT')
     return (
       <NavigationCardStack
       direction='horizontal'
-      navigationState={ this.props.loginNavigation }
+      navigationState={ this.props.navigation }
       onNavigate={ this._handleNavigate.bind(this) }
       renderScene={ this._renderScene } />
     )

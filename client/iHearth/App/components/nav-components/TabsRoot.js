@@ -28,7 +28,7 @@ class Tabs extends Component {
           title={ tab.title }
           onPress={ () => this._changeTab(i) }
           selected={ this.props.tabs.index === i } >
-          {this._renderTabContent(tab.key)}
+          { this._renderTabContent(tab.key) }
         </TabBarIOS.Item>
       )
     })
