@@ -14,10 +14,20 @@ const route = {
   }
 };
 
+// Use this route once authorized
+const authRoute = {
+  type: 'push',
+  route: {
+    key: 'signup',
+    title: 'SignupView'
+  }
+};
+
 const LoginView = ({ _handleNavigate }) => (
   <View style={ styles.container }>
     <Text style={ styles.title }>LoginView</Text>
     <Button onPress={ () => _handleNavigate(route) } label='New User? Signup!' />
+    <Button onPress={ () => _handleNavigate(authRoute) } label="Gather 'Round the Hearth" />
   </View>
 );
 
