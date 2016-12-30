@@ -18,8 +18,8 @@ const route = {
 const authRoute = {
   type: 'push',
   route: {
-    key: 'list',
-    title: 'ListView'
+    key: 'home',
+    title: 'HomeView'
   }
 };
 

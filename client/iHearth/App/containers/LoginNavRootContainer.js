@@ -5,7 +5,7 @@ import { push, pop } from '../actions/navActions';
 function mapStateToProps(state) {
   // console.log(state);
   return {
-    navigation: state.navReducer
+    loginNavigation: state.loginNavReducer
   }
 }
 

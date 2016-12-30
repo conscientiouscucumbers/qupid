@@ -27,15 +27,15 @@ export default class NavRoot extends Component {
   }
 
   _renderScene(props) {
+    console.log(props.scenes, '....PROPS SCENES');
+    console.log(props.scene, '....PROPS SCENE');
     const { route } = props.scene;  
-    console.log(route.key, '.........ROUTE KEY');
     switch (route.key) {
       case 'list':
         return (
           <ListView _handleNavigate= { this._handleNavigate.bind(this) } />
         )
       case 'coupon':
-        console.log('INSIDE COUPON CASE...........', props.scene)
         return (
           <CouponView _goBack={ this._handleBackAction.bind(this) } />
         )

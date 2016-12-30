@@ -21,9 +21,16 @@ export function changeTab(index) {
   }
 };
 
-// export function auth(route) {
-//   return {
-//     type: AUTH_ROUTE,
-//     route
-//   }
-// };
+export function authPush(route) {
+  return {
+    type: AUTH_PUSH_ROUTE,
+    route
+  }
+};
+
+export function authPop(route) {
+  return {
+    type: AUTH_POP_ROUTE,
+    route
+  }
+};
