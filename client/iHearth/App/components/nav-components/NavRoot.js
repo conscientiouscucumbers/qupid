@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ListView from './ListView';
-import CouponView from './CouponView';
+import ListView from '../ListView';
+import CouponView from '../CouponView';
 
 import {
   // BackAndroid,

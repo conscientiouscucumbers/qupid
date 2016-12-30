@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { TabBarIOS } from 'react-native';
 
-import Home from '../containers/NavRootContainer';
-import Settings from '../components/Settings';
+import Home from '../../containers/NavRootContainer';
+import Settings from '../../components/Settings';
 
 class Tabs extends Component {
   _changeTab(i) {
