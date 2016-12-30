@@ -5,14 +5,15 @@ import { push, pop } from '../actions/navActions';
 function mapStateToProps(state) {
   // console.log(state);
   return {
-    loginNavigation: state.loginNavReducer
+    navigation: state.navReducer
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     pushRoute: (route) => dispatch(push(route)),
-    popRoute: () => dispatch(pop())
+    popRoute: () => dispatch(pop()),
+    // authRoute: () => dispatch(auth())
   }
 }
 

@@ -20,3 +20,10 @@ export function changeTab(index) {
     index
   }
 };
+
+// export function auth(route) {
+//   return {
+//     type: AUTH_ROUTE,
+//     route
+//   }
+// };
