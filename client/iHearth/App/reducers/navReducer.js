@@ -11,9 +11,13 @@ const initialState = {
   index: 0,
   key: 'root',
   routes: [
+    // {
+    //   key: 'list',
+    //   title: 'ListView'
+    // }
     {
-      key: 'list',
-      title: 'ListView'
+      key: 'login',
+      title: 'LoginView'
     }
   ]
 }
@@ -36,6 +40,8 @@ export default function navState(state = initialState, action) {
       //   ],
       //   index: index + 1
       // }
+
+      // If only route on cardStack is { key: 'list', title: 'listView' } 
       return NavigationStateUtils.push(state, action.route);
 
     case POP_ROUTE:
