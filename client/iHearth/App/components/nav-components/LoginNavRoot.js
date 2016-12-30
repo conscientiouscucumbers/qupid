@@ -28,6 +28,8 @@ export default class LoginNavRoot extends Component {
   }
 
   _renderScene(props) {
+    // console.log(props.scenes, '...LOGINNAVROOT SCENES');
+    // console.log(props.scene, '...LOGINNAVROOT SCENE');
     const { route } = props.scene;
     switch (route.key) {
       case 'login':
@@ -38,7 +40,8 @@ export default class LoginNavRoot extends Component {
         return (
           <SignupView _goBack={ this._handleBackAction.bind(this) } />
         )
-      case 'home':
+      case 'list':
+        console.log('i see a list, so render TabsRootContainer')
         return (
           <Home />
         )

@@ -11,10 +11,9 @@ class Tabs extends Component {
   }
 
   _renderTabContent(key) {
-    console.log(key, '.......tab.key prop')
+    console.log('going to render tab', key);
     switch (key) {
       case 'home':
-        console.log('....inside home tab case')
         return <Home />
       case 'settings':
         return <Settings />

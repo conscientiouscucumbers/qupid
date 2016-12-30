@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import LoginNavRoot from '../components/nav-components/LoginNavRoot';
-import { push, pop } from '../actions/navActions';
+import { authPush, authPop } from '../actions/navActions';
 
 function mapStateToProps(state) {
   // console.log(state);
@@ -11,8 +11,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    pushRoute: (route) => dispatch(push(route)),
-    popRoute: () => dispatch(pop()),
+    pushRoute: (route) => dispatch(authPush(route)),
+    popRoute: () => dispatch(authPop()),
     // authRoute: () => dispatch(auth())
   }
 }

@@ -19,7 +19,7 @@ const initialState = {
 }
 
 function tabsNav (state = initialState, action) {
-  if(action.index === state.index) return state;
+  if (action.index === state.index) return state;
   switch (action.type) {
     case CHANGE_TAB:
       return {
