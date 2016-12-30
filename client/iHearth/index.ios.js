@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 // <NavRootContainer />
 const iHearth = () => (
   <Provider store={ store }>
-    <TabsRootContainer />
+    <LoginNavRoot />
   </Provider>
 )
 
