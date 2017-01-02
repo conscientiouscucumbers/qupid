@@ -36,8 +36,6 @@ export default function navState(state = initialState, action) {
       //   ],
       //   index: index + 1
       // }
-
-      // If only route on cardStack is { key: 'list', title: 'listView' } 
       return NavigationStateUtils.push(state, action.route);
 
     case POP_ROUTE:

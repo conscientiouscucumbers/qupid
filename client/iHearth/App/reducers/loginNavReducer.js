@@ -15,7 +15,6 @@ const initialState = {
   ]
 }
 
-// Export and define navReducer
 export default function loginNavState(state = initialState, action) {
   switch (action.type) {
     case AUTH_PUSH_ROUTE:
