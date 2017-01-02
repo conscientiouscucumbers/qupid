@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LoginView from '../LoginView';
 import SignupView from '../SignupView';
-import Home from '../../containers/TabsRootContainer.js';
+import Home from '../../containers/nav-containers/TabsRootContainer.js';
 import {
   // BackAndroid,
   NavigationExperimental

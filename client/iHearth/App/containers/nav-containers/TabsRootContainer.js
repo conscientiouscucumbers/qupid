@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import TabsRoot from '../components/nav-components/TabsRoot';
-import { changeTab } from '../actions/nav-actions/tabsRootActions';
+import TabsRoot from '../../components/nav-components/TabsRoot';
+import { changeTab } from '../../actions/nav-actions/tabsRootActions';
 
 function mapStateToProps(state) {
   return {

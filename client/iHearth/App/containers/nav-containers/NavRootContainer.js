@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import NavRoot from '../components/nav-components/NavRoot';
-import { push, pop } from '../actions/nav-actions/navRootActions'
+import NavRoot from '../../components/nav-components/NavRoot';
+import { push, pop } from '../../actions/nav-actions/navRootActions'
 
 function mapStateToProps(state) {
   return {

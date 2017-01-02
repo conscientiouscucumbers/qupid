@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import LoginNavRoot from '../components/nav-components/LoginNavRoot';
-import { authPush, authPop } from '../actions/nav-actions/loginNavRootActions';
+import LoginNavRoot from '../../components/nav-components/LoginNavRoot';
+import { authPush, authPop } from '../../actions/nav-actions/loginNavRootActions';
 
 function mapStateToProps(state) {
   return {
