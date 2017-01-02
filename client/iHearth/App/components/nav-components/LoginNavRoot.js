@@ -27,9 +27,8 @@ export default class LoginNavRoot extends Component {
     // Remove BackAndroid listener 
   }
 
+  
   _renderScene(props) {
-    // console.log(props.scenes, '...LOGINNAVROOT SCENES');
-    // console.log(props.scene, '...LOGINNAVROOT SCENE');
     const { route } = props.scene;
     switch (route.key) {
       case 'login':
@@ -41,7 +40,6 @@ export default class LoginNavRoot extends Component {
           <SignupView _goBack={ this._handleBackAction.bind(this) } />
         )
       case 'list':
-        console.log('i see a list, so render TabsRootContainer')
         return (
           <Home />
         )

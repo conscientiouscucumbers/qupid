@@ -27,8 +27,6 @@ export default class NavRoot extends Component {
   }
 
   _renderScene(props) {
-    console.log(props.scenes, '....PROPS SCENES');
-    console.log(props.scene, '....PROPS SCENE');
     const { route } = props.scene;  
     switch (route.key) {
       case 'list':

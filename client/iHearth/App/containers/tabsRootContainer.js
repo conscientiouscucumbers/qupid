@@ -3,7 +3,6 @@ import TabsRoot from '../components/nav-components/TabsRoot';
 import { changeTab } from '../actions/navActions';
 
 function mapStateToProps(state) {
-  // console.log(state);
   return {
     tabs: state.tabReducer
   }
