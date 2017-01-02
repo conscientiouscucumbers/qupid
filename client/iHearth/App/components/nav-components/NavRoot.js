@@ -9,7 +9,8 @@ const {
   CardStack: NavigationCardStack
 } = NavigationExperimental;
 import {
-  _handleBackAction
+  _handleBackAction,
+  _handleNavigate
 } from '../../lib/utils/navUtils';
 
 export default class NavRoot extends Component {
@@ -17,6 +18,7 @@ export default class NavRoot extends Component {
     super(props);
     this._renderScene = this._renderScene.bind(this);
     this._handleBackAction = _handleBackAction.bind(this, 'navigation');
+    this._handleNavigate = _handleNavigate.bind(this);
   }
 
   componentDidMount(){
@@ -32,28 +34,12 @@ export default class NavRoot extends Component {
     switch (route.key) {
       case 'list':
         return (
-          <ListView _handleNavigate= { this._handleNavigate.bind(this) } />
+          <ListView _handleNavigate= { this._handleNavigate } />
         )
       case 'coupon':
         return (
-          <CouponView _goBack={ this._handleBackAction.bind(this) } />
+          <CouponView _goBack={ this._handleBackAction } />
         )
-    }
-  }
-
-  _handleNavigate(action) {
-    switch (action && action.type) {
-      case 'push':
-        this.props.pushRoute(action.route);
-        return true;
-
-      case 'back':
-
-      case 'pop':
-        return this._handleBackAction();
-
-      default:
-        return false;
     }
   }
 
@@ -62,7 +48,7 @@ export default class NavRoot extends Component {
       <NavigationCardStack
       direction='horizontal'
       navigationState={ this.props.navigation } // set as navReducer
-      onNavigate={ this._handleNavigate.bind(this) }
+      onNavigate={ this._handleNavigate }
       renderScene={ this._renderScene } />
     )
   } 
