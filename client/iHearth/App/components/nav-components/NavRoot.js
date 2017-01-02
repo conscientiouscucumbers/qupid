@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import ListView from '../ListView';
 import CouponView from '../CouponView';
-
 import {
   // BackAndroid,
   NavigationExperimental
 } from 'react-native';
-
 const {
   CardStack: NavigationCardStack
 } = NavigationExperimental;
+import {
+  _handleBackAction
+} from '../../lib/utils/navUtils';
 
 export default class NavRoot extends Component {
   constructor(props) {
     super(props);
     this._renderScene = this._renderScene.bind(this);
-    this._handleBackAction = this._handleBackAction.bind(this);
+    this._handleBackAction = _handleBackAction.bind(this, 'navigation');
   }
 
   componentDidMount(){
@@ -38,14 +39,6 @@ export default class NavRoot extends Component {
           <CouponView _goBack={ this._handleBackAction.bind(this) } />
         )
     }
-  }
-
-  _handleBackAction() {
-    if (this.props.navigation.index === 0) {
-      return false;
-    }
-    this.props.popRoute();
-    return true;
   }
 
   _handleNavigate(action) {

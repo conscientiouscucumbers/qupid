@@ -2,21 +2,22 @@ import React, { Component } from 'react';
 import LoginView from '../LoginView';
 import SignupView from '../SignupView';
 import Home from '../../containers/TabsRootContainer.js';
-
 import {
   // BackAndroid,
   NavigationExperimental
 } from 'react-native';
-
 const {
   CardStack: NavigationCardStack
 } = NavigationExperimental;
+import {
+  _handleBackAction
+} from '../../lib/utils/navUtils';
 
 export default class LoginNavRoot extends Component {
   constructor(props) {
     super(props);
     this._renderScene = this._renderScene.bind(this);
-    this._handleBackAction = this._handleBackAction.bind(this);
+    this._handleBackAction = _handleBackAction.bind(this, 'loginNavigation');
   }
 
   componentDidMount(){
@@ -26,7 +27,6 @@ export default class LoginNavRoot extends Component {
   componentWillUnmount(){
     // Remove BackAndroid listener 
   }
-
   
   _renderScene(props) {
     const { route } = props.scene;
@@ -44,14 +44,6 @@ export default class LoginNavRoot extends Component {
           <Home />
         )
     }
-  }
-
-  _handleBackAction() {
-    if (this.props.loginNavigation.index === 0) {
-      return false;
-    }
-    this.props.popRoute();
-    return true;
   }
 
   _handleNavigate(action) {
