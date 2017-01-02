@@ -1,4 +1,4 @@
-import { PUSH_ROUTE, POP_ROUTE } from '../constants/ActionTypes';
+import { PUSH_ROUTE, POP_ROUTE } from '../../constants/ActionTypes';
 import { NavigationExperimental } from 'react-native';
 const {
   // Allows you to call basic routing methods
@@ -36,9 +36,6 @@ export default function navState(state = initialState, action) {
       //   ],
       //   index: index + 1
       // }
-
-      // If only route on cardStack is { key: 'list', title: 'listView' } 
-      console.log(action.route, '..pushed into navreducer state')
       return NavigationStateUtils.push(state, action.route);
 
     case POP_ROUTE:
@@ -47,7 +44,6 @@ export default function navState(state = initialState, action) {
         return state;
       }
       // Otherwise pop off top route and update
-      console.log(action.route, '..popped into navreducer state')
       return NavigationStateUtils.pop(state);
 
     default:

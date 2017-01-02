@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
 import LoginView from '../LoginView';
 import SignupView from '../SignupView';
-import Home from '../../containers/TabsRootContainer.js';
-
+import Home from '../../containers/nav-containers/TabsRootContainer.js';
 import {
   // BackAndroid,
   NavigationExperimental
 } from 'react-native';
-
 const {
   CardStack: NavigationCardStack
 } = NavigationExperimental;
+import {
+  _handleBackAction,
+  _handleNavigate
+} from '../../lib/utils/navUtils';
 
 export default class LoginNavRoot extends Component {
   constructor(props) {
     super(props);
     this._renderScene = this._renderScene.bind(this);
-    this._handleBackAction = this._handleBackAction.bind(this);
+    this._handleBackAction = _handleBackAction.bind(this, 'loginNavigation');
+    this._handleNavigate = _handleNavigate.bind(this);
   }
 
   componentDidMount(){
@@ -26,49 +29,22 @@ export default class LoginNavRoot extends Component {
   componentWillUnmount(){
     // Remove BackAndroid listener 
   }
-
+  
   _renderScene(props) {
-    // console.log(props.scenes, '...LOGINNAVROOT SCENES');
-    // console.log(props.scene, '...LOGINNAVROOT SCENE');
     const { route } = props.scene;
     switch (route.key) {
       case 'login':
         return (
-          <LoginView _handleNavigate= { this._handleNavigate.bind(this) } />
+          <LoginView _handleNavigate= { this._handleNavigate } />
         )
       case 'signup':
         return (
-          <SignupView _goBack={ this._handleBackAction.bind(this) } />
+          <SignupView _goBack={ this._handleBackAction } />
         )
       case 'list':
-        console.log('i see a list, so render TabsRootContainer')
         return (
           <Home />
         )
-    }
-  }
-
-  _handleBackAction() {
-    if (this.props.loginNavigation.index === 0) {
-      return false;
-    }
-    this.props.popRoute();
-    return true;
-  }
-
-  _handleNavigate(action) {
-    switch (action && action.type) {
-      case 'push':
-        this.props.pushRoute(action.route);
-        return true;
-
-      case 'back':
-
-      case 'pop':
-        return this._handleBackAction();
-
-      default:
-        return false;
     }
   }
 
@@ -77,7 +53,7 @@ export default class LoginNavRoot extends Component {
       <NavigationCardStack
       direction='horizontal'
       navigationState={ this.props.loginNavigation }
-      onNavigate={ this._handleNavigate.bind(this) }
+      onNavigate={ this._handleNavigate }
       renderScene={ this._renderScene } />
     )
   } 

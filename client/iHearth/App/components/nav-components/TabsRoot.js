@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TabBarIOS } from 'react-native';
 
-import Home from '../../containers/NavRootContainer';
+import Home from '../../containers/nav-containers/NavRootContainer';
 import Settings from '../../components/Settings';
 
 class Tabs extends Component {
@@ -11,7 +11,6 @@ class Tabs extends Component {
   }
 
   _renderTabContent(key) {
-    console.log('going to render tab', key);
     switch (key) {
       case 'home':
         return <Home />

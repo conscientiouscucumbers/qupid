@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import navReducer from './navReducer';
-import tabReducer from './tabReducer';
-import loginNavReducer from './loginNavReducer';
+import navReducer from './nav-reducers/navReducer';
+import tabReducer from './nav-reducers/tabReducer';
+import loginNavReducer from './nav-reducers/loginNavReducer';
 import couponReducer from './couponReducer';
 
 const rootReducer = combineReducers({
