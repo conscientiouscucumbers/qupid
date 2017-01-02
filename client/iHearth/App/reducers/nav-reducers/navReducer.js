@@ -1,4 +1,4 @@
-import { PUSH_ROUTE, POP_ROUTE } from '../constants/ActionTypes';
+import { PUSH_ROUTE, POP_ROUTE } from '../../constants/ActionTypes';
 import { NavigationExperimental } from 'react-native';
 const {
   // Allows you to call basic routing methods

@@ -1,4 +1,4 @@
-import { AUTH_PUSH_ROUTE, AUTH_POP_ROUTE } from '../constants/ActionTypes';
+import { AUTH_PUSH_ROUTE, AUTH_POP_ROUTE } from '../../constants/ActionTypes';
 import { NavigationExperimental } from 'react-native';
 const {
   StateUtils: NavigationStateUtils

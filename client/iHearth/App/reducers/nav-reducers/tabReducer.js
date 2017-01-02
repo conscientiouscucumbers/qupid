@@ -1,4 +1,4 @@
-import { CHANGE_TAB } from '../constants/ActionTypes';
+import { CHANGE_TAB } from '../../constants/ActionTypes';
 
 const settingsIcon = {
   scale: 2.3,
