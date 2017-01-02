@@ -3,13 +3,13 @@ import {
   View,
   Text
 } from 'react-native'
-import ListView from './ListView';
+import ListViewContainer from '../containers/ListViewContainer';
 import styles from './../styles';
 
 const HomeView = ({ _handleNavigate }) => (
   <View style={ styles.container }>
     <Text style={ styles.title }>HomeView</Text>
-    <ListView _handleNavigate={ _handleNavigate } />
+    <ListViewContainer _handleNavigate={ _handleNavigate } />
   </View>
 );
 
