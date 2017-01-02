@@ -1,4 +1,9 @@
-import { POP_ROUTE, PUSH_ROUTE, CHANGE_TAB } from '../constants/ActionTypes';
+import { POP_ROUTE,
+         PUSH_ROUTE,
+         CHANGE_TAB,
+         AUTH_PUSH_ROUTE,
+         AUTH_POP_ROUTE,
+       } from '../constants/ActionTypes';
 
 export function push(route) {
   return {
@@ -21,9 +26,16 @@ export function changeTab(index) {
   }
 };
 
-// export function auth(route) {
-//   return {
-//     type: AUTH_ROUTE,
-//     route
-//   }
-// };
+export function authPush(route) {
+  return {
+    type: AUTH_PUSH_ROUTE,
+    route
+  }
+};
+
+export function authPop(route) {
+  return {
+    type: AUTH_POP_ROUTE,
+    route
+  }
+};

@@ -11,6 +11,7 @@ class Tabs extends Component {
   }
 
   _renderTabContent(key) {
+    console.log('going to render tab', key);
     switch (key) {
       case 'home':
         return <Home />
