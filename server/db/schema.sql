@@ -44,7 +44,7 @@ create table coupon {
 
 create table user_coupon {
   user_coupon_id int not null auto_increment,
-  user boolean,
+  used boolean,
   expired boolean,
   foreign key (user_id),
   foreign key (coupon_id),
