@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HomeView from '../HomeView';
 import CouponView from '../CouponView';
+// import CouponViewContainer from '../../containers/CouponViewContainer';
 import {
   // BackAndroid,
   NavigationExperimental
@@ -26,11 +27,11 @@ export default class NavRoot extends Component {
   }
 
   componentWillUnmount(){
-    // Remove BackAndroid listener 
+    // Remove BackAndroid listener
   }
 
   _renderScene(props) {
-    const { route } = props.scene;  
+    const { route } = props.scene;
     switch (route.key) {
       case 'list':
         return (
@@ -51,5 +52,5 @@ export default class NavRoot extends Component {
       onNavigate={ this._handleNavigate }
       renderScene={ this._renderScene } />
     )
-  } 
+  }
 }

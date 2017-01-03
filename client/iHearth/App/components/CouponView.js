@@ -1,16 +1,21 @@
-import React from 'react';
-import {
-  View,
-  Text
-} from 'react-native'
-import Button from './global-components/Button';
-import styles from './../styles';
+import React, { Component } from 'react';
+import { Image } from 'react-native';
+import CouponDescriptionContainer from '../containers/CouponDescriptionContainer'
+
+import { Container, Header, Icon, Title, Content, Card, CardItem, Text, Button } from 'native-base';
 
 const CouponView = ({ _goBack }) => (
-  <View style={ styles.container }>
-    <Text style={ styles.title }>CouponView</Text>
-    <Button onPress={ _goBack } label='Go back to ListView' />
-  </View>
+  <Container>
+    <Header>
+      <Button transparent onPress={ _goBack }>
+          <Icon name='ios-arrow-back' />
+      </Button>
+      <Title>Selected Coupon</Title>
+    </Header>
+    <Content>
+      <CouponDescriptionContainer />
+    </Content>
+  </Container>
 );
 
 export default CouponView;
