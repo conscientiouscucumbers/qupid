@@ -30,5 +30,7 @@ function fetchPosts(subreddit) {
   return function (dispatch) {
     // First dispatch updates the state to signal the start of the API call
     dispatch(requestCoupons(subreddit));
+
+    return fetch('htt')
   }
 }
