@@ -7,10 +7,16 @@ import { Image } from 'react-native';
 
 // import Button from './global-components/Button';
 import styles from './../styles';
-import { Container, Content, Card, CardItem, Thumbnail, Text, Button } from 'native-base';
+import { Container, Header, Icon, Title, Content, Card, CardItem, Thumbnail, Text, Button } from 'native-base';
 
 const CouponView = ({ _goBack }) => (
   <Container>
+    <Header>
+      <Button transparent onPress={ _goBack }>
+          <Icon name='ios-arrow-back' />
+      </Button>
+      <Title>Selected Coupon</Title>
+    </Header>
     <Content>
       <Card style={{ flex: 0 }}>
         <CardItem>
