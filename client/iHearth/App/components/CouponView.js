@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import { Image } from 'react-native';
+import React from 'react';
 import CouponDescriptionContainer from '../containers/CouponDescriptionContainer'
 
-import { Container, Header, Icon, Title, Content, Card, CardItem, Text, Button } from 'native-base';
+import { Container, Header, Icon, Title, Content } from 'native-base';
 
 const CouponView = ({ _goBack }) => (
   <Container>
