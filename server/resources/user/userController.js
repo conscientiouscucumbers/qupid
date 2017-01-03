@@ -4,7 +4,8 @@ let uuid = require('uuid');
 // GET request for /user
 // retrieve all users (array of user objects)
 exports.retrieveUsers = (req, res) => {
-  db.user.findAll().then((users) => {
+  console.log('successfully reached / endpoint')
+  db.user.findAll({}).then((users) => {
     console.log('successfully retrieved all users');
     res.status(200).json(users);
   }).catch((err) => {
@@ -140,7 +141,6 @@ exports.retrieveOneUserCoupon = (req, res) => {
   }).catch((err) => {
     res.status(404).send('could not find specific user coupon');
   });
-});
 };
 
 // POST request for /user/coupon/:coupon_id
