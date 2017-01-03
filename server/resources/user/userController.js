@@ -1,16 +1,17 @@
 let db = require('../../db');
 let uuid = require('uuid');
 
+// TO DO, turn into query string: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
 // GET request for /user
 // retrieve all users (array of user objects)
 exports.retrieveUsers = (req, res) => {
-  console.log('successfully reached / endpoint')
-  db.user.findAll({}).then((users) => {
-    console.log('successfully retrieved all users');
-    res.status(200).json(users);
-  }).catch((err) => {
-    res.status(404).send('could not find any users');
-  });
+  res.status(200).json({ message: 'Hello world!' });
+  // db.user.findAll({}).then((users) => {
+  //   console.log('successfully retrieved all users');
+  //   res.status(200).json(users);
+  // }).catch((err) => {
+  //   res.status(404).send('could not find any users');
+  // });
 };
 
 // POST request for /user
@@ -31,25 +32,28 @@ exports.createUser = (req, res) => {
 // GET request for /coupon/:coupon_id
 // retrieve all coupons with a specific coupon_id
 exports.retrieveOneCoupon = (req, res) => {
-  db.coupon.findAll({where: {coupon_id: req.body.coupon_id}})
-    .then((coupon) => {
-      console.log('successfully retrieved coupon with coupon id:', req.body.coupon_id);
-      res.status(200).json(coupon);
-    }).catch((err) => {
-      res.send(404).send('could not find any coupons with coupon id:', req.body.coupon_id);
-    });
+  var num = parseInt(req.url.match(/[0-9]+/g)[0], 10);
+  res.status(200).json({ message: 'Reached coupon id route', num });
+  // db.coupon.findAll({where: {coupon_id: req.body.coupon_id}})
+  //   .then((coupon) => {
+  //     console.log('successfully retrieved coupon with coupon id:', req.body.coupon_id);
+  //     res.status(200).json(coupon);
+  //   }).catch((err) => {
+  //     res.send(404).send('could not find any coupons with coupon id:', req.body.coupon_id);
+  //   });
 };
 
 // GET request for /coupon
 // retrieve all coupons in coupon table
 exports.retrieveCoupons = (req, res) => {
-  db.coupon.findAll()
-    .then((coupons) => {
-      console.log('successfully retrieved all coupons');
-      res.status(200).json(coupons);
-    }).catch((err) => {
-      res.send(404).send('could not find any coupons');
-    });
+  res.status(200).json({ message: 'Hello world from coupons endpoint!' });
+  // db.coupon.findAll()
+  //   .then((coupons) => {
+  //     console.log('successfully retrieved all coupons');
+  //     res.status(200).json(coupons);
+  //   }).catch((err) => {
+  //     res.send(404).send('could not find any coupons');
+  //   });
 };
 
 // POST request for /coupon
@@ -131,16 +135,19 @@ exports.sendUserCoupons = (req, res) => {
   });
 };
 
+// TO DO, turn into query string: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
 // GET request for /user/coupon/:coupon_id
 // retrieve a specific user coupon with coupon_id
 exports.retrieveOneUserCoupon = (req, res) => {
-  db.user_coupon.findAll({where: {coupon_id: req.body.coupon_id}})
-  .then((coupon) => {
-    console.log('successfully retrieved a specific user coupon');
-    res.status(201).json(coupon);
-  }).catch((err) => {
-    res.status(404).send('could not find specific user coupon');
-  });
+  var num = parseInt(req.url.match(/[0-9]+/g)[0], 10);
+  res.status(200).json({ message: 'Reached user coupon id route', num });
+  // db.user_coupon.findAll({where: {coupon_id: req.body.coupon_id}})
+  // .then((coupon) => {
+  //   console.log('successfully retrieved a specific user coupon');
+  //   res.status(201).json(coupon);
+  // }).catch((err) => {
+  //   res.status(404).send('could not find specific user coupon');
+  // });
 };
 
 // POST request for /user/coupon/:coupon_id
