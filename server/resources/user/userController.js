@@ -7,7 +7,7 @@ let uuid = require('uuid');
 var data = [
   {
     coupon_id: 1,
-    title: '$5 off socks',
+    title: '$20 off socks',
     image: '../../assets/img/socks.png',
     item_name: 'Socks',
     original_price: 10,

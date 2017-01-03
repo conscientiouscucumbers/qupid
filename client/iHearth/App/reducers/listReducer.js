@@ -46,11 +46,13 @@ const initialState = {
 export default function listState(state = initialState, action) {
   switch (action.type) {
     case REQUEST_COUPONS:
+      console.log('REQUEST COUPON ACTION RECIEVED....', action);
       return Object.assign({}, state, {
         isFetching: true
       })
 
     case RECEIVE_COUPONS:
+      console.log('RECEIVED COUPON ACTION RECIEVED....', action);
       return Object.assign({}, state, {
         isFetching: false,
         items: action.coupons,

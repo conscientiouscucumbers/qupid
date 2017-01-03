@@ -19,15 +19,27 @@ const route = {
   }
 };
 
-const ListView = ({ _handleNavigate, coupons }) => (
-  <List>
-    {coupons.items.map((coupon) => (
-      <ListViewEntry
-        key={ coupon.coupon_id }
-        onPress={ () => _handleNavigate(route) }
-        coupon={ coupon } />
-    ))}
-  </List>
-);
+export default class ListView extends Component {
+  constructor(props) {
+    super(props);
+    _handleNavigate = this.props._handleNavigate;
+  }
 
-export default ListView;
+  // Before rendering, get state from server
+  componentWillMount() {
+    this.props.fetchCoupons();
+  }
+
+  render() {
+    return (
+      <List>
+        {this.props.coupons.items.map((coupon) => (
+          <ListViewEntry
+            key={ coupon.coupon_id }
+            onPress={ () => _handleNavigate(route) }
+            coupon={ coupon } />
+        ))}
+      </List>
+    );
+  }
+} 

@@ -15,7 +15,7 @@ function requestCoupons() {
 function receiveCoupons(json) {
   return {
     type: RECEIVE_COUPONS,
-    coupons: json.data,
+    coupons: json.coupons,
     receivedAt: Date.now()
   }
 }
