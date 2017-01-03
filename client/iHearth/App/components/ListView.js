@@ -25,8 +25,7 @@ const ListView = ({ _handleNavigate, coupons }) => (
       <ListViewEntry
         key={ coupon.coupon_id }
         onPress={ () => _handleNavigate(route) }
-        label='Go to CouponView'
-        image={ coupon.image } />
+        coupon={ coupon } />
     ))}
   </List>
 );
