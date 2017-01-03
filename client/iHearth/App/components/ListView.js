@@ -7,13 +7,8 @@ import ListViewEntry from './ListViewEntry';
 import styles from './../styles';
 import {
   Container,
-  Header,
-  Title,
-  Button,
-  Icon,
+  List,
   Content,
-  Footer,
-  FooterTab
 } from 'native-base';
 
 const route = {
@@ -24,28 +19,16 @@ const route = {
   }
 };
 
-
 const ListView = ({ _handleNavigate, coupons }) => (
-  <View>
-    <Container> 
-      <Header>
-          <Title>Header</Title>
-      </Header>
-
-      <Content>
-          {console.log('PROPS...', coupons)}
-          <ListViewEntry onPress={ () => _handleNavigate(route) } label='Go to CouponView' />
-      </Content>
-
-      <Footer>
-          <FooterTab>
-              <Button transparent>
-                  <Icon name='ios-call' />
-              </Button>  
-          </FooterTab>
-      </Footer>
-    </Container>
-  </View>
+  <List>
+    {coupons.data.map((coupon) => (
+      <ListViewEntry
+        key={ coupon.coupon_id }
+        onPress={ () => _handleNavigate(route) }
+        label='Go to CouponView'
+        image={ coupon.image } />
+    ))}
+  </List>
 );
 
 export default ListView;
