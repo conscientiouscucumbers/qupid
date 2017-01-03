@@ -1,6 +1,8 @@
-import { push, pop } from '../constants/ActionTypes';
+import { REQUEST_COUPONS, RECEIVE_COUPONS } from '../constants/ActionTypes';
 
 const initialState = {
+  isFetching: true,
+  lastUpdated: 1439478405547,
   data: [
     {
       coupon_id: 1,
@@ -41,9 +43,19 @@ const initialState = {
   ]
 }
 
-// TODO: Revise reducer to fetch from server
 export default function listState(state = initialState, action) {
   switch (action.type) {
+    case REQUEST_COUPONS:
+      return Object.assign({}, state, {
+        isFetching: true
+      })
+
+    case RECEIVE_COUPONS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        items: action.coupons,
+        lastUpdated: action.receivedAt
+      })
 
     default:
       return state;
