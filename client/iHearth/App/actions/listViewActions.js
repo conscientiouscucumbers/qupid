@@ -1,11 +1,10 @@
 // require('es6-promise').polyfill();
 // import fetch from 'isomorphic-fetch';
 
-// Fetch coupons from server
 import { REQUEST_COUPONS, RECEIVE_COUPONS } from '../constants/ActionTypes';
 import { URL } from '../constants/NetworkUrls';
 
-// Will change isFetching state of list to true (activate spinner)
+// Will change isFetching state of list to true
 function requestCoupons() {
   return {
     type: REQUEST_COUPONS,
@@ -31,18 +30,19 @@ export function fetchPosts(subreddit) {
 
   return dispatch => {
     
-    // First dispatch updates the state to signal the start of the API call
+    // First synchronously dispatch updates to signal
+    // the start of the API call
     dispatch(requestCoupons());
 
     return fetch(URL + 'coupon')
       .then(response => response.json())
       .then(json => {
 
-          console.log('RECEIVED JSON', json);
           // Update app state with results of API call
           return dispatch(receiveCoupons(json))
         }) 
 
+      // Catch errors
       .catch((err) => {
         console.error('Error in fetching coupons in listViewActions.js', err.message);
       })
