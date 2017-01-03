@@ -15,7 +15,7 @@ const route = {
   type: 'push',
   route: {
     key: 'coupon',
-    title: 'CouponView'
+    title: 'CouponViewEntry'
   }
 };
 
