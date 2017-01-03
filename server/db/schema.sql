@@ -1,20 +1,29 @@
+drop database ihearth;
 create database ihearth;
 
 use ihearth;
 
+/*
+insert into user (email, password, first_name, last_name, dob, gender, total_savings)
+values ('jamesgu@gmail.com', 'password', 'James', 'Gu', '1993-05-21 12:00:00', 'm', 100.00);
+*/
 create table user (
   user_id int not null auto_increment,
   email varchar(100) not null,
   password varchar(100) not null,
   first_name varchar(50) not null,
   last_name varchar(50) not null,
-  dob date not null,
+  dob datetime not null,
   gender varchar(1) not null,
-  total_savings float not null,
+  total_savings float(2) not null,
   
   primary key (user_id)
 );
 
+/*
+insert into business (email, password, company_name, address, city, state, zipcode)
+values ('nike@gmail.com', 'password', 'Nike', '744 Market Street', 'San Francisco', 'CA', 94112);
+*/
 create table business (
   business_id int not null auto_increment,
   email varchar(100) not null,
@@ -28,6 +37,10 @@ create table business (
   primary key (business_id)
 );
 
+/*
+insert into coupon (business_id, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
+values (1, '$5 off socks', '../../assets/img/socks.png', 'Socks', 'Lorem Ipsum...', 10.00, 5.00, 5.00, '2017-01-05 16:00:00', '2017-01-05 18:00:00');
+*/
 create table coupon (
   coupon_id int not null auto_increment,
   business_id int,
@@ -35,12 +48,12 @@ create table coupon (
   image varchar(300) not null,
   item_name varchar(100) not null,
   description varchar(300) not null,
-  original_price float not null,
-  coupon_price float not null,
-  coupon_savings float not null,
-  start_at date not null,
-  end_at date not null,
-  created_at date not null,
+  original_price float(2) not null,
+  coupon_price float(2) not null,
+  coupon_savings float(2) not null,
+  start_at datetime not null,
+  end_at datetime not null,
+  -- created_at datetime not null,
   
   primary key (coupon_id),
   
