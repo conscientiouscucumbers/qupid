@@ -21,7 +21,7 @@ const route = {
 
 const ListView = ({ _handleNavigate, coupons }) => (
   <List>
-    {coupons.data.map((coupon) => (
+    {coupons.items.map((coupon) => (
       <ListViewEntry
         key={ coupon.coupon_id }
         onPress={ () => _handleNavigate(route) }
