@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ListView from '../ListView';
+import HomeView from '../HomeView';
 import CouponView from '../CouponView';
 import {
   // BackAndroid,
@@ -34,7 +34,7 @@ export default class NavRoot extends Component {
     switch (route.key) {
       case 'list':
         return (
-          <ListView _handleNavigate= { this._handleNavigate } />
+          <HomeView _handleNavigate= { this._handleNavigate } />
         )
       case 'coupon':
         return (

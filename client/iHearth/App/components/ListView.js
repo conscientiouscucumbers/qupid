@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text
 } from 'react-native'
 import ListViewEntry from './ListViewEntry';
 import styles from './../styles';
+import {
+  Container,
+  List,
+  Content,
+} from 'native-base';
 
 const route = {
   type: 'push',
@@ -14,11 +19,15 @@ const route = {
   }
 };
 
-const ListView = ({ _handleNavigate }) => (
-  <View style={ styles.container }>
-    <Text style={ styles.title }>ListView</Text>
-    <ListViewEntry onPress={ () => _handleNavigate(route) } label='Go to CouponView' />
-  </View>
+const ListView = ({ _handleNavigate, coupons }) => (
+  <List>
+    {coupons.data.map((coupon) => (
+      <ListViewEntry
+        key={ coupon.coupon_id }
+        onPress={ () => _handleNavigate(route) }
+        coupon={ coupon } />
+    ))}
+  </List>
 );
 
 export default ListView;
