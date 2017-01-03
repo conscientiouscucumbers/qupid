@@ -3,9 +3,15 @@ create database ihearth;
 
 use ihearth;
 
-/*
+/* --dummy data
 insert into user (email, password, first_name, last_name, dob, gender, total_savings)
 values ('jamesgu@gmail.com', 'password', 'James', 'Gu', '1993-05-21 12:00:00', 'm', 100.00);
+
+insert into business (email, password, company_name, address, city, state, zipcode)
+values ('nike@gmail.com', 'password', 'Nike', '744 Market Street', 'San Francisco', 'CA', 94112);
+
+insert into coupon (business_id, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
+values (1, '$5 off socks', '../../assets/img/socks.png', 'Socks', 'Lorem Ipsum...', 10.00, 5.00, 5.00, '2017-01-05 16:00:00', '2017-01-05 18:00:00');
 */
 create table user (
   user_id int not null auto_increment,
@@ -20,10 +26,6 @@ create table user (
   primary key (user_id)
 );
 
-/*
-insert into business (email, password, company_name, address, city, state, zipcode)
-values ('nike@gmail.com', 'password', 'Nike', '744 Market Street', 'San Francisco', 'CA', 94112);
-*/
 create table business (
   business_id int not null auto_increment,
   email varchar(100) not null,
@@ -37,10 +39,6 @@ create table business (
   primary key (business_id)
 );
 
-/*
-insert into coupon (business_id, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (1, '$5 off socks', '../../assets/img/socks.png', 'Socks', 'Lorem Ipsum...', 10.00, 5.00, 5.00, '2017-01-05 16:00:00', '2017-01-05 18:00:00');
-*/
 create table coupon (
   coupon_id int not null auto_increment,
   business_id int,
@@ -53,7 +51,7 @@ create table coupon (
   coupon_savings float(2) not null,
   start_at datetime not null,
   end_at datetime not null,
-  -- created_at datetime not null,
+  created_at datetime not null default current_timestamp(),
   
   primary key (coupon_id),
   
