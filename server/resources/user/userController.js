@@ -80,33 +80,46 @@ var userData = [
     gender: 'f',
     total_savings: 5000
   }
-]
+];
 
-// TO DO, turn into query string: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // GET request for /user
 // retrieve all users (array of user objects)
 exports.retrieveUsers = (req, res) => {
-  res.status(200).json({ message: 'Hello world!' });
-  // db.user.findAll({}).then((users) => {
-  //   console.log('successfully retrieved all users');
-  //   res.status(200).json(users);
-  // }).catch((err) => {
-  //   res.status(404).send('could not find any users');
-  // });
+  var queryStr = 'select * from users';
+  db.query(queryStr).then((users) => {
+    console.log('successfully retrieved all users');
+    res.status(200).json(users);
+  }).catch((err) => {
+    console.log('could not retrieve any users');
+    res.status(404).send('could not find any users in user table');
+  });
 };
 
 // POST request for /user
-// find or create a new user in user model
+// isnert a new user into user table
 exports.createUser = (req, res) => {
-  db.user.findOrCreate({where: {
-    email: req.body.email,
-    password: req.body.password,
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    dob: req.body.dob,
-    gender: req.body.gender
-  }}).spread((user, created) => {
-    console.log(user.get({ plain: true }));
+  var params = [req.body.email, req.body.password, req.body.first_name, req.body.last_name, req.body.dob, req.body.gender];
+  var queryStr = 'insert into user (email, password, first_name, last_name, dob, gender) \
+                  values (?, ?, ?, ?, ?, ?)';
+  db.query(queryStr, params).then((user) => {
+    console.log('successfully created a new user');
+    res.status(201).json(user);
+  }).catch((err) => {
+    console.log('could not create a new user');
+    res.status(400).send('could not create a new user in user table');
+  });
+};
+
+// GET request for /user/:user_id
+// retrieve one user with a specific user_id
+exports.retrieveOneUser = (req, res) => {
+  var queryStr = 'select * from users where user_id = ' + req.params.user_id;
+  db.query(queryStr).then((user) => {
+    console.log('successfully retrieved a single user');
+    res.status(200).json(user);
+  }).catch((err) => {
+    console.log('could not retrieve user with user_id ' + req.params.user_id);
+    res.status(404).send('could not find any users in user table');
   });
 };
 
@@ -114,9 +127,9 @@ exports.createUser = (req, res) => {
 // retrieve all user coupons that have previously been sent to a specific user
 // coupons must have matching user_id
 exports.retrieveUserCoupons = (req, res) => {
-  queryStr = 'select b.beacon_id, uc.user_id, c.coupon_id, c.created_at from user_coupon as uc \
-    inner join coupon as c on (uc.coupon_id = c.coupon_id) \
-    inner join coupon_beacon as cb on (c.coupon_id = cb.coupon_id)';
+  var queryStr = 'select b.beacon_id, uc.user_id, c.coupon_id, c.created_at from user_coupon as uc \
+                  inner join coupon as c on (uc.coupon_id = c.coupon_id) \
+                  inner join coupon_beacon as cb on (c.coupon_id = cb.coupon_id)';
   db.query(queryStr).then((coupons) => {
     if (coupons.length > 0) {
       coupons.forEach((coupon) => {
@@ -139,9 +152,9 @@ exports.retrieveUserCoupons = (req, res) => {
 // if there are user coupons available, creates a new entry in user_coupon table
 // coupons must have matching beacon_id and created_at
 exports.sendUserCoupons = (req, res) => {
-  queryStr = 'select b.beacon_id, uc.user_id, c.coupon_id, c.created_at from user_coupon as uc \
-    inner join coupon as c on (uc.coupon_id = c.coupon_id) \
-    inner join coupon_beacon as cb on (c.coupon_id = cb.coupon_id)';
+  var queryStr = 'select b.beacon_id, uc.user_id, c.coupon_id, c.created_at from user_coupon as uc \
+                  inner join coupon as c on (uc.coupon_id = c.coupon_id) \
+                  inner join coupon_beacon as cb on (c.coupon_id = cb.coupon_id)';
   db.query(queryStr).then((coupons) => {
     if (coupons.length > 0) {
       coupons.forEach((coupon) => {
@@ -170,45 +183,29 @@ exports.sendUserCoupons = (req, res) => {
 // GET request for /user/coupon/:coupon_id
 // retrieve a specific user coupon with coupon_id
 exports.retrieveOneUserCoupon = (req, res) => {
-  var num = parseInt(req.url.match(/[0-9]+/g)[0], 10);
-  res.status(200).json({ message: 'Reached user coupon id route', num });
-  // db.user_coupon.findAll({where: {coupon_id: req.body.coupon_id}})
-  // .then((coupon) => {
-  //   console.log('successfully retrieved a specific user coupon');
-  //   res.status(201).json(coupon);
-  // }).catch((err) => {
-  //   res.status(404).send('could not find specific user coupon');
-  // });
+  var queryStr = 'select * from user_coupon where coupon_id = ' + req.params.coupon_id;
+  db.query(queryStr).then((coupon) => {
+    console.log('successfully retrieved user coupon with a specific coupon_id', req.params.coupon_id);
+    res.status(200).json(coupon);
+  }).catch((err) => {
+    console.log('could not find a specific user coupon with a specific coupon_id', req.params.coupon_id);
+    res.status(404).send('could not find a specific user coupon with a specific coupon_id', req.params.coupon_id);
+  });
 };
 
 // POST request for /user/coupon/:coupon_id
-// find/create a user coupon with coupon_id by adding a new entry in
+// create a user coupon with coupon_id by adding a new entry in
 // user_coupon table and coupon table
 exports.createUserCoupon = (req, res) => {
-  db.user_coupon.findOrCreate({where: {coupon_id: req.body.coupon_id}})
-    .spread((coupon, created) => {
-      db.user_coupon.create({
-        user_id: req.body.user_id,
-        coupon_id: req.body.coupon_id,
-        used: req.body.used,
-        expired: req.body.expired
-      });
-      db.coupon.create({
-        title: req.body.title,
-        image: req.body.image,
-        description: req.body.description,
-        original_price: req.body.original_price,
-        coupon_price: req.body.coupon_price,
-        coupon_savings: req.body.coupon_savings,
-        start_at: req.body.start_at,
-        end_at: req.body.end_at,
-        created_at: req.body.created_at,
-        business_id: req.body.business_id
+  var params = [req.body.user_id, req.params.coupon_id, req.body.used, req.body.expired];
+  var queryStr = 'insert into user_coupon (user_id, coupon_id, used, expired) values (?, ?, ?, ?)';
+  db.query(queryStr, params).then((coupon) => {
       }).then((coupon) => {
-        console.log('successfully created a specific user coupon');
+        console.log('successfully created a specific user coupon with coupon_id', req.params.coupon_id);
         res.status(201).json(coupon);
       }).catch((err) => {
-        res.status(404).send('could not create a specific user coupon');
+        console.log('could not create a specific user coupon with coupon_id', req.params.coupon_id);
+        res.status(400).send('could not create a specific user coupon', req.params.coupon_id);
       });
     });
 };
@@ -216,11 +213,12 @@ exports.createUserCoupon = (req, res) => {
 // PUT request for /user/coupon/:coupon_id
 // update/modify an existing user coupon with coupon_id
 exports.useUserCoupon = (req, res) => {
-  db.user_coupon.update({used: true}, {where: {coupon_id: req.body.coupon_id}})
-    .then((coupon) => {
-      console.log('successfully used a specific user coupon');
+  var queryStr = 'update user_coupon set used = true where coupon_id = ' + req.params.coupon_id;
+  db.query(queryStr).then((coupon) => {
+      console.log('successfully used a specific user coupon with coupon_id', req.params.coupon_id);
       res.status(200).json(coupon);
     }).catch((err) => {
-      res.status(400).send('could not use specific user coupon');
+      console.log('could not use specific user coupon with coupon_id', req.params.coupon_id);
+      res.status(400).send('could not use specific user coupon with coupon_id', req.params.coupon_id);
     });
 };

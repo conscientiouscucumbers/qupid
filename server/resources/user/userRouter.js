@@ -5,15 +5,18 @@ userRouter.route('/')
   .get(userController.retrieveUsers)
   .post(userController.createUser)
 
-userRouter.get('/user', userController.retrieveUsers);
-userRouter.post('/user', userController.createUser);
+userRouter.route('/user')
+  .get(userController.retrieveUsers)
+  .post(userController.createUser)
 
+userRouter.route('/user/:user_id')
+  .get(userController.retrieveOneUser)
 
-userRouter.route('/coupon')
+userRouter.route('/user/coupon')
   .get(userController.retrieveUserCoupons)
   .post(userController.sendUserCoupons)
 
-userRouter.route('/coupon/:coupon_id')
+userRouter.route('/user/coupon/:coupon_id')
   .get(userController.retrieveOneUserCoupon)
   .post(userController.createUserCoupon)
   .put(userController.useUserCoupon)

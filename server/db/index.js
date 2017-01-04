@@ -1,12 +1,14 @@
-var mysql = require('mysql');
+let mysql = require('promise-mysql');
 
-var connection = mysql.createConnection({
+mysql.createConnection({
   user: 'root',
   password: '',
   database: 'ihearth',
   port: '8080'
+}).then((connection) => {
+  module.exports = connection;
 });
 
-connection.connect();
+// connection.connect();
 
-module.exports = connection;
+// module.exports = connection;
