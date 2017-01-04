@@ -46,6 +46,21 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
   },
+  listViewText: {
+    fontSize: 12,
+  },
+  listViewTitleText: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    paddingTop: 6,
+    paddingLeft: 12
+  },
+  listViewDiscountPriceText: {
+    textDecorationLine: 'line-through'
+  },
+  listViewCard: {
+    flexDirection: 'row',
+  }
 });
 
 export default styles;
