@@ -57,6 +57,9 @@ const styles = StyleSheet.create({
   },
   listViewDiscountPriceText: {
     textDecorationLine: 'line-through'
+  },
+  listViewCard: {
+    flexDirection: 'row',
   }
 });
 
