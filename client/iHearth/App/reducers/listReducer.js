@@ -8,16 +8,18 @@ const initialState = {
 export default function listState(state = initialState, action) {
   switch (action.type) {
     case REQUEST_COUPONS:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isFetching: true
-      })
+      }
 
     case RECEIVE_COUPONS:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isFetching: false,
         items: action.coupons,
         lastUpdated: action.receivedAt
-      })
+      }
 
     default:
       return state;
