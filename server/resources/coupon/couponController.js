@@ -1,3 +1,5 @@
+var couponModel = require('./coupon.js');
+
 ////////////////////////////////////////////////////////////
 // FAKE DATA
 ////////////////////////////////////////////////////////////
@@ -61,14 +63,13 @@ var fakeCouponInfo = {
 // GET request for /coupon
 // retrieve all coupons in coupon table
 exports.retrieveCoupons = (req, res) => {
-  res.status(200).json({ coupons: data });
-  // db.coupon.findAll()
-  //   .then((coupons) => {
-  //     console.log('successfully retrieved all coupons');
-  //     res.status(200).json(coupons);
-  //   }).catch((err) => {
-  //     res.send(404).send('could not find any coupons');
-  //   });
+  couponModel.retrieveCouponsAsync()
+  .then(coupons => {
+    res.status(200).json({ coupons: coupons });
+  })
+  .catch((err) => {
+    res.status(400).send({ coupons: [ { item_name: 'Server-side error' } ] });
+  })
 };
 
 // POST request for /coupon
