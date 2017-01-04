@@ -18,13 +18,8 @@ var retrieveCoupons = callback => {
 module.exports.retrieveCouponsAsync = Promise.promisify(retrieveCoupons);
 
 var createCoupon = (params, callback) => {
-  console.log('inside createCoupon')
-  console.log(params);
-  // var queryStr = 'insert into coupon set ?';
-  // var queryStr = 'insert into coupon (title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at) values ?';
-  var queryStr = 'insert into coupon (title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at) values (\'$5 off socks\', \'../../assets/img/socks.png\', \'Socks\', \'Lorem Ipsum...\', 10.00, 5.00, 5.00, \'2017-01-05 16:00:00\', \'2017-01-05 18:00:00\')';
-  // db.query(queryStr, params, function(err, res) {
-    // ## Caught in this err
+  var queryStr = `insert into coupon (title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at) \
+    values ("${params.title}", "${params.image}", "${params.item_name}", "${params.description}", "${params.original_price}", "${params.coupon_price}", "${params.coupon_savings}", "${params.start_at}", "${params.end_at}")`;
   db.query(queryStr, function(err, res) {
 
     if (err) {

@@ -94,15 +94,24 @@ exports.retrieveUsers = (req, res) => {
 // POST request for /user
 // find or create a new user in user model
 exports.createUser = (req, res) => {
-  var params = [req.body.email, req.body.password, req.body.first_name, req.body.last_name, req.body.dob, req.body.gender];
+  // var params = [req.body.email, req.body.password, req.body.first_name, req.body.last_name, req.body.dob, req.body.gender];
+  var params = {
+    email: req.body.email,
+    password: req.body.password,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    dob: req.body.dob,
+    gender: req.body.gender
+  };
   userModel.createUserAsync(params)
-  .then(coupon => {
-    res.status(201).json(coupon);
+  .then(user => {
+    res.status(201).json(user); // TODO
   })
   .catch((err) => {
     res.status(400).send('create post error from server');
   });
 };
+
 
 // GET request for /user/:user_id
 // retrieve one user with a specific user_id

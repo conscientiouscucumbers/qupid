@@ -75,8 +75,18 @@ exports.retrieveCoupons = (req, res) => {
 // POST request for /coupon
 // create new coupon in coupon table
 exports.createCoupon = (req, res) => {
-  // console.log(req.body);
-  var params = [req.body.title, req.body.image, req.body.item_name, req.body.description, req.body.original_price, req.body.coupon_price, req.body.coupon_savings, req.body.start_at, req.body.end_at ];
+  // var params = [req.body.title, req.body.image, req.body.item_name, req.body.description, req.body.original_price, req.body.coupon_price, req.body.coupon_savings, req.body.start_at, req.body.end_at];
+  var params = {
+    title: req.body.title,
+    image: req.body.image,
+    item_name: req.body.item_name,
+    description: req.body.description,
+    original_price: req.body.original_price,
+    coupon_price: req.body.coupon_price,
+    coupon_savings: req.body.coupon_savings,
+    start_at: req.body.start_at,
+    end_at: req.body.end_at
+  };
   couponModel.createCouponAsync(params)
   .then(coupon => {
     res.status(201).json(coupon);
