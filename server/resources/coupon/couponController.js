@@ -75,35 +75,35 @@ exports.retrieveCoupons = (req, res) => {
 // POST request for /coupon
 // create new coupon in coupon table
 exports.createCoupon = (req, res) => {
-  db.coupon.create({
+  // var params = [req.body.title, req.body.image, req.body.item_name, req.body.description, req.body.original_price, req.body.coupon_price, req.body.coupon_savings, req.body.start_at, req.body.end_at];
+  var params = {
     title: req.body.title,
     image: req.body.image,
+    item_name: req.body.item_name,
     description: req.body.description,
     original_price: req.body.original_price,
     coupon_price: req.body.coupon_price,
     coupon_savings: req.body.coupon_savings,
     start_at: req.body.start_at,
-    end_at: req.body.end_at,
-    created_at: req.body.created_at,
-    business_id: req.body.business_id
-  }).then((coupon) => {
-    console.log('successfully created a coupon');
+    end_at: req.body.end_at
+  };
+  couponModel.createCouponAsync(params)
+  .then(coupon => {
     res.status(201).json(coupon);
-  }).catch((err) => {
-    res.status(404).send('could not create a coupon');
-  });
+  })
+  .catch((err) => {
+    res.status(400).send('create post error from server');
+  })
 };
 
 // GET request for /coupon/:coupon_id
 // retrieve all coupons with a specific coupon_id
 exports.retrieveOneCoupon = (req, res) => {
-  var num = parseInt(req.url.match(/[0-9]+/g)[0], 10);
-  res.status(200).json({ couponInfo:fakeCouponInfo });
-  // db.coupon.findAll({where: {coupon_id: req.body.coupon_id}})
-  //   .then((coupon) => {
-  //     console.log('successfully retrieved coupon with coupon id:', req.body.coupon_id);
-  //     res.status(200).json(coupon);
-  //   }).catch((err) => {
-  //     res.send(404).send('could not find any coupons with coupon id:', req.body.coupon_id);
-  //   });
+  couponModel.retrieveOneCouponAsync()
+  .then(couponInfo => {
+    res.status(200).json({ couponInfo: couponInfo });
+  })
+  .catch((err) => {
+    res.status(400).send({ couponInfo: { title: 'Server-side error'} });
+  });
 };
