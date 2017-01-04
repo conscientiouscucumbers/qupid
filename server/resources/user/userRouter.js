@@ -5,9 +5,8 @@ userRouter.route('/')
   .get(userController.retrieveUsers)
   .post(userController.createUser)
 
-userRouter.get('/user', userController.retrieveUsers);
-userRouter.post('/user', userController.createUser);
-
+userRouter.route('/:user_id')
+  .get(userController.retrieveOneUser)
 
 userRouter.route('/coupon')
   .get(userController.retrieveUserCoupons)
