@@ -14,12 +14,12 @@ var retrieveUsers = callback => {
 };
 module.exports.retrieveUsersAsync = Promise.promisify(retrieveUsers);
 
-//TODO: POST /user not working yet
 var createUser = (params, callback) => {
-  console.log(params);
-  var queryStr = 'insert into user (email, password, first_name, last_name, dob, gender) \
-                  values (?, ?, ?, ?, ?, ?)';
+  var queryStr = `insert into user (email, password, first_name, last_name, dob, gender) \
+    values ("${params.email}","${params.password}","${params.first_name}",
+    "${params.last_name}","${params.dob}","${params.gender}")`;
   db.query(queryStr, params, function(err, res) {
+    console.log(queryStr)
     if(err) {
       callback(err);
     } else {
