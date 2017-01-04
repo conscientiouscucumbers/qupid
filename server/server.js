@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var userRouter = require('./resources/user/userRouter.js')
 var userController = require('./resources/user/userController.js')
 var couponRouter = require('./resources/coupon/couponRouter.js');
+var couponController = require('./resources/coupon/couponRouter.js')
 
 // Create express app
 var app = express();
