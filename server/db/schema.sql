@@ -24,10 +24,10 @@ create table user (
   last_name varchar(50) not null,
   dob datetime not null,
   gender varchar(1) not null,
-  total_savings float(2) not null,
-
+  total_savings float(2) not null default 0,
   primary key (user_id)
 );
+-- TODO after MVP: CRON jobs on updating total_savings?
 
 create table business (
   business_id int not null auto_increment,
