@@ -20,7 +20,6 @@ export default class CouponDescriptionView extends Component {
         <Content>
           <Card style={{ flex: 0 }}>
             <CardItem>
-              <Text>HERE</Text>
               <Text style={{fontWeight: 'bold', textAlign: 'center'}}>{this.props.couponInfo.title}</Text>
               <Text style={{color: 'red', textAlign: 'center'}}>{this.props.couponInfo.start_at}-{this.props.couponInfo.end_at}</Text>
             </CardItem>
@@ -47,13 +46,3 @@ export default class CouponDescriptionView extends Component {
 
           // <Image style={{width: 200, height: 200, alignSelf: 'center'}} source={require('iHearth/App/lib/img/'+this.props.couponInfo.image)} />
   //         <Image style={{width: 200, height: 200, alignSelf: 'center'}} source={require('iHearth/App/lib/img/jacket.jpeg')} />
-
-
-              // <Text>{this.props.isFetching.toString()}</Text>
-
-              // <Container>{this.props.items.map((coupon, idx) => (
-              //   <Text key={coupon.coupon_id}>heeere
-              //     {console.log(coupon.title, idx, coupon[idx])}
-              //   </Text>
-              // ))}</Container>
-              // <Text>{console.log(this.props.items[0])}</Text>
