@@ -1,37 +1,59 @@
-import React from 'react';
-// import styles from './../styles';
+import React, { Component } from 'react';
 import { Image } from 'react-native';
-import { Container, Header, Icon, Title, Content, Card, CardItem, Text, Button } from 'native-base';
+// import ListViewEntry from './ListViewEntry';
+import { Container, Content, Card, CardItem, Text, Button } from 'native-base';
 
-const CouponDescriptionView = ({ couponInfo }) => (
-  <Container>
-    <Content>
-      <Card style={{ flex: 0 }}>
-        <CardItem>
-          <Text style={{fontWeight: 'bold', textAlign: 'center'}}>{couponInfo.title}</Text>
-          <Text style={{color: 'red', textAlign: 'center'}}>{couponInfo.start_at}-{couponInfo.end_at}</Text>
-        </CardItem>
+// const CouponDescriptionView = ({ couponInfo }) => (
+export default class CouponDescriptionView extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-        <CardItem cardBody>
-          <Image style={{width: 200, height: 200, alignSelf: 'center'}} source={require('iHearth/App/lib/img/jacket.jpeg')} />
-          <Text style={{fontWeight: 'bold', textAlign: 'center'}}>{couponInfo.item_name}</Text>
+  // Before rendering, get state from server
+  componentWillMount() {
+    this.props.fetchCoupons();
+  }
 
-          <Text style={{textAlign: 'center'}}>purchase at {couponInfo.storeName}</Text>
+  render() {
+    return (
+      <Container>
+        <Content>
+          <Card style={{ flex: 0 }}>
+            <CardItem>
+              <Text>HERE</Text>
+              <Text style={{fontWeight: 'bold', textAlign: 'center'}}>{this.props.couponInfo.title}</Text>
+              <Text style={{color: 'red', textAlign: 'center'}}>{this.props.couponInfo.start_at}-{this.props.couponInfo.end_at}</Text>
+            </CardItem>
 
-          <Text>{couponInfo.description}</Text>
-          <CardItem>
-            <Text style={{textDecorationLine: 'line-through'}}>{couponInfo.original_price}</Text>
-            <Text style={{fontWeight: 'bold'}}>{couponInfo.coupon_price}</Text>
-          </CardItem>
-          <Button block>Use Coupon</Button>
-        </CardItem>
-      </Card>
-    </Content>
-  </Container>
+            <CardItem cardBody>
+              <Image style={{width: 200, height: 200, alignSelf: 'center'}} source={require('iHearth/App/lib/img/jacket.jpeg')} />
+              <Text style={{fontWeight: 'bold', textAlign: 'center'}}>{this.props.couponInfo.item_name}</Text>
 
-);
+              <Text style={{textAlign: 'center'}}>purchase at {this.props.couponInfo.storeName}</Text>
 
-export default CouponDescriptionView;
+              <Text>{this.props.couponInfo.description}</Text>
+              <CardItem>
+                <Text style={{textDecorationLine: 'line-through'}}>{this.props.couponInfo.original_price}</Text>
+                <Text style={{fontWeight: 'bold'}}>{this.props.couponInfo.coupon_price}</Text>
+              </CardItem>
+              <Button block>Use Coupon</Button>
+            </CardItem>
+          </Card>
+        </Content>
+      </Container>
+    )
+  }
+}
 
-          // <Image style={{width: 200, height: 200, alignSelf: 'center'}} source={require('iHearth/App/lib/img/'+couponInfo.image)} />
+          // <Image style={{width: 200, height: 200, alignSelf: 'center'}} source={require('iHearth/App/lib/img/'+this.props.couponInfo.image)} />
   //         <Image style={{width: 200, height: 200, alignSelf: 'center'}} source={require('iHearth/App/lib/img/jacket.jpeg')} />
+
+
+              // <Text>{this.props.isFetching.toString()}</Text>
+
+              // <Container>{this.props.items.map((coupon, idx) => (
+              //   <Text key={coupon.coupon_id}>heeere
+              //     {console.log(coupon.title, idx, coupon[idx])}
+              //   </Text>
+              // ))}</Container>
+              // <Text>{console.log(this.props.items[0])}</Text>
