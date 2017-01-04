@@ -1,9 +1,8 @@
 let db = require('../../db');
 let uuid = require('uuid');
+var userModel = require('./user.js');
 
-////////////////////////////////////////////////////////////
-// FAKE DATA
-////////////////////////////////////////////////////////////
+//////// FAKE DATA //////////////////////
 var data = [
   {
     coupon_id: 1,
@@ -82,33 +81,45 @@ var userData = [
   }
 ]
 
-// TO DO, turn into query string: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // GET request for /user
 // retrieve all users (array of user objects)
 exports.retrieveUsers = (req, res) => {
-  res.status(200).json({ message: 'Hello world!' });
-  // db.user.findAll({}).then((users) => {
-  //   console.log('successfully retrieved all users');
-  //   res.status(200).json(users);
-  // }).catch((err) => {
-  //   res.status(404).send('could not find any users');
-  // });
-};
+  userModel.retrieveUsersAsync()
+  .then(users => {
+    res.status(200).json(users);
+  })
+  .catch((err) => {
+    res.status(404).send('could not find any users in user table');
+  })};
 
 // POST request for /user
 // find or create a new user in user model
 exports.createUser = (req, res) => {
-  db.user.findOrCreate({where: {
-    email: req.body.email,
-    password: req.body.password,
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    dob: req.body.dob,
-    gender: req.body.gender
-  }}).spread((user, created) => {
-    console.log(user.get({ plain: true }));
+  var params = [req.body.email, req.body.password, req.body.first_name, req.body.last_name, req.body.dob, req.body.gender];
+  userModel.createUserAsync(params)
+  .then(coupon => {
+    res.status(201).json(coupon);
+  })
+  .catch((err) => {
+    res.status(400).send('create post error from server');
   });
 };
+
+
+// GET request for /user/:user_id
+// retrieve one user with a specific user_id
+exports.retrieveOneUser = (req, res) => {
+  var params = [req.params.user_id];
+  userModel.retrieveOneUserAsync(params)
+  .then(user => {
+    res.status(200).json(user);
+  })
+  .catch((err) => {
+    res.status(404).send('could not find user with user_id=' +req.params.user_id+ ' in user table');
+  })
+}
+
+//-----Josh's portion from here --------
 
 // GET request for /user/coupon
 // retrieve all user coupons that have previously been sent to a specific user
