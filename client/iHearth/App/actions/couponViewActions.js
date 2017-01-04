@@ -11,8 +11,9 @@ function requestSingleCoupon() {
 function receiveSingleCoupon(json) {
   return {
     type: RECEIVE_SINGLE_COUPON,
-    coupons: json.coupons,
-    receivedAt: Date.now()
+    couponInfo: json.couponInfo
+    // coupons: json.coupons,
+    // receivedAt: Date.now()
   }
 }
 
@@ -31,7 +32,7 @@ export function fetchPosts(singleCoupon) {
     // the start of the API call
     dispatch(requestSingleCoupon());
 
-    return fetch(URL + 'coupon')
+    return fetch(URL + 'coupon/2') //change to :coupon_id
       .then(response => response.json())
       .then(json => {
 

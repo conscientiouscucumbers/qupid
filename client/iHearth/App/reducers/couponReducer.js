@@ -31,21 +31,14 @@ export default function couponReducer(state=initialState, action) {
         ...state,
         isFetching: true
       }
-      // Object.assign({}, state, {
-      //   isFetching: true
-      // })
     case RECEIVE_SINGLE_COUPON:
       return {
         ...state,
         isFetching: false,
-        items: action.coupons,
-        lastUpdated: action.receivedAt
+        couponInfo: action.couponInfo
+        // items: action.coupons,
+        // lastUpdated: action.receivedAt
       }
-      // Object.assign({}, state, {
-      //   isFetching: false,
-      //   items: action.coupons,
-      //   lastUpdated: action.receivedAt
-      // })
     default:
       return state;
   }
