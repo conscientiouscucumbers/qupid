@@ -1,6 +1,48 @@
 let db = require('../../db');
 let uuid = require('uuid');
 
+////////////////////////////////////////////////////////////
+// FAKE DATA
+////////////////////////////////////////////////////////////
+var data = [
+  {
+    coupon_id: 1,
+    title: '$20 off socks',
+    image: '../../assets/img/socks.png',
+    item_name: 'Socks',
+    original_price: 10,
+    coupon_price: 5,
+    coupon_savings: 5,
+    start_at: 'start_date',
+    end_at: 'end_date',
+    created_at: 'created_at_date',
+  },
+  {
+    coupon_id: 2,
+    title: '$5 off socks',
+    image: '../../assets/img/socks.png',
+    item_name: 'Socks',
+    original_price: 10,
+    coupon_price: 5,
+    coupon_savings: 5,
+    start_at: 'start_date',
+    end_at: 'end_date',
+    created_at: 'created_at_date',
+  },
+  {
+    coupon_id: 3,
+    title: '$5 off socks',
+    image: '../../assets/img/socks.png',
+    item_name: 'Socks',
+    original_price: 10,
+    coupon_price: 5,
+    coupon_savings: 5,
+    start_at: 'start_date',
+    end_at: 'end_date',
+    created_at: 'created_at_date',
+  }
+];
+
 // TO DO, turn into query string: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
 // GET request for /user
 // retrieve all users (array of user objects)
@@ -46,7 +88,7 @@ exports.retrieveOneCoupon = (req, res) => {
 // GET request for /coupon
 // retrieve all coupons in coupon table
 exports.retrieveCoupons = (req, res) => {
-  res.status(200).json({ message: 'Hello world from coupons endpoint!' });
+  res.status(200).json({ coupons: data });
   // db.coupon.findAll()
   //   .then((coupons) => {
   //     console.log('successfully retrieved all coupons');
