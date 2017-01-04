@@ -3,7 +3,8 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
   user: 'root',
   password: '',
-  database: 'ihearth'
+  database: 'ihearth',
+  port: '8080'
 });
 
 connection.connect();
