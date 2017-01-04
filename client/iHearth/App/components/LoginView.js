@@ -34,7 +34,7 @@ class LoginView extends Component {
             email: '',
             password: '',
   };
-}
+  }
  handleLogin = () => {
     var context = this;
     var returningUser = {
@@ -52,13 +52,12 @@ class LoginView extends Component {
       const msg = err.response.data.message;
       this.setState({ submitError: msg });
     })
-  };
+ };
   render() {
-    console.log(this.state.email)
    return(
      <Container>
                 <Content>
-                <Text style={ styles.title }>LoginView</Text>
+                <Text style={ styles.titleTwo }>LoginView</Text>
                     <List style={styles.login}>
                         <ListItem>
                             <InputGroup>
