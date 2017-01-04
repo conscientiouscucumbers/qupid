@@ -43,7 +43,46 @@ var data = [
   }
 ];
 
-// TO DO, turn into query string: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
+var userData = [
+  {
+    email: 'fleckblake@gmail.com',
+    password: 'Packer123',
+    first_name: 'Blake',
+    last_name: 'Fleck',
+    dob: '1990-04-24 12:00:00',
+    gender: 'm',
+    total_savings: 100
+},
+  {
+    email: 'gujames@gmail.com',
+    password: 'DTownBoogie',
+    first_name: 'James',
+    last_name: 'Gu',
+    dob: '1993-05-21 12:00:00',
+    gender: 'm',
+    total_savings: 50
+  },
+  {
+    email: 'pengjosh@gmail.com',
+    password: 'Beacon',
+    first_name: 'Josh',
+    last_name: 'Peng',
+    dob: '1985-10-20 12:00:00',
+    gender: 'm',
+    total_savings: 75
+  },
+  {
+    email: 'HongSusan@gmail.com',
+    password: 'Password123',
+    first_name: 'Susan',
+    last_name: 'Hong',
+    dob: '1994-08-19 12:00:00',
+    gender: 'f',
+    total_savings: 5000
+  }
+]
+
+// TO DO, turn into query string: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // GET request for /user
 // retrieve all users (array of user objects)
 exports.retrieveUsers = (req, res) => {
@@ -177,7 +216,7 @@ exports.sendUserCoupons = (req, res) => {
   });
 };
 
-// TO DO, turn into query string: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
+// TO DO, turn into query string: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // GET request for /user/coupon/:coupon_id
 // retrieve a specific user coupon with coupon_id
 exports.retrieveOneUserCoupon = (req, res) => {

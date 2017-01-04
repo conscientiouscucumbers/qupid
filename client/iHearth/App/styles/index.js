@@ -40,6 +40,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: 'center'
   },
+  login: {
+    paddingTop: 60,
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
 });
 
 export default styles;
