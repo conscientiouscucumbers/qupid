@@ -1,6 +1,5 @@
 drop database ihearth;
 create database ihearth;
-
 use ihearth;
 
 create table user (
