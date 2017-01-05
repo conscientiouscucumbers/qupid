@@ -44,8 +44,8 @@ module.exports.retrieveOneUserAsync = Promise.promisify(retrieveOneUser);
 
 var retrieveUserCoupons = (params, callback) => {
   var queryStr = 'select b.beacon_id, uc.user_id, c.coupon_id, c.created_at from user_coupon as uc \
-                  inner join coupon as c on (uc.coupon_id = c.coupon_id) \
-                  inner join coupon_beacon as cb on (c.coupon_id = cb.coupon_id)';
+    inner join coupon as c on (uc.coupon_id = c.coupon_id) \
+    inner join coupon_beacon as cb on (c.coupon_id = cb.coupon_id)';
   db.query(queryStr, (err, coupons) => {
     if (err) {
       console.log('could not find any entries in user_coupon table');

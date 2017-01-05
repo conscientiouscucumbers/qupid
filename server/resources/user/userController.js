@@ -141,12 +141,13 @@ exports.retrieveUserCoupons = (req, res) => {
   });
 };
 
-// POST request for /user/coupon
+// POST request for /user/coupon/:user_id/:beacon_id/
 // check to see if newly created coupons are ready to be sent out to users
 // if there are user coupons available, creates a new entry in user_coupon table
 // coupons must have matching beacon_id and created_at
+// TODO: When session implementd, change route to POST /user/coupon/:beacon_id
 exports.sendUserCoupons = (req, res) => {
-  var params = { created_at: req.body.created_at, beacon_id: req.body.beacon_id };
+  var params = { user_id: req.params.user_id, beacon_id: req.params.beacon_id };
   userModel.sendUserCouponsAsync(params)
   .then((coupons) => {
     console.log('successfully found entries in user_coupon table')
@@ -176,7 +177,9 @@ exports.retrieveOneUserCoupon = (req, res) => {
 // user_coupon table and coupon table
 exports.createUserCoupon = (req, res) => {
   res.status(200).send('Success...');
-  // var params = { user_id: req.body.user_id, coupon_id: req.params.coupon_id, used: req.body.used, req.body.expired: expired };
+
+  // not working?
+  // var params = { user_id: req.body.user_id, coupon_id: req.params.coupon_id, used: req.body.used, expired: req.body.expired, activated: req.body.activated };
   // userModel.createUserCouponAsync(params)
   // .then((coupon) => {
   //   console.log('successfully created a specific user coupon with coupon_id', req.params.coupon_id);
