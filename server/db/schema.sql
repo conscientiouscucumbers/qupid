@@ -2,6 +2,13 @@ drop database if exists ihearth;
 create database ihearth;
 
 use ihearth;
+<<<<<<< HEAD
+=======
+
+/* --dummy data
+*/
+
+>>>>>>> (fix) Add changes to schema to be overwritten
 create table user (
   user_id int not null auto_increment,
   email varchar(100) not null,
