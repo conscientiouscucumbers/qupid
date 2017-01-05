@@ -16,14 +16,24 @@ module.exports.retrieveUsersAsync = Promise.promisify(retrieveUsers);
 
 var createUser = (params, callback) => {
   var queryStr = `insert into user (email, password, first_name, last_name, dob, gender) \
-    values ("${params.email}","${params.password}","${params.first_name}",
-    "${params.last_name}","${params.dob}","${params.gender}")`;
-  db.query(queryStr, params, function(err, res) {
+    values ("${params.email}", "${params.password}", "${params.first_name}",
+    "${params.last_name}", "${params.dob}", "${params.gender}")`;
+  db.query(queryStr, (err, res) => {
     console.log(queryStr)
-    if(err) {
+    if (err) {
+      console.log('could not create a new user');
       callback(err);
     } else {
-      callback(null, res);
+      var returnUserStr = `select * from user where email = "${params.email}" && "${params.password}"`;
+      db.query(returnUserStr, (err, res) => {
+        if (err) {
+          console.log('could not find specific user with email and password');
+          callback(err);
+        } else {
+          console.log('successfully created a new user');
+          callback(null, res);
+        }
+      });
     }
   });
 };
@@ -43,105 +53,91 @@ var retrieveOneUser = (params, callback) => {
 module.exports.retrieveOneUserAsync = Promise.promisify(retrieveOneUser);
 
 var retrieveUserCoupons = (params, callback) => {
-  var queryStr = 'select b.beacon_id, uc.user_id, c.coupon_id, c.created_at from user_coupon as uc \
-    inner join coupon as c on (uc.coupon_id = c.coupon_id) \
-    inner join coupon_beacon as cb on (c.coupon_id = cb.coupon_id)';
+  var queryStr = `select * from coupon as c inner join user_coupon as uc on (c.coupon_id = uc.coupon_id) \
+                  where uc.user_id = ${params.user_id}`;
   db.query(queryStr, (err, coupons) => {
     if (err) {
-      console.log('could not find any entries in user_coupon table');
+      console.log('could not find any coupons in coupon table for user with user_id', params.user_id);
       callback(err);
     } else {
-      if (coupons.length > 0) {
-        coupons.forEach((coupon) => {
-          if (coupon.user_id === params.user_id) {
-            console.log('successfully found matching coupon for a specific user');
-            callback(null, coupon);
-          }
-        });
-        console.log('found 0 coupons matching user_id');
-      } else {
-        console.log('found 0 entries in user_coupon table');
-        callback(err);
-      }
+      console.log('successfully found coupons for user with user_id', params.user_id);
+      callback(null, coupon);
     }
   });
 };
 module.exports.retrieveUserCouponsAsync = Promise.promisify(retrieveUserCoupons);
 
-var sendUserCoupons = (params, callback) => {
-  var queryStr = 'select b.beacon_id, uc.user_id, c.coupon_id, c.created_at from user_coupon as uc \
-                  inner join coupon as c on (uc.coupon_id = c.coupon_id) \
-                  inner join coupon_beacon as cb on (c.coupon_id = cb.coupon_id)';
-  db.query(queryStr, (err, coupons) => {
-    if (err) {
-      console.log('could not find any entries in user_coupon table');
-      callback(err);
-    } else {
-      if (coupons.length > 0) {
-        coupons.forEach((coupon) => {
-          if (coupon.created_at === params.created_at && coupon.beacon_id === params.beacon_id) {
-            var createUserCouponStr = `insert into user_coupon (user_id, coupon_id, used, expired) values \
-                                      (${coupon.user_id}, ${coupon.coupon_id}, false, false)`;
-            db.query(createUserCouponStr, (err, coupon) => {
-              if (err) {
-                console.log('could not create new coupon entry in user_coupon table');
-                callback(err);
-              } else {
-                console.log('successfully created new coupon entry in user_coupon table');
-                callback(null, coupon);
-              }
-            });
-          }
-        });
-        console.log('found no matching newly created coupons to be sent to users');
-      } else {
-        console.log('found 0 entries in user-coupon table');
-        callback(err);
-      }
-    }
-  });
-};
-module.exports.sendUserCouponsAsync = Promise.promisify(sendUserCoupons);
-
 var retrieveOneUserCoupon = (params, callback) => {
-  var queryStr = `select * from user_coupon where coupon_id = ${params.coupon_id}`;
+  var queryStr = `select * from coupon as c inner join user_coupon as uc on (c.coupon_id = uc.coupon_id) \
+                  where uc.user_id = ${params.user_id} && uc.coupon_id = ${params.coupon_id}`;
   db.query(queryStr, (err, coupon) => {
     if (err) {
-      console.log('could not retrieve user coupon with a coupon_id', params.coupon_id);
+      console.log('could not retrieve coupon with coupon_id', params.coupon_id, 'for user with user_id', params.user_id);
       callback(err);
     } else {
-      console.log('successfully retrieved user coupon with a specific coupon_id', params.coupon_id);
+      console.log('successfully retrieved coupon with coupon_id', params.coupon_id, 'for user with user_id', params.user_id);
       callback(null, coupon);
     }
   });
 };
 module.exports.retrieveOneUserCouponAsync = Promise.promisify(retrieveOneUserCoupon);
 
-var createUserCoupon = (params, callback) => {
-  var queryStr = `insert into user_coupon (user_id, coupon_id, used, expired) values \
-                  (${params.user_id}, ${params.coupon_id}, ${params.used}, ${params.expired})`;
+var useCoupon = (params, callback) => {
+  var queryStr = `update user_coupon set used = true where coupon_id = ${params.coupon_id} && user_id = ${params.user_id}`;
   db.query(queryStr, (err, coupon) => {
     if (err) {
-      console.log('could not create a specific user coupon with coupon_id', req.params.coupon_id);
+      console.log('could not use a coupon with coupon_id', params.coupon_id, 'for user with user_id', params.user_id);
       callback(err);
     } else {
-      console.log('successfully created a specific user coupon with coupon_id', req.params.coupon_id);
+      console.log('successfully used a coupon with coupon_id', params.coupon_id, 'for user with user_id', params.user_id);
       callback(null, coupon);
     }
   });
 };
-module.exports.createUserCouponAsync = Promise.promisify(createUserCoupon);
+module.exports.useCouponAsync = Promise.promisify(useCoupon);
 
-var useUserCoupon = (params, callback) => {
-  var queryStr = `update user_coupon set used = true where coupon_id = ${params.coupon_id}`;
-  db.query(queryStr, (err, coupon) => {
+var userLogin = (params, callback) => {
+  var queryStr = `select * from user where email = "${params.email}" && password = "${params.password}"`;
+  db.query(queryStr, (err, user) => {
     if (err) {
-      console.log('could not use specific user coupon with coupon_id', params.coupon_id);
+      console.log('could not find user in user table');
       callback(err);
     } else {
-      console.log('successfully used a specific user coupon with coupon_id', params.coupon_id);
-      callback(null, coupon);
+      console.log('successfully logged in user';
+      callback(null, user);
     }
   });
 };
-module.exports.useUserCouponAsync = Promise.promisify(useUserCoupon);
+module.exports.userLoginAsync = Promise.promisify(userLogin);
+
+var userSignup = (params, callback) => {
+  var queryStr = `select * from user where email = "${params.email}" && password = "${params.password}"`;
+  db.query(queryStr, (err, user) => {
+    if (err) {
+      console.log('invalid email and/or password');
+      callback(err);
+    } else {
+      var createUserStr = `insert into user (email, password, first_name, last_name, dob, gender) \
+        values ("${params.email}", "${params.password}", "${params.first_name}",
+        "${params.last_name}", "${params.dob}", "${params.gender}")`;
+      db.query(createUserStr, (err, res) => {
+        if (err) {
+          console.log('could not sign up/create a new user');
+          callback(err);
+        } else {
+          var returnUserStr = `select * from user where email = "${params.email}" && "${params.password}"`;
+          db.query(returnUserStr, (err, res) => {
+            if (err) {
+              console.log('could not find specific user with email and password');
+              callback(err);
+            } else {
+              console.log('successfully signed up a new user')
+              callback(null, res);
+            }
+          });
+        }
+      });
+    }
+  });
+};
+module.exports.userSignupAsync = Promise.promisify(userSignup);

@@ -94,7 +94,6 @@ exports.retrieveUsers = (req, res) => {
 // POST request for /user
 // find or create a new user in user model
 exports.createUser = (req, res) => {
-  // var params = [req.body.email, req.body.password, req.body.first_name, req.body.last_name, req.body.dob, req.body.gender];
   var params = {
     email: req.body.email,
     password: req.body.password,
@@ -105,10 +104,10 @@ exports.createUser = (req, res) => {
   };
   userModel.createUserAsync(params)
   .then(user => {
-    res.status(201).json(user); // TODO
+    res.status(201).json(user);
   })
   .catch((err) => {
-    res.status(400).send('create post error from server');
+    res.status(400).send('could not create a new user');
   });
 };
 
@@ -122,84 +121,83 @@ exports.retrieveOneUser = (req, res) => {
     res.status(200).json(user);
   })
   .catch((err) => {
-    res.status(404).send('could not find user with user_id=' +req.params.user_id+ ' in user table');
+    res.status(404).send('could not find user with user_id', req.params.user_id, 'in user table');
   })
 }
 
-// GET request for /user/coupon
+// GET request for /user/:user_id/coupon
 // retrieve all user coupons that have previously been sent to a specific user
 // coupons must have matching user_id
 exports.retrieveUserCoupons = (req, res) => {
-  var params = { user_id: req.body.user_id };
+  var params = { user_id: req.params.user_id };
   userModel.retrieveUserCouponsAsync(params)
   .then((coupons) => {
-    console.log('successfully retrieved all user coupons');
+    console.log('successfully retrieved all coupons for user with user_id', req.params.user_id);
     res.status(200).json(coupons);
   }).catch((err) => {
-    console.log('could not find any entries in user_coupon_table')
-    res.status(404).send('could not find any entries in user_coupon table');
+    console.log('could not find coupons for user with user_id', req.params.user_id);
+    res.status(404).send('could not find coupons for user with user_id', req.params.user_id);
   });
 };
 
-// POST request for /user/coupon/:user_id/:beacon_id/
-// check to see if newly created coupons are ready to be sent out to users
-// if there are user coupons available, creates a new entry in user_coupon table
-// coupons must have matching beacon_id and created_at
-// TODO: When session implementd, change route to POST /user/coupon/:beacon_id
-exports.sendUserCoupons = (req, res) => {
-  var params = { user_id: req.params.user_id, beacon_id: req.params.beacon_id };
-  userModel.sendUserCouponsAsync(params)
-  .then((coupons) => {
-    console.log('successfully found entries in user_coupon table')
-    res.status(200).json(coupons);
-  }).catch((err) => {
-    console.log('could not find any entries in user_coupon table');
-    res.status(404).send('could not find any entries in user_coupon table');
-  });
-};
-
-// GET request for /user/coupon/:coupon_id
-// retrieve a specific user coupon with coupon_id
+// GET request for /user/:user_id/coupon/:coupon_id
+// retrieve a specific coupon with coupon_id for user with user_id
 exports.retrieveOneUserCoupon = (req, res) => {
-  var params = { coupon_id: req.params.coupon_id };
+  var params = { user_id: req.params.user_id, coupon_id: req.params.coupon_id };
   userModel.retrieveOneUserCouponAsync(params)
   .then((coupon) => {
-    console.log('successfully retrieved a specific user coupon with a specific coupon_id', req.params.coupon_id);
+    console.log('successfully retrieved a coupon with coupon_id', req.params.coupon_id, 'for user with user_id', req.params.user_id);
     res.status(200).json(coupon);
   }).catch((err) => {
-    console.log('could not find a specific user coupon with a specific coupon_id', req.params.coupon_id);
-    res.status(404).send('could not find a specific user coupon with a specific coupon_id', req.params.coupon_id);
+    console.log('could not find a coupon with coupon_id', req.params.coupon_id, 'for user with user_id', req.params.user_id);
+    res.status(404).send('could not find a coupon with coupon_id', req.params.coupon_id, 'for user with user_id', req.params.user_id);
   });
 };
 
-// POST request for /user/coupon/:coupon_id
-// create a user coupon with coupon_id by adding a new entry in
-// user_coupon table and coupon table
-exports.createUserCoupon = (req, res) => {
-  res.status(200).send('Success...');
-
-  // not working?
-  // var params = { user_id: req.body.user_id, coupon_id: req.params.coupon_id, used: req.body.used, expired: req.body.expired, activated: req.body.activated };
-  // userModel.createUserCouponAsync(params)
-  // .then((coupon) => {
-  //   console.log('successfully created a specific user coupon with coupon_id', req.params.coupon_id);
-  //   res.status(201).json(coupon);
-  // }).catch((err) => {
-  //   console.log('could not create a specific user coupon with coupon_id', req.params.coupon_id);
-  //   res.status(400).send('could not create a specific user coupon', req.params.coupon_id);
-  // });
-};
-
-// PUT request for /user/coupon/:coupon_id
-// update/modify an existing user coupon with coupon_id
-exports.useUserCoupon = (req, res) => {
-  var params = { coupon_id: req.params.coupon_id };
-  userModel.useUserCouponAsync(params)
+// PUT request for /user/:user_id/coupon/:coupon_id
+// set use = true for an existing coupon with coupon_id for user with user_id
+exports.useCoupon = (req, res) => {
+  var params = { user_id: req.params.user_id, coupon_id: req.params.coupon_id };
+  userModel.useCouponAsync(params)
   .then((coupon) => {
-    console.log('successfully used a specific user coupon with coupon_id', req.params.coupon_id);
+    console.log('successfully used a coupon with coupon_id', req.params.coupon_id, 'for user with user_id', req.params.user_id);
     res.status(200).json(coupon);
   }).catch((err) => {
-    console.log('could not use specific user coupon with coupon_id', req.params.coupon_id);
-    res.status(400).send('could not use specific user coupon with coupon_id', req.params.coupon_id);
+    console.log('could not use a coupon with coupon_id', req.params.coupon_id, 'for user with user_id', req.params.user_id);
+    res.status(400).send('could not use a coupon with coupon_id', req.params.coupon_id, 'for user with user_id', req.params.user_id);
+  });
+};
+
+// POST request for /login
+// log in an existing user
+exports.userLogin = (req, res) => {
+  var params = { email: req.body.email, password: req.body.password };
+  userModel.userLoginAsync(params)
+  .then((user) => {
+    console.log('user successfully logged in');
+    res.status(200).json(user);
+  }).catch((err) => {
+    console.log('user failed to log in, user not found in user table');
+    res.status(400).send('user failed to log in, user not found in user table');
+  });
+};
+
+// POST request for /signup
+// sign up a new user
+exports.userSignup = (req, res) => {
+  var params = {
+    email: req.body.email,
+    password: req.body.password,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    dob: req.body.dob,
+    gender: req.body.gender
+  };
+  userModel.createUserAsync(params)
+  .then(user => {
+    res.status(201).json(user);
+  })
+  .catch((err) => {
+    res.status(400).send('could not sign up/create a new user');
   });
 };
