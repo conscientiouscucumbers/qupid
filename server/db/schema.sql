@@ -1,21 +1,8 @@
-drop database if exists ihearth;
+drop database ihearth;
 create database ihearth;
 
 use ihearth;
 
-/* --dummy data
-insert into user (email, password, first_name, last_name, dob, gender, total_savings)
-values ('jamesgu@gmail.com', 'password', 'James', 'Gu', '1993-05-21 12:00:00', 'm', 100.00);
-
-insert into business (email, password, company_name, address, city, state, zipcode)
-values ('nike@gmail.com', 'password', 'Nike', '744 Market Street', 'San Francisco', 'CA', 94112);
-
-insert into coupon (business_id, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (1, '$5 off socks', '../../assets/img/socks.png', 'Socks', 'Lorem Ipsum...', 10.00, 5.00, 5.00, '2017-01-05 16:00:00', '2017-01-05 18:00:00');
-
-insert into coupon (business_id, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (1, '$20 off jacket', '../../lib/img/jacket.png', 'Jackets', 'Lorem Ipsum...', 120.00, 100.00, 20.00, '2017-01-05 01:00:00', '2017-01-05 03:00:00');
-*/
 create table user (
   user_id int not null auto_increment,
   email varchar(100) not null,
@@ -71,6 +58,7 @@ create table user_coupon (
   coupon_id int,
   used boolean,
   expired boolean,
+  activated boolean,
 
   primary key (user_coupon_id),
 
@@ -104,8 +92,8 @@ create table beacon (
 
 create table coupon_beacon (
   coupon_beacon_id int not null auto_increment,
-  beacon_id int,
   coupon_id int,
+  beacon_id int,
 
   primary key (coupon_beacon_id),
 
