@@ -21,4 +21,7 @@ userRouter.route('/login')
 userRouter.route('/signup')
   .post(userController.userSignup)
 
+userRouter.route('/:user_id/beacon/:beacon_uuid')
+  .get(userController.sendBeaconCoupons)
+
 module.exports = userRouter;

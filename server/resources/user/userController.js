@@ -1,85 +1,6 @@
 var db = require('../../db');
 var userModel = require('./user.js');
 
-//////// FAKE DATA //////////////////////
-var data = [
-  {
-    coupon_id: 1,
-    title: '$20 off socks',
-    image: '../../assets/img/socks.png',
-    item_name: 'Socks',
-    original_price: 10,
-    coupon_price: 5,
-    coupon_savings: 5,
-    start_at: 'start_date',
-    end_at: 'end_date',
-    created_at: 'created_at_date',
-  },
-  {
-    coupon_id: 2,
-    title: '$5 off socks',
-    image: '../../assets/img/socks.png',
-    item_name: 'Socks',
-    original_price: 10,
-    coupon_price: 5,
-    coupon_savings: 5,
-    start_at: 'start_date',
-    end_at: 'end_date',
-    created_at: 'created_at_date',
-  },
-  {
-    coupon_id: 3,
-    title: '$5 off socks',
-    image: '../../assets/img/socks.png',
-    item_name: 'Socks',
-    original_price: 10,
-    coupon_price: 5,
-    coupon_savings: 5,
-    start_at: 'start_date',
-    end_at: 'end_date',
-    created_at: 'created_at_date',
-  }
-];
-
-var userData = [
-  {
-    email: 'fleckblake@gmail.com',
-    password: 'Packer123',
-    first_name: 'Blake',
-    last_name: 'Fleck',
-    dob: '1990-04-24 12:00:00',
-    gender: 'm',
-    total_savings: 100
-},
-  {
-    email: 'gujames@gmail.com',
-    password: 'DTownBoogie',
-    first_name: 'James',
-    last_name: 'Gu',
-    dob: '1993-05-21 12:00:00',
-    gender: 'm',
-    total_savings: 50
-  },
-  {
-    email: 'pengjosh@gmail.com',
-    password: 'Beacon',
-    first_name: 'Josh',
-    last_name: 'Peng',
-    dob: '1985-10-20 12:00:00',
-    gender: 'm',
-    total_savings: 75
-  },
-  {
-    email: 'HongSusan@gmail.com',
-    password: 'Password123',
-    first_name: 'Susan',
-    last_name: 'Hong',
-    dob: '1994-08-19 12:00:00',
-    gender: 'f',
-    total_savings: 5000
-  }
-];
-
 // GET request for /user
 // retrieve all users (array of user objects)
 exports.retrieveUsers = (req, res) => {
@@ -110,7 +31,6 @@ exports.createUser = (req, res) => {
     res.status(400).send('could not create a new user');
   });
 };
-
 
 // GET request for /user/:user_id
 // retrieve one user with a specific user_id
@@ -148,6 +68,18 @@ exports.retrieveOneUserCoupon = (req, res) => {
   .then((coupon) => {
     console.log('successfully retrieved a coupon with coupon_id', req.params.coupon_id, 'for user with user_id', req.params.user_id);
     res.status(200).json(coupon);
+
+// GET request for /user/:user_id/beacon/:beacon_uuid
+// check to see if newly created coupons are ready to be sent out to users
+// TODO: When session implementd, change route to /user/beacon/:beacon_uuid
+exports.sendBeaconCoupons = (req, res) => {
+  var params = { user_id: req.params.user_id, beacon_uuid: req.params.beacon_uuid };
+  console.log(params);
+  userModel.sendBeaconCouponsAsync(params)
+  .then(coupons => {
+    console.log('successfully found entries in user_coupon table')
+    res.status(200).json(coupons);
+    console.log('this');
   }).catch((err) => {
     console.log('could not find a coupon with coupon_id', req.params.coupon_id, 'for user with user_id', req.params.user_id);
     res.status(404).send('could not find a coupon with coupon_id', req.params.coupon_id, 'for user with user_id', req.params.user_id);
