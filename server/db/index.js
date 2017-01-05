@@ -1,8 +1,9 @@
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-  user: 'ihearth',
-  password: 'password',
+  host: '104.198.215.160'
+  user: 'root',
+  password: '',
   database: 'ihearth'
 });
 
