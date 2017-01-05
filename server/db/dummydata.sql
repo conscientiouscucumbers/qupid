@@ -43,6 +43,7 @@ values (2, '$20 off jacket', 'https://facebook.github.io/react/img/logo_og.png',
 insert into coupon (business_id, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
 values (3, '$4 off shampoo', 'https://facebook.github.io/react/img/logo_og.png', 'Shampoo', 'Suave Biotin Infusion', 8.00, 4.00, 4.00, '2017-01-06 03:00:00', '2017-01-06 09:00:00');
 
+
 // beacon
 insert into beacon (business_id, uuid, section)
 values (1, 'UUID1', 'Outers');
