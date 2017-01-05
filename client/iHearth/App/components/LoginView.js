@@ -54,28 +54,29 @@ class LoginView extends Component {
  //    })
  // };
   render() {
+   console.log('STATE IS HERE....', this.state);
    return(
      <Container>
-                <Content>
-                <Text style={ styles.titleTwo }>LoginView</Text>
-                    <List style={styles.login}>
-                        <ListItem>
-                            <InputGroup>
-                                <Icon name="ios-person" style={{ color: '#0A69FE' }} />
-                                <Input placeholder="Email" value={this.state.email}  onChangeText={(text) => this.setState({email:text})} />
-                            </InputGroup>
-                        </ListItem>
-                        <ListItem>
-                            <InputGroup>
-                                <Icon name="ios-unlock" style={{ color: '#0A69FE' }} />
-                                <Input placeholder="Password" value={this.state.password}  onChangeText={(text) => this.setState({password:text})} secureTextEntry />
-                            </InputGroup>
-                        </ListItem>
-                    </List>
-                  <Button onPress={ () => this.props._handleNavigate(route) } label='New User? Signup!' />
-                  <Button onPress={ () => this.props._handleNavigate(authRoute) } label="Gather 'Round the Hearth" />
-                </Content>
-            </Container>
+        <Content>
+        <Text style={ styles.titleTwo }>LoginView</Text>
+            <List style={styles.login}>
+                <ListItem>
+                    <InputGroup>
+                        <Icon name="ios-person" style={{ color: '#0A69FE' }} />
+                        <Input placeholder="Email" value={this.state.email}  onChangeText={(text) => this.setState({email:text})} />
+                    </InputGroup>
+                </ListItem>
+                <ListItem>
+                    <InputGroup>
+                        <Icon name="ios-unlock" style={{ color: '#0A69FE' }} />
+                        <Input placeholder="Password" value={this.state.password}  onChangeText={(text) => this.setState({password:text})} secureTextEntry />
+                    </InputGroup>
+                </ListItem>
+            </List>
+          <Button onPress={ () => this.props._handleNavigate(route) } label='New User? Signup!' />
+          <Button onPress={ () => this.props._handleNavigate(authRoute) } label="Gather 'Round the Hearth" />
+        </Content>
+    </Container>
    )
   }
 }
