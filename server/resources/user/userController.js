@@ -175,15 +175,16 @@ exports.retrieveOneUserCoupon = (req, res) => {
 // create a user coupon with coupon_id by adding a new entry in
 // user_coupon table and coupon table
 exports.createUserCoupon = (req, res) => {
-  var params = { user_id: req.body.user_id, coupon_id: req.params.coupon_id, used: req.body.used, req.body.expired: expired };
-  userModel.createUserCouponAsync(params)
-  .then((coupon) => {
-    console.log('successfully created a specific user coupon with coupon_id', req.params.coupon_id);
-    res.status(201).json(coupon);
-  }).catch((err) => {
-    console.log('could not create a specific user coupon with coupon_id', req.params.coupon_id);
-    res.status(400).send('could not create a specific user coupon', req.params.coupon_id);
-  });
+  res.status(200).send('Success...');
+  // var params = { user_id: req.body.user_id, coupon_id: req.params.coupon_id, used: req.body.used, req.body.expired: expired };
+  // userModel.createUserCouponAsync(params)
+  // .then((coupon) => {
+  //   console.log('successfully created a specific user coupon with coupon_id', req.params.coupon_id);
+  //   res.status(201).json(coupon);
+  // }).catch((err) => {
+  //   console.log('could not create a specific user coupon with coupon_id', req.params.coupon_id);
+  //   res.status(400).send('could not create a specific user coupon', req.params.coupon_id);
+  // });
 };
 
 // PUT request for /user/coupon/:coupon_id
