@@ -35,24 +35,24 @@ class LoginView extends Component {
             password: '',
   };
   }
- handleLogin = () => {
-    var context = this;
-    var returningUser = {
-      email: this.state.email,
-      password: this.state.password
-    };
-    loginCtrl.login(returningUser)
-    .then(function(res) {
-      context.setState({loginIsOpen: false});
-      context.props.main.setState({isLoggedIn: true});
-      // plugs in email and password in an object into dispatch
-      context.props.dispatch(logUser(res.data.userData));
-    })
-    .catch(err => {
-      const msg = err.response.data.message;
-      this.setState({ submitError: msg });
-    })
- };
+ // handleLogin = () => {
+ //    var context = this;
+ //    var returningUser = {
+ //      email: this.state.email,
+ //      password: this.state.password
+ //    };
+ //    loginCtrl.login(returningUser)
+ //    .then(function(res) {
+ //      context.setState({loginIsOpen: false});
+ //      context.props.main.setState({isLoggedIn: true});
+ //      // plugs in email and password in an object into dispatch
+ //      context.props.dispatch(logUser(res.data.userData));
+ //    })
+ //    .catch(err => {
+ //      const msg = err.response.data.message;
+ //      this.setState({ submitError: msg });
+ //    })
+ // };
   render() {
    return(
      <Container>
