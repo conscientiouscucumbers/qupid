@@ -2,20 +2,6 @@ drop database if exists ihearth;
 create database ihearth;
 
 use ihearth;
-
-/* --dummy data
-insert into user (email, password, first_name, last_name, dob, gender, total_savings)
-values ('jamesgu@gmail.com', 'password', 'James', 'Gu', '1993-05-21 12:00:00', 'm', 100.00);
-
-insert into business (email, password, company_name, address, city, state, zipcode)
-values ('nike@gmail.com', 'password', 'Nike', '744 Market Street', 'San Francisco', 'CA', 94112);
-
-insert into coupon (business_id, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (1, '$5 off socks', '../../assets/img/socks.png', 'Socks', 'Lorem Ipsum...', 10.00, 5.00, 5.00, '2017-01-05 16:00:00', '2017-01-05 18:00:00');
-
-insert into coupon (business_id, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (1, '$20 off jacket', '../../lib/img/jacket.png', 'Jackets', 'Lorem Ipsum...', 120.00, 100.00, 20.00, '2017-01-05 01:00:00', '2017-01-05 03:00:00');
-*/
 create table user (
   user_id int not null auto_increment,
   email varchar(100) not null,
@@ -27,7 +13,6 @@ create table user (
   total_savings float(2) not null default 0,
   primary key (user_id)
 );
--- TODO after MVP: CRON jobs on updating total_savings?
 
 create table business (
   business_id int not null auto_increment,
@@ -121,3 +106,17 @@ create table coupon_beacon (
     on delete cascade
     on update cascade
 );
+
+/* --dummy data
+insert into user (email, password, first_name, last_name, dob, gender, total_savings)
+values ('jamesgu@gmail.com', 'password', 'James', 'Gu', '1993-05-21 12:00:00', 'm', 100.00);
+
+insert into business (email, password, company_name, address, city, state, zipcode)
+values ('nike@gmail.com', 'password', 'Nike', '744 Market Street', 'San Francisco', 'CA', 94112);
+
+insert into coupon (business_id, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
+values (1, '$5 off socks', 'https://facebook.github.io/react/img/logo_og.png', 'Socks', 'Lorem Ipsum...', 10.00, 5.00, 5.00, '2017-01-05 16:00:00', '2017-01-05 18:00:00');
+
+insert into coupon (business_id, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
+values (1, '$20 off jacket', 'https://facebook.github.io/react/img/logo_og.png', 'Jackets', 'Lorem Ipsum...', 120.00, 100.00, 20.00, '2017-01-05 01:00:00', '2017-01-05 03:00:00');
+*/
