@@ -2,13 +2,7 @@ drop database if exists ihearth;
 create database ihearth;
 
 use ihearth;
-<<<<<<< HEAD
-=======
 
-/* --dummy data
-*/
-
->>>>>>> (fix) Add changes to schema to be overwritten
 create table user (
   user_id int not null auto_increment,
   email varchar(100) not null,
@@ -96,8 +90,8 @@ create table beacon (
 
 create table coupon_beacon (
   coupon_beacon_id int not null auto_increment,
-  beacon_id int,
   coupon_id int,
+  beacon_id int,
 
   primary key (coupon_beacon_id),
 
