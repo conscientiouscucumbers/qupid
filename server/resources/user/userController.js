@@ -168,7 +168,7 @@ exports.useCoupon = (req, res) => {
   });
 };
 
-// POST request for /login
+// POST request for /user/login
 // log in an existing user
 exports.userLogin = (req, res) => {
   var params = { email: req.body.email, password: req.body.password };
@@ -182,7 +182,7 @@ exports.userLogin = (req, res) => {
   });
 };
 
-// POST request for /signup
+// POST request for /user/signup
 // sign up a new user
 exports.userSignup = (req, res) => {
   var params = {
@@ -193,7 +193,7 @@ exports.userSignup = (req, res) => {
     dob: req.body.dob,
     gender: req.body.gender
   };
-  userModel.createUserAsync(params)
+  userModel.userSignupAsync(params)
   .then(user => {
     res.status(201).json(user);
   })

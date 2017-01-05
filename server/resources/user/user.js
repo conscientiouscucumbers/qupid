@@ -103,7 +103,7 @@ var userLogin = (params, callback) => {
       console.log('could not find user in user table');
       callback(err);
     } else {
-      console.log('successfully logged in user';
+      console.log('successfully logged in user');
       callback(null, user);
     }
   });

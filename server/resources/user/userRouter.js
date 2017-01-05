@@ -8,13 +8,17 @@ userRouter.route('/')
 userRouter.route('/:user_id')
   .get(userController.retrieveOneUser)
 
-userRouter.route('/coupon')
+userRouter.route('/:user_id/coupon')
   .get(userController.retrieveUserCoupons)
-  .post(userController.sendUserCoupons)
 
-userRouter.route('/coupon/:coupon_id')
+userRouter.route('/:user_id/coupon/:coupon_id')
   .get(userController.retrieveOneUserCoupon)
-  .post(userController.createUserCoupon)
-  .put(userController.useUserCoupon)
+  .put(userController.useCoupon)
+
+userRouter.route('/login')
+  .post(userController.userLogin)
+
+userRouter.route('/signup')
+  .post(userController.userSignup)
 
 module.exports = userRouter;
