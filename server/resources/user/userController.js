@@ -68,6 +68,11 @@ exports.retrieveOneUserCoupon = (req, res) => {
   .then((coupon) => {
     console.log('successfully retrieved a coupon with coupon_id', req.params.coupon_id, 'for user with user_id', req.params.user_id);
     res.status(200).json(coupon);
+  }).catch((err) => {
+    console.log('could not retrieve a coupon with coupon_id', req.params.coupon_id, 'for user with user_id', req.params.user_id);
+    res.status(404).send('could not retrieve a coupon with coupon_id', req.params.coupon_id, 'for user with user_id', req.params.user_id);
+  });
+};
 
 // GET request for /user/:user_id/beacon/:beacon_uuid
 // check to see if newly created coupons are ready to be sent out to users
