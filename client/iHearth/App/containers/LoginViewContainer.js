@@ -10,7 +10,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchAuth: () => dispatch(fetchAuth()),
+    fetchAuth: (loginInfo, route, callback) => dispatch(fetchAuth(loginInfo, route, callback)),
   }
 }
 

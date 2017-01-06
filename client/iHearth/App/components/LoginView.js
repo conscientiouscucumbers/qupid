@@ -7,7 +7,6 @@ import {
 import Button from './global-components/Button'
 import { Container, Content, List, ListItem, InputGroup, Input, Icon, Picker } from 'native-base';
 import styles from './../styles';
-import { fetchAuth } from '../actions/loginViewActions' // TODO ////////////////
 
 const Item = Picker.Item;
 
@@ -28,12 +27,12 @@ const authRoute = {
   }
 };
 
-class LoginView extends Component {
+export default class LoginView extends Component {
   constructor(props){
     super(props);
     this.state = {
-            email: '',
-            password: '',
+      email: '',
+      password: '',
     };
   }
  // handleLogin = () => {
@@ -55,32 +54,28 @@ class LoginView extends Component {
  //    })
  // };
   render() {
-   console.log('STATE IS HERE....', this.state);
-   console.log('MY PROPS...', this.props);
-   return(
-     <Container>
-        <Content>
-        <Text style={ styles.titleTwo }>LoginView</Text>
-            <List style={styles.login}>
-                <ListItem>
-                    <InputGroup>
-                        <Icon name="ios-person" style={{ color: '#0A69FE' }} />
-                        <Input placeholder="Email" value={this.state.email}  onChangeText={(text) => this.setState({email:text})} />
-                    </InputGroup>
-                </ListItem>
-                <ListItem>
-                    <InputGroup>
-                        <Icon name="ios-unlock" style={{ color: '#0A69FE' }} />
-                        <Input placeholder="Password" value={this.state.password}  onChangeText={(text) => this.setState({password:text})} secureTextEntry />
-                    </InputGroup>
-                </ListItem>
-            </List>
-          <Button onPress={ () => this.props._handleNavigate(route) } label='New User? Signup!' />
-          <Button onPress={ () => fetchAuth(authRoute, this.props._handleNavigate) } label="Gather 'Round the Hearth" />
-        </Content>
+  return(
+  <Container>
+    <Content>
+      <Text style={ styles.titleTwo }>LoginView</Text>
+        <List style={styles.login}>
+          <ListItem>
+            <InputGroup>
+              <Icon name="ios-person" style={{ color: '#0A69FE' }} />
+              <Input placeholder="Email" value={this.state.email}  onChangeText={(text) => this.setState({email:text})} />
+            </InputGroup>
+          </ListItem>
+          <ListItem>
+            <InputGroup>
+              <Icon name="ios-unlock" style={{ color: '#0A69FE' }} />
+              <Input placeholder="Password" value={this.state.password}  onChangeText={(text) => this.setState({password:text})} secureTextEntry />
+            </InputGroup>
+          </ListItem>
+        </List>
+      <Button onPress={ () => this.props._handleNavigate(route) } label='New User? Signup!' />
+      <Button onPress={ () => this.props.fetchAuth(this.state, authRoute, this.props._handleNavigate) } label="Gather 'Round the Hearth" />
+      </Content>
     </Container>
    )
   }
 }
-
-export default LoginView;

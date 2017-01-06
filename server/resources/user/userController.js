@@ -108,6 +108,7 @@ exports.useCoupon = (req, res) => {
 // POST request for /user/login
 // log in an existing user
 exports.userLogin = (req, res) => {
+  console.log('request body here.....', req.body);
   var params = { email: req.body.email, password: req.body.password };
   userModel.userLoginAsync(params)
   .then((user) => {

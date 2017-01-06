@@ -22,24 +22,30 @@ function receiveAuth(json) {
 // customize dispatches, in this case, delay until response is received
 // Use like other action creators
 // store.dispatch(fetchPosts('reactjs'))
-export function fetchAuth(route, callback) {
-  console.log('HERE IN FETCHAUTH')
+export function fetchAuth(loginInfo, route, callback) {
   // Pass dispatch method as an argument
   // Allowing the thunk to dispatch actions itself
-
-  callback(route); // TO DO//////////////////////////
   
   return dispatch => {
-
     // First synchronously dispatch updates to signal
     // the start of the API call
     dispatch(requestAuth());
+    
+    var request = new Request(URL + 'user/login', {
+      method: 'POST', 
+      // mode: 'cors', 
+      // redirect: 'follow',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify(loginInfo)
+    });
 
-    return fetch(URL + '/user/login')
+    return fetch(request)
       .then(response => response.json())
       .then(json => {
-
           // Update app state with results of API call
+          callback(route);
           return dispatch(receiveAuth(json))
         })
 

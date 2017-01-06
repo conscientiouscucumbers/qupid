@@ -26,7 +26,6 @@ class SignupView extends React.Component {
     this.setState({ gender: value });
   }
   render(){
-      console.log(this.state)
        return (
             <Container>
                 <Content>
