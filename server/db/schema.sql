@@ -1,4 +1,4 @@
-drop database ihearth;
+drop database if exists ihearth;
 create database ihearth;
 use ihearth;
 
@@ -6,6 +6,7 @@ create table user (
   user_id int not null auto_increment,
   email varchar(100) not null,
   password varchar(100) not null,
+  logged_in boolean not null default false,
   first_name varchar(50) not null,
   last_name varchar(50) not null,
   dob datetime not null,
@@ -54,9 +55,9 @@ create table user_coupon (
   user_coupon_id int not null auto_increment,
   user_id int,
   coupon_id int,
-  used boolean,
-  expired boolean,
-  activated boolean,
+  used boolean not null,
+  expired boolean not null,
+  activated boolean not null,
 
   primary key (user_coupon_id),
 
