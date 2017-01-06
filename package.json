@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "postinstall": "npm start",
-    "start": "nodemon server/index.js"
+    "start": "node server/index.js"
   },
   "dependencies": {
     "bluebird": "^3.4.7",
