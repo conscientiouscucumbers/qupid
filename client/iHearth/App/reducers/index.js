@@ -5,6 +5,7 @@ import loginNavReducer from './nav-reducers/loginNavReducer';
 import userReducer from './userReducer';
 import couponReducer from './couponReducer';
 import listReducer from './listReducer';
+import loginReducer from './loginReducer';
 
 const rootReducer = combineReducers({
   navReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   loginNavReducer,
   userReducer,
   couponReducer,
-  listReducer
+  listReducer,
+  loginReducer
 });
 
 export default rootReducer;

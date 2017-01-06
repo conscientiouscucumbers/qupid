@@ -12,7 +12,6 @@ import { formatDollars, formatTime } from '../lib/utils/formatUtils.js';
 export default ({ label, onPress, coupon }) => {
   // Image must be defined statically per docs
   // image = 'https://facebook.github.io/react/img/logo_og.png';
-  console.log('COUPON', coupon.image);
   return (
     <ListItem button onPress={ onPress } >  
       <Card style={ styles.listViewCard }>
