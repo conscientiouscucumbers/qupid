@@ -1,8 +1,13 @@
 {
   "name": "iHearth-Server",
   "version": "0.0.1",
+  "engines": {
+    "node": "5.9.1"
+  },
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "start": "npm install && node server/index.js"
+  },
   "dependencies": {
     "bluebird": "^3.4.7",
     "body-parser": "^1.15.2",

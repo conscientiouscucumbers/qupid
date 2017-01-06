@@ -2,47 +2,35 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleName</key>
-	<string>$(PRODUCT_NAME)</string>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
-	<key>CFBundleVersion</key>
-	<string>1</string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>bluetooth-central</string>
-		<string>location</string>
-	</array>
+	<key>CFBundleDisplayName</key>
+	<string>iHearth</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>CFBundleExecutable</key>
-	<string>$(EXECUTABLE_NAME)</string>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Entypo.ttf</string>
@@ -67,12 +55,17 @@
 		<string>Skia.ttf</string>
 		<string>Times New Roman.ttf</string>
 	</array>
-	<key>CFBundleSignature</key>
-	<string>????</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>CFBundleDisplayName</key>
-	<string>iHearth</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+		<string>location</string>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -80,7 +73,14 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>
