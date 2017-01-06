@@ -24,6 +24,7 @@ export function _handleBackAction(navigationProp) {
 // };
 // Output: Boolean
 export function _handleNavigate(action) {
+  console.log('calling handlenNav')
   switch (action && action.type) {
     case 'push':
       this.props.pushRoute(action.route);

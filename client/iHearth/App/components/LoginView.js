@@ -7,6 +7,7 @@ import {
 import Button from './global-components/Button'
 import { Container, Content, List, ListItem, InputGroup, Input, Icon, Picker } from 'native-base';
 import styles from './../styles';
+import { fetchAuth } from '../actions/loginViewActions' // TODO ////////////////
 
 const Item = Picker.Item;
 
@@ -33,7 +34,7 @@ class LoginView extends Component {
     this.state = {
             email: '',
             password: '',
-  };
+    };
   }
  // handleLogin = () => {
  //    var context = this;
@@ -55,6 +56,7 @@ class LoginView extends Component {
  // };
   render() {
    console.log('STATE IS HERE....', this.state);
+   console.log('MY PROPS...', this.props);
    return(
      <Container>
         <Content>
@@ -74,7 +76,7 @@ class LoginView extends Component {
                 </ListItem>
             </List>
           <Button onPress={ () => this.props._handleNavigate(route) } label='New User? Signup!' />
-          <Button onPress={ () => this.props._handleNavigate(authRoute) } label="Gather 'Round the Hearth" />
+          <Button onPress={ () => fetchAuth(authRoute, this.props._handleNavigate) } label="Gather 'Round the Hearth" />
         </Content>
     </Container>
    )

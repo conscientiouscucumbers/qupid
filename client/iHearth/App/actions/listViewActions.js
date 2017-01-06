@@ -23,7 +23,7 @@ function receiveCoupons(json) {
 // customize dispatches, in this case, delay until response is received
 // Use like other action creators
 // store.dispatch(fetchPosts('reactjs'))
-export function fetchPosts(subreddit) {
+export function fetchPosts() {
 
   // Pass dispatch method as an argument
   // Allowing the thunk to dispatch actions itself

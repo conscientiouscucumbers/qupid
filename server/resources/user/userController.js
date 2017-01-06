@@ -111,7 +111,9 @@ exports.userLogin = (req, res) => {
   var params = { email: req.body.email, password: req.body.password };
   userModel.userLoginAsync(params)
   .then((user) => {
-    console.log('user successfully logged in');
+    if (user.length === 0) {
+      throw new Error('Not a match');
+    }
     res.status(200).json(user);
   }).catch((err) => {
     console.log('user failed to log in, user not found in user table');
