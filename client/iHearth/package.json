@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "babel-polyfill": "^6.20.0",
     "es6-promise": "^4.0.5",
     "isomorphic-fetch": "^2.2.1",
@@ -17,6 +18,7 @@
     "react-native-beacons-android": "^2.1.0",
     "react-native-bluetooth-state": "^2.0.0",
     "react-native-ibeacon": "^0.6.0",
+    "react-native-vector-icons": "^4.0.0",
     "react-redux": "^5.0.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",

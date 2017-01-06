@@ -48,7 +48,7 @@ export default class NavRoot extends Component {
     return (
       <NavigationCardStack
       direction='horizontal'
-      navigationState={ this.props.navigation } // set as navReducer
+      navigationState={ this.props.navigation }
       onNavigate={ this._handleNavigate }
       renderScene={ this._renderScene } />
     )

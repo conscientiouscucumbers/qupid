@@ -1,14 +1,14 @@
 
 --dummy data
 -- // user
-insert into user (email, password, first_name, last_name, dob, gender, total_savings)
-values ('jamesgu@gmail.com', 'password', 'James', 'Gu', '1993-05-21 12:00:00', 'm', 100.00);
+insert into user (email, password, logged_in, first_name, last_name, dob, gender, total_savings)
+values ('jamesgu@gmail.com', 'password', false, 'James', 'Gu', '1993-05-21 12:00:00', 'm', 100.00);
 
-insert into user (email, password, first_name, last_name, dob, gender, total_savings)
-values ('keepthemonochrome@gmail.com', 'password', 'Susan', 'Hong', '1994-08-19 12:00:00', 'f', 99.00);
+insert into user (email, password, logged_in, first_name, last_name, dob, gender, total_savings)
+values ('keepthemonochrome@gmail.com', 'password', false, 'Susan', 'Hong', '1994-08-19 12:00:00', 'f', 99.00);
 
-insert into user (email, password, first_name, last_name, dob, gender, total_savings)
-values ('joshpeng7@gmail.com', 'password', 'Josh', 'Peng', '1985-10-20 12:00:00', 'm', 98.00);
+insert into user (email, password, logged_in, first_name, last_name, dob, gender, total_savings)
+values ('joshuapeng7@gmail.com', 'password', false, 'Josh', 'Peng', '1985-10-20 12:00:00', 'm', 98.00);
 
 into into user_coupon (used, expired, id_user, id_coupon)
 values (false, false, 1, );
@@ -35,10 +35,10 @@ values ('beardpapas@gmail.com', 'password', 'Beard Papas', '744 Market Street', 
 
 -- // coupon
 insert into coupon (business_id, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (1, '$5 off hoodie', 'https://facebook.github.io/react/img/logo_og.png', 'Hoddie', 'Colorful Hoodie', 10.00, 5.00, 5.00, '2017-01-05 16:00:00', '2017-01-29 18:00:00');
+values (1, '$5 off hoodie', 'https://facebook.github.io/react/img/logo_og.png', 'Hoodie', 'Colorful Hoodie', 10.00, 5.00, 5.00, '2017-01-05 16:00:00', '2017-01-29 18:00:00');
 
 insert into coupon (business_id, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (2, '$20 off sneakers', 'https://facebook.github.io/react/img/logo_og.png', 'Shoes', 'North Face', 120.00, 100.00, 20.00, '2017-01-05 01:00:00', '2017-01-29 03:00:00');
+values (2, '$20 off sneakers', 'https://facebook.github.io/react/img/logo_og.png', 'Shoes', 'KangaROOS', 120.00, 100.00, 20.00, '2017-01-05 01:00:00', '2017-01-29 03:00:00');
 
 insert into coupon (business_id, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
 values (3, '$4 off shampoo', 'https://facebook.github.io/react/img/logo_og.png', 'Shampoo', 'Suave Biotin Infusion', 8.00, 4.00, 4.00, '2017-01-06 03:00:00', '2017-02-10 09:00:00');
@@ -58,4 +58,3 @@ values (3, 'UUID3', 'Sweets');
 insert into coupon_beacon (coupon_id, beacon_uuid) values (1, 'UUID1');
 insert into coupon_beacon (coupon_id, beacon_uuid) values (2, 'UUID2');
 insert into coupon_beacon (coupon_id, beacon_uuid) values (3, 'UUID3');
-
