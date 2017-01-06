@@ -108,7 +108,7 @@ exports.useCoupon = (req, res) => {
 // POST request for /user/login
 // log in an existing user
 exports.userLogin = (req, res) => {
-  console.log('request body here.....', req.body);
+  console.log('request body for login here.....', req.body);
   var params = { email: req.body.email, password: req.body.password };
   userModel.userLoginAsync(params)
   .then((user) => {
@@ -119,6 +119,23 @@ exports.userLogin = (req, res) => {
   }).catch((err) => {
     console.log('user failed to log in, user not found in user table');
     res.status(400).send('user failed to log in, user not found in user table');
+  });
+};
+
+// POST request for /user/logout
+// log out an existing user
+exports.userLogout = (req, res) => {
+  console.log('request body for logout here.....', req.body);
+  var params = { email: req.body.email, password: req.body.password };
+  userModel.userLogoutAsync(params)
+  .then((user) => {
+    if (user.length === 0) {
+      throw new Error('Not a match');
+    }
+    res.status(200).json(user);
+  }).catch((err) => {
+    console.log('user failed to log out, user not found in user table');
+    res.status(400).send('user failed to log out, user not found in user table');
   });
 };
 

@@ -104,11 +104,43 @@ var userLogin = (params, callback) => {
       callback(err);
     } else {
       console.log('successfully logged in user');
-      callback(null, user);
+      var loginStr = `update user set logged_in = true where email = "${params.email}" && password = "${params.password}"`;
+      db.query(loginStr, (err, loggedIn) => {
+        if (err) {
+          console.log('could not set user as logged in');
+          callback(err);
+        } else {
+          console.log('successfully updated database so that user is logged in');
+          callback(null, loggedIn);
+        }
+      });
     }
   });
 };
 module.exports.userLoginAsync = Promise.promisify(userLogin);
+
+var userLogout = (params, callback) => {
+  var queryStr = `select * from user where email = "${params.email}" && password = "${params.password}"`;
+  db.query(queryStr, (err, user) => {
+    if (err) {
+      console.log('could not find user in user table');
+      callback(err);
+    } else {
+      console.log('successfully logged out user');
+      var loginStr = `update user set logged_in = false where email = "${params.email}" && password = "${params.password}"`;
+      db.query(loginStr, (err, loggedOut) => {
+        if (err) {
+          console.log('could not set user as logged out');
+          callback(err);
+        } else {
+          console.log('successfully updated database so that user is logged out');
+          callback(null, loggedOut);
+        }
+      });
+    }
+  });
+};
+module.exports.userLogoutAsync = Promise.promisify(userLogout);
 
 var userSignup = (params, callback) => {
   var queryStr = `select * from user where email = "${params.email}" && password = "${params.password}"`;
@@ -132,7 +164,16 @@ var userSignup = (params, callback) => {
               callback(err);
             } else {
               console.log('successfully signed up a new user')
-              callback(null, res);
+              var loginStr = `update user set logged_in = true where email = "${params.email}" && password = "${params.password}"`;
+              db.query(loginStr, (err, loggedIn) => {
+                if (err) {
+                  console.log('could not set user as logged in');
+                  callback(err);
+                } else {
+                  console.log('successfully updated database so that user is logged in');
+                  callback(null, loggedIn)
+                }
+              });
             }
           });
         }
@@ -180,4 +221,3 @@ var sendBeaconCoupons = (params, callback) => {
   });
 };
 module.exports.sendBeaconCouponsAsync = Promise.promisify(sendBeaconCoupons);
-

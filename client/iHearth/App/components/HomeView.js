@@ -40,17 +40,6 @@ import ListViewContainer from '../containers/ListViewContainer';
 import styles from './../styles';
 import { Container, Header, Title, Content } from 'native-base';
 
-Beacons.requestWhenInUseAuthorization();
-
-var region = {
-  identifier: 'Estimotes',
-  uuid: 'B9407F30-F5F8-466E-AFF9-25556B57FE6D',
-  major: 49607,
-  minor: 30744
-};
-
-Beacons.startRangingBeaconsInRegion(region);
-
 class HomeView extends Component {
   constructor(props) {
     super(props);
@@ -60,6 +49,12 @@ class HomeView extends Component {
   }
 
   componentDidMount() {
+    const region = {
+      identifier: 'Estimotes',
+      uuid: 'B9407F30-F5F8-466E-AFF9-25556B57FE6D'
+    };
+    Beacons.requestWhenInUseAuthorization();
+    Beacons.startRangingBeaconsInRegion(region);
     DeviceEventEmitter.addListener(
       'beaconsDidRange',
       (data) => {
