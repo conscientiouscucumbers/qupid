@@ -6,7 +6,7 @@
   },
   "private": true,
   "scripts": {
-    "start": "npm install"
+    "start": "npm install && node server/index.js"
   },
   "dependencies": {
     "bluebird": "^3.4.7",
