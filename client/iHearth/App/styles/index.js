@@ -60,7 +60,12 @@ const styles = StyleSheet.create({
   },
   listViewCard: {
     flexDirection: 'row',
-  }
+  },
+  titleTwo: {
+    paddingTop: 60,
+    fontSize: 22,
+    textAlign: 'center'
+  },
 });
 
 export default styles;
