@@ -40,7 +40,6 @@
 		8FD4CCD4C0DA429690CF83DE /* Times New Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AB68BB951244FC978398CC /* Times New Roman.ttf */; };
 		A8ECABFD75A846BA9CD9D69F /* libRNBeacon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BAFDE05233410FACC0E4F1 /* libRNBeacon.a */; };
 		ABFCFCAFEF3448B495C22E7B /* Skia.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1BE7E1160D84931B15D3B33 /* Skia.ttf */; };
-		B43964871E1F48C40095A202 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B43964861E1F48C40095A202 /* Default-568h@2x.png */; };
 		B48FBE291E1C3E2700402877 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B48FBE281E1C3E2700402877 /* CoreLocation.framework */; };
 		C81B89B59E174BE0A5986EC3 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F8517FC13D794238A899E611 /* FontAwesome.ttf */; };
 		D25BAFEAAE6A4237B31416F2 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1656675061EA4268A4F89493 /* Roboto_medium.ttf */; };
@@ -253,7 +252,6 @@
 		8F4D52CEABC3495CB8812C61 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		90FBE3E0C6A940BDAA1010B2 /* RNBluetoothState.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNBluetoothState.xcodeproj; path = "../node_modules/react-native-bluetooth-state/RNBluetoothState.xcodeproj"; sourceTree = "<group>"; };
 		A1AB68BB951244FC978398CC /* Times New Roman.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Times New Roman.ttf"; path = "../node_modules/native-base/Fonts/Times New Roman.ttf"; sourceTree = "<group>"; };
-		B43964861E1F48C40095A202 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B48FBE231E1C3DBB00402877 /* RNBeacon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNBeacon.xcodeproj; path = iHearth.xcodeproj/RNBeacon.xcodeproj; sourceTree = "<group>"; };
 		B48FBE281E1C3E2700402877 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B5E58FA2D0C34216AD484B03 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
@@ -484,7 +482,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				B43964861E1F48C40095A202 /* Default-568h@2x.png */,
 				13B07FAE1A68108700A75B9A /* iHearth */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* iHearthTests */,
@@ -588,16 +585,16 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 820;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 595LM5SYS7;
+						DevelopmentTeam = M4SC5734J4;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 595LM5SYS7;
+						DevelopmentTeam = M4SC5734J4;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -861,7 +858,6 @@
 				602E1E6B0ABB48A58D666A87 /* Entypo.ttf in Resources */,
 				F79152DAA68E4E16A28A76B5 /* EvilIcons.ttf in Resources */,
 				C81B89B59E174BE0A5986EC3 /* FontAwesome.ttf in Resources */,
-				B43964871E1F48C40095A202 /* Default-568h@2x.png in Resources */,
 				E66FB7A8C54A4062A5747157 /* Foundation.ttf in Resources */,
 				40A393EC65AA47E2B108D03E /* Ionicons.ttf in Resources */,
 				D5059B5FE3E54CE191B2403A /* MaterialIcons.ttf in Resources */,
@@ -947,7 +943,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 595LM5SYS7;
+				DEVELOPMENT_TEAM = M4SC5734J4;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -961,7 +957,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.susan.iHearth;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iHearth.app/iHearth";
 			};
@@ -972,7 +968,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 595LM5SYS7;
+				DEVELOPMENT_TEAM = M4SC5734J4;
 				INFOPLIST_FILE = iHearthTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -982,39 +978,13 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.susan.iHearth;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iHearth.app/iHearth";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 595LM5SYS7;
-				INFOPLIST_FILE = iHearth/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-lc++",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.susan.iHearth;
-				PRODUCT_NAME = iHearth;
-				TARGETED_DEVICE_FAMILY = 1;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Debug;
-		};
-		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1033,9 +1003,34 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.susan.iHearth;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.iHearth;
 				PRODUCT_NAME = iHearth;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		13B07F951A680F5B00A75B9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M4SC5734J4;
+				INFOPLIST_FILE = iHearth/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.iHearth;
+				PRODUCT_NAME = iHearth;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
