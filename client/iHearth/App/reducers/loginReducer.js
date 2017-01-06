@@ -1,24 +1,23 @@
-import { REQUEST_COUPONS, RECEIVE_COUPONS } from '../constants/ActionTypes';
+import { REQUEST_AUTH, RECEIVE_AUTH } from '../constants/ActionTypes';
 
 const initialState = {
   isFetching: false,
-  items: []
+  userInfo: []
 }
 
 export default function listState(state = initialState, action) {
   switch (action.type) {
-    case REQUEST_COUPONS:
+    case REQUEST_AUTH:
       return {
         ...state,
         isFetching: true
       }
 
-    case RECEIVE_COUPONS:
+    case RECEIVE_AUTH:
       return {
         ...state,
         isFetching: false,
-        items: action.coupons,
-        lastUpdated: action.receivedAt
+        userInfo: action.userInfo,
       }
 
     default:

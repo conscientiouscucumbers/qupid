@@ -5,13 +5,26 @@ userRouter.route('/')
   .get(userController.retrieveUsers)
   .post(userController.createUser)
 
-userRouter.route('/coupon')
-  .get(userController.retrieveUserCoupons)
-  .post(userController.sendUserCoupons)
+userRouter.route('/:user_id')
+  .get(userController.retrieveOneUser)
 
-userRouter.route('/coupon/:coupon_id')
+userRouter.route('/:user_id/coupon')
+  .get(userController.retrieveUserCoupons)
+
+userRouter.route('/:user_id/coupon/:coupon_id')
   .get(userController.retrieveOneUserCoupon)
-  .post(userController.createUserCoupon)
-  .put(userController.useUserCoupon)
+  .put(userController.useCoupon)
+
+userRouter.route('/login')
+  .post(userController.userLogin)
+
+userRouter.route('/logout')
+  .post(userController.userLogout)
+
+userRouter.route('/signup')
+  .post(userController.userSignup)
+
+userRouter.route('/:user_id/beacon/:beacon_uuid')
+  .get(userController.sendBeaconCoupons)
 
 module.exports = userRouter;

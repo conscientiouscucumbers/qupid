@@ -1,6 +1,9 @@
-import { GET_COUPON_INFO } from '../constants/ActionTypes';
+import { REQUEST_SINGLE_COUPON, RECEIVE_SINGLE_COUPON } from '../constants/ActionTypes';
 
 const initialState = {
+  isFetching: false,
+  // items: [], // temporary for testing
+
   // State related to coupons
   couponInfo: {
     id: 1,
@@ -21,16 +24,22 @@ const initialState = {
   }
 }
 
-const couponReducer = (state=initialState, action) => {
+export default function couponReducer(state=initialState, action) {
   switch (action.type){
-    case GET_COUPON_INFO:
+    case REQUEST_SINGLE_COUPON:
       return {
         ...state,
+        isFetching: true
+      }
+    case RECEIVE_SINGLE_COUPON:
+      return {
+        ...state,
+        isFetching: false,
         couponInfo: action.couponInfo
+        // items: action.coupons,
+        // lastUpdated: action.receivedAt
       }
     default:
       return state;
   }
 }
-
-export default couponReducer;

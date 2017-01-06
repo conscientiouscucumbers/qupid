@@ -40,17 +40,6 @@ import ListViewContainer from '../containers/ListViewContainer';
 import styles from './../styles';
 import { Container, Header, Title, Content } from 'native-base';
 
-Beacons.requestWhenInUseAuthorization();
-
-var region = {
-  identifier: 'Estimotes',
-  uuid: 'B9407F30-F5F8-466E-AFF9-25556B57FE6D',
-  major: 49607,
-  minor: 30744
-};
-
-Beacons.startRangingBeaconsInRegion(region);
-
 class HomeView extends Component {
   constructor(props) {
     super(props);
@@ -60,6 +49,12 @@ class HomeView extends Component {
   }
 
   componentDidMount() {
+    const region = {
+      identifier: 'Estimotes',
+      uuid: 'B9407F30-F5F8-466E-AFF9-25556B57FE6D'
+    };
+    Beacons.requestWhenInUseAuthorization();
+    Beacons.startRangingBeaconsInRegion(region);
     DeviceEventEmitter.addListener(
       'beaconsDidRange',
       (data) => {
@@ -72,10 +67,10 @@ class HomeView extends Component {
 
   render() {
     var beacons = this.state.beacons.map(function(strength, index) {
-      // var beaconPosition = {
-      //   marginTop: Math.pow(strength, 3) / (Math.pow(-100, 3) / 250)
-      // };
-      // return <View key={index} style={[stylesBeacon.beacon, beaconPosition]} />
+      var beaconPosition = {
+        marginTop: Math.pow(strength, 3) / (Math.pow(-100, 3) / 250)
+      };
+      return <View key={index} style={[stylesBeacon.beacon, beaconPosition]} />
     }, this);
 
     return (
@@ -93,33 +88,33 @@ class HomeView extends Component {
   }
 };
 
-// var stylesBeacon = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: '#F5FCFF',
-//     paddingTop: 20,
-//   },
-//   device: {
-//     width: 80,
-//     height: 80,
-//     backgroundColor: '#6cab36'
-//   },
-//   beaconContainer: {
-//     flex: 1,
-//     flexDirection: 'row',
-//     marginTop: 10,
-//   },
-//   beacon: {
-//     width: 50,
-//     height: 50,
-//     marginLeft: 5,
-//     marginRight: 5,
-//     marginTop: 200,
-//     backgroundColor: '#7c7c81'
-//   }
-// });
+var stylesBeacon = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+    paddingTop: 20,
+  },
+  device: {
+    width: 80,
+    height: 80,
+    backgroundColor: '#6cab36'
+  },
+  beaconContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: 10,
+  },
+  beacon: {
+    width: 50,
+    height: 50,
+    marginLeft: 5,
+    marginRight: 5,
+    marginTop: 200,
+    backgroundColor: '#7c7c81'
+  }
+});
 
 DeviceEventEmitter.addListener(
   'beaconsDidRange',

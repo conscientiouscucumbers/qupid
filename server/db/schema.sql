@@ -1,28 +1,17 @@
-drop database ihearth;
+drop database if exists ihearth;
 create database ihearth;
-
 use ihearth;
 
-/* --dummy data
-insert into user (email, password, first_name, last_name, dob, gender, total_savings)
-values ('jamesgu@gmail.com', 'password', 'James', 'Gu', '1993-05-21 12:00:00', 'm', 100.00);
-
-insert into business (email, password, company_name, address, city, state, zipcode)
-values ('nike@gmail.com', 'password', 'Nike', '744 Market Street', 'San Francisco', 'CA', 94112);
-
-insert into coupon (business_id, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (1, '$5 off socks', '../../assets/img/socks.png', 'Socks', 'Lorem Ipsum...', 10.00, 5.00, 5.00, '2017-01-05 16:00:00', '2017-01-05 18:00:00');
-*/
 create table user (
   user_id int not null auto_increment,
   email varchar(100) not null,
   password varchar(100) not null,
+  logged_in boolean not null default false,
   first_name varchar(50) not null,
   last_name varchar(50) not null,
   dob datetime not null,
   gender varchar(1) not null,
-  total_savings float(2) not null,
-  
+  total_savings float(2) not null default 0,
   primary key (user_id)
 );
 
@@ -35,7 +24,7 @@ create table business (
   city varchar(50) not null,
   state varchar(20) not null,
   zipcode int not null,
-  
+
   primary key (business_id)
 );
 
@@ -52,9 +41,9 @@ create table coupon (
   start_at datetime not null,
   end_at datetime not null,
   created_at datetime not null default current_timestamp(),
-  
+
   primary key (coupon_id),
-  
+
   index business_id (business_id),
   foreign key (business_id)
     references business (business_id)
@@ -66,17 +55,18 @@ create table user_coupon (
   user_coupon_id int not null auto_increment,
   user_id int,
   coupon_id int,
-  used boolean,
-  expired boolean,
-  
+  used boolean not null,
+  expired boolean not null,
+  activated boolean not null,
+
   primary key (user_coupon_id),
-  
+
   index user_id (user_id),
   foreign key (user_id)
     references user (user_id)
     on delete set null
     on update cascade,
-  
+
   index coupon_id (coupon_id),
   foreign key (coupon_id)
     references coupon (coupon_id)
@@ -85,13 +75,12 @@ create table user_coupon (
 );
 
 create table beacon (
-  beacon_id int not null auto_increment,
+  beacon_uuid varchar(100) not null,
   business_id int,
-  uuid varchar(100) not null,
   section varchar(20) not null,
-  
-  primary key (beacon_id),
-  
+
+  primary key (beacon_uuid),
+
   index business_id (business_id),
   foreign key (business_id)
     references business (business_id)
@@ -101,17 +90,17 @@ create table beacon (
 
 create table coupon_beacon (
   coupon_beacon_id int not null auto_increment,
-  beacon_id int,
   coupon_id int,
-  
+  beacon_uuid varchar(100),
+
   primary key (coupon_beacon_id),
-  
-  index beacon_id (beacon_id),
-  foreign key (beacon_id)
-    references beacon (beacon_id)
+
+  index beacon_uuid (beacon_uuid),
+  foreign key (beacon_uuid)
+    references beacon (beacon_uuid)
     on delete cascade
     on update cascade,
-  
+
   index coupon_id (coupon_id),
   foreign key (coupon_id)
     references coupon (coupon_id)

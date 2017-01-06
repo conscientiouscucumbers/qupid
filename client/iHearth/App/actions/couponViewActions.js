@@ -1,21 +1,19 @@
-// require('es6-promise').polyfill();
-// import fetch from 'isomorphic-fetch';
-
-import { REQUEST_COUPONS, RECEIVE_COUPONS } from '../constants/ActionTypes';
+import { REQUEST_SINGLE_COUPON, RECEIVE_SINGLE_COUPON } from '../constants/ActionTypes';
 import { URL } from '../constants/NetworkUrls';
 
 // Will change isFetching state of list to true
-function requestCoupons() {
+function requestSingleCoupon() {
   return {
-    type: REQUEST_COUPONS,
+    type: REQUEST_SINGLE_COUPON,
   }
 }
 
-function receiveCoupons(json) {
+function receiveSingleCoupon(json) {
   return {
-    type: RECEIVE_COUPONS,
-    coupons: json.coupons,
-    receivedAt: Date.now()
+    type: RECEIVE_SINGLE_COUPON,
+    couponInfo: json.couponInfo
+    // coupons: json.coupons,
+    // receivedAt: Date.now()
   }
 }
 
@@ -32,19 +30,19 @@ export function fetchPosts() {
 
     // First synchronously dispatch updates to signal
     // the start of the API call
-    dispatch(requestCoupons());
+    dispatch(requestSingleCoupon());
 
-    return fetch(URL + 'coupon')
+    return fetch(URL + 'coupon/2') //change to :coupon_id
       .then(response => response.json())
       .then(json => {
 
           // Update app state with results of API call
-          return dispatch(receiveCoupons(json))
+          return dispatch(receiveSingleCoupon(json))
         })
 
       // Catch errors
       .catch((err) => {
-        console.error('Error in fetching coupons in listViewActions.js', err.message);
+        console.error('Error in fetching single coupon in couponViewActions.js', err.message);
       })
   }
 }
