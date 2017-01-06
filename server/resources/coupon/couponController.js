@@ -3,14 +3,13 @@ var couponModel = require('./coupon.js');
 // GET request for /coupon
 // retrieve all coupons in coupon table
 exports.retrieveCoupons = (req, res) => {
-  res.status(200).json({ coupons: 'coupons' })
-  // couponModel.retrieveCouponsAsync()
-  // .then(coupons => {
-  //   res.status(200).json({ coupons: coupons });
-  // })
-  // .catch((err) => {
-  //   res.status(400).send({ coupons: [ { item_name: 'Server-side error' } ] });
-  // })
+  couponModel.retrieveCouponsAsync()
+  .then(coupons => {
+    res.status(200).json({ coupons: coupons });
+  })
+  .catch((err) => {
+    res.status(400).send({ coupons: [ { item_name: 'Server-side error' } ] });
+  })
 };
 
 // POST request for /coupon
