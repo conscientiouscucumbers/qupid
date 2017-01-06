@@ -1,9 +1,13 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var userRouter = require('./resources/user/userRouter.js')
-var userController = require('./resources/user/userController.js')
+var fs = require('fs');
+var morgan = require('morgan');
+var path = require('path');
+var userRouter = require('./resources/user/userRouter.js');
+var userController = require('./resources/user/userController.js');
 var couponRouter = require('./resources/coupon/couponRouter.js');
-var couponController = require('./resources/coupon/couponRouter.js')
+var couponController = require('./resources/coupon/couponRouter.js');
+
 
 // Create express app
 var app = express();
@@ -13,6 +17,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(function(req, res, next) {
+  res.set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.set("Access-Control-Allow-Origin", "*");
+  res.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  next();
+});
+
+// create a write stream (in append mode)
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'})
+
+// setup the logger
+app.use(morgan('combined', {stream: accessLogStream}))
 
 // Allow clientside access
 app.use(function(req, res, next) {

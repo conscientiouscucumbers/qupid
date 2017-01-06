@@ -39,13 +39,13 @@ export default class LoginView extends Component {
   }
 
   componentWillMount() {
-    axios.post(URL + 'user/login')
-    .then((res) => {
-      console.log('user already logged in, directing to HomeView');
-      this.props.fetchAuth(this.state, authRoute, this.props._handleNavigate);
-    }).catch((err) => {
-      console.log('user not already logged in');
-    });
+    // axios.post(URL + 'user/login')
+    // .then((res) => {
+    //   console.log('user already logged in, directing to HomeView');
+    //   this.props.fetchAuth(this.state, authRoute, this.props._handleNavigate);
+    // }).catch((err) => {
+    //   console.log('user not already logged in');
+    // });
   }
 
   render() {
