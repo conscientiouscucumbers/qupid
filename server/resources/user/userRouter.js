@@ -18,6 +18,9 @@ userRouter.route('/:user_id/coupon/:coupon_id')
 userRouter.route('/login')
   .post(userController.userLogin)
 
+userRouter.route('/logout')
+  .post(userController.userLogout)
+
 userRouter.route('/signup')
   .post(userController.userSignup)
 
