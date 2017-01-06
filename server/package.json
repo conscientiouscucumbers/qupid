@@ -1,6 +1,9 @@
 {
   "name": "iHearth-Server",
   "version": "0.0.1",
+  "engines": {
+    "node": "5.9.1"
+  },
   "private": true,
   "scripts": {},
   "dependencies": {

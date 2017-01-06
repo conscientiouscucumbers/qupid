@@ -1,6 +1,7 @@
 
 --dummy data
 -- // user
+
 insert into user (email, password, first_name, last_name, dob, gender, total_savings)
 values ('jamesgu@gmail.com', 'password', 'James', 'Gu', '1993-05-21 12:00:00', 'm', 100.00);
 
@@ -13,7 +14,9 @@ values ('joshpeng7@gmail.com', 'password', 'Josh', 'Peng', '1985-10-20 12:00:00'
 into into user_coupon (used, expired, id_user, id_coupon)
 values (false, false, 1, );
 
+
 -- // user_coupon
+
 into into user_coupon (used, expired, activated, id_user, id_coupon)
 values (false, false, true, 1, 1 );
 
@@ -24,6 +27,7 @@ into into user_coupon (used, expired, activated, id_user, id_coupon)
 values (false, false, true, 2, 2 );
 
 -- // business
+
 insert into business (email, password, company_name, address, city, state, zipcode)
 values ('nike@gmail.com', 'password', 'Nike', '744 Market Street', 'San Francisco', 'CA', 94112);
 
@@ -58,4 +62,3 @@ values (3, 'UUID3', 'Sweets');
 insert into coupon_beacon (coupon_id, beacon_uuid) values (1, 'UUID1');
 insert into coupon_beacon (coupon_id, beacon_uuid) values (2, 'UUID2');
 insert into coupon_beacon (coupon_id, beacon_uuid) values (3, 'UUID3');
-

@@ -1,4 +1,4 @@
-drop database if exists ihearth;
+drop database ihearth;
 create database ihearth;
 use ihearth;
 
