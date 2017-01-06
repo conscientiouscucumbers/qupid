@@ -31,14 +31,14 @@
     <type label="Year" length="0" sql="YEAR" quote=""/>
     <type label="Timestamp" length="0" sql="TIMESTAMP" quote="'"/>
   </group>
-  
+
   <group label="Miscellaneous" color="rgb(200,200,255)">
     <type label="ENUM" length="1" sql="ENUM" quote=""/>
     <type label="SET" length="1" sql="SET" quote=""/>
     <type label="Bit" length="0" sql="bit" quote=""/>
   </group>
-</datatypes><table x="68" y="152" name="user">
-<row name="id" null="1" autoincrement="1">
+</datatypes><table x="84" y="152" name="user">
+<row name="user_id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="email" null="1" autoincrement="0">
@@ -53,7 +53,7 @@
 <row name="last_name" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT(50)</datatype>
 <default>NULL</default></row>
-<row name="DOB" null="1" autoincrement="0">
+<row name="dob" null="1" autoincrement="0">
 <datatype>DATE(50)</datatype>
 <default>NULL</default></row>
 <row name="gender" null="1" autoincrement="0">
@@ -63,11 +63,11 @@
 <datatype>INTEGER(50)</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
-<part>id</part>
+<part>user_id</part>
 </key>
 </table>
-<table x="428" y="215" name="coupon">
-<row name="id" null="1" autoincrement="1">
+<table x="416" y="135" name="coupon">
+<row name="coupon_id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="title" null="1" autoincrement="0">
@@ -100,17 +100,17 @@
 <row name="created_at" null="1" autoincrement="0">
 <datatype>DATETIME</datatype>
 <default>NULL</default></row>
-<row name="id_business" null="1" autoincrement="0">
+<row name="business_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="business" row="id" />
+<default>NULL</default><relation table="business" row="business_id" />
 </row>
 <key type="PRIMARY" name="">
-<part>id</part>
+<part>coupon_id</part>
 </key>
 <comment>coupon model</comment>
 </table>
 <table x="66" y="381" name="business">
-<row name="id" null="1" autoincrement="1">
+<row name="business_id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="email" null="1" autoincrement="0">
@@ -131,16 +131,16 @@
 <row name="state" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT(5)</datatype>
 <default>NULL</default></row>
-<row name="zip_code" null="1" autoincrement="0">
+<row name="zipcode" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT(10)</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
-<part>id</part>
+<part>business_id</part>
 </key>
 <comment>business model</comment>
 </table>
-<table x="229" y="30" name="user_coupon">
-<row name="id" null="1" autoincrement="1">
+<table x="230" y="61" name="user_coupon">
+<row name="user_coupon_id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="used" null="1" autoincrement="0">
@@ -149,52 +149,55 @@
 <row name="expired" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT(10)</datatype>
 <default>NULL</default></row>
-<row name="id_user" null="1" autoincrement="0">
+<row name="activated" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="user_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="user" row="id" />
+<default>NULL</default><relation table="user" row="user_id" />
 </row>
-<row name="id_coupon" null="1" autoincrement="0">
+<row name="coupon_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="coupon" row="id" />
+<default>NULL</default><relation table="coupon" row="coupon_id" />
 </row>
 <key type="PRIMARY" name="">
-<part>id</part>
+<part>user_coupon_id</part>
 </key>
 <comment>user coupon join table</comment>
 </table>
-<table x="601" y="417" name="coupon_beacon">
-<row name="id" null="1" autoincrement="1">
+<table x="567" y="380" name="coupon_beacon">
+<row name="coupon_beacon_id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="id_beacon" null="1" autoincrement="0">
+<row name="coupon_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="beacon" row="id" />
+<default>NULL</default><relation table="coupon" row="coupon_id" />
 </row>
-<row name="id_coupon" null="1" autoincrement="0">
+<row name="beacon_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="coupon" row="id" />
+<default>NULL</default><relation table="beacon" row="beacon_id" />
 </row>
 <key type="PRIMARY" name="">
-<part>id</part>
+<part>coupon_beacon_id</part>
 </key>
 <comment>coupon beacon join table</comment>
 </table>
-<table x="426" y="537" name="beacon">
-<row name="id" null="1" autoincrement="1">
+<table x="420" y="450" name="beacon">
+<row name="beacon_id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="UUID" null="1" autoincrement="0">
+<row name="uuid" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT(100)</datatype>
 <default>NULL</default></row>
 <row name="section" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT(50)</datatype>
 <default>NULL</default></row>
-<row name="id_business" null="1" autoincrement="0">
+<row name="business_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="business" row="id" />
+<default>NULL</default><relation table="business" row="business_id" />
 </row>
 <key type="PRIMARY" name="">
-<part>id</part>
+<part>beacon_id</part>
 </key>
 <comment>beacon model</comment>
 </table>

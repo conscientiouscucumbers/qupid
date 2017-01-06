@@ -1,21 +1,20 @@
 // require('es6-promise').polyfill();
 // import fetch from 'isomorphic-fetch';
 
-import { REQUEST_COUPONS, RECEIVE_COUPONS } from '../constants/ActionTypes';
+import { REQUEST_AUTH, RECEIVE_AUTH } from '../constants/ActionTypes';
 import { URL } from '../constants/NetworkUrls';
 
 // Will change isFetching state of list to true
-function requestCoupons() {
+function requestAuth() {
   return {
-    type: REQUEST_COUPONS,
+    type: REQUEST_AUTH,
   }
 }
 
-function receiveCoupons(json) {
+function receiveAuth(json) {
   return {
-    type: RECEIVE_COUPONS,
-    coupons: json.coupons,
-    receivedAt: Date.now()
+    type: RECEIVE_AUTH,
+    userInfo: json // TODO [{email: }]
   }
 }
 
@@ -23,28 +22,36 @@ function receiveCoupons(json) {
 // customize dispatches, in this case, delay until response is received
 // Use like other action creators
 // store.dispatch(fetchPosts('reactjs'))
-export function fetchPosts() {
-
+export function fetchAuth(loginInfo, route, callback) {
   // Pass dispatch method as an argument
   // Allowing the thunk to dispatch actions itself
-
+  
   return dispatch => {
-
     // First synchronously dispatch updates to signal
     // the start of the API call
-    dispatch(requestCoupons());
+    dispatch(requestAuth());
+    
+    var request = new Request(URL + 'user/login', {
+      method: 'POST', 
+      // mode: 'cors', 
+      // redirect: 'follow',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify(loginInfo)
+    });
 
-    return fetch(URL + 'coupon')
+    return fetch(request)
       .then(response => response.json())
       .then(json => {
-
           // Update app state with results of API call
-          return dispatch(receiveCoupons(json))
+          callback(route);
+          return dispatch(receiveAuth(json))
         })
 
       // Catch errors
       .catch((err) => {
-        console.error('Error in fetching coupons in listViewActions.js', err.message);
+        console.error('Error in authorizing login in loginViewActions.js', err.message);
       })
   }
 }

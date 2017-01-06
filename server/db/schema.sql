@@ -1,6 +1,5 @@
 drop database ihearth;
 create database ihearth;
-
 use ihearth;
 
 create table user (
@@ -14,7 +13,6 @@ create table user (
   total_savings float(2) not null default 0,
   primary key (user_id)
 );
--- TODO after MVP: CRON jobs on updating total_savings?
 
 create table business (
   business_id int not null auto_increment,
@@ -76,12 +74,11 @@ create table user_coupon (
 );
 
 create table beacon (
-  beacon_id int not null auto_increment,
+  beacon_uuid varchar(100) not null,
   business_id int,
-  uuid varchar(100) not null,
   section varchar(20) not null,
 
-  primary key (beacon_id),
+  primary key (beacon_uuid),
 
   index business_id (business_id),
   foreign key (business_id)
@@ -93,13 +90,13 @@ create table beacon (
 create table coupon_beacon (
   coupon_beacon_id int not null auto_increment,
   coupon_id int,
-  beacon_id int,
+  beacon_uuid varchar(100),
 
   primary key (coupon_beacon_id),
 
-  index beacon_id (beacon_id),
-  foreign key (beacon_id)
-    references beacon (beacon_id)
+  index beacon_uuid (beacon_uuid),
+  foreign key (beacon_uuid)
+    references beacon (beacon_uuid)
     on delete cascade
     on update cascade,
 
