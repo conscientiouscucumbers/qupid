@@ -31,7 +31,7 @@ export default class CouponDescriptionView extends Component {
             </CardItem>
 
             <CardItem cardBody>
-              <Image style={{width: 200, height: 200, alignSelf: 'center'}} source={{ uri: couponInfo ? couponInfo.image : '' }} />
+              <Image style={{width: 200, height: 200, alignSelf: 'center'}} source={{ uri: couponInfo ? couponInfo.image : 'null' }} />
               <Text style={{fontWeight: 'bold', textAlign: 'center'}}>{couponInfo ? couponInfo.item_name : ''}</Text>
 
               <Text style={{textAlign: 'center'}}>purchase at {couponInfo ? couponInfo.storeName : ''}</Text>

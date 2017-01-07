@@ -39,7 +39,8 @@ exports.createCoupon = (req, res) => {
 // GET request for /coupon/:coupon_id
 // retrieve all coupons with a specific coupon_id
 exports.retrieveOneCoupon = (req, res) => {
-  couponModel.retrieveOneCouponAsync()
+  var params = { coupon_id: req.params.coupon_id };
+  couponModel.retrieveOneCouponAsync(params)
   .then(couponInfo => {
     res.status(200).json({ couponInfo: couponInfo });
   })
