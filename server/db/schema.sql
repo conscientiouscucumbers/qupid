@@ -32,6 +32,7 @@ create table business (
 create table coupon (
   coupon_id int not null auto_increment,
   business_id int,
+  qrcode varchar(100) not null,
   title varchar(300) not null,
   image varchar(300) not null,
   item_name varchar(100) not null,
