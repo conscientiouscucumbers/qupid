@@ -1,4 +1,9 @@
-import { AUTH_PUSH_ROUTE, AUTH_POP_ROUTE } from '../../constants/ActionTypes';
+import { 
+  AUTH_PUSH_ROUTE, 
+  AUTH_POP_ROUTE,
+  REQUEST_USER_INFO_BY_DEVICE,
+  RECEIVE_USER_INFO_BY_DEVICE 
+} from '../../constants/ActionTypes';
 import { NavigationExperimental } from 'react-native';
 const {
   StateUtils: NavigationStateUtils
@@ -6,7 +11,8 @@ const {
 
 const initialState = {
   index: 0,
-  key: 'loginRoot',
+  key: 'loginRoot', 
+  isFetching: false,
   routes: [
     {
       key: 'login',
@@ -28,6 +34,18 @@ export default function loginNavState(state = initialState, action) {
         return state;
       }
       return NavigationStateUtils.pop(state);
+
+    case REQUEST_USER_INFO_BY_DEVICE:
+      return {
+        ...state,
+        isFetching: true
+      }
+
+    case RECEIVE_USER_INFO_BY_DEVICE:
+      return {
+        ...state,
+        isFetching: false
+      }
 
     default:
       return state;

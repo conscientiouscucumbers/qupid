@@ -15,6 +15,15 @@ import {
 } from '../../lib/utils/navUtils';
 import DeviceInfo from 'react-native-device-info';
 
+// Use this route once authorized
+const authRoute = {
+  type: 'push',
+  route: {
+    key: 'list',
+    title: 'ListView'
+  }
+};
+
 export default class LoginNavRoot extends Component {
   constructor(props) {
     super(props);
@@ -24,20 +33,12 @@ export default class LoginNavRoot extends Component {
   }
 
   componentWillMount(){
-    //TODO: call some function
+    this.props.fetchUserInfoByDevice(authRoute, this._handleNavigate);
+    console.log('PROPS HERE....', this.props);
   }
 
   componentDidMount(){
     // Add BackAndroid listener
-    console.log('deviceinfo', DeviceInfo.getUniqueID());
-    
-    // this._handleNavigate({
-    //   type: 'push',
-    //   route: {
-    //     key: 'list',
-    //     title: 'ListView'
-    //   }
-    // });
   }
 
   componentWillUnmount(){

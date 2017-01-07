@@ -40,6 +40,7 @@ export default class LoginView extends Component {
   }
 
   componentWillMount() {
+    console.log('DEVICE INFO...', DeviceInfo);
     this.setState({ device_id: DeviceInfo.getUniqueID() });
     // function to check logged_in state using device_id
   }

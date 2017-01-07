@@ -18,3 +18,4 @@ const CouponView = ({ _goBack }) => (
 );
 
 export default CouponView;
+

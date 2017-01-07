@@ -118,7 +118,7 @@ exports.userLogin = (req, res) => {
     res.status(200).json(user);
   }).catch((err) => {
     console.log('user failed to log in, user not found in user table');
-    res.status(400).send('user failed to log in, user not found in user table');
+    res.status(400).json({ error: 'user failed to log in, user not found in user table'});
   });
 };
 
@@ -170,8 +170,9 @@ exports.fetchUserByDevice = (req, res) => {
       console.error('no card stack for specified device');
       throw new Error('error in fetchUserByDevice');
     }
+    console.log('user.....', user);
     res.status(200).json(user);
   }).catch((err) => {
-    res.status(400).json([]);
+    res.status(400).json({ error: 'Unable to retrieve user for device' });
   });
 };
