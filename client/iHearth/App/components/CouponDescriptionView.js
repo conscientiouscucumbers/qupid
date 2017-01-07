@@ -3,10 +3,18 @@ import { Image } from 'react-native';
 // import ListViewEntry from './ListViewEntry';
 import { Container, Content, Card, CardItem, Text, Button } from 'native-base';
 
-// const CouponDescriptionView = ({ couponInfo }) => (
+const route = {
+  type: 'push',
+  route: {
+    key: 'QR',
+    title: 'QRView'
+  }
+}
+
 export default class CouponDescriptionView extends Component {
   constructor(props) {
     super(props);
+    _handleNavigate = this.props._handleNavigate;
   }
 
   // Before rendering, get state from server
@@ -35,7 +43,7 @@ export default class CouponDescriptionView extends Component {
                 <Text style={{textDecorationLine: 'line-through'}}>{this.props.couponInfo.original_price}</Text>
                 <Text style={{fontWeight: 'bold'}}>{this.props.couponInfo.coupon_price}</Text>
               </CardItem>
-              <Button block>Use Coupon</Button>
+              <Button onPress={ () => { _handleNavigate(route) }} block>Use Coupon</Button>
             </CardItem>
           </Card>
         </Content>
@@ -43,6 +51,3 @@ export default class CouponDescriptionView extends Component {
     )
   }
 }
-
-          // <Image style={{width: 200, height: 200, alignSelf: 'center'}} source={require('iHearth/App/lib/img/'+this.props.couponInfo.image)} />
-  //         <Image style={{width: 200, height: 200, alignSelf: 'center'}} source={require('iHearth/App/lib/img/jacket.jpeg')} />

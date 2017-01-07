@@ -3,7 +3,7 @@ import CouponDescriptionContainer from '../containers/CouponDescriptionContainer
 
 import { Container, Header, Button, Icon, Title, Content } from 'native-base';
 
-const CouponView = ({ _goBack }) => (
+const CouponView = ({ _goBack, _handleNavigate }) => (
   <Container>
     <Header>
       <Button transparent onPress={ _goBack }>
@@ -12,7 +12,7 @@ const CouponView = ({ _goBack }) => (
       <Title>Selected Coupon</Title>
     </Header>
     <Content>
-      <CouponDescriptionContainer />
+      <CouponDescriptionContainer _handleNavigate={ _handleNavigate } />
     </Content>
   </Container>
 );
