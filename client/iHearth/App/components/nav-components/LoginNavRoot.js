@@ -30,6 +30,14 @@ export default class LoginNavRoot extends Component {
   componentDidMount(){
     // Add BackAndroid listener
     console.log('deviceinfo', DeviceInfo.getUniqueID());
+    
+    // this._handleNavigate({
+    //   type: 'push',
+    //   route: {
+    //     key: 'list',
+    //     title: 'ListView'
+    //   }
+    // });
   }
 
   componentWillUnmount(){
