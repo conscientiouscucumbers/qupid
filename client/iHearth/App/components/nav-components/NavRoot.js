@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import HomeView from '../HomeView';
 import CouponView from '../CouponView';
-import QRViewContainer from '../../containers/QRViewContainer';
+import QRView from '../QRView';
 // import CouponViewContainer from '../../containers/CouponViewContainer';
 import {
   // BackAndroid,
@@ -44,7 +44,7 @@ export default class NavRoot extends Component {
         )
       case 'QR':
         return (
-          <QRViewContainer _goBack={ this._handleBackAction } />
+          <QRView _goBack={ this._handleBackAction } />
         )
     }
   }

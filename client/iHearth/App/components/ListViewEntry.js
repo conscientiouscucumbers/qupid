@@ -10,7 +10,6 @@ import {
 import { formatDollars, formatTime } from '../lib/utils/formatUtils.js';
 
 export default ({ label, onPress, coupon }) => {
-  console.log('key.......', coupon.coupon_id);
   // Image must be defined statically per docs
   // image = 'https://facebook.github.io/react/img/logo_og.png';
   return (

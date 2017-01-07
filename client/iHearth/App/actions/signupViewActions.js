@@ -23,7 +23,6 @@ function receiveNewUser(json) {
 // Use like other action creators
 // store.dispatch(fetchPosts('reactjs'))
 export function fetchNewUser(newUserInfo, route, callback) {
-  console.log('clicked in fetchNewUser', newUserInfo, route, callback );
   // Pass dispatch method as an argument
   // Allowing the thunk to dispatch actions itself
 

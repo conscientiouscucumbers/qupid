@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import QRViewContainer from '../containers/QRViewContainer'
+import QRCodeImageViewContainer from '../containers/QRCodeImageViewContainer'
 
 import { Container, Header, Button, Icon, Title, Content, Text } from 'native-base';
 
 export default class QRView extends Component {
   constructor(props) {
     super(props);
+    _goBack = this.props._goBack;
   }
 
   // Before rendering, get state from server
@@ -24,7 +25,7 @@ export default class QRView extends Component {
         </Header>
         <Content>
           <Text>QR View</Text>
-          <QRViewContainer />
+          <QRCodeImageViewContainer />
         </Content>
       </Container>
     );

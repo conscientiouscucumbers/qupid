@@ -31,7 +31,6 @@ export default class ListView extends Component {
   }
 
   render() {
-    console.log('LISTVIW PROPS...', this.props);
     return (
       <List>
         {this.props.coupons.items.map((coupon) => (

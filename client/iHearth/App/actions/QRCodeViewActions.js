@@ -19,12 +19,12 @@ export function useAuth() {
   
   return dispatch => {
     dispatch(requestUseCoupon());
-    var request = new Request(URL + 'user/login', {
+    var request = new Request(URL + 'user/1/coupon/1', {
       method: 'PUT', 
       headers: new Headers({
         'Content-Type': 'application/json'
       }),
-      body: JSON.stringify(loginInfo)
+      body: JSON.stringify({})
     });
 
     return fetch(request)
