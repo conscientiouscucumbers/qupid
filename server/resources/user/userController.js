@@ -126,7 +126,8 @@ exports.userLogin = (req, res) => {
 // log out an existing user
 exports.userLogout = (req, res) => {
   console.log('request body for logout here.....', req.body);
-  var params = { email: req.body.email, password: req.body.password };
+  // var params = { email: req.body.email, password: req.body.password, device_id: req.body.device_id };
+  var params = { device_id: req.body.device_id };
   userModel.userLogoutAsync(params)
   .then((user) => {
     if (user.length === 0) {
@@ -135,7 +136,7 @@ exports.userLogout = (req, res) => {
     res.status(200).json(user);
   }).catch((err) => {
     console.log('user failed to log out, user not found in user table');
-    res.status(400).send('user failed to log out, user not found in user table');
+    res.status(400).json({ error: 'user failed to log out, user not found in user table'});
   });
 };
 

@@ -50,11 +50,11 @@ export default class LoginNavRoot extends Component {
     switch (route.key) {
       case 'login':
         return (
-          <LoginViewContainer _handleNavigate= { this._handleNavigate } />
+          <LoginViewContainer _handleNavigate={ this._handleNavigate } />
         )
       case 'signup':
         return (
-          <SignupView _handleNavigate= { this._handleNavigate } _goBack={ this._handleBackAction } />
+          <SignupView _handleNavigate={ this._handleNavigate } _goBack={ this._handleBackAction } />
         )
       case 'list':
         return (
