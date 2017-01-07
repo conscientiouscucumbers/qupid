@@ -13,6 +13,7 @@ import {
   _handleBackAction,
   _handleNavigate
 } from '../../lib/utils/navUtils';
+import DeviceInfo from 'react-native-device-info';
 
 export default class LoginNavRoot extends Component {
   constructor(props) {
@@ -22,14 +23,19 @@ export default class LoginNavRoot extends Component {
     this._handleNavigate = _handleNavigate.bind(this);
   }
 
+  componentWillMount(){
+    //TODO: call some function
+  }
+
   componentDidMount(){
     // Add BackAndroid listener
+    console.log('deviceinfo', DeviceInfo.getUniqueID());
   }
 
   componentWillUnmount(){
-    // Remove BackAndroid listener 
+    // Remove BackAndroid listener
   }
-  
+
   _renderScene(props) {
     const { route } = props.scene;
     switch (route.key) {
@@ -39,7 +45,7 @@ export default class LoginNavRoot extends Component {
         )
       case 'signup':
         return (
-          <SignupView _goBack={ this._handleBackAction } />
+          <SignupView _handleNavigate= { this._handleNavigate } _goBack={ this._handleBackAction } />
         )
       case 'list':
         return (
@@ -56,5 +62,5 @@ export default class LoginNavRoot extends Component {
       onNavigate={ this._handleNavigate }
       renderScene={ this._renderScene } />
     )
-  } 
+  }
 }

@@ -1,1 +1,1 @@
-export const URL = 'https://quiet-beyond-88440.herokuapp.com/';
+export const URL = 'http:/localhost:4568/';

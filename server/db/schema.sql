@@ -7,6 +7,7 @@ create table user (
   email varchar(100) not null,
   password varchar(100) not null,
   logged_in boolean not null default false,
+  device_id varchar(50) not null,
   first_name varchar(50) not null,
   last_name varchar(50) not null,
   dob datetime not null,

@@ -7,8 +7,8 @@ import {
 import Button from './global-components/Button'
 import { Container, Content, List, ListItem, InputGroup, Input, Icon, Picker } from 'native-base';
 import styles from './../styles';
-import axios from 'axios';
 import { URL } from '../constants/NetworkUrls';
+import DeviceInfo from 'react-native-device-info';
 
 const Item = Picker.Item;
 
@@ -35,17 +35,16 @@ export default class LoginView extends Component {
     this.state = {
       email: '',
       password: '',
+      device_id: ''
     };
   }
 
   componentWillMount() {
-    // axios.post(URL + 'user/login')
-    // .then((res) => {
-    //   console.log('user already logged in, directing to HomeView');
-    //   this.props.fetchAuth(this.state, authRoute, this.props._handleNavigate);
-    // }).catch((err) => {
-    //   console.log('user not already logged in');
-    // });
+    this.setState({ device_id: DeviceInfo.getUniqueID() });
+    // function to check logged_in state using device_id
+  }
+
+  componentDidMount() {
   }
 
   render() {

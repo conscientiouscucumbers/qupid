@@ -27,4 +27,7 @@ userRouter.route('/signup')
 userRouter.route('/:user_id/beacon/:beacon_uuid')
   .get(userController.sendBeaconCoupons)
 
+userRouter.route('/device_id/:device_id')
+  .get(userController.fetchUserByDevice)
+
 module.exports = userRouter;
