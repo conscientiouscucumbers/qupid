@@ -62,7 +62,9 @@ export function fetchUserInfoByDevice(route, callback) {
           dispatch(receiveUserInfoByDevice(json))
 
           // if no error then navigate to home page
-          if (!json[0].error) {
+          if (json.error) {
+            return;
+          } else {
             callback(route);
           }
         })
