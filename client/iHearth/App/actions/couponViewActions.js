@@ -11,7 +11,7 @@ function requestSingleCoupon() {
 function receiveSingleCoupon(json) {
   return {
     type: RECEIVE_SINGLE_COUPON,
-    couponInfo: json.couponInfo
+    couponInfo: json.couponInfo[0]
     // coupons: json.coupons,
     // receivedAt: Date.now()
   }

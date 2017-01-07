@@ -4,13 +4,15 @@ import { useCoupon } from '../actions/QRCodeViewActions.js';
 
 function mapStateToProps(state) {
   return {
-    currentCoupon: state.QRReducer
+    QRInfo: state.QRReducer,
+    currentCoupon: state.couponReducer,
+    userInfo: state.loginReducer
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    useCoupon: () => { dispatch(useCoupon()) }
+    useCoupon: (user_id, coupon_id) => { dispatch(useCoupon(user_id, coupon_id)) }
   }
 }
 
