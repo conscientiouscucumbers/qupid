@@ -1,22 +1,32 @@
-import React from 'react';
-import QRCodeImageViewContainer from '../containers/QRCodeImageViewContainer'
+import React, { Component } from 'react';
+import QRViewContainer from '../containers/QRViewContainer'
 
 import { Container, Header, Button, Icon, Title, Content, Text } from 'native-base';
 
-const QRView = ({ _goBack }) => (
-  <Container>
-    <Header>
-      <Button transparent onPress={ _goBack }>
-          <Icon name='ios-arrow-back' />
-      </Button>
-      <Title>Selected QRCode</Title>
-    </Header>
-    <Content>
-      <Text>QR View</Text>
-      <QRCodeImageViewContainer />
-    </Content>
-  </Container>
-);
+export default class QRCodeImageView extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-export default QRView;
+  // Before rendering, get state from server
+  componentWillMount() {
+    // this.props.fetchCoupons();
+  }
 
+  render() {
+    return (
+      <Container>
+        <Header>
+          <Button transparent onPress={ _goBack }>
+              <Icon name='ios-arrow-back' />
+          </Button>
+          <Title>Selected QRCode</Title>
+        </Header>
+        <Content>
+          <Text>QR View</Text>
+          <QRViewContainer />
+        </Content>
+      </Container>
+    );
+  }
+}

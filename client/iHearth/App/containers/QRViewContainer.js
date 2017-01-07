@@ -14,7 +14,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(QRView);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(QRView);
