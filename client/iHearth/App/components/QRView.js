@@ -3,7 +3,7 @@ import QRViewContainer from '../containers/QRViewContainer'
 
 import { Container, Header, Button, Icon, Title, Content, Text } from 'native-base';
 
-export default class QRCodeImageView extends Component {
+export default class QRView extends Component {
   constructor(props) {
     super(props);
   }

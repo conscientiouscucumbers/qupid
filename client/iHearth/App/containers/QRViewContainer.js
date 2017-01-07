@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import QRView from '../components/QRView';
+import QRCodeImageView from '../components/QRCodeImageView';
 import { useCoupon } from '../actions/QRCodeViewActions.js';
 
 function mapStateToProps(state) {
   return {
-    currentCoupon: state.couponReducer.couponInfo
+    currentCoupon: state.QRReducer
   }
 }
 
@@ -17,4 +17,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(QRView);
+)(QRCodeImageView);

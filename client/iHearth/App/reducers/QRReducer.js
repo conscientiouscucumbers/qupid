@@ -7,13 +7,13 @@ const initialState = {
 
 export default function QRState(state = initialState, action) {
   switch (action.type) {
-    case REQUEST_COUPONS:
+    case REQUEST_USE_COUPON:
       return {
         ...state,
         isFetching: true
       }
 
-    case RECEIVE_COUPONS:
+    case RECEIVE_USE_COUPON:
       return {
         ...state,
         isFetching: false,
