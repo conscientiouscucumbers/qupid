@@ -149,7 +149,7 @@ var userLogout = (params, callback) => {
 module.exports.userLogoutAsync = Promise.promisify(userLogout);
 
 var userSignup = (params, callback) => {
-  var loggedInUser;
+
   var queryStr = `select * from user where email = "${params.email}"`;
 
   // check for user email
@@ -165,8 +165,8 @@ var userSignup = (params, callback) => {
       }
 
       // insert into database
-      var createUserStr = `insert into user (email, password, first_name, last_name, dob, gender) \
-        values ("${params.email}", "${params.password}", "${params.first_name}",
+      var createUserStr = `insert into user (email, password, logged_in, device_id, first_name, last_name, dob, gender) \
+        values ("${params.email}", "${params.password}", true, "${params.device_id}", "${params.first_name}", \
         "${params.last_name}", "${params.dob}", "${params.gender}")`;
       db.query(createUserStr, (err, insertedUser) => {
         if (err) {
@@ -182,20 +182,9 @@ var userSignup = (params, callback) => {
               callback(err);
             } else {
 
-              // set user field to logged in and return referenced user
-              loggedInUser = selectedUser[0];
-              console.log(selectedUser);
-              console.log('successfully signed up a new user')
-              var loginStr = `update user set logged_in = true, device_id = "${params.device_id}" where email = "${params.email}" && password = "${params.password}"`;
-              db.query(loginStr, (err, loggedIn) => {
-                if (err) {
-                  console.log('could not set user as logged in');
-                  callback(err);
-                } else {
-                  console.log('successfully updated database so that user is logged in');
-                  callback(null, loggedInUser);
-                }
-              });
+              // set user field to logged in, set device_id to passed in device_id, and return referenced user
+              console.log('successfully signed up a new user');
+              callback(null, selectedUser[0]);
             }
           });
         }
