@@ -1,7 +1,11 @@
 // require('es6-promise').polyfill();
 // import fetch from 'isomorphic-fetch';
 
-import { REQUEST_AUTH, RECEIVE_AUTH } from '../constants/ActionTypes';
+import {
+  REQUEST_AUTH,
+  RECEIVE_AUTH,
+  RECEIVE_FAILED_AUTH
+} from '../constants/ActionTypes';
 import { URL } from '../constants/NetworkUrls';
 
 // Will change isFetching state of list to true
@@ -11,10 +15,18 @@ function requestAuth() {
   }
 }
 
+// Receive json and make isFetching false
 function receiveAuth(json) {
   return {
     type: RECEIVE_AUTH,
     userInfo: json // TODO [{email: }]
+  }
+}
+
+// Make isFetching false
+function receiveFailedAuth() {
+  return {
+    type: RECEIVE_FAILED_AUTH,
   }
 }
 
@@ -46,11 +58,10 @@ export function fetchAuth(loginInfo, route, callback) {
       .then(json => {
           // Update app state with results of API call
           if (json.error) {
-            // TO DO ///////////////////////////////
-            return;
+            return dispatch(receiveFailedAuth());            
           }
           callback(route);
-          return dispatch(receiveAuth(json))
+          return dispatch(receiveAuth(json));
         })
 
       // Catch errors
