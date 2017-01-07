@@ -97,21 +97,23 @@ var useCoupon = (params, callback) => {
 module.exports.useCouponAsync = Promise.promisify(useCoupon);
 
 var userLogin = (params, callback) => {
+  var loggedInUser;
   var queryStr = `select * from user where email = "${params.email}" && password = "${params.password}"`;
   db.query(queryStr, (err, user) => {
     if (err) {
       console.log('could not find user in user table');
       callback(err);
     } else {
-      console.log('successfully logged in user');
-      var loginStr = `update user set logged_in = true where email = "${params.email}" && password = "${params.password}"`;
+      loggedInUser = user[0];
+      console.log('successfully logged in user = ', user[0]);
+      var loginStr = `update user set logged_in = true, device_id = "${params.device_id}" where email = "${params.email}" && password = "${params.password}"`;
       db.query(loginStr, (err, loggedIn) => {
         if (err) {
           console.log('could not set user as logged in');
           callback(err);
         } else {
           console.log('successfully updated database so that user is logged in');
-          callback(null, loggedIn);
+          callback(null, loggedInUser);
         }
       });
     }
@@ -143,35 +145,51 @@ var userLogout = (params, callback) => {
 module.exports.userLogoutAsync = Promise.promisify(userLogout);
 
 var userSignup = (params, callback) => {
-  var queryStr = `select * from user where email = "${params.email}" && password = "${params.password}"`;
+  var loggedInUser;
+  var queryStr = `select * from user where email = "${params.email}"`;
+
+  // check for user email
   db.query(queryStr, (err, user) => {
     if (err) {
       console.log('invalid email and/or password');
       callback(err);
     } else {
+
+      // if there is a user returned, it is an invalid signup, return
+      if (user.length > 0) {
+        callback(null, { error: 'user already exists in database' });
+      }
+
+      // insert into database
       var createUserStr = `insert into user (email, password, first_name, last_name, dob, gender) \
         values ("${params.email}", "${params.password}", "${params.first_name}",
         "${params.last_name}", "${params.dob}", "${params.gender}")`;
-      db.query(createUserStr, (err, res) => {
+      db.query(createUserStr, (err, insertedUser) => {
         if (err) {
-          console.log('could not sign up/create a new user');
+          console.log('error in database connection');
           callback(err);
         } else {
-          var returnUserStr = `select * from user where email = "${params.email}" && "${params.password}"`;
-          db.query(returnUserStr, (err, res) => {
+
+          // save reference to signedup user
+          var returnUserStr = `select * from user where email = "${params.email}"`;
+          db.query(returnUserStr, (err, selectedUser) => {
             if (err) {
               console.log('could not find specific user with email and password');
               callback(err);
             } else {
+
+              // set user field to logged in and return referenced user
+              loggedInUser = selectedUser[0];
+              console.log(selectedUser);
               console.log('successfully signed up a new user')
-              var loginStr = `update user set logged_in = true where email = "${params.email}" && password = "${params.password}"`;
+              var loginStr = `update user set logged_in = true, device_id = "${params.device_id}" where email = "${params.email}" && password = "${params.password}"`;
               db.query(loginStr, (err, loggedIn) => {
                 if (err) {
                   console.log('could not set user as logged in');
                   callback(err);
                 } else {
                   console.log('successfully updated database so that user is logged in');
-                  callback(null, loggedIn)
+                  callback(null, loggedInUser);
                 }
               });
             }
@@ -221,3 +239,15 @@ var sendBeaconCoupons = (params, callback) => {
   });
 };
 module.exports.sendBeaconCouponsAsync = Promise.promisify(sendBeaconCoupons);
+
+var fetchUserByDevice = (params, callback) => {
+  var queryStr = `select * from user where device_id = "${params.device_id}" && logged_in = true`;
+  db.query(queryStr, (err, user) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, user);
+    }
+  });
+};
+module.exports.fetchUserByDeviceAsync = Promise.promisify(fetchUserByDevice);

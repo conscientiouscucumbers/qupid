@@ -109,7 +109,7 @@ exports.useCoupon = (req, res) => {
 // log in an existing user
 exports.userLogin = (req, res) => {
   console.log('request body for login here.....', req.body);
-  var params = { email: req.body.email, password: req.body.password };
+  var params = { email: req.body.email, password: req.body.password, device_id: req.body.device_id };
   userModel.userLoginAsync(params)
   .then((user) => {
     if (user.length === 0) {
@@ -145,6 +145,7 @@ exports.userSignup = (req, res) => {
   var params = {
     email: req.body.email,
     password: req.body.password,
+    device_id: req.body.device_id,
     first_name: req.body.first_name,
     last_name: req.body.last_name,
     dob: req.body.dob,
@@ -156,5 +157,21 @@ exports.userSignup = (req, res) => {
   })
   .catch((err) => {
     res.status(400).send('could not sign up/create a new user');
+  });
+};
+
+exports.fetchUserByDevice = (req, res) => {
+  var params = {
+    device_id: req.params.device_id
+  };
+  userModel.fetchUserByDeviceAsync(params)
+  .then((user) => {
+    if (user.length === 0) {
+      console.error('no card stack for specified device');
+      throw new Error('error in fetchUserByDevice');
+    }
+    res.status(200).json(user);
+  }).catch((err) => {
+    res.status(400).json([]);
   });
 };
