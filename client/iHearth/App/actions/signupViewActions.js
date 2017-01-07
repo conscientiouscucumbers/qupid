@@ -32,7 +32,7 @@ export function fetchNewUser(newUserInfo, route, callback) {
     // the start of the API call
     dispatch(requestNewUser());
 
-    var request = new Request(URL + 'user/', {
+    var request = new Request(URL + 'user/signup', {
       method: 'POST',
       // mode: 'cors',
       // redirect: 'follow',
