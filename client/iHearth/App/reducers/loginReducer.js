@@ -1,4 +1,8 @@
-import { REQUEST_AUTH, RECEIVE_AUTH } from '../constants/ActionTypes';
+import {
+  REQUEST_AUTH,
+  RECEIVE_AUTH,
+  RECEIVE_FAILED_AUTH
+} from '../constants/ActionTypes';
 
 const initialState = {
   isFetching: false,
@@ -18,6 +22,12 @@ export default function listState(state = initialState, action) {
         ...state,
         isFetching: false,
         userInfo: action.userInfo,
+      }
+
+    case RECEIVE_FAILED_AUTH:
+      return {
+        ...state,
+        isFetching: false
       }
 
     default:

@@ -21,7 +21,7 @@ function receiveSingleCoupon(json) {
 // customize dispatches, in this case, delay until response is received
 // Use like other action creators
 // store.dispatch(fetchPosts('reactjs'))
-export function fetchPosts() {
+export function fetchCoupon(coupon_id) {
 
   // Pass dispatch method as an argument
   // Allowing the thunk to dispatch actions itself
@@ -32,10 +32,10 @@ export function fetchPosts() {
     // the start of the API call
     dispatch(requestSingleCoupon());
 
-    return fetch(URL + 'coupon/2') //change to :coupon_id
+    return fetch(URL + 'coupon/' + coupon_id)
       .then(response => response.json())
       .then(json => {
-
+          console.log('coupon response from server...', json.couponInfo[0]);
           // Update app state with results of API call
           return dispatch(receiveSingleCoupon(json))
         })

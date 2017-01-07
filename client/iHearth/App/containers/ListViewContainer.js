@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import ListView from '../components/ListView';
 import { push, pop } from '../actions/nav-actions/navRootActions';
 import { fetchPosts } from '../actions/listViewActions.js';
+import { fetchCoupon } from '../actions/couponViewActions.js';
 import { _handleNavigate } from '../lib/utils/navUtils';
 
 function mapStateToProps(state) {
@@ -15,6 +16,7 @@ function mapDispatchToProps(dispatch) {
     pushRoute: (route) => dispatch(push(route)),
     popRoute: () => dispatch(pop()),
     fetchCoupons: () => dispatch(fetchPosts()),
+    fetchCoupon: (coupon_id) => dispatch(fetchCoupon(coupon_id)) 
   }
 }
 
