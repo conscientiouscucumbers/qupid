@@ -2,7 +2,8 @@
 import { AUTH_PUSH_ROUTE,
          AUTH_POP_ROUTE,
          REQUEST_USER_INFO_BY_DEVICE,
-         RECEIVE_USER_INFO_BY_DEVICE
+         RECEIVE_USER_INFO_BY_DEVICE,
+         RECEIVE_AUTH
        } from '../../constants/ActionTypes';
 import { URL } from '../../constants/NetworkUrls';
 import DeviceInfo from 'react-native-device-info';
@@ -40,6 +41,13 @@ function receiveUserInfoByDevice() {
   }
 }
 
+function receiveAuth(json) {
+  return {
+    type: RECEIVE_AUTH,
+    userInfo: json // TODO [{email: }]
+  }
+}
+
 // Thunk action creator -- allows to pass function as action to further
 // customize dispatches, in this case, delay until response is received
 // Use like other action creators
@@ -59,7 +67,10 @@ export function fetchUserInfoByDevice(route, callback) {
       .then(json => {
           
           // Change isFetching to false
-          dispatch(receiveUserInfoByDevice(json))
+          dispatch(receiveUserInfoByDevice())
+
+          // Dispatch to set loginView state to reference info later
+          dispatch(receiveAuth(json));
 
           // if no error then navigate to home page
           if (json.error) {

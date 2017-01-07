@@ -34,7 +34,6 @@ export default class LoginNavRoot extends Component {
 
   componentWillMount(){
     this.props.fetchUserInfoByDevice(authRoute, this._handleNavigate);
-    console.log('PROPS HERE....', this.props);
   }
 
   componentDidMount(){
@@ -64,6 +63,7 @@ export default class LoginNavRoot extends Component {
   }
 
   render() {
+    console.log('THIS PROPS IN NAVROOT......', this.props)
     return (
       <NavigationCardStack
       direction='horizontal'
