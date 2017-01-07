@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LoginViewContainer from '../../containers/LoginViewContainer';
-import SignupView from '../SignupView';
+import SignupViewContainer from '../../containers/SignupViewContainer';
 import Home from '../../containers/nav-containers/TabsRootContainer.js';
 import {
   // BackAndroid,
@@ -54,7 +54,7 @@ export default class LoginNavRoot extends Component {
         )
       case 'signup':
         return (
-          <SignupView _handleNavigate= { this._handleNavigate } _goBack={ this._handleBackAction } />
+          <SignupViewContainer _handleNavigate= { this._handleNavigate } _goBack={ this._handleBackAction } />
         )
       case 'list':
         return (
