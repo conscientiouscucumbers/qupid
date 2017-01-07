@@ -31,12 +31,13 @@ export default class ListView extends Component {
   }
 
   render() {
+    console.log('LISTVIW PROPS...', this.props);
     return (
       <List>
         {this.props.coupons.items.map((coupon) => (
           <ListViewEntry
             key={ coupon.coupon_id }
-            onPress={ () => _handleNavigate(route) }
+            onPress={ (event) => { _handleNavigate(route); this.props.fetchCoupon(coupon.coupon_id) }}
             coupon={ coupon } />
         ))}
       </List>

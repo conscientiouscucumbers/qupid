@@ -17,31 +17,29 @@ export default class CouponDescriptionView extends Component {
     _handleNavigate = this.props._handleNavigate;
   }
 
-  // Before rendering, get state from server
-  componentWillMount() {
-    this.props.fetchCoupons();
-  }
-
+  // Coupon rendering will be handled from listView due to the need to fetch the
+  // corresponding coupon to which was clicked
   render() {
+    let couponInfo = this.props.couponInfo[0];
     return (
       <Container>
         <Content>
           <Card style={{ flex: 0 }}>
             <CardItem>
-              <Text style={{fontWeight: 'bold', textAlign: 'center'}}>{this.props.couponInfo.title}</Text>
-              <Text style={{color: 'red', textAlign: 'center'}}>{this.props.couponInfo.start_at}-{this.props.couponInfo.end_at}</Text>
+              <Text style={{fontWeight: 'bold', textAlign: 'center'}}>{ couponInfo ? couponInfo.title : '' }</Text>
+              <Text style={{color: 'red', textAlign: 'center'}}>{couponInfo ? couponInfo.start_at : ''}-{couponInfo ? couponInfo.end_at : ''}</Text>
             </CardItem>
 
             <CardItem cardBody>
-              <Image style={{width: 200, height: 200, alignSelf: 'center'}} source={require('iHearth/App/lib/img/jacket.jpeg')} />
-              <Text style={{fontWeight: 'bold', textAlign: 'center'}}>{this.props.couponInfo.item_name}</Text>
+              <Image style={{width: 200, height: 200, alignSelf: 'center'}} source={{ uri: couponInfo ? couponInfo.image : '' }} />
+              <Text style={{fontWeight: 'bold', textAlign: 'center'}}>{couponInfo ? couponInfo.item_name : ''}</Text>
 
-              <Text style={{textAlign: 'center'}}>purchase at {this.props.couponInfo.storeName}</Text>
+              <Text style={{textAlign: 'center'}}>purchase at {couponInfo ? couponInfo.storeName : ''}</Text>
 
-              <Text>{this.props.couponInfo.description}</Text>
+              <Text>{couponInfo ? couponInfo.description : ''}</Text>
               <CardItem>
-                <Text style={{textDecorationLine: 'line-through'}}>{this.props.couponInfo.original_price}</Text>
-                <Text style={{fontWeight: 'bold'}}>{this.props.couponInfo.coupon_price}</Text>
+                <Text style={{textDecorationLine: 'line-through'}}>{couponInfo ? couponInfo.original_price : ''}</Text>
+                <Text style={{fontWeight: 'bold'}}>{couponInfo ? couponInfo.coupon_price : ''}</Text>
               </CardItem>
               <Button onPress={ () => { _handleNavigate(route) }} block>Use Coupon</Button>
             </CardItem>

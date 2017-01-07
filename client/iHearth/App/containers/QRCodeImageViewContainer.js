@@ -4,7 +4,7 @@ import QRCodeImageView from '../components/QRCodeImageView';
 
 function mapStateToProps(state) {
   return {
-    
+    currentCoupon: state.couponReducer.couponInfo
   }
 }
 

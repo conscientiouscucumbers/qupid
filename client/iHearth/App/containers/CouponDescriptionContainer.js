@@ -12,7 +12,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchCoupons: () => dispatch(fetchPosts())
+    fetchCoupons: () => dispatch(fetchCoupon())
   }
 }
 
