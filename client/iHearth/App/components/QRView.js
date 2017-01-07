@@ -1,5 +1,5 @@
 import React from 'react';
-// import QRCodeContainer from '../containers/CouponDescriptionContainer'
+import QRCodeImageViewContainer from '../containers/QRCodeImageViewContainer'
 
 import { Container, Header, Button, Icon, Title, Content, Text } from 'native-base';
 
@@ -12,8 +12,8 @@ const QRView = ({ _goBack }) => (
       <Title>Selected QRCode</Title>
     </Header>
     <Content>
-      <Text>Hello World from QRView</Text>
-      {/*<CouponDescriptionContainer />*/}
+      <Text>QR View</Text>
+      <QRCodeImageViewContainer />
     </Content>
   </Container>
 );
