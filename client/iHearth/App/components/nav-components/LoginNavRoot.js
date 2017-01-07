@@ -55,6 +55,7 @@ export default class LoginNavRoot extends Component {
       case 'signup':
         return (
           <SignupViewContainer _handleNavigate= { this._handleNavigate } _goBack={ this._handleBackAction } />
+          <SignupView _handleNavigate={ this._handleNavigate } _goBack={ this._handleBackAction } />
         )
       case 'list':
         return (
