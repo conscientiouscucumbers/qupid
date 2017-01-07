@@ -22,7 +22,7 @@ class SignupView extends Component {
       lastName: '',
       email: '',
       password: '',
-      gender: 'male',
+      gender: 'm',
       dob: ''
     };
   }
@@ -39,7 +39,7 @@ class SignupView extends Component {
   }
 
   render() {
-    const addSignInButton = allFilled() ? (<Button onPress={ () => this.props.fetchNewUser(this.state, authRoute, this.props._handleNavigate) } label="Signup" />) : null;
+    const addSignInButton = this.allFilled() ? (<Button onPress={ () => this.props.fetchNewUser(this.state, authRoute, this.props._handleNavigate) } label="Signup" />) : null;
     return (
       <Container>
         <Content>
@@ -80,8 +80,8 @@ class SignupView extends Component {
                 mode="dropdown"
                 selectedValue={this.state.gender}
                 onValueChange={this.onValueChange.bind(this)}>
-                <Item label="Male" value="male" />
-                <Item label="Female" value="female" />
+                <Item label="Male" value="m" />
+                <Item label="Female" value="f" />
               </Picker>
             </ListItem>
           </List>
