@@ -18,6 +18,7 @@ export default function listState(state = initialState, action) {
       }
 
     case RECEIVE_AUTH:
+      console.log('ACTION USERINFO....', action.userInfo);
       return {
         ...state,
         isFetching: false,

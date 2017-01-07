@@ -34,13 +34,11 @@ export default class LogoutView extends Component {
   }
 
   componentWillMount() {
-    console.log('DEVICE INFO...', DeviceInfo);
     this.setState({ device_id: DeviceInfo.getUniqueID() });
     // function to check logged_in state using device_id
   }
 
   render() {
-    console.log('logout this.props', this.props);
     return (
       <Container>
         <Content>

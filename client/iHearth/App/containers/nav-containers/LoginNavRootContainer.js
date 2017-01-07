@@ -4,7 +4,8 @@ import { authPush, authPop, fetchUserInfoByDevice } from '../../actions/nav-acti
 
 function mapStateToProps(state) {
   return {
-    loginNavigation: state.loginNavReducer
+    loginNavigation: state.loginNavReducer,
+    userInfo: state.loginReducer
   }
 }
 

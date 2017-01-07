@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
 import QRCodeImageView from '../components/QRCodeImageView';
-// import { useCoupon } from '../actions/loginViewActions.js';
+import { useCoupon } from '../actions/QRCodeViewActions.js';
 
 function mapStateToProps(state) {
   return {
-    currentCoupon: state.couponReducer.couponInfo
+    currentCoupon: state.QRReducer
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    // useCoupon: () => { dispatch(useCoupon()) }
+    useCoupon: () => { dispatch(useCoupon()) }
   }
 }
 

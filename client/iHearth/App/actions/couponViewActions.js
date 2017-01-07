@@ -35,7 +35,6 @@ export function fetchCoupon(coupon_id) {
     return fetch(URL + 'coupon/' + coupon_id)
       .then(response => response.json())
       .then(json => {
-          console.log('coupon response from server...', json.couponInfo[0]);
           // Update app state with results of API call
           return dispatch(receiveSingleCoupon(json))
         })
