@@ -6,6 +6,14 @@ import Foundation from 'react-native-vector-icons/Foundation';
 import styles from './../styles';
 const Item = Picker.Item;
 
+const authRoute = {
+  type: 'push',
+  route: {
+    key: 'list',
+    title: 'ListView'
+  }
+};
+
 class SignupView extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +22,7 @@ class SignupView extends Component {
       lastName: '',
       email: '',
       password: '',
-      gender: 'male',
+      gender: 'm',
       dob: ''
     };
   }
@@ -22,9 +30,16 @@ class SignupView extends Component {
   onValueChange(value: string) {
     this.setState({ gender: value });
   }
+  allFilled(){
+    if(this.state.firstName.length === 0 || this.state.lastName.length === 0 || this.state.email.length === 0 || this.state.password.length === 0 || this.state.dob.length === 0 ){
+      return false;
+    }else{
+      return true;
+    }
+  }
 
   render() {
-    console.log('this.props', this.props);
+    const addSignInButton = this.allFilled() ? (<Button onPress={ () => this.props.fetchNewUser(this.state, authRoute, this.props._handleNavigate) } label="Signup" />) : null;
     return (
       <Container>
         <Content>
@@ -65,12 +80,12 @@ class SignupView extends Component {
                 mode="dropdown"
                 selectedValue={this.state.gender}
                 onValueChange={this.onValueChange.bind(this)}>
-                <Item label="Male" value="male" />
-                <Item label="Female" value="female" />
+                <Item label="Male" value="m" />
+                <Item label="Female" value="f" />
               </Picker>
             </ListItem>
           </List>
-          <Button onPress={ this.props._goBack } label='Create Account'></Button>
+          {addSignInButton}
           <Button onPress={ this.props._goBack } label='Cancel'></Button>
         </Content>
       </Container>
