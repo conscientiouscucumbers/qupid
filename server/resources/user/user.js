@@ -175,10 +175,10 @@ var userSignup = (params, callback) => {
         } else {
 
           // save reference to signedup user
-          var returnUserStr = `select * from user where email = "${params.email}"`;
+          var returnUserStr = `select * from user where email = "${params.email}" AND device_id = "${params.device_id}"`;
           db.query(returnUserStr, (err, selectedUser) => {
             if (err) {
-              console.log('could not find specific user with email and password');
+              console.log('could not find specific user with email and device_id');
               callback(err);
             } else {
 
