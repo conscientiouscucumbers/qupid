@@ -45,6 +45,10 @@ export function fetchAuth(loginInfo, route, callback) {
       .then(response => response.json())
       .then(json => {
           // Update app state with results of API call
+          if (json.error) {
+            // TO DO ///////////////////////////////
+            return;
+          }
           callback(route);
           return dispatch(receiveAuth(json))
         })
