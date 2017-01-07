@@ -32,8 +32,8 @@ var createCoupon = (params, callback) => {
 }
 module.exports.createCouponAsync = Promise.promisify(createCoupon);
 
-var retrieveOneCoupon = callback => {
-  var queryStr = 'select * from coupon where coupon_id=3';
+var retrieveOneCoupon = (params, callback) => {
+  var queryStr = `select * from coupon where coupon_id="${params.coupon_id}"`;
   db.query(queryStr, function(err, res) {
     if (err) {
       callback(err);

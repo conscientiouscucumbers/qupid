@@ -1,8 +1,4 @@
-import {
-  REQUEST_AUTH,
-  RECEIVE_AUTH,
-  RECEIVE_FAILED_AUTH
-} from '../constants/ActionTypes';
+import { REQUEST_NEWUSER, RECEIVE_NEWUSER } from '../constants/ActionTypes';
 
 const initialState = {
   isFetching: false,
@@ -11,23 +7,17 @@ const initialState = {
 
 export default function listState(state = initialState, action) {
   switch (action.type) {
-    case REQUEST_AUTH:
+    case REQUEST_NEWUSER:
       return {
         ...state,
         isFetching: true
       }
 
-    case RECEIVE_AUTH:
+    case RECEIVE_NEWUSER:
       return {
         ...state,
         isFetching: false,
         userInfo: action.userInfo,
-      }
-
-    case RECEIVE_FAILED_AUTH:
-      return {
-        ...state,
-        isFetching: false
       }
 
     default:

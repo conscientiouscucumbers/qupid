@@ -1,32 +1,20 @@
 // require('es6-promise').polyfill();
 // import fetch from 'isomorphic-fetch';
 
-import {
-  REQUEST_AUTH,
-  RECEIVE_AUTH,
-  RECEIVE_FAILED_AUTH
-} from '../constants/ActionTypes';
+import { REQUEST_NEWUSER, RECEIVE_NEWUSER } from '../constants/ActionTypes';
 import { URL } from '../constants/NetworkUrls';
 
 // Will change isFetching state of list to true
-function requestAuth() {
+function requestNewUser() {
   return {
-    type: REQUEST_AUTH,
+    type: REQUEST_NEWUSER,
   }
 }
 
-// Receive json and make isFetching false
-function receiveAuth(json) {
+function receiveNewUser(json) {
   return {
-    type: RECEIVE_AUTH,
-    userInfo: json // TODO [{email: }]
-  }
-}
-
-// Make isFetching false
-function receiveFailedAuth() {
-  return {
-    type: RECEIVE_FAILED_AUTH,
+    type: RECEIVE_NEWUSER,
+    newUserInfo: json // TODO [{email: }]
   }
 }
 
@@ -34,39 +22,37 @@ function receiveFailedAuth() {
 // customize dispatches, in this case, delay until response is received
 // Use like other action creators
 // store.dispatch(fetchPosts('reactjs'))
-export function fetchAuth(loginInfo, route, callback) {
+export function fetchNewUser(newUserInfo, route, callback) {
+  console.log('clicked in fetchNewUser', newUserInfo, route, callback );
   // Pass dispatch method as an argument
   // Allowing the thunk to dispatch actions itself
-  
+
   return dispatch => {
     // First synchronously dispatch updates to signal
     // the start of the API call
-    dispatch(requestAuth());
-    
-    var request = new Request(URL + 'user/login', {
-      method: 'POST', 
-      // mode: 'cors', 
+    dispatch(requestNewUser());
+
+    var request = new Request(URL + 'user/', {
+      method: 'POST',
+      // mode: 'cors',
       // redirect: 'follow',
       headers: new Headers({
         'Content-Type': 'application/json'
       }),
-      body: JSON.stringify(loginInfo)
+      body: JSON.stringify(newUserInfo)
     });
 
     return fetch(request)
       .then(response => response.json())
       .then(json => {
           // Update app state with results of API call
-          if (json.error) {
-            return dispatch(receiveFailedAuth());            
-          }
           callback(route);
-          return dispatch(receiveAuth(json));
+          return dispatch(receiveNewUser(json))
         })
 
       // Catch errors
       .catch((err) => {
-        console.error('Error in authorizing login in loginViewActions.js', err.message);
+        console.error('Error in authorizing signup in signupViewActions.js', err.message);
       })
   }
 }
