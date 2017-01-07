@@ -105,7 +105,7 @@ var userLogin = (params, callback) => {
       callback(err);
     } else {
       loggedInUser = user[0];
-      console.log('successfully logged in user = ', user[0]);
+      console.log('successfully found user to log in = ', user[0]);
       var loginStr = `update user set logged_in = true, device_id = "${params.device_id}" where email = "${params.email}" && password = "${params.password}"`;
       db.query(loginStr, (err, loggedIn) => {
         if (err) {
@@ -122,21 +122,25 @@ var userLogin = (params, callback) => {
 module.exports.userLoginAsync = Promise.promisify(userLogin);
 
 var userLogout = (params, callback) => {
-  var queryStr = `select * from user where email = "${params.email}" && password = "${params.password}"`;
+  var loggedOutUser;
+  // var queryStr = `select * from user where email = "${params.email}" && password = "${params.password}"`;
+  var queryStr = `select * from user where device_id = "${params.device_id}"`;
   db.query(queryStr, (err, user) => {
     if (err) {
       console.log('could not find user in user table');
       callback(err);
     } else {
-      console.log('successfully logged out user');
-      var loginStr = `update user set logged_in = false where email = "${params.email}" && password = "${params.password}"`;
-      db.query(loginStr, (err, loggedOut) => {
+      loggedOutUser = user[0];
+      console.log('successfully found user to log out = ', user[0]);
+      // var logoutStr = `update user set logged_in = false device_id = "${params.device_id}" where email = "${params.email}" && password = "${params.password}"`;
+      var logoutStr = `update user set logged_in = false where device_id = "${params.device_id}"`;
+      db.query(logoutStr, (err, loggedOut) => {
         if (err) {
           console.log('could not set user as logged out');
           callback(err);
         } else {
           console.log('successfully updated database so that user is logged out');
-          callback(null, loggedOut);
+          callback(null, loggedOutUser);
         }
       });
     }

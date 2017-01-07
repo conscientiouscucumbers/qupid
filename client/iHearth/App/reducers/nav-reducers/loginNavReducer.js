@@ -1,8 +1,8 @@
-import { 
-  AUTH_PUSH_ROUTE, 
+import {
+  AUTH_PUSH_ROUTE,
   AUTH_POP_ROUTE,
   REQUEST_USER_INFO_BY_DEVICE,
-  RECEIVE_USER_INFO_BY_DEVICE 
+  RECEIVE_USER_INFO_BY_DEVICE
 } from '../../constants/ActionTypes';
 import { NavigationExperimental } from 'react-native';
 const {
@@ -11,7 +11,7 @@ const {
 
 const initialState = {
   index: 0,
-  key: 'loginRoot', 
+  key: 'loginRoot',
   isFetching: false,
   routes: [
     {

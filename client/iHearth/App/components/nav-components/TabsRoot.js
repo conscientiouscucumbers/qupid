@@ -15,7 +15,7 @@ class Tabs extends Component {
       case 'home':
         return <Home />
       case 'settings':
-        return <Settings />
+        return <Settings _handleNavigate={ this._handleNavigate } _goBack={ this._handleBackAction} />
     }
   }
 
