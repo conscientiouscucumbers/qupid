@@ -74,7 +74,7 @@ class SignupView extends Component {
             </ListItem>
             <ListItem iconLeft>
               <Foundation name="male-female" style={{ color: '#0A69FE', fontSize: 30 }} />
-              <Text>  Gender</Text>
+              <Text> Gender</Text>
               <Picker
                 iosHeader="Select one"
                 mode="dropdown"
