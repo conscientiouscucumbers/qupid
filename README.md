@@ -23,7 +23,8 @@
 - Create a user account
 - Estimote beacons are constantly emitted a low energy bluetooth signal, coupons are automatically sent to users via push notification when they are within close proximity of an Estimote beacon 
 - Users can browse through coupons and sort by used, expired, activated, store, etc.
-- Users can select coupons to use which will bring up a randomly generated QR code for checkout
+- Users can select coupons to use which will bring up a randomly generated QR code for checkout 
+  
 ### Business Owners  
 - Create a business owner account
 - Business owners can register Estimote beacons that are placed in various areas/sections in their stores
