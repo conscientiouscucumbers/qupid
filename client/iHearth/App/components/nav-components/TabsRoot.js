@@ -53,14 +53,14 @@ class Tabs extends Component {
   }
 
   render() {
-    const tabs = this.props.tabs.tabs.map((tab, i) => {
+    const tabs = this.props.tabs.map((tab, i) => {
       return (
         <TabBarIOS.Item key={ tab.key }
           icon={ tab.icon }
           selectedIcon={ tab.selectedIcon }
           title={ tab.title }
           onPress={ () => this._changeTab(i) }
-          selected={ this.props.tabs.index === i } >
+          selected={ this.props.index === i } >
           { this._renderTabContent(tab.key) }
         </TabBarIOS.Item>
       )

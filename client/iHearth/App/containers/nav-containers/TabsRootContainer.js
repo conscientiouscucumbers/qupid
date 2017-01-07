@@ -4,7 +4,8 @@ import { changeTab } from '../../actions/nav-actions/tabsRootActions';
 
 function mapStateToProps(state) {
   return {
-    tabs: state.tabReducer
+    index: state.tabReducer.index,
+    tabs: state.tabReducer.tabs
   }
 }
 
