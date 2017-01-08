@@ -4,7 +4,12 @@ import Button from './global-components/Button';
 import { Container, Content, List, ListItem, InputGroup, Input, Icon, Picker } from 'native-base';
 import Foundation from 'react-native-vector-icons/Foundation';
 import styles from './../styles';
+import DatePicker from 'react-native-datepicker';
 const Item = Picker.Item;
+import { Sae, Fumi, Kohana, Makiko, Isao, Hoshi, Jiro, Kaede,
+         Akira, Madoka, Hideo, } from 'react-native-textinput-effects';
+import { SegmentedControls } from 'react-native-radio-buttons';
+import createFragment from 'react-addons-create-fragment';
 
 const authRoute = {
   type: 'push',
@@ -18,74 +23,111 @@ class SignupView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
+      first_name: '',
+      last_name: '',
       email: '',
       password: '',
-      gender: 'm',
+      gender: 'male',
       dob: ''
     };
   }
 
-  onValueChange(value: string) {
-    this.setState({ gender: value });
-  }
-  allFilled(){
-    if(this.state.firstName.length === 0 || this.state.lastName.length === 0 || this.state.email.length === 0 || this.state.password.length === 0 || this.state.dob.length === 0 ){
+  // onValueChange(value: string) {
+  //   this.setState({ gender: value });
+  // }
+  allFilled() {
+    if (this.state.first_name.length === 0 || this.state.last_name.length === 0 || this.state.email.length === 0 || this.state.password.length === 0 || this.state.dob.length === 0 ){
       return false;
-    }else{
+    } else {
       return true;
     }
   }
 
+  setSelectedOption(gender) {
+    this.setState({ gender });
+  }
+
   render() {
-    const addSignInButton = this.allFilled() ? (<Button onPress={ () => this.props.fetchNewUser(this.state, authRoute, this.props._handleNavigate) } label="Signup" />) : null;
+    var options = createFragment(
+      {
+        left: 'male',
+        right: 'female'
+      }
+    );
+    var addSignInButton = this.allFilled() ?
+      (<View style={{ marginBottom: 10 }}><Button onPress={ () => this.props.fetchNewUser(this.state, authRoute, this.props._handleNavigate) } label="Signup" /></View>) :
+      <Text style={{ textAlign: 'center', marginBottom: 10, fontSize: 16, color: '#a30180' }}>Please fill out all fields</Text>;
     return (
       <Container>
         <Content>
           <Text style={styles.titleTwo}>SignUpView</Text>
-          <List style={styles.login}>
-            <ListItem>
-              <InputGroup>
-                <Input placeholder="first" inlineLabel label="First Name" value={this.state.firstName} autoCapitalize="none" borderType="rounded" onChangeText={(text) => this.setState({firstName:text})} />
-              </InputGroup>
-            </ListItem>
-            <ListItem>
-              <InputGroup>
-                <Input placeholder="last" inlineLabel label="Last Name" value={this.state.lastName} autoCapitalize="none" borderType="rounded" onChangeText={(text) => this.setState({lastName:text})} />
-              </InputGroup>
-            </ListItem>
-            <ListItem>
-              <InputGroup>
-                <Input value={this.state.dob} onChangeText={(text) => this.setState({dob:text})}inlineLabel label="Date of Birth" placeholder="YYYY-MM-DD" />
-              </InputGroup>
-            </ListItem>
-            <ListItem>
-              <InputGroup>
-                <Icon name="ios-person" style={{ color: '#0A69FE' }} />
-                <Input placeholder="Email" value={this.state.email} autoCapitalize="none" onChangeText={(text) => this.setState({email:text})} />
-              </InputGroup>
-            </ListItem>
-            <ListItem>
-              <InputGroup>
-                <Icon name="ios-unlock" style={{ color: '#0A69FE' }} />
-                <Input value={this.state.password} onChangeText={(text) => this.setState({password:text})} placeholder="Password" secureTextEntry />
-              </InputGroup>
-            </ListItem>
-            <ListItem iconLeft>
-              <Foundation name="male-female" style={{ color: '#0A69FE', fontSize: 30 }} />
-              <Text> Gender</Text>
-              <Picker
-                iosHeader="Select one"
-                mode="dropdown"
-                selectedValue={this.state.gender}
-                onValueChange={this.onValueChange.bind(this)}>
-                <Item label="Male" value="m" />
-                <Item label="Female" value="f" />
-              </Picker>
+            <Isao
+              label={'First Name'}
+              activeColor={'#a30180'}
+              passiveColor={'#f80046'}
+              value={this.state.first_name}
+              autoCapitalize="none"
+              onChangeText={(text) => this.setState({first_name: text})}
+            />
+            <Isao
+              label={'Last Name'}
+              activeColor={'#a30180'}
+              passiveColor={'#f80046'}
+              value={this.state.last_name}
+              autoCapitalize="none"
+              onChangeText={(text) => this.setState({last_name: text})}
+            />
+            <List>
+              <ListItem>
+                <Text style={{left: 10, top: 10, fontSize: 16, color: '#a30180'}}>Date of Birth</Text>
+                  <DatePicker
+                    style={{width: 250, left: 50}}
+                    date={this.state.dob}
+                    mode="date"
+                    placeholder="Select Date of Birth"
+                    format="YYYY-MM-DD"
+                    minDate="1917-01-01"
+                    maxDate="2017-01-01"
+                    confirmBtnText="Confirm"
+                    cancelBtnText="Cancel"
+                    onDateChange={(date) => {this.setState({dob: date})}}
+                  />
+              </ListItem>
+            </List>
+            <Isao
+              label={'Email'}
+              activeColor={'#a30180'}
+              passiveColor={'#f80046'}
+              value={this.state.email}
+              autoCapitalize="none"
+              onChangeText={(text) => this.setState({email: text})}
+            />
+            <Isao
+              label={'Password'}
+              activeColor={'#a30180'}
+              passiveColor={'#f80046'}
+              value={this.state.password}
+              autoCapitalize="none"
+              onChangeText={(text) => this.setState({password: text})}
+              secureTextEntry
+            />
+            <Text style={{ textAlign: 'center', marginTop: 10, fontSize: 16, color: '#a30180' }}>Gender</Text>
+            <List>
+              <ListItem>
+                <SegmentedControls
+                  tint={'#f80046'}
+                  selectedTint= {'white'}
+                  backTint= {'#555555'}
+                  options={ options }
+                  allowFontScaling={ false }
+                  onSelection={this.setSelectedOption.bind(this)}
+                  selectedOption={ this.state.gender }
+                  optionStyles={{fontFamily: 'AvenirNext-Medium'}}
+                  optionContainerStyle={{flex: 1}}
+                />
             </ListItem>
           </List>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View>
           {addSignInButton}
           <Button onPress={ this.props._goBack } label='Cancel'></Button>
           </View>
