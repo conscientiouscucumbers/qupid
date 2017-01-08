@@ -60,10 +60,10 @@ export default class LoginView extends Component {
               </InputGroup>
             </ListItem>
           </List>
-          <List style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
-        <Button onPress={ () => this.props._handleNavigate(route) } label='New User? Sign up!' />
-        <Button onPress={ () => this.props.fetchAuth(this.state, authRoute, this.props._handleNavigate) } label="Log in" />
-        </List>
+          <List>
+            <Button onPress={ () => this.props._handleNavigate(route) } label='New User? Sign up!' />
+            <Button onPress={ () => this.props.fetchAuth(this.state, authRoute, this.props._handleNavigate) } label="Log in" />
+          </List>
         </Content>
       </Container>
     )

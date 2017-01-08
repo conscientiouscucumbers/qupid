@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import { Image, View } from 'react-native';
 // import ListViewEntry from './ListViewEntry';
 import { Container, Content, Card, CardItem, Text, Button } from 'native-base';
+import QRCode from 'react-native-qrcode';
 
 export default class QRCodeImageView extends Component {
   constructor(props) {
@@ -18,7 +19,14 @@ export default class QRCodeImageView extends Component {
         <Content>
           <Card style={{ flex: 0 }}>
             <CardItem cardBody>
-              <Image style={{width: 200, height: 200, alignSelf: 'center'}} source={require('iHearth/assets/img/QRcode.png')} />
+              <View style={{ alignSelf: 'center' }}>
+                <QRCode
+                  value={this.props.currentCoupon.couponInfo.qrcode}
+                  size={200}
+                  bgColor='purple'
+                  fgColor='white'
+                />
+              </View>
               <Text style={{fontWeight: 'bold', textAlign: 'center'}}>QR Code to Scan</Text>
               <Button onPress={ () => { this.props.useCoupon(
                 this.user_id,

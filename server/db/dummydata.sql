@@ -32,13 +32,13 @@ values ('beardpapas@gmail.com', 'password', 'Beard Papas', '744 Market Street', 
 
 -- // coupon
 insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (1, '$5 off hoodie', 'qrcode1', 'https://facebook.github.io/react/img/logo_og.png', 'Hoodie', 'Super Warm Hoodie', 10.00, 5.00, 5.00, '2017-01-05 16:00:00', '2017-01-29 18:00:00');
+values (1, 'qrcode1', '$5 off hoodie', 'https://facebook.github.io/react/img/logo_og.png', 'Hoodie', 'Super Warm Hoodie', 10.00, 5.00, 5.00, '2017-01-05 16:00:00', '2017-01-29 18:00:00');
 
 insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (2, '$20 off sneakers', 'qrcode2', 'https://facebook.github.io/react/img/logo_og.png', 'Shoes', 'KangaROOS Sneakers', 120.00, 100.00, 20.00, '2017-01-05 01:00:00', '2017-01-29 03:00:00');
+values (2, 'qrcode2', '$20 off sneakers', 'https://facebook.github.io/react/img/logo_og.png', 'Shoes', 'KangaROOS Sneakers', 120.00, 100.00, 20.00, '2017-01-05 01:00:00', '2017-01-29 03:00:00');
 
 insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (3, '$4 off shampoo', 'qrcode3', 'https://facebook.github.io/react/img/logo_og.png', 'Shampoo', 'Suave Biotin Infusion', 8.00, 4.00, 4.00, '2017-01-06 03:00:00', '2017-02-10 09:00:00');
+values (3, 'qrcode3', '$4 off shampoo', 'https://facebook.github.io/react/img/logo_og.png', 'Shampoo', 'Suave Biotin Infusion', 8.00, 4.00, 4.00, '2017-01-06 03:00:00', '2017-02-10 09:00:00');
 
 
 -- // beacon
