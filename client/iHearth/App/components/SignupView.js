@@ -85,8 +85,10 @@ class SignupView extends Component {
               </Picker>
             </ListItem>
           </List>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
           {addSignInButton}
           <Button onPress={ this.props._goBack } label='Cancel'></Button>
+          </View>
         </Content>
       </Container>
     );
