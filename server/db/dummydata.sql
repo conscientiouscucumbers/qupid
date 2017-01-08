@@ -2,7 +2,7 @@
 --dummy data
 -- // user
 insert into user (email, password, logged_in, device_id, first_name, last_name, dob, gender, total_savings)
-values ('jamesgu@gmail.com', 'password', false, 'jamesdeviceid', 'James', 'Gu', '1993-05-21 12:00:00', 'm', 100.00);
+values ('a', 'a', false, 'jamesdeviceid', 'James', 'Gu', '1993-05-21 12:00:00', 'm', 100.00);
 
 insert into user (email, password, logged_in, device_id, first_name, last_name, dob, gender, total_savings)
 values ('keepthemonochrome@gmail.com', 'password', false, 'susandeviceid', 'Susan', 'Hong', '1994-08-19 12:00:00', 'f', 99.00);

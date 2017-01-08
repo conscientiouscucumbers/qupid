@@ -1,7 +1,7 @@
 // require('es6-promise').polyfill();
 // import fetch from 'isomorphic-fetch';
 
-import { REQUEST_AUTH, RECEIVE_AUTH } from '../constants/ActionTypes';
+import { USER_LOGOUT, REQUEST_AUTH, RECEIVE_AUTH } from '../constants/ActionTypes';
 import { URL } from '../constants/NetworkUrls';
 
 // Will change isFetching state of list to true
@@ -15,6 +15,12 @@ function receiveAuth(json) {
   return {
     type: RECEIVE_AUTH,
     userInfo: json // TODO [{email: }]
+  }
+}
+
+function resetState() {
+  return {
+    type: USER_LOGOUT
   }
 }
 
@@ -50,7 +56,11 @@ export function fetchAuth(logoutInfo, route, callback) {
             return;
           }
           callback(route);
-          return dispatch(receiveAuth(json))
+          dispatch(receiveAuth(json));
+          
+          // Reset all state at rootReducer level
+          dispatch(resetState());
+          return;
         })
 
       // Catch errors
