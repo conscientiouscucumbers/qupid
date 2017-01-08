@@ -73,9 +73,11 @@ export function fetchUserInfoByDevice(route, callback) {
           if (json.error) {
             return;
           } else {
-            callback(route);
             // On success dispatch to set loginView state if automatically signed in
-            return dispatch(receiveAuth(json[0]));
+            dispatch(receiveAuth(json[0]));
+            // Navigate automatically to tabsroot
+            callback(route);
+            return;
           }
         })
 

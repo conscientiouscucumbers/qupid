@@ -61,7 +61,7 @@ var retrieveUserCoupons = (params, callback) => {
       callback(err);
     } else {
       console.log('successfully found coupons for user with user_id', params.user_id);
-      callback(null, coupon);
+      callback(null, coupons);
     }
   });
 };
