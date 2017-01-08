@@ -1,3 +1,7 @@
+// To view state tree:
+// Pass down store to this prop and
+// console.log(this.props.store.getState());
+
 import React, { Component } from 'react';
 import LoginViewContainer from '../../containers/LoginViewContainer';
 import SignupViewContainer from '../../containers/SignupViewContainer';
@@ -63,7 +67,6 @@ export default class LoginNavRoot extends Component {
   }
 
   render() {
-    console.log('THIS PROPS IN NAVROOT......', this.props)
     return (
       <NavigationCardStack
       direction='horizontal'

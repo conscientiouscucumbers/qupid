@@ -8,8 +8,9 @@ import listReducer from './listReducer';
 import loginReducer from './loginReducer';
 import logoutReducer from './logoutReducer';
 import QRReducer from './QRReducer';
+import { USER_LOGOUT } from '../constants/ActionTypes';
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   navReducer,
   tabReducer,
   loginNavReducer,
@@ -21,4 +22,14 @@ const rootReducer = combineReducers({
   QRReducer
 });
 
+// Ultimate reducer to reset state on logout
+const rootReducer = (state, action) => {
+  if (action.type === USER_LOGOUT) {
+    state = undefined;
+  }
+
+  return appReducer(state, action);
+}
+
 export default rootReducer;
+
