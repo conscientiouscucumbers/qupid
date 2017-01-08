@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import TabsRoot from '../../components/nav-components/TabsRoot';
-import { changeTab, listenBeacon } from '../../actions/nav-actions/tabsRootActions';
+import { changeTab, listenBeacon, fetchBeaconCoupons } from '../../actions/nav-actions/tabsRootActions';
 
 function mapStateToProps(state) {
   return {
@@ -14,7 +14,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     changeTab: (route) => dispatch(changeTab(route)),
-    listenBeacon: (beacons) => dispatch(listenBeacon(beacons))
+    listenBeacon: (beacons) => dispatch(listenBeacon(beacons)),
+    fetchBeaconCoupons: (user_id, beacon_uuid) => dispatch(fetchBeaconCoupons(user_id, beacon_uuid))
   }
 }
 

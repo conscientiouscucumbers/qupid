@@ -34,12 +34,14 @@ class Tabs extends Component {
     Beacons.requestWhenInUseAuthorization();
     Beacons.startRangingBeaconsInRegion(this.props.region);
     Beacons.startUpdatingLocation();
+    Beacons.shouldDropEmptyRanges(true);
     DeviceEventEmitter.addListener(
       'beaconsDidRange',
       (data) => {
         if(data['beacons'].length!==0){
           if(data['beacons'][0]['proximity'] === 'far' || data['beacons'][0]['proximity'] === 'near'){
             this._listenBeacon(data['beacons'][0]);
+            this.props.fetchBeaconCoupons(1,'UUID1');
             Beacons.stopUpdatingLocation(); // doesn't seem like it's working.. but it's okay for now.
           }
         }
@@ -48,12 +50,13 @@ class Tabs extends Component {
   }
 
   render() {
+    console.log(this.props.pushedCoupons);
     const tabs = this.props.tabs.map((tab, i) => {
       return (
         <TabBarIOS.Item key={ tab.key }
           icon={ tab.icon }
           selectedIcon={ tab.selectedIcon }
-          title={ tab.title }
+          title={ this.props.pushedCoupons === undefined? "null" : this.props.pushedCoupons[0].title }
           onPress={ () => this._changeTab(i) }
           selected={ this.props.index === i } >
           { this._renderTabContent(tab.key) }

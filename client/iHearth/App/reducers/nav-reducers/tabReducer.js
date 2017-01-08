@@ -1,4 +1,4 @@
-import { CHANGE_TAB, LISTEN_BEACON } from '../../constants/ActionTypes';
+import { CHANGE_TAB, LISTEN_BEACON, BEACON_REQUEST_COUPONS, BEACON_RECEIVE_COUPONS } from '../../constants/ActionTypes';
 
 const settingsIcon = {
   scale: 2.3,
@@ -32,7 +32,9 @@ const initialState = {
   index: 0,
   tabs,
   region,
-  beacons
+  beacons,
+  isFetching: false,
+  pushedCoupons: []
 }
 
 function tabsNav (state = initialState, action) {
@@ -47,6 +49,17 @@ function tabsNav (state = initialState, action) {
       return {
         ...state,
         beacons: action.beacons
+      }
+    case BEACON_REQUEST_COUPONS:
+      return {
+        ...state,
+        isFetching: true
+      }
+    case BEACON_RECEIVE_COUPONS:
+      return {
+        ...state,
+        isFetching: false,
+        pushedCoupons: action.pushedCoupons
       }
     default:
       return state;
