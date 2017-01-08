@@ -20,7 +20,7 @@ export default class CouponDescriptionView extends Component {
   // Coupon rendering will be handled from listView due to the need to fetch the
   // corresponding coupon to which was clicked
   render() {
-    let couponInfo = this.props.couponInfo[0];
+    let couponInfo = this.props.couponInfo;
     return (
       <Container>
         <Content>

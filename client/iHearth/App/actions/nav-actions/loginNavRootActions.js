@@ -70,7 +70,7 @@ export function fetchUserInfoByDevice(route, callback) {
           dispatch(receiveUserInfoByDevice())
 
           // Dispatch to set loginView state to reference info later
-          dispatch(receiveAuth(json));
+          dispatch(receiveAuth(json[0]));
 
           // if no error then navigate to home page
           if (json.error) {

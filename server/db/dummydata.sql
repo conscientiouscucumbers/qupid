@@ -11,14 +11,14 @@ insert into user (email, password, logged_in, device_id, first_name, last_name, 
 values ('joshuapeng7@gmail.com', 'password', false, 'joshdeviceid', 'Josh', 'Peng', '1985-10-20 12:00:00', 'm', 98.00);
 
 -- // user_coupon
-insert into user_coupon (used, expired, activated, id_user, id_coupon)
-values (false, false, true, 1, 1);
+insert into user_coupon (user_id, coupon_id, used, expired, activated)
+values (1, 1, false, false, true);
 
-insert into user_coupon (used, expired, activated, id_user, id_coupon)
-values (false, false, true, 2, 1);
+insert into user_coupon (user_id, coupon_id, used, expired, activated)
+values (2, 1, false, false, true);
 
-into into user_coupon (used, expired, activated, id_user, id_coupon)
-values (false, false, true, 2, 2);
+insert into user_coupon (user_id, coupon_id, used, expired, activated)
+values (2, 2, false, false, true);
 
 -- // business
 insert into business (email, password, company_name, address, city, state, zipcode)

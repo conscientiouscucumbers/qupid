@@ -10,7 +10,7 @@ const initialState = {
     title: '',
     // image:'iHearth/App/lib/img/jacket.jpeg',
     // image:'../lib/img/jacket.jpeg',
-    image:'',
+    image:'null',
     item_name: '',
     description: '',
     original_price: '',
