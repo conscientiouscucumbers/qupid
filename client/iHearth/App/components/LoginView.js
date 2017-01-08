@@ -5,6 +5,8 @@ import { Container, Content, List, ListItem, InputGroup, Input, Icon, Picker } f
 import styles from './../styles';
 import { URL } from '../constants/NetworkUrls';
 import DeviceInfo from 'react-native-device-info';
+import { Sae, Fumi, Kohana, Makiko, Isao, Hoshi, Jiro, Kaede,
+         Akira, Madoka, Hideo, } from 'react-native-textinput-effects';
 
 const Item = Picker.Item;
 
@@ -46,22 +48,29 @@ export default class LoginView extends Component {
       <Container>
         <Content>
           <Text style={styles.titleTwo}>LoginView</Text>
-          <List style={styles.login}>
-            <ListItem>
-              <InputGroup>
-                <Icon name="ios-person" style={{ color: '#0A69FE' }} />
-                <Input placeholder="Email" value={this.state.email} autoCapitalize="none" onChangeText={(text) => this.setState({email:text})} />
-              </InputGroup>
-            </ListItem>
-            <ListItem>
-              <InputGroup>
-                <Icon name="ios-unlock" style={{ color: '#0A69FE' }} />
-                <Input placeholder="Password" value={this.state.password} onChangeText={(text) => this.setState({password:text})} secureTextEntry />
-              </InputGroup>
-            </ListItem>
+            <List style={{ marginBottom: 40 }}>
+              <Isao
+                label={'Email'}
+                activeColor={'#a30180'}
+                passiveColor={'#f80046'}
+                value={this.state.email}
+                autoCapitalize="none"
+                onChangeText={(text) => this.setState({email: text})}
+              />
+              <Isao
+                label={'Password'}
+                activeColor={'#a30180'}
+                passiveColor={'#f80046'}
+                value={this.state.password}
+                autoCapitalize="none"
+                onChangeText={(text) => this.setState({password: text})}
+                secureTextEntry
+              />
           </List>
           <List>
             <Button onPress={ () => this.props._handleNavigate(route) } label='New User? Sign up!' />
+          </List>
+          <List style={{ marginTop: 10 }}>
             <Button onPress={ () => this.props.fetchAuth(this.state, authRoute, this.props._handleNavigate) } label="Log in" />
           </List>
         </Content>

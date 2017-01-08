@@ -11,7 +11,7 @@ create table user (
   first_name varchar(50) not null,
   last_name varchar(50) not null,
   dob datetime not null,
-  gender varchar(1) not null,
+  gender varchar(10) not null,
   total_savings float(2) not null default 0,
   primary key (user_id)
 );
@@ -32,7 +32,6 @@ create table business (
 create table coupon (
   coupon_id int not null auto_increment,
   business_id int,
-  qrcode varchar(100) not null,
   title varchar(300) not null,
   image varchar(300) not null,
   item_name varchar(100) not null,

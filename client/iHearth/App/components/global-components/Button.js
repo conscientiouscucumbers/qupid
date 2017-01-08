@@ -19,7 +19,7 @@ export default ({ label, onPress }) => (
   <ButtonComponent
     type="primary"
     shape="rectangle"
-    backgroundColors={['#4DC7A4', '#66D37A']}
+    backgroundColors={['#a30180', '#f80046']}
     gradientStart={{ x: 0.5, y: 1 }}
     gradientEnd={{ x: 1, y: 1 }}
     height={80}
