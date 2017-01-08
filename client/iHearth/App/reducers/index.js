@@ -7,6 +7,7 @@ import couponReducer from './couponReducer';
 import listReducer from './listReducer';
 import loginReducer from './loginReducer';
 import logoutReducer from './logoutReducer';
+import signupReducer from './logoutReducer';
 import QRReducer from './QRReducer';
 import { USER_LOGOUT } from '../constants/ActionTypes';
 
@@ -19,6 +20,7 @@ const appReducer = combineReducers({
   listReducer,
   loginReducer,
   logoutReducer,
+  signupReducer,
   QRReducer
 });
 
@@ -32,4 +34,3 @@ const rootReducer = (state, action) => {
 }
 
 export default rootReducer;
-

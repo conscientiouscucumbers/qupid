@@ -4,6 +4,7 @@ import Button from './global-components/Button';
 import { Container, Content, List, ListItem, InputGroup, Input, Icon, Picker } from 'native-base';
 import Foundation from 'react-native-vector-icons/Foundation';
 import styles from './../styles';
+import DeviceInfo from 'react-native-device-info';
 import DatePicker from 'react-native-datepicker';
 const Item = Picker.Item;
 import { Sae, Fumi, Kohana, Makiko, Isao, Hoshi, Jiro, Kaede,
@@ -25,6 +26,8 @@ class SignupView extends Component {
     this.state = {
       first_name: '',
       last_name: '',
+      device_id: '',
+      logged_in: true,
       email: '',
       password: '',
       gender: 'male',
@@ -32,10 +35,17 @@ class SignupView extends Component {
     };
   }
 
+  componentDidMount() {
+    this.setState({ device_id: DeviceInfo.getUniqueID() });
+    // function to check logged_in state using device_id
+  }
+
   // onValueChange(value: string) {
   //   this.setState({ gender: value });
   // }
   allFilled() {
+    console.log('signup state', this.state);
+    console.log('signup props', this.props);
     if (this.state.first_name.length === 0 || this.state.last_name.length === 0 || this.state.email.length === 0 || this.state.password.length === 0 || this.state.dob.length === 0 ){
       return false;
     } else {
