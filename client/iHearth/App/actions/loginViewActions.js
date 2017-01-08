@@ -60,8 +60,9 @@ export function fetchAuth(loginInfo, route, callback) {
           if (json.error) {
             return dispatch(receiveFailedAuth());            
           }
+          dispatch(receiveAuth(json));
           callback(route);
-          return dispatch(receiveAuth(json));
+          return;
         })
 
       // Catch errors

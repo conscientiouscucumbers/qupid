@@ -27,7 +27,10 @@ export default class ListView extends Component {
 
   // Before rendering, get state from server
   componentWillMount() {
-    this.props.fetchCoupons();
+    console.log('USER INFO...', this.props);
+    console.log(this.props.userInfo.userInfo.user_id)
+    this.user_id = this.props.userInfo.userInfo.user_id;
+    this.props.fetchCoupons(this.user_id);
   }
 
   render() {
