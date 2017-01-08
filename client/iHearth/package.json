@@ -19,6 +19,7 @@
     "react-native-bluetooth-state": "^2.0.0",
     "react-native-device-info": "^0.9.7",
     "react-native-ibeacon": "^0.6.0",
+    "react-native-qrcode": "^0.2.3",
     "react-redux": "^5.0.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
