@@ -47,7 +47,6 @@ class Tabs extends Component {
     );
   }
 
-
   render() {
     const tabs = this.props.tabs.map((tab, i) => {
       return (

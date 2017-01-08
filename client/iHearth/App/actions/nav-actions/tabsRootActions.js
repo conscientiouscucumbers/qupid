@@ -8,11 +8,7 @@ export function changeTab(index) {
   }
 };
 
-
 export function listenBeacon(beacons) {
-  console.log('listenBeacon func dispatched as');
-  console.log( beacons);
-  console.log( beacons['proximity']);
   return {
     type: LISTEN_BEACON,
     beacons
