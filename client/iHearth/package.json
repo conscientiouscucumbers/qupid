@@ -25,6 +25,7 @@
     "react-native-ibeacon": "^0.6.0",
     "react-native-linear-gradient": "^1.6.2",
     "react-native-material-ui": "^1.5.0",
+    "react-native-multi-select": "^0.1.1",
     "react-native-qrcode": "^0.2.3",
     "react-native-radio-buttons": "^0.13.0",
     "react-native-textinput-effects": "^0.3.0",
