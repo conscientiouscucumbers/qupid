@@ -7,7 +7,8 @@ import { _handleNavigate } from '../lib/utils/navUtils';
 
 function mapStateToProps(state) {
   return {
-    coupons: state.listReducer
+    coupons: state.listReducer,
+    userInfo: state.loginReducer
   }
 }
 
