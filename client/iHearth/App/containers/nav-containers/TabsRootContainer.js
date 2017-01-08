@@ -7,7 +7,8 @@ function mapStateToProps(state) {
     index: state.tabReducer.index,
     tabs: state.tabReducer.tabs,
     region: state.tabReducer.region,
-    beacons: state.tabReducer.beacons
+    beacons: state.tabReducer.beacons,
+    // pushedCoupons: state.tabReducer.pushedCoupons
   }
 }
 

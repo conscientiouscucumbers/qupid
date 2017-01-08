@@ -38,7 +38,7 @@ class Tabs extends Component {
     DeviceEventEmitter.addListener(
       'beaconsDidRange',
       (data) => {
-        if(data['beacons'].length!==0){
+        if(data['beacons'].length !==0 ){
           if(data['beacons'][0]['proximity'] === 'far' || data['beacons'][0]['proximity'] === 'near'){
             this._listenBeacon(data['beacons'][0]);
             this.props.fetchBeaconCoupons(1,'UUID1');
@@ -50,17 +50,21 @@ class Tabs extends Component {
   }
 
   render() {
-    console.log(this.props.pushedCoupons);
+    // console.log(this.props.pushedCoupons);
+    // let temp;
+    // this.props.pushedCoupons[0] === undefined? temp="null" : temp=this.props.pushedCoupons[0].title
+    // console.log(temp);
     const tabs = this.props.tabs.map((tab, i) => {
       return (
         <TabBarIOS.Item key={ tab.key }
           icon={ tab.icon }
           selectedIcon={ tab.selectedIcon }
-          title={ this.props.pushedCoupons === undefined? "null" : this.props.pushedCoupons[0].title }
+          title={ tab.title }
           onPress={ () => this._changeTab(i) }
           selected={ this.props.index === i } >
           { this._renderTabContent(tab.key) }
         </TabBarIOS.Item>
+
       )
     })
     return (

@@ -65,7 +65,7 @@ export function fetchUserInfoByDevice(route, callback) {
     return fetch(URL + 'user/device_id/' + DeviceInfo.getUniqueID())
       .then(response => response.json())
       .then(json => {
-          
+
           // Change isFetching to false
           dispatch(receiveUserInfoByDevice())
 
@@ -83,7 +83,7 @@ export function fetchUserInfoByDevice(route, callback) {
 
       // Catch errors
       .catch((err) => {
-        console.error('Error in fetching user info by device in listViewActions.js', err.message);
+        console.error('Error in fetching user info by device in longinNavRootActions.js', err.message);
       })
   }
 

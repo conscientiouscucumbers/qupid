@@ -8,7 +8,8 @@ import { _handleNavigate } from '../lib/utils/navUtils';
 function mapStateToProps(state) {
   return {
     coupons: state.listReducer,
-    userInfo: state.loginReducer
+    userInfo: state.loginReducer,
+    pushedCoupons: state.tabReducer
   }
 }
 
@@ -17,7 +18,7 @@ function mapDispatchToProps(dispatch) {
     pushRoute: (route) => dispatch(push(route)),
     popRoute: () => dispatch(pop()),
     fetchCoupons: (user_id) => dispatch(fetchPosts(user_id)),
-    fetchCoupon: (coupon_id) => dispatch(fetchCoupon(coupon_id)) 
+    fetchCoupon: (coupon_id) => dispatch(fetchCoupon(coupon_id))
   }
 }
 
