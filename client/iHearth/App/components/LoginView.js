@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text } from 'react-native'
-import Button from './global-components/Button'
+import { View, TextInput, Text } from 'react-native';
+import Button from './global-components/Button';
 import { Container, Content, List, ListItem, InputGroup, Input, Icon, Picker } from 'native-base';
 import styles from './../styles';
 import { URL } from '../constants/NetworkUrls';
@@ -60,8 +60,10 @@ export default class LoginView extends Component {
               </InputGroup>
             </ListItem>
           </List>
+          <List style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
         <Button onPress={ () => this.props._handleNavigate(route) } label='New User? Sign up!' />
         <Button onPress={ () => this.props.fetchAuth(this.state, authRoute, this.props._handleNavigate) } label="Log in" />
+        </List>
         </Content>
       </Container>
     )
