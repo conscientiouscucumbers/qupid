@@ -9,6 +9,8 @@ import LoginNavRootContainer from './App/containers/nav-containers/LoginNavRootC
 import TabsRootContainer from './App/containers/nav-containers/TabsRootContainer'
 import { Provider } from 'react-redux';
 
+console.disableYellowBox = true;
+
 const iHearth = () => (
   <Provider store={ store }>
     <LoginNavRootContainer />

@@ -168,6 +168,7 @@ var userSignup = (params, callback) => {
       var createUserStr = `insert into user (email, password, logged_in, device_id, first_name, last_name, dob, gender) \
         values ("${params.email}", "${params.password}", true, "${params.device_id}", "${params.first_name}", \
         "${params.last_name}", "${params.dob}", "${params.gender}")`;
+        console.log('createUserStr', createUserStr)
       db.query(createUserStr, (err, insertedUser) => {
         if (err) {
           console.log('error in database connection');
@@ -184,7 +185,7 @@ var userSignup = (params, callback) => {
 
               // set user field to logged in, set device_id to passed in device_id, and return referenced user
               console.log('successfully signed up a new user');
-              callback(null, selectedUser[0]);
+              callback(null, selectedUser);
             }
           });
         }

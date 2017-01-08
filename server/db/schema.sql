@@ -10,9 +10,10 @@ create table user (
   device_id varchar(50) not null,
   first_name varchar(50) not null,
   last_name varchar(50) not null,
-  dob datetime not null,
+  dob date not null,
   gender varchar(10) not null,
   total_savings float(2) not null default 0,
+
   primary key (user_id)
 );
 
