@@ -10,37 +10,15 @@ import { DeviceEventEmitter } from 'react-native';
 class Tabs extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      beacons: []
-    };
   }
-  componentDidMount() {
-    const region = {
-      identifier: 'Estimotes',
-      uuid: 'B9407F30-F5F8-466E-AFF9-25556B57FE6D'
-    };
-    Beacons.requestWhenInUseAuthorization();
-    Beacons.startRangingBeaconsInRegion(region);
-    Beacons.startUpdatingLocation();
-    DeviceEventEmitter.addListener(
-      'beaconsDidRange',
-      (data) => {
-        // console.log(data);
-        if(data['beacons'].length!==0){
-
-          console.log(data['beacons'][0]['proximity']);
-          if(data['beacons'][0]['proximity'] === 'far' || data['beacons'][0]['proximity'] === 'near'){
-            console.log('got you!');
-            Beacons.stopUpdatingLocation(); // doesn't seem like it's working.. but it's okay for now.
-          }
-        }
-      }
-    );
-  }
-
   _changeTab(i) {
     const { changeTab } = this.props;
     changeTab(i);
+  }
+
+  _listenBeacon(beacons) {
+    const { listenBeacon } = this.props;
+    listenBeacon(beacons);
   }
 
   _renderTabContent(key) {
@@ -51,6 +29,24 @@ class Tabs extends Component {
         return <Settings _handleNavigate={ this._handleNavigate } _goBack={ this._handleBackAction} />
     }
   }
+
+  componentDidMount() {
+    Beacons.requestWhenInUseAuthorization();
+    Beacons.startRangingBeaconsInRegion(this.props.region);
+    Beacons.startUpdatingLocation();
+    DeviceEventEmitter.addListener(
+      'beaconsDidRange',
+      (data) => {
+        if(data['beacons'].length!==0){
+          if(data['beacons'][0]['proximity'] === 'far' || data['beacons'][0]['proximity'] === 'near'){
+            this._listenBeacon(data['beacons'][0]);
+            Beacons.stopUpdatingLocation(); // doesn't seem like it's working.. but it's okay for now.
+          }
+        }
+      }
+    );
+  }
+
 
   render() {
     const tabs = this.props.tabs.map((tab, i) => {

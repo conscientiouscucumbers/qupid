@@ -1,4 +1,4 @@
-import { CHANGE_TAB } from '../../constants/ActionTypes';
+import { CHANGE_TAB, LISTEN_BEACON } from '../../constants/ActionTypes';
 
 const settingsIcon = {
   scale: 2.3,
@@ -13,16 +13,26 @@ const tabs = [
   { key: 'settings', icon: settingsIcon, title: 'SETTINGS' }
 ]
 
-const beacons = [
-  // region = {
-  //   identifier: 'Estimotes',
-  //     uuid: 'B9407F30-F5F8-466E-AFF9-25556B57FE6D'
-  //   },
-]
+const region = {
+  identifier: 'Estimotes',
+  uuid: 'B9407F30-F5F8-466E-AFF9-25556B57FE6D'
+}
+
+const beacons = {}
+// beacons example
+// { accuracy: 3.231749966697757,
+//   major: 25145,
+//   minor: 2589,
+//   proximity: "far",
+//   rssi: -67,
+//   uuid: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"
+// }
 
 const initialState = {
   index: 0,
-  tabs
+  tabs,
+  region,
+  beacons
 }
 
 function tabsNav (state = initialState, action) {
@@ -32,6 +42,11 @@ function tabsNav (state = initialState, action) {
       return {
         ...state,
         index: action.index
+      }
+    case LISTEN_BEACON:
+      return {
+        ...state,
+        beacons: action.beacons
       }
     default:
       return state;
