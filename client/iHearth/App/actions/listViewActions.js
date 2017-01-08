@@ -24,7 +24,6 @@ function receiveCoupons(json) {
 // Use like other action creators
 // store.dispatch(fetchPosts('reactjs'))
 export function fetchPosts(user_id) {
-
   // Pass dispatch method as an argument
   // Allowing the thunk to dispatch actions itself
 

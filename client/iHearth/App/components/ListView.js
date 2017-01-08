@@ -34,15 +34,22 @@ export default class ListView extends Component {
   }
 
   render() {
+    console.log('LISTVIW PROPS...', this.props.pushedCoupons);
+    // let temp;
+    // this.props.pushedCoupons.pushedCoupons[0] === undefined? temp="null" : temp=this.props.pushedCoupons.pushedCoupons[0].title
+    // console.log(temp);
     return (
-      <List>
-        {this.props.coupons.items.map((coupon) => (
-          <ListViewEntry
-            key={ coupon.coupon_id }
-            onPress={ (event) => { _handleNavigate(route); this.props.fetchCoupon(coupon.coupon_id) }}
-            coupon={ coupon } />
-        ))}
-      </List>
+      <View>
+        <Text>{this.props.pushedCoupons.pushedCoupons[0] ? this.props.pushedCoupons.pushedCoupons[0].title : "null" }</Text>
+        <List>
+          {this.props.coupons.items.map((coupon) => (
+            <ListViewEntry
+              key={ coupon.coupon_id }
+              onPress={ (event) => { _handleNavigate(route); this.props.fetchCoupon(coupon.coupon_id) }}
+              coupon={ coupon } />
+          ))}
+        </List>
+      </View>
     );
   }
-} 
+}
