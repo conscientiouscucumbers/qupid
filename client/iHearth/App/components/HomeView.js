@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 import ListViewContainer from '../containers/ListViewContainer';
 import FilterViewContainer from '../containers/FilterViewContainer';
-import styles from './../styles';
 import { Container, Header, Title, Content } from 'native-base';
 
 class HomeView extends Component {
@@ -27,3 +26,10 @@ class HomeView extends Component {
 };
 
 export default HomeView;
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+  }
+})
+

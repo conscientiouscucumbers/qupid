@@ -25,19 +25,19 @@ function receiveCoupons(json) {
 // Used by FilterView
 export function sortCouponsByDate() {
   return {
-    type: SORT_COUPONS
+    type: SORT_BY_DATE
   }
 }
 
 export function sortCouponsByTimeLeft() {
   return {
-    type: SORT_COUPONS
+    type: SORT_BY_TIME_LEFT
   }
 }
 
 export function sortCouponsBySavings() {
   return {
-    type: SORT_COUPONS
+    type: SORT_BY_SAVINGS
   }
 }
 
