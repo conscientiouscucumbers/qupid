@@ -30,7 +30,7 @@ class Button extends Component {
             underlayColor='#dddddd'
             onPress={ this.props.onPress }
             style={ styles.primary }>
-            <Text style={ styles.secondaryText }>{ this.props.label }</Text>
+            <Text style={ styles.primaryText }>{ this.props.label }</Text>
           </TouchableHighlight>
         </View>
       )
@@ -41,7 +41,7 @@ class Button extends Component {
             underlayColor='#dddddd'
             onPress={ this.props.onPress }
             style={ styles.secondary }>
-            <Text style={ styles.primaryText }>{ this.props.label }</Text>
+            <Text style={ styles.secondaryText }>{ this.props.label }</Text>
           </TouchableHighlight>
         </View>
       )
@@ -72,13 +72,14 @@ var styles = StyleSheet.create({
     borderColor: '#cccccc',
   },
   button: {
-    alignItems: 'center'
+    height: 50,
+    alignItems: 'center',
   },
   primaryText: {
-    color: '#484848'
+    color: 'white'
   },
   secondaryText: {
-    color: 'white'
+    color: '#484848'
   }
 });
 

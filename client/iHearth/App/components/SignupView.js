@@ -145,10 +145,7 @@ class SignupView extends Component {
             </ListItem>
           </List>
           <View>
-          {/*addSignInButton*/}
-          <View style={{ marginTop: 5, marginBottom: 5 }}>
-            <Button onPress={ () => this.props.fetchNewUser(this.state, authRoute, this.props._handleNavigate) } label="Sign Up"></Button>
-          </View>
+          {addSignInButton}
           <View style={{ marginTop: 5, marginBottom: 5 }}><Button onPress={ this.props._goBack } label='Cancel'></Button></View>
           </View>
         </Content>
