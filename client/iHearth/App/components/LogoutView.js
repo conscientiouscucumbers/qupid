@@ -42,7 +42,8 @@ export default class LogoutView extends Component {
     return (
       <Container>
         <Content>
-          <Text style={styles.titleTwo}>LogoutView</Text>
+          <Text style={styles.titleTwo}>Log out</Text>
+          <View style={{ marginTop: 5, marginBottom: 5 }}></View>
           <Button onPress={ () => this.props.fetchAuth(this.state, authRoute, this.props.popRoute) } label="Log out" />
         </Content>
       </Container>
