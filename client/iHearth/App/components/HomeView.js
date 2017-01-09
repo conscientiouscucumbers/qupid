@@ -11,14 +11,16 @@ class HomeView extends Component {
 
   render() {
     return (
-      <Container style={{ backgroundColor: '#f48989' }}>
+      <Container>
         <Header style={{ backgroundColor: '#ffbaba' }}>
           <Text></Text>
         </Header>
         <Content>
-          <Text>My Coupons</Text>
-          <FilterViewContainer />
-          <ListViewContainer _handleNavigate={ this.props._handleNavigate } />
+          <View style={ styles.container }>
+            <Text style={ styles.title }>My Coupons</Text>
+            <FilterViewContainer />
+            <ListViewContainer _handleNavigate={ this.props._handleNavigate } />
+          </View>
         </Content>
       </Container>
     );
@@ -29,7 +31,13 @@ export default HomeView;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: 'white',
+    justifyContent: 'center'
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: '100'
   }
 })
 
