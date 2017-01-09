@@ -1,5 +1,6 @@
+-- dummy data
+-- WARNING: DO NOT CHANGE THE ORDER OF QUERIES!
 
---dummy data
 -- // user
 insert into user (email, password, logged_in, device_id, first_name, last_name, dob, gender, total_savings)
 values ('a', 'a', false, 'jamesdeviceid', 'James', 'Gu', '1993-05-21', 'male', 100.00);
@@ -9,16 +10,6 @@ values ('keepthemonochrome@gmail.com', 'password', false, 'susandeviceid', 'Susa
 
 insert into user (email, password, logged_in, device_id, first_name, last_name, dob, gender, total_savings)
 values ('joshuapeng7@gmail.com', 'password', false, 'joshdeviceid', 'Josh', 'Peng', '1985-10-20', 'male', 98.00);
-
--- // user_coupon
-insert into user_coupon (user_id, coupon_id, used, expired, activated)
-values (1, 1, false, false, true);
-
-insert into user_coupon (user_id, coupon_id, used, expired, activated)
-values (2, 1, false, false, true);
-
-insert into user_coupon (user_id, coupon_id, used, expired, activated)
-values (2, 2, false, false, true);
 
 -- // business
 insert into business (email, password, company_name, address, city, state, zipcode)
@@ -39,6 +30,17 @@ values (2, 'qrcode2', '$20 off sneakers', 'https://facebook.github.io/react/img/
 
 insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
 values (3, 'qrcode3', '$4 off shampoo', 'https://facebook.github.io/react/img/logo_og.png', 'Shampoo', 'Suave Biotin Infusion Shampoo', 8.00, 4.00, 4.00, '2017-01-06 03:00:00', '2017-02-10 09:00:00');
+
+-- WARNING: DO NOT CHANGE THE ORDER OF QUERIES!
+-- // user_coupon
+insert into user_coupon (user_id, coupon_id, used, expired, activated)
+values (1, 1, false, false, true);
+
+insert into user_coupon (user_id, coupon_id, used, expired, activated)
+values (2, 1, false, false, true);
+
+insert into user_coupon (user_id, coupon_id, used, expired, activated)
+values (2, 2, false, false, true);
 
 
 -- // beacon
