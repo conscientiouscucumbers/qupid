@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Button from './global-components/Button';
 import { Container, Content, List, ListItem, InputGroup, Input, Icon, Picker } from 'native-base';
 import Foundation from 'react-native-vector-icons/Foundation';
-import styles from './../styles';
+// import styles from './../styles';
 import DeviceInfo from 'react-native-device-info';
 import DatePicker from 'react-native-datepicker';
 const Item = Picker.Item;
@@ -65,17 +65,21 @@ class SignupView extends Component {
       }
     );
     var addSignInButton = this.allFilled() ?
-      (<View style={{ marginBottom: 10 }}><Button onPress={ () => this.props.fetchNewUser(this.state, authRoute, this.props._handleNavigate) } label="Signup" /></View>) :
-      <Text style={{ textAlign: 'center', marginTop: 10, marginBottom: 10, fontSize: 16, color: '#a30180' }}>Please fill out all fields</Text>;
+      (<View style={{ marginTop: 5, marginBottom: 5 }}>
+        <Button onPress={ () => this.props.fetchNewUser(this.state, authRoute, this.props._handleNavigate) } label="Sign Up"></Button>
+      </View>) :
+      (<View style={{ marginTop: 5, marginBottom: 5 }}>
+        <Text style={{ textAlign: 'center', marginTop: 5, marginBottom: 5, fontSize: 16, color: '#FF3F4E' }}>Please fill out all fields</Text>
+      </View>);
     return (
-      <Container style={{ backgroundColor: '#ffbaba' }}>
+      <Container style={{ backgroundColor: '#dddddd' }}>
         <Content>
-          <Text style={styles.titleTwo}>Create New User</Text>
+          <Text style={styles.title}>Create New User</Text>
           <View style={{ marginTop: 5, marginBottom: 5 }}></View>
             <Kaede
               label={'First Name'}
-              borderColor={'#a30180'}
-              labelStyle={{ color: '#f80046' }}
+              borderColor={'#dddddd'}
+              labelStyle={{ color: '#FF3F4E' }}
               value={this.state.first_name}
               autoCapitalize="none"
               onChangeText={(text) => this.setState({first_name: text})}
@@ -83,17 +87,17 @@ class SignupView extends Component {
           <View style={{ marginTop: 5, marginBottom: 5 }}></View>
           <Kaede
               label={'Last Name'}
-              borderColor={'#a30180'}
-              labelStyle={{ color: '#f80046' }}
+              borderColor={'#dddddd'}
+              labelStyle={{ color: '#FF3F4E' }}
               value={this.state.last_name}
               autoCapitalize="none"
               onChangeText={(text) => this.setState({last_name: text})}
             />
             <List>
               <ListItem>
-                <Text style={{left: 10, top: 10, fontSize: 16, color: '#f80046'}}>Date of Birth</Text>
+                <Text style={{left: 10, top: 10, fontSize: 16, color: '#FF3F4E'}}>Date of Birth</Text>
                   <DatePicker
-                    style={{width: 250, left: 50, backgroundColor: '#f80046'}}
+                    style={{width: 250, left: 50, backgroundColor: '#FF3F4E'}}
                     date={this.state.dob}
                     mode="date"
                     placeholder="Select Date of Birth"
@@ -108,8 +112,8 @@ class SignupView extends Component {
             </List>
             <Kaede
               label={'Email'}
-              borderColor={'#a30180'}
-              labelStyle={{ color: '#f80046' }}
+              borderColor={'#dddddd'}
+              labelStyle={{ color: '#FF3F4E' }}
               value={this.state.email}
               autoCapitalize="none"
               onChangeText={(text) => this.setState({email: text})}
@@ -117,20 +121,20 @@ class SignupView extends Component {
           <View style={{ marginTop: 5, marginBottom: 5 }}></View>
           <Kaede
               label={'Password'}
-              borderColor={'#a30180'}
-              labelStyle={{ color: '#f80046' }}
+              borderColor={'#dddddd'}
+              labelStyle={{ color: '#FF3F4E' }}
               value={this.state.password}
               autoCapitalize="none"
               onChangeText={(text) => this.setState({password: text})}
               secureTextEntry
             />
-          <Text style={{ textAlign: 'center', marginTop: 10, fontSize: 16, color: '#a30180' }}>Gender</Text>
+          <Text style={{ textAlign: 'center', marginTop: 10, fontSize: 16, color: '#dddddd' }}>Gender</Text>
             <List>
               <ListItem>
                 <SegmentedControls
-                  tint={'#f80046'}
+                  tint={'#FF3F4E'}
                   selectedTint= {'white'}
-                  backTint= {'#555555'}
+                  backTint= {'#dddddd'}
                   options={ options }
                   allowFontScaling={ false }
                   onSelection={this.setSelectedOption.bind(this)}
@@ -141,13 +145,26 @@ class SignupView extends Component {
             </ListItem>
           </List>
           <View>
-          {addSignInButton}
-          <Button onPress={ this.props._goBack } label='Cancel'></Button>
+          {/*addSignInButton*/}
+          <View style={{ marginTop: 5, marginBottom: 5 }}>
+            <Button onPress={ () => this.props.fetchNewUser(this.state, authRoute, this.props._handleNavigate) } label="Sign Up"></Button>
+          </View>
+          <View style={{ marginTop: 5, marginBottom: 5 }}><Button onPress={ this.props._goBack } label='Cancel'></Button></View>
           </View>
         </Content>
       </Container>
     );
   }
 };
+
+var styles = StyleSheet.create({
+  title: {
+    paddingTop: 60,
+    fontSize: 44,
+    fontWeight: '100',
+    textAlign: 'center',
+    color: '#f80046'
+  }
+});
 
 export default SignupView;
