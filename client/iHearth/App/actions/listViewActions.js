@@ -1,4 +1,10 @@
-import { REQUEST_COUPONS, RECEIVE_COUPONS } from '../constants/ActionTypes';
+import {
+  REQUEST_COUPONS,
+  RECEIVE_COUPONS,
+  SORT_BY_DATE,
+  SORT_BY_TIME_LEFT,
+  SORT_BY_SAVINGS
+} from '../constants/ActionTypes';
 import { URL } from '../constants/NetworkUrls';
 
 // Will change isFetching state of list to true

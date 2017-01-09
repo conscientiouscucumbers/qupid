@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import FilterDropdownView from './FilterDropdownView';
+import SortByFilterViewContainer from '../containers/SortByFilterViewContainer';
 import {
   Text,
   View
 } from 'react-native'
 import {
-  Container,
   Content,
 } from 'native-base';
 
@@ -17,10 +17,10 @@ export default class FilterView extends Component {
   render() {
     return (
       <View>
-        
-          <Text>Filter View</Text>
-          <FilterDropdownView />
-        
+          {/*<FilterDropdownView />*/}
+          <View>
+            <SortByFilterViewContainer />
+          </View>
       </View>
     );
   }

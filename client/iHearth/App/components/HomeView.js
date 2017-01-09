@@ -17,9 +17,8 @@ class HomeView extends Component {
           <Text></Text>
         </Header>
         <Content>
+          <Text>My Coupons</Text>
           <FilterViewContainer />
-          <Text style={ styles.title }>Coupons</Text>
-
           <ListViewContainer _handleNavigate={ this.props._handleNavigate } />
         </Content>
       </Container>
