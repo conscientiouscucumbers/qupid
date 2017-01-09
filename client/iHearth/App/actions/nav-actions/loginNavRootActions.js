@@ -83,7 +83,7 @@ export function fetchUserInfoByDevice(route, callback) {
 
       // Catch errors
       .catch((err) => {
-        console.error('Error in fetching user info by device in longinNavRootActions.js', err.message);
+        console.error('Error in fetching user info by device in loginNavRootActions.js', err.message);
       })
   }
 
