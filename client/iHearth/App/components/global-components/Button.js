@@ -11,14 +11,16 @@
 // );
 
 import React from 'react';
-import { Text, TouchableHighlight } from 'react-native';
+import { Text, View, TouchableHighlight } from 'react-native';
 import styles from './../../styles';
 import ButtonComponent, { CircleButton, RoundButton, RectangleButton } from 'react-native-button-component';
 
 export default ({ label, onPress }) => (
+  <View style={{ alignItems: 'center'}}>
   <ButtonComponent
+    style={{width: 200, height: 50}}
     type="primary"
-    shape="rectangle"
+    shape="round"
     backgroundColors={['#a30180', '#f80046']}
     gradientStart={{ x: 0.5, y: 1 }}
     gradientEnd={{ x: 1, y: 1 }}
@@ -27,4 +29,5 @@ export default ({ label, onPress }) => (
     text={ label }
   >
   </ButtonComponent>
+</View>
 );

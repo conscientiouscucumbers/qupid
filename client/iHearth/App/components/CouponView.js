@@ -4,7 +4,7 @@ import CouponDescriptionContainer from '../containers/CouponDescriptionContainer
 import { Container, Header, Button, Icon, Title, Content } from 'native-base';
 
 const CouponView = ({ _goBack, _handleNavigate }) => (
-  <Container>
+  <Container style={{ backgroundColor: '#ffbaba' }}>
     <Header>
       <Button transparent onPress={ _goBack }>
           <Icon name='ios-arrow-back' />
@@ -18,4 +18,3 @@ const CouponView = ({ _goBack, _handleNavigate }) => (
 );
 
 export default CouponView;
-

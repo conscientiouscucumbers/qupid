@@ -11,9 +11,9 @@ class HomeView extends Component {
 
   render() {
     return (
-      <Container>
-        <Header>
-          <Text>iHearth</Text>
+      <Container style={{ backgroundColor: '#f48989' }}>
+        <Header style={{ backgroundColor: '#ffbaba' }}>
+          <Text></Text>
         </Header>
         <Content>
           <Text style={ styles.title }>Coupons</Text>
