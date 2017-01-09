@@ -21,6 +21,7 @@
     "react-native-button-component": "0.0.6",
     "react-native-datepicker": "^1.4.3",
     "react-native-device-info": "^0.9.7",
+    "react-native-dropdownalert": "^2.4.0",
     "react-native-ibeacon": "^0.6.0",
     "react-native-qrcode": "^0.2.3",
     "react-native-radio-buttons": "^0.13.0",
