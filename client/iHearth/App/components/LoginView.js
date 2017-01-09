@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text } from 'react-native';
+import { View, TextInput, Text, StyleSheet } from 'react-native';
 import Button from './global-components/Button';
 import { Container, Content, List, ListItem, InputGroup, Input, Icon, Picker } from 'native-base';
-import styles from './../styles';
+// import styles from './../styles';
 import { URL } from '../constants/NetworkUrls';
 import DeviceInfo from 'react-native-device-info';
 import { Sae, Fumi, Kohana, Makiko, Isao, Hoshi, Jiro, Kaede,
          Akira, Madoka, Hideo, } from 'react-native-textinput-effects';
+import ExplodingHearts from './ExplodingHearts';
 
 const Item = Picker.Item;
 
@@ -45,10 +46,10 @@ export default class LoginView extends Component {
 
   render() {
     return (
-      <Container style={{ backgroundColor: '#ffbaba' }}>
+      <Container style={{ backgroundColor: '#dddddd' }}>
         <Content>
-          <Text style={styles.titleTwo}>Cupid</Text>
-            <List style={{ marginTop: 20, marginBottom: 40 }}>
+          <Text style={styles.title}>Cupid</Text>
+            <List style={{ marginTop: 20, marginBottom: 20 }}>
               <Kaede
                 label={'Email'}
                 borderColor={'#a30180'}
@@ -69,13 +70,23 @@ export default class LoginView extends Component {
               />
           </List>
           <List>
-            <Button onPress={ () => this.props._handleNavigate(route) } label='New User? Sign up!' />
+            <Button onPress={ () => this.props._handleNavigate(route) } label='Create New Account' />
           </List>
           <List style={{ marginTop: 10 }}>
-            <Button onPress={ () => this.props.fetchAuth(this.state, authRoute, this.props._handleNavigate) } label="Log in" />
+            <Button onPress={ () => this.props.fetchAuth(this.state, authRoute, this.props._handleNavigate) } label="Log In" />
           </List>
         </Content>
       </Container>
     )
   }
 }
+
+var styles = StyleSheet.create({
+  title: {
+    paddingTop: 120,
+    fontSize: 44,
+    fontWeight: '100',
+    textAlign: 'center',
+    color: '#f80046'
+  }
+});
