@@ -160,7 +160,7 @@ var styles = StyleSheet.create({
     fontSize: 44,
     fontWeight: '100',
     textAlign: 'center',
-    color: '#f80046'
+    color: '#FF3F4E'
   }
 });
 
