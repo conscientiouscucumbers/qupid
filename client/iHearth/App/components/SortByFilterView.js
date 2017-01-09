@@ -17,7 +17,7 @@ export default class SortByFilterView extends Component {
 
   render() {
     return (
-      <View>
+      <View >
       <View style={ styles.row }>
       <View style={ styles.cell }>
       <ModalDropdown
