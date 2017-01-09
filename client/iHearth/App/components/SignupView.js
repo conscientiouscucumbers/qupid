@@ -71,25 +71,25 @@ class SignupView extends Component {
       <Container>
         <Content>
           <Text style={styles.titleTwo}>SignUpView</Text>
-            <Isao
+            <Jiro
               label={'First Name'}
-              activeColor={'#a30180'}
-              passiveColor={'#f80046'}
+              borderColor={'#f80046'}
+              inputStyle={{color:'#ffffff'}}
               value={this.state.first_name}
               autoCapitalize="none"
               onChangeText={(text) => this.setState({first_name: text})}
             />
-            <Isao
+          <Jiro
               label={'Last Name'}
-              activeColor={'#a30180'}
-              passiveColor={'#f80046'}
+              borderColor={'#f80046'}
+              inputStyle={{color:'#ffffff'}}
               value={this.state.last_name}
               autoCapitalize="none"
               onChangeText={(text) => this.setState({last_name: text})}
             />
             <List>
               <ListItem>
-                <Text style={{left: 10, top: 10, fontSize: 16, color: '#a30180'}}>Date of Birth</Text>
+                <Text style={{left: 10, top: 10, fontSize: 16, color: '#f80046'}}>Date of Birth</Text>
                   <DatePicker
                     style={{width: 250, left: 50}}
                     date={this.state.dob}
@@ -104,18 +104,18 @@ class SignupView extends Component {
                   />
               </ListItem>
             </List>
-            <Isao
+            <Jiro
               label={'Email'}
-              activeColor={'#a30180'}
-              passiveColor={'#f80046'}
+              borderColor={'#f80046'}
+              inputStyle={{color:'#ffffff'}}
               value={this.state.email}
               autoCapitalize="none"
               onChangeText={(text) => this.setState({email: text})}
             />
-            <Isao
+          <Jiro
               label={'Password'}
-              activeColor={'#a30180'}
-              passiveColor={'#f80046'}
+              borderColor={'#f80046'}
+              inputStyle={{color:'#ffffff'}}
               value={this.state.password}
               autoCapitalize="none"
               onChangeText={(text) => this.setState({password: text})}
