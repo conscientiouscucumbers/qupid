@@ -17,7 +17,7 @@ export default class SortByFilterView extends Component {
 
   render() {
     return (
-      <View >
+      <View style={ styles.container }>
       <View style={ styles.row }>
       <View style={ styles.cell }>
       <ModalDropdown
@@ -36,7 +36,7 @@ export default class SortByFilterView extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: 20
   },
   row: {
     flex: 1,
