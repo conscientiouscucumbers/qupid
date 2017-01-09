@@ -42,6 +42,14 @@ values (2, 1, false, false, true);
 insert into user_coupon (user_id, coupon_id, used, expired, activated)
 values (2, 2, false, false, true);
 
+insert into user_coupon (user_id, coupon_id, used, expired, activated)
+values (1, 2, false, false, true);
+
+insert into user_coupon (user_id, coupon_id, used, expired, activated)
+values (1, 3, false, false, true);
+
+insert into user_coupon (user_id, coupon_id, used, expired, activated)
+values (1, 4, false, false, true);
 
 -- // beacon
 insert into beacon (business_id, beacon_uuid, section)

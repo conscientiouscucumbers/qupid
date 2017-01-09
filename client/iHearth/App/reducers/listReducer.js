@@ -2,7 +2,8 @@ import { REQUEST_COUPONS, RECEIVE_COUPONS } from '../constants/ActionTypes';
 
 const initialState = {
   isFetching: false,
-  items: []
+  sortBy: 'time_left',
+    items: []
 }
 
 export default function listState(state = initialState, action) {
