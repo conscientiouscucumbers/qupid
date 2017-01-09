@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 import ListViewContainer from '../containers/ListViewContainer';
+import FilterViewContainer from '../containers/FilterViewContainer';
 import styles from './../styles';
 import { Container, Header, Title, Content } from 'native-base';
 
@@ -16,8 +17,8 @@ class HomeView extends Component {
           <Text></Text>
         </Header>
         <Content>
-          <Text style={ styles.title }>Coupons</Text>
-
+          <Text>My Coupons</Text>
+          <FilterViewContainer />
           <ListViewContainer _handleNavigate={ this.props._handleNavigate } />
         </Content>
       </Container>

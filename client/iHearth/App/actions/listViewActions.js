@@ -1,7 +1,10 @@
-// require('es6-promise').polyfill();
-// import fetch from 'isomorphic-fetch';
-
-import { REQUEST_COUPONS, RECEIVE_COUPONS } from '../constants/ActionTypes';
+import {
+  REQUEST_COUPONS,
+  RECEIVE_COUPONS,
+  SORT_BY_DATE,
+  SORT_BY_TIME_LEFT,
+  SORT_BY_SAVINGS
+} from '../constants/ActionTypes';
 import { URL } from '../constants/NetworkUrls';
 
 // Will change isFetching state of list to true
@@ -16,6 +19,25 @@ function receiveCoupons(json) {
     type: RECEIVE_COUPONS,
     coupons: json,
     receivedAt: Date.now()
+  }
+}
+
+// Used by FilterView
+export function sortCouponsByDate() {
+  return {
+    type: SORT_COUPONS
+  }
+}
+
+export function sortCouponsByTimeLeft() {
+  return {
+    type: SORT_COUPONS
+  }
+}
+
+export function sortCouponsBySavings() {
+  return {
+    type: SORT_COUPONS
   }
 }
 
@@ -38,7 +60,6 @@ export function fetchPosts(user_id) {
       .then(json => {
 
           // Update app state with results of API call
-          console.log('JSON FROM SERVER...', json);
           return dispatch(receiveCoupons(json))
         })
 
