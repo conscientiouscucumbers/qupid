@@ -38,6 +38,7 @@ export function fetchBeaconCoupons(user_id, beacon_uuid) {
     return fetch(URL + 'user/' + user_id + '/beacon/' + beacon_uuid)
       .then(response => response.json())
       .then(json => {
+        // if json is string, to not dispatch.
         return dispatch(beaconReceiveCoupons(json))
       })
       .catch((err) => {
