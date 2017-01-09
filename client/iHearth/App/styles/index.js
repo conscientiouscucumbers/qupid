@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
     width: 340,
     backgroundColor: '#22a3ed',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    color: '#f80046'
   },
   button: {
     height: 70,
@@ -21,24 +22,27 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 20,
     fontSize: 22,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: '#f80046'
   },
   container: {
     paddingTop: 60,
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
+    backgroundColor: '#f48989'
   },
   containerSettings: {
     flex: 1,
-    backgroundColor: '#10a2f0',
+    backgroundColor: '#f48989',
     alignItems: 'center'
   },
   text: {
     color: 'white',
     marginTop: 100,
     fontSize: 24,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: '#f80046'
   },
   login: {
     paddingTop: 60,
@@ -48,12 +52,16 @@ const styles = StyleSheet.create({
   },
   listViewText: {
     fontSize: 12,
+    color: '#f80046'
   },
   listViewTitleText: {
     fontSize: 14,
     fontWeight: 'bold',
     paddingTop: 6,
-    paddingLeft: 12
+    paddingLeft: 12,
+    color: '#f80046',
+    textShadowColor: '#ffffff',
+    textShadowRadius: 1
   },
   listViewDiscountPriceText: {
     textDecorationLine: 'line-through'
@@ -64,7 +72,8 @@ const styles = StyleSheet.create({
   titleTwo: {
     paddingTop: 60,
     fontSize: 22,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: '#f80046'
   },
 });
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { TabBarIOS } from 'react-native';
 import Home from '../../containers/nav-containers/NavRootContainer';
 import Settings from '../../components/Settings';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 // BeaconListener
 import Beacons from 'react-native-ibeacon';
@@ -54,21 +55,21 @@ class Tabs extends Component {
     // let temp;
     // this.props.pushedCoupons[0] === undefined? temp="null" : temp=this.props.pushedCoupons[0].title
     // console.log(temp);
+    const icons = ["list-alt", "dashboard"];
     const tabs = this.props.tabs.map((tab, i) => {
       return (
-        <TabBarIOS.Item key={ tab.key }
-          icon={ tab.icon }
-          selectedIcon={ tab.selectedIcon }
+        <Icon.TabBarItem key={ tab.key }
+          iconName={ icons[i] }
+          selectedIconName={ icons[i] }
           title={ tab.title }
           onPress={ () => this._changeTab(i) }
           selected={ this.props.index === i } >
           { this._renderTabContent(tab.key) }
-        </TabBarIOS.Item>
-
+        </Icon.TabBarItem>
       )
     })
     return (
-      <TabBarIOS tintColor='black'>
+      <TabBarIOS tintColor='#f80046' barTintColor='#ffbaba'>
         {tabs}
       </TabBarIOS>
     )

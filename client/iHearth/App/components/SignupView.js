@@ -66,23 +66,25 @@ class SignupView extends Component {
     );
     var addSignInButton = this.allFilled() ?
       (<View style={{ marginBottom: 10 }}><Button onPress={ () => this.props.fetchNewUser(this.state, authRoute, this.props._handleNavigate) } label="Signup" /></View>) :
-      <Text style={{ textAlign: 'center', marginBottom: 10, fontSize: 16, color: '#a30180' }}>Please fill out all fields</Text>;
+      <Text style={{ textAlign: 'center', marginTop: 10, marginBottom: 10, fontSize: 16, color: '#a30180' }}>Please fill out all fields</Text>;
     return (
-      <Container>
+      <Container style={{ backgroundColor: '#ffbaba' }}>
         <Content>
-          <Text style={styles.titleTwo}>SignUpView</Text>
-            <Jiro
+          <Text style={styles.titleTwo}>Create New User</Text>
+          <View style={{ marginTop: 5, marginBottom: 5 }}></View>
+            <Kaede
               label={'First Name'}
-              borderColor={'#f80046'}
-              inputStyle={{color:'#ffffff'}}
+              borderColor={'#a30180'}
+              labelStyle={{ color: '#f80046' }}
               value={this.state.first_name}
               autoCapitalize="none"
               onChangeText={(text) => this.setState({first_name: text})}
             />
-          <Jiro
+          <View style={{ marginTop: 5, marginBottom: 5 }}></View>
+          <Kaede
               label={'Last Name'}
-              borderColor={'#f80046'}
-              inputStyle={{color:'#ffffff'}}
+              borderColor={'#a30180'}
+              labelStyle={{ color: '#f80046' }}
               value={this.state.last_name}
               autoCapitalize="none"
               onChangeText={(text) => this.setState({last_name: text})}
@@ -91,7 +93,7 @@ class SignupView extends Component {
               <ListItem>
                 <Text style={{left: 10, top: 10, fontSize: 16, color: '#f80046'}}>Date of Birth</Text>
                   <DatePicker
-                    style={{width: 250, left: 50}}
+                    style={{width: 250, left: 50, backgroundColor: '#f80046'}}
                     date={this.state.dob}
                     mode="date"
                     placeholder="Select Date of Birth"
@@ -104,24 +106,25 @@ class SignupView extends Component {
                   />
               </ListItem>
             </List>
-            <Jiro
+            <Kaede
               label={'Email'}
-              borderColor={'#f80046'}
-              inputStyle={{color:'#ffffff'}}
+              borderColor={'#a30180'}
+              labelStyle={{ color: '#f80046' }}
               value={this.state.email}
               autoCapitalize="none"
               onChangeText={(text) => this.setState({email: text})}
             />
-          <Jiro
+          <View style={{ marginTop: 5, marginBottom: 5 }}></View>
+          <Kaede
               label={'Password'}
-              borderColor={'#f80046'}
-              inputStyle={{color:'#ffffff'}}
+              borderColor={'#a30180'}
+              labelStyle={{ color: '#f80046' }}
               value={this.state.password}
               autoCapitalize="none"
               onChangeText={(text) => this.setState({password: text})}
               secureTextEntry
             />
-            <Text style={{ textAlign: 'center', marginTop: 10, fontSize: 16, color: '#a30180' }}>Gender</Text>
+          <Text style={{ textAlign: 'center', marginTop: 10, fontSize: 16, color: '#a30180' }}>Gender</Text>
             <List>
               <ListItem>
                 <SegmentedControls

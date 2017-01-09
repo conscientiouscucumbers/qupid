@@ -45,22 +45,23 @@ export default class LoginView extends Component {
 
   render() {
     return (
-      <Container>
+      <Container style={{ backgroundColor: '#ffbaba' }}>
         <Content>
-          <Text style={styles.titleTwo}>LoginView</Text>
-            <List style={{ marginBottom: 40 }}>
-              <Isao
+          <Text style={styles.titleTwo}>Cupid</Text>
+            <List style={{ marginTop: 20, marginBottom: 40 }}>
+              <Kaede
                 label={'Email'}
-                activeColor={'#a30180'}
-                passiveColor={'#f80046'}
+                borderColor={'#a30180'}
+                labelStyle={{ color: '#f80046' }}
                 value={this.state.email}
                 autoCapitalize="none"
                 onChangeText={(text) => this.setState({email: text})}
               />
-              <Isao
+            <View style={{ marginTop: 5, marginBottom: 5 }}></View>
+            <Kaede
                 label={'Password'}
-                activeColor={'#a30180'}
-                passiveColor={'#f80046'}
+                borderColor={'#a30180'}
+                labelStyle={{ color: '#f80046' }}
                 value={this.state.password}
                 autoCapitalize="none"
                 onChangeText={(text) => this.setState({password: text})}

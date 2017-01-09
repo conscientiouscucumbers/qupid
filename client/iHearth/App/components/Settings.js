@@ -5,7 +5,7 @@ import LogoutViewContainer from '../containers/LogoutViewContainer'
 
 const Settings = () => (
   <View style={ styles.containerSettings }>
-    <Text style={ styles.text }>Hello from Settings</Text>
+    <Text style={ styles.text }>Settings</Text>
     <LogoutViewContainer />
   </View>
 )
