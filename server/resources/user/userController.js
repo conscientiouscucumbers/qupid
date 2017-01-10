@@ -44,6 +44,17 @@ exports.retrieveOneUser = (req, res) => {
     res.status(404).send('could not find user with user_id', req.params.user_id, 'in user table');
   })
 }
+exports.retrievePasswordFromEmail = (req, res) => {
+
+  var params = [req.params.user_email][0];
+  userModel.retrieveOneUserPasswordAsync(params)
+  .then(user => {
+    res.status(200).json(user);
+  })
+  .catch((err) => {
+    res.status(404).send('could not find user with users email', req.params.user_email, 'in user table')
+  })
+}
 
 // GET request for /user/:user_id/coupon
 // retrieve all user coupons that have previously been sent to a specific user

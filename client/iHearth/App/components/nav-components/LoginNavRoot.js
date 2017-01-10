@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import LoginViewContainer from '../../containers/LoginViewContainer';
 import SignupViewContainer from '../../containers/SignupViewContainer';
+import ForgotPasswordViewContainer from '../../containers/ForgotPasswordViewContainer';
 import Home from '../../containers/nav-containers/TabsRootContainer.js';
 import {
   // BackAndroid,
@@ -36,9 +37,9 @@ export default class LoginNavRoot extends Component {
     this._handleNavigate = _handleNavigate.bind(this);
   }
 
-  componentWillMount(){
-    this.props.fetchUserInfoByDevice(authRoute, this._handleNavigate);
-  }
+  // componentWillMount(){
+  //   this.props.fetchUserInfoByDevice(authRoute, this._handleNavigate);
+  // }
 
   componentDidMount(){
     // Add BackAndroid listener
@@ -62,6 +63,10 @@ export default class LoginNavRoot extends Component {
       case 'list':
         return (
           <Home />
+        )
+      case 'forgotPassword':
+      return (
+        <ForgotPasswordViewContainer _handleNaviagte= {this._handleNavigate} _goBack={ this._handleBackAction } />
         )
     }
   }

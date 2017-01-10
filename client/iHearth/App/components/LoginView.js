@@ -19,6 +19,13 @@ const route = {
     title: 'SignupView'
   }
 };
+const route2 = {
+  type: 'push',
+  route: {
+    key: 'forgotPassword',
+    title: 'ForgotPasswordView'
+  }
+};
 
 // Use this route once authorized
 const authRoute = {
@@ -39,11 +46,11 @@ export default class LoginView extends Component {
     };
   }
 
-  componentWillMount() {
-    console.log('DEVICE INFO...', DeviceInfo);
-    this.setState({ device_id: DeviceInfo.getUniqueID() });
-    // function to check logged_in state using device_id
-  }
+  // componentWillMount() {
+  //   console.log('DEVICE INFO...', DeviceInfo);
+  //   this.setState({ device_id: DeviceInfo.getUniqueID() });
+  //   // function to check logged_in state using device_id
+  // }
 
   render() {
     return (
@@ -72,6 +79,9 @@ export default class LoginView extends Component {
           </List>
           <List>
             <Button onPress={ () => this.props._handleNavigate(route) } label='Create New Account' />
+          </List>
+          <List>
+            <Button onPress={ () => this.props._handleNavigate(route2) } label="Forgot Password" />
           </List>
           <List style={{ marginTop: 10 }}>
             <Button onPress={ () => this.props.fetchAuth(this.state, authRoute, this.props._handleNavigate) } label="Log In" />

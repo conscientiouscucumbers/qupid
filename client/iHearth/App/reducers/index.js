@@ -9,6 +9,7 @@ import loginReducer from './loginReducer';
 import logoutReducer from './logoutReducer';
 import signupReducer from './logoutReducer';
 import QRReducer from './QRReducer';
+import forgotPasswordReducer from './forgotPasswordReducer';
 import { USER_LOGOUT } from '../constants/ActionTypes';
 
 const appReducer = combineReducers({
@@ -21,7 +22,8 @@ const appReducer = combineReducers({
   loginReducer,
   logoutReducer,
   signupReducer,
-  QRReducer
+  QRReducer,
+  forgotPasswordReducer
 });
 
 // Ultimate reducer to reset state on logout

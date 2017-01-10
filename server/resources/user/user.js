@@ -14,6 +14,20 @@ var retrieveUsers = callback => {
 };
 module.exports.retrieveUsersAsync = Promise.promisify(retrieveUsers);
 
+var retrievePassword = (params, callback) => {
+  var queryStr = `select * from user where email = "${params}"`;
+  db.query(queryStr, params, function(err, res) {
+
+    if(err){
+      callback(err)
+    } else {
+      callback(null, res);
+    }
+  })
+}
+module.exports.retrieveOneUserPasswordAsync = Promise.promisify(retrievePassword);
+
+
 var createUser = (params, callback) => {
   var queryStr = `insert into user (email, password, first_name, last_name, dob, gender) \
     values ("${params.email}", "${params.password}", "${params.first_name}",
