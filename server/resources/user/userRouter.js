@@ -8,6 +8,9 @@ userRouter.route('/')
 userRouter.route('/:user_id')
   .get(userController.retrieveOneUser)
 
+userRouter.route('/forgot/:user_email')
+  .get(userController.retrievePasswordFromEmail)
+
 userRouter.route('/:user_id/coupon')
   .get(userController.retrieveUserCoupons)
 
