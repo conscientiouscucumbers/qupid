@@ -37,7 +37,7 @@ export default class ListView extends Component {
     this.props.pushedCoupons.pushedCoupons[0] ? this.showAlert('custom') : null
     return (
       <View style={ styles.container }>
-        <Text>{this.props.pushedCoupons.pushedCoupons[0] ? this.props.pushedCoupons.pushedCoupons[0].title : "null" }</Text>
+        <Text style={{ textAlign: 'center' }}>{this.props.pushedCoupons.pushedCoupons[0] ? this.props.pushedCoupons.pushedCoupons[0].title : "searching for coupons..." }</Text>
         <List>
           {/* Render based on sortBy state -- by creation_time/coupon_id */}
           { this.props.coupons.items && this.props.coupons.sortBy === DATE.key &&
@@ -122,14 +122,12 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     marginTop: 22,
-
   },
   text: {
     fontFamily: 'Avenir',
     fontWeight: 'bold',
     fontSize: 18,
     textAlign: 'center',
-    color: 'white'
+    color: 'white',
   },
 });
-

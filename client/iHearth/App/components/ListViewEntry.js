@@ -12,14 +12,22 @@ export default ({ label, onPress, coupon }) => {
   // Image must be defined statically per docs
   // image = 'https://facebook.github.io/react/img/logo_og.png';
   return (
-    <ListItem button style={ styles.listItem } onPress={ (event) => { onPress() }} >  
+    <ListItem button style={ styles.listItem } onPress={ (event) => { onPress() }} >
       <View style={ styles.card }>
-        
+
         <View style={ styles.topContainer }>
           <Image style={ styles.image } source={{ uri: coupon.image }} />
           <View style={ styles.descriptionContainer }>
             <View style={ styles.splitContainer }>
-              <Text style={ styles.listItemTitle }> { coupon.title } </Text>
+              <View>
+                <Text style={ styles.listItemTitle }> { coupon.title } </Text>
+              </View>
+              <View style={{ flexDirection: 'row' }}>
+                <Text style={ styles.newPrice }>{ formatDollars(coupon.original_price) + '  ' }</Text>
+                <Text style={ styles.originalPrice }>{ formatDollars(coupon.coupon_price) }</Text>
+              </View>
+            </View>
+            <View>
               <Text style={ styles.listItemName }>{ coupon.item_name }</Text>
             </View>
             <View style={ styles.splitContainer }>
@@ -30,14 +38,12 @@ export default ({ label, onPress, coupon }) => {
               <View>
                 <Text style={ styles.listItemDescription }>
                 {
-                  formatSQLTime(coupon.start_at) + ' - ' + formatSQLTime(coupon.end_at) + 
+                  formatSQLTime(coupon.start_at) + ' - ' + formatSQLTime(coupon.end_at) +
                   ' ' + formatSQLDate(coupon.start_at)
                 }
                 </Text>
               </View>
               <View style={ styles.container }>
-                <Text style={ styles.newPrice }>{ formatDollars(coupon.original_price) + '  ' }</Text>
-                <Text style={ styles.originalPrice }>{ formatDollars(coupon.coupon_price) }</Text>
               </View>
             </View>
             <View>
@@ -65,7 +71,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: 275
+    width: 310
   },
   descriptionContainer: {
     flexDirection: 'column',
@@ -88,17 +94,17 @@ const styles = StyleSheet.create({
   },
   listItemTitle: {
     fontSize: 16,
-    fontWeight: '100', 
+    fontWeight: '100',
   },
   listItemName: {
     fontSize: 16,
     color: '#FF3F4E',
-    fontWeight: '100', 
+    fontWeight: '100',
   },
   listItemBusiness: {
     fontSize: 12,
     color: '#484848',
-    fontWeight: '100', 
+    fontWeight: '100',
   },
   listItemDescription: {
     fontSize: 12,
