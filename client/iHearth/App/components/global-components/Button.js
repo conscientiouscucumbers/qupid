@@ -69,6 +69,7 @@ var styles = StyleSheet.create({
     borderRadius: 25,
     borderWidth: 2,
     borderColor: '#cccccc',
+    backgroundColor: 'transparent'
   },
   button: {
     height: 50,

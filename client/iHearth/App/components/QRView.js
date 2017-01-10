@@ -17,7 +17,7 @@ export default class QRView extends Component {
   render() {
     return (
       <Container>
-        <Header>
+        <Header style={{ backgroundColor: '#ffbaba' }}>
           <Button transparent onPress={ _goBack } label='Return to Coupon List'>
             <Icon style={styles.arrow} name='ios-arrow-back' />
           </Button>

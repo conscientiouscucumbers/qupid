@@ -11,6 +11,7 @@ import { Sae, Fumi, Kohana, Makiko, Isao, Hoshi, Jiro, Kaede,
          Akira, Madoka, Hideo, } from 'react-native-textinput-effects';
 import { SegmentedControls } from 'react-native-radio-buttons';
 import createFragment from 'react-addons-create-fragment';
+import LinearGradient from 'react-native-linear-gradient';
 
 const authRoute = {
   type: 'push',
@@ -69,12 +70,12 @@ class SignupView extends Component {
         <Button onPress={ () => this.props.fetchNewUser(this.state, authRoute, this.props._handleNavigate) } label="Sign Up"></Button>
       </View>) :
       (<View style={{ marginTop: 5, marginBottom: 5 }}>
-        <Text style={{ textAlign: 'center', marginTop: 5, marginBottom: 5, fontSize: 16, color: '#FF3F4E' }}>Please fill out all fields</Text>
+        <Text style={styles.text}>Please fill out all fields</Text>
       </View>);
     return (
-      <Container style={{ backgroundColor: '#dddddd' }}>
-        <Content>
-          <Text style={styles.title}>Create New User</Text>
+      <LinearGradient colors={['#FAF1D6', '#FF9D81']} style={styles.linearGradient}>
+        <View style={styles.gradient}>
+          <Text style={styles.title}>Create New Account</Text>
           <View style={{ marginTop: 5, marginBottom: 5 }}></View>
             <Kaede
               label={'First Name'}
@@ -95,7 +96,7 @@ class SignupView extends Component {
             />
             <List>
               <ListItem>
-                <Text style={{left: 10, top: 10, fontSize: 16, color: '#FF3F4E'}}>Date of Birth</Text>
+                <Text style={styles.text}>Date of Birth</Text>
                   <DatePicker
                     style={{width: 250, left: 50, backgroundColor: '#FF3F4E'}}
                     date={this.state.dob}
@@ -128,7 +129,7 @@ class SignupView extends Component {
               onChangeText={(text) => this.setState({password: text})}
               secureTextEntry
             />
-          <Text style={{ textAlign: 'center', marginTop: 10, fontSize: 16, color: '#dddddd' }}>Gender</Text>
+          <Text style={{ textAlign: 'center', marginTop: 10, fontSize: 16, color: '#FF3F4E', backgroundColor: 'transparent' }}>Gender</Text>
             <List>
               <ListItem>
                 <SegmentedControls
@@ -148,8 +149,8 @@ class SignupView extends Component {
           {addSignInButton}
           <View style={{ marginTop: 5, marginBottom: 5 }}><Button onPress={ this.props._goBack } label='Cancel'></Button></View>
           </View>
-        </Content>
-      </Container>
+        </View>
+      </LinearGradient>
     );
   }
 };
@@ -162,6 +163,22 @@ var styles = StyleSheet.create({
     fontSize: 44,
     fontWeight: '100',
     textAlign: 'center',
-    color: '#FF3F4E'
+    color: '#FF3F4E',
+    backgroundColor: 'transparent'
+  },
+  text: {
+    textAlign: 'center',
+    marginTop: 5,
+    marginBottom: 5,
+    fontSize: 16,
+    color: '#FF3F4E',
+    backgroundColor: 'transparent'
+  },
+  gradient: {
+    textAlign: 'center',
+    zIndex: 0
+  },
+  linearGradient: {
+    flex: 1
   }
 });
