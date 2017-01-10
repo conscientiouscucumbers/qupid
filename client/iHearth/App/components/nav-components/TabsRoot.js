@@ -69,7 +69,7 @@ class Tabs extends Component {
       )
     })
     return (
-      <TabBarIOS tintColor='#FF3F4E' barTintColor='#FF9D81'>
+      <TabBarIOS tintColor='#FF3F4E' barTintColor='#ffffff'>
         {tabs}
       </TabBarIOS>
     )
