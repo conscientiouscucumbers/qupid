@@ -5,7 +5,7 @@ import { Container, Header, Button, Icon, Title, Content } from 'native-base';
 
 const CouponView = ({ _goBack, _handleNavigate }) => (
   <Container style={{ backgroundColor: '#dddddd' }}>
-    <Header style={{ backgroundColor: '#ffbaba' }}>
+    <Header style={{ backgroundColor: '#ffffff' }}>
       <Title style={styles.title}>Selected Coupon</Title>
       <Button transparent onPress={ _goBack }>
         <Icon name='ios-arrow-back' style={styles.arrow} />
@@ -23,9 +23,9 @@ var styles = StyleSheet.create({
   title: {
     lineHeight: 50,
     textAlign: 'center',
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: '300',
-    color: '#FF3F4E'
+    color: '#484848'
   },
   arrow: {
     color: '#FF3F4E'

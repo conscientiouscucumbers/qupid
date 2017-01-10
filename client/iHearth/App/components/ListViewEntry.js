@@ -30,18 +30,18 @@ export default ({ label, onPress, coupon }) => {
             <View>
               <Text style={ styles.listItemName }>{ coupon.item_name }</Text>
             </View>
-            <View style={ styles.splitContainer }>
+            <View>
               <Text style={ styles.listItemBusiness }>{ coupon.company_name }</Text>
-              <Text>{ timeLeft(coupon.end_at) }</Text>
             </View>
             <View>
-              <View>
+              <View style={ styles.splitContainer }>
                 <Text style={ styles.listItemDescription }>
                 {
                   formatSQLTime(coupon.start_at) + ' - ' + formatSQLTime(coupon.end_at) +
                   ' ' + formatSQLDate(coupon.start_at)
                 }
                 </Text>
+                <Text style={{ color: '#FF3F4E' }}>{ timeLeft(coupon.end_at) }</Text>
               </View>
               <View style={ styles.container }>
               </View>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: 310
+    width: 300
   },
   descriptionContainer: {
     flexDirection: 'column',
@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
   },
   originalPrice: {
     textDecorationLine: 'line-through',
+    color: '#484848',
     fontSize: 12,
   },
   newPrice: {
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
   },
   listItemName: {
     fontSize: 16,
-    color: '#FF3F4E',
+    color: '#484848',
     fontWeight: '100',
   },
   listItemBusiness: {

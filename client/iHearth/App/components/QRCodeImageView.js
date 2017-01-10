@@ -27,7 +27,7 @@ export default class QRCodeImageView extends Component {
                   fgColor='white'
                 />
               </View>
-              <Text style={{fontWeight: '300', textAlign: 'center'}}>QR Code to Scan</Text>
+              <Text style={{fontWeight: '300', textAlign: 'center'}}>Scan QR Code</Text>
               <Button onPress={ () => { this.props.useCoupon(
                 this.user_id,
                 this.coupon_id)
