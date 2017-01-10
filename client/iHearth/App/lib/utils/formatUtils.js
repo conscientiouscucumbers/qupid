@@ -77,3 +77,34 @@ export function formatSQLDate(sql) {
 export function sqlToJsDate(sql) {
   return sqlToJsDate(sql);
 }
+
+// takes ms and outputs formatted timeleft string
+let msToTimeLeft = (ms) => {
+  let MIN = 60 * 1000;
+  let HOUR = 60 * MIN;
+  let DAY = 24 * HOUR;
+  let WEEK = 7 * DAY;
+
+  let weekLeft = Math.floor(ms / WEEK); 
+  ms -= weekLeft * WEEK;
+
+  let dayLeft = Math.floor(ms / DAY); 
+  ms -= dayLeft * DAY;
+
+  let hourLeft = Math.floor(ms / HOUR); 
+  ms -= hourLeft * HOUR;
+
+  let minLeft = Math.floor(ms / MIN); 
+  ms -= minLeft * MIN;
+
+  return `${weekLeft ? weekLeft + 'w ' : ''}${dayLeft ? dayLeft + 'd ' : ''}${hourLeft ? hourLeft + 'h ' : ''}${minLeft ? minLeft + 'm ' : ''}left`; 
+}
+
+// takes date object and outputs ms vs. now
+let msFromNow = (jsdate) => {
+  return jsdate - new Date();
+}
+
+export function timeLeft(sql) {
+  return composeAll(msToTimeLeft, msFromNow, sqlToJsDate)(sql)
+}

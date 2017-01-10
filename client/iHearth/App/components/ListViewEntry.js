@@ -6,7 +6,7 @@ import {
   Thumbnail,
   Card
 } from 'native-base';
-import { formatDollars, formatSQLTime, formatSQLDate } from '../lib/utils/formatUtils.js';
+import { formatDollars, formatSQLTime, formatSQLDate, timeLeft } from '../lib/utils/formatUtils.js';
 
 export default ({ label, onPress, coupon }) => {
   // Image must be defined statically per docs
@@ -22,8 +22,9 @@ export default ({ label, onPress, coupon }) => {
               <Text style={ styles.listItemTitle }> { coupon.title } </Text>
               <Text style={ styles.listItemName }>{ coupon.item_name }</Text>
             </View>
-            <View>
+            <View style={ styles.splitContainer }>
               <Text style={ styles.listItemBusiness }>{ coupon.company_name }</Text>
+              <Text>{ timeLeft(coupon.end_at) }</Text>
             </View>
             <View>
               <View>
