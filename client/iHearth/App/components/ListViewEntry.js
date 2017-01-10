@@ -6,11 +6,12 @@ import {
   Thumbnail,
   Card
 } from 'native-base';
-import { formatDollars, sqlToJsDate, toHHMMSS } from '../lib/utils/formatUtils.js';
+import { formatDollars, formatSQLTime, formatSQLDate } from '../lib/utils/formatUtils.js';
 
 export default ({ label, onPress, coupon }) => {
   // Image must be defined statically per docs
   // image = 'https://facebook.github.io/react/img/logo_og.png';
+  console.log('COUPON START AT...', coupon.title, coupon.start_at, coupon.end_at);
   return (
     <ListItem button style={ styles.listItem } onPress={ (event) => { onPress() }} >  
       <Card>
@@ -23,7 +24,12 @@ export default ({ label, onPress, coupon }) => {
             </View>
             <View>
               <View>
-                <Text style={ styles.listItemDescription }>{ sqlToJsDate(coupon.start_at) + ' - ' + sqlToJsDate(coupon.end_at) }</Text>
+                <Text style={ styles.listItemDescription }>
+                {
+                  formatSQLTime(coupon.start_at) + ' - ' + formatSQLTime(coupon.end_at) + 
+                  ' ' + formatSQLDate(coupon.start_at)
+                }
+                </Text>
               </View>
               <View style={{ flexDirection: 'row' }}>
                 <Text style={ styles.listItemDescription }>{ formatDollars(coupon.original_price) }</Text>
