@@ -72,4 +72,8 @@ export function formatSQLTime(sql) {
 
 export function formatSQLDate(sql) {
   return sql.replace(/^(\d{4})-(\d{2})-(\d{2})/, '$2/$3/$1').slice(0, 10);
-} 
+}
+
+export function sqlToJsDate(sql) {
+  return sqlToJsDate(sql);
+}

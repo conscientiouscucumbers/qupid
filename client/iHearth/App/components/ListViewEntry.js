@@ -11,16 +11,19 @@ import { formatDollars, formatSQLTime, formatSQLDate } from '../lib/utils/format
 export default ({ label, onPress, coupon }) => {
   // Image must be defined statically per docs
   // image = 'https://facebook.github.io/react/img/logo_og.png';
-  console.log('COUPON START AT...', coupon.title, coupon.start_at, coupon.end_at);
   return (
     <ListItem button style={ styles.listItem } onPress={ (event) => { onPress() }} >  
-      <Card>
-        <View style={ styles.container }>
-          <Image style={{ width: 80, height: 80, alignSelf: 'flex-start' }} source={{ uri: coupon.image }} />
+      <View style={ styles.card }>
+        
+        <View style={ styles.topContainer }>
+          <Image style={ styles.image } source={{ uri: coupon.image }} />
           <View style={ styles.descriptionContainer }>
-            <View style={{ flexDirection: 'row' }}>
+            <View style={ styles.splitContainer }>
               <Text style={ styles.listItemTitle }> { coupon.title } </Text>
               <Text style={ styles.listItemName }>{ coupon.item_name }</Text>
+            </View>
+            <View>
+              <Text style={ styles.listItemBusiness }>{ coupon.company_name }</Text>
             </View>
             <View>
               <View>
@@ -31,37 +34,56 @@ export default ({ label, onPress, coupon }) => {
                 }
                 </Text>
               </View>
-              <View style={{ flexDirection: 'row' }}>
-                <Text style={ styles.listItemDescription }>{ formatDollars(coupon.original_price) }</Text>
-                <Text style={ [styles.listItemDescription, styles.originalPrice] }>{ formatDollars(coupon.coupon_price) }</Text>
+              <View style={ styles.container }>
+                <Text style={ styles.newPrice }>{ formatDollars(coupon.original_price) + '  ' }</Text>
+                <Text style={ styles.originalPrice }>{ formatDollars(coupon.coupon_price) }</Text>
               </View>
             </View>
             <View>
-              <Text>{ coupon.company_name }</Text>
             </View>
           </View>
         </View>
 
-      </Card>
+      </View>
     </ListItem>
   );
 }
 
 const styles = StyleSheet.create({
+  topContainer: {
+    flexDirection: 'row',
+    padding: 2,
+    paddingTop: 2,
+    paddingBottom: 2,
+  },
   container: {
     flexDirection: 'row',
+    paddingTop: 5
+  },
+  splitContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 275
   },
   descriptionContainer: {
     flexDirection: 'column',
+    paddingLeft: 10
   },
   listItem: {
     flex: 1,
-    borderBottomWidth: 0,
-    paddingBottom: 0,
-    marginBottom: -10
+    borderBottomWidth: 1,
+    paddingBottom: 4,
+    marginBottom: -8,
   },
   originalPrice: {
-    textDecorationLine: 'line-through'
+    textDecorationLine: 'line-through',
+    fontSize: 12,
+  },
+  newPrice: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#00A699'
   },
   listItemTitle: {
     fontSize: 16,
@@ -69,10 +91,29 @@ const styles = StyleSheet.create({
   },
   listItemName: {
     fontSize: 16,
-    color: '#FF3F4E'
+    color: '#FF3F4E',
+    fontWeight: '100', 
+  },
+  listItemBusiness: {
+    fontSize: 12,
+    color: '#484848',
+    fontWeight: '100', 
   },
   listItemDescription: {
     fontSize: 12,
     color: '#484848'
+  },
+  image: {
+    width: 85,
+    height: 80,
+    alignSelf: 'flex-start',
+  },
+  card: {
+    borderWidth: 0,
+    // borderRadius: 10,
+    marginTop: 2,
+    marginBottom: 2,
+    borderColor: '#dddddd',
+    backgroundColor: 'white'
   },
 })
