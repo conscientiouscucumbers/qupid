@@ -59,13 +59,9 @@ export default ({ label, onPress, coupon }) => {
 const styles = StyleSheet.create({
   topContainer: {
     flexDirection: 'row',
-    padding: 2,
-    paddingTop: 2,
-    paddingBottom: 2,
   },
   container: {
     flexDirection: 'row',
-    paddingTop: 5
   },
   splitContainer: {
     flex: 1,
@@ -112,15 +108,14 @@ const styles = StyleSheet.create({
     color: '#484848'
   },
   image: {
-    width: 85,
-    height: 80,
+    width: 95,
+    height: 95,
     alignSelf: 'flex-start',
+    // borderRadius: 47.5
   },
   card: {
     borderWidth: 0,
     // borderRadius: 10,
-    marginTop: 2,
-    marginBottom: 2,
     borderColor: '#dddddd',
     backgroundColor: 'white'
   },

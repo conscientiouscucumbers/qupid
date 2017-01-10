@@ -36,7 +36,8 @@ export default class SortByFilterView extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: 20
+    height: 18,
+    backgroundColor: 'white'
   },
   row: {
     flex: 1,
