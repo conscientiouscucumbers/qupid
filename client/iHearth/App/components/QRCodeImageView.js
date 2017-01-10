@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Image, View } from 'react-native';
-// import ListViewEntry from './ListViewEntry';
-import { Container, Content, Card, CardItem, Text, Button } from 'native-base';
+import Button from './global-components/Button';
+import { Container, Content, Card, CardItem, Text } from 'native-base';
 import QRCode from 'react-native-qrcode';
 
 export default class QRCodeImageView extends Component {
@@ -27,11 +27,11 @@ export default class QRCodeImageView extends Component {
                   fgColor='white'
                 />
               </View>
-              <Text style={{fontWeight: 'bold', textAlign: 'center'}}>QR Code to Scan</Text>
+              <Text style={{fontWeight: '300', textAlign: 'center'}}>QR Code to Scan</Text>
               <Button onPress={ () => { this.props.useCoupon(
                 this.user_id,
                 this.coupon_id)
-              }} block>Use QR Placeholder</Button>
+              }} label='Use Coupon'></Button>
             </CardItem>
           </Card>
         </Content>

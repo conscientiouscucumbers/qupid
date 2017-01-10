@@ -13,7 +13,6 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableHighlight, StyleSheet } from 'react-native';
 // import styles from './../../styles';
-import ButtonComponent, { CircleButton, RoundButton, RectangleButton } from 'react-native-button-component';
 
 class Button extends Component {
   constructor(props) {
@@ -70,7 +69,6 @@ var styles = StyleSheet.create({
     borderRadius: 25,
     borderWidth: 2,
     borderColor: '#cccccc',
-    backgroundColor: '#dddddd'
   },
   button: {
     height: 50,

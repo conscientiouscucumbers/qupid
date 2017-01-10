@@ -154,6 +154,8 @@ class SignupView extends Component {
   }
 };
 
+export default SignupView;
+
 var styles = StyleSheet.create({
   title: {
     paddingTop: 60,
@@ -163,5 +165,3 @@ var styles = StyleSheet.create({
     color: '#FF3F4E'
   }
 });
-
-export default SignupView;

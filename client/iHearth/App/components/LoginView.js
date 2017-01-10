@@ -8,6 +8,7 @@ import DeviceInfo from 'react-native-device-info';
 import { Sae, Fumi, Kohana, Makiko, Isao, Hoshi, Jiro, Kaede,
          Akira, Madoka, Hideo, } from 'react-native-textinput-effects';
 import ExplodingHearts from './ExplodingHearts';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Item = Picker.Item;
 
@@ -52,8 +53,8 @@ export default class LoginView extends Component {
             <List style={{ marginTop: 20, marginBottom: 20 }}>
               <Kaede
                 label={'Email'}
-                borderColor={'#a30180'}
-                labelStyle={{ color: '#f80046' }}
+                borderColor={'#dddddd'}
+                labelStyle={{ color: '#FF3F4E' }}
                 value={this.state.email}
                 autoCapitalize="none"
                 onChangeText={(text) => this.setState({email: text})}
@@ -61,8 +62,8 @@ export default class LoginView extends Component {
             <View style={{ marginTop: 5, marginBottom: 5 }}></View>
             <Kaede
                 label={'Password'}
-                borderColor={'#a30180'}
-                labelStyle={{ color: '#f80046' }}
+                borderColor={'#dddddd'}
+                labelStyle={{ color: '#FF3F4E' }}
                 value={this.state.password}
                 autoCapitalize="none"
                 onChangeText={(text) => this.setState({password: text})}
@@ -87,6 +88,6 @@ var styles = StyleSheet.create({
     fontSize: 44,
     fontWeight: '100',
     textAlign: 'center',
-    color: '#f80046'
+    color: '#FF3F4E'
   }
 });
