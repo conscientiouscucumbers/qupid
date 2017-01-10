@@ -13,11 +13,10 @@ class HomeView extends Component {
     return (
       <Container>
         <Header style={{ backgroundColor: '#ffbaba' }}>
-          <Text></Text>
+          <Title style={ styles.title }>My Coupons</Title>
         </Header>
         <Content>
           <View style={ styles.container }>
-            <Text style={ styles.title }>My Coupons</Text>
             <FilterViewContainer />
             <ListViewContainer _handleNavigate={ this.props._handleNavigate } />
           </View>
@@ -36,8 +35,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   title: {
-    fontSize: 30,
-    fontWeight: '100',
-    alignSelf: 'center'
+    lineHeight: 50,
+    textAlign: 'center',
+    fontSize: 24,
+    fontWeight: '300',
+    color: '#FF3F4E'
   }
 })

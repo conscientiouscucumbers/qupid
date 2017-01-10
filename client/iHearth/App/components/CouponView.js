@@ -4,8 +4,8 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Container, Header, Button, Icon, Title, Content } from 'native-base';
 
 const CouponView = ({ _goBack, _handleNavigate }) => (
-  <Container style={{ backgroundColor: '#ffbaba' }}>
-    <Header>
+  <Container style={{ backgroundColor: '#dddddd' }}>
+    <Header style={{ backgroundColor: '#ffbaba' }}>
       <Title style={styles.title}>Selected Coupon</Title>
       <Button transparent onPress={ _goBack }>
         <Icon name='ios-arrow-back' style={styles.arrow} />

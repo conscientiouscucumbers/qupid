@@ -23,7 +23,7 @@ export default class QRCodeImageView extends Component {
                 <QRCode
                   value={this.props.currentCoupon.couponInfo.qrcode}
                   size={200}
-                  bgColor='purple'
+                  bgColor='#FF3F4E'
                   fgColor='white'
                 />
               </View>

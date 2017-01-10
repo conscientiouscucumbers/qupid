@@ -40,12 +40,10 @@ export default class LogoutView extends Component {
 
   render() {
     return (
-      <Container>
-        <Content>
-          <View style={{ marginTop: 5, marginBottom: 5 }}></View>
-          <Button onPress={ () => this.props.fetchAuth(this.state, authRoute, this.props.popRoute) } label="Log Out" />
-        </Content>
-      </Container>
+      <View>
+        <View style={{ marginTop: 5, marginBottom: 5 }}></View>
+        <Button onPress={ () => this.props.fetchAuth(this.state, authRoute, this.props.popRoute) } label="Log Out" />
+      </View>
     )
   }
 }

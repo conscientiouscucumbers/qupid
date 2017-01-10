@@ -47,8 +47,8 @@ export default class LoginView extends Component {
 
   render() {
     return (
-      <Container style={{ backgroundColor: '#dddddd' }}>
-        <Content>
+      <LinearGradient colors={['#FAF1D6', '#FF9D81']} style={styles.linearGradient}>
+        <View style={styles.gradient}>
           <Text style={styles.title}>Cupid</Text>
             <List style={{ marginTop: 20, marginBottom: 20 }}>
               <Kaede
@@ -76,18 +76,26 @@ export default class LoginView extends Component {
           <List style={{ marginTop: 10 }}>
             <Button onPress={ () => this.props.fetchAuth(this.state, authRoute, this.props._handleNavigate) } label="Log In" />
           </List>
-        </Content>
-      </Container>
+        </View>
+      </LinearGradient>
     )
   }
 }
 
 var styles = StyleSheet.create({
   title: {
-    paddingTop: 120,
+    paddingTop: 160,
     fontSize: 44,
     fontWeight: '100',
     textAlign: 'center',
-    color: '#FF3F4E'
+    color: '#FF3F4E',
+    backgroundColor: 'transparent'
+  },
+  gradient: {
+    textAlign: 'center',
+    zIndex: 0
+  },
+  linearGradient: {
+    flex: 1
   }
 });
