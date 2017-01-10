@@ -13,7 +13,7 @@ class HomeView extends Component {
     return (
       <Container>
         <Content>
-        <Header style={{ backgroundColor: '#ffbaba' }}>
+        <Header style={{ backgroundColor: '#ffffff' }}>
           <Title style={ styles.title }>My Coupons</Title>
         </Header>
           <FilterViewContainer />
@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
   title: {
     lineHeight: 50,
     textAlign: 'center',
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: '300',
-    color: '#FF3F4E'
+    color: '#484848'
   }
 })

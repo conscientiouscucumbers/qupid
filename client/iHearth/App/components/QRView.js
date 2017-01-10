@@ -17,11 +17,11 @@ export default class QRView extends Component {
   render() {
     return (
       <Container>
-        <Header style={{ backgroundColor: '#ffbaba' }}>
+        <Header style={{ backgroundColor: '#ffffff' }}>
           <Button transparent onPress={ _goBack } label='Return to Coupon List'>
             <Icon style={styles.arrow} name='ios-arrow-back' />
           </Button>
-          <Title style={styles.title}>Selected QRCode</Title>
+          <Title style={styles.title}>Selected QR Code</Title>
         </Header>
         <Content>
           <QRCodeImageViewContainer />
@@ -35,9 +35,9 @@ var styles = StyleSheet.create({
   title: {
     lineHeight: 50,
     textAlign: 'center',
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: '300',
-    color: '#FF3F4E'
+    color: '#484848'
   },
   arrow: {
     color: '#FF3F4E'
