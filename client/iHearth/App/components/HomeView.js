@@ -12,7 +12,7 @@ class HomeView extends Component {
   render() {
     return (
       <Container>
-        <Header style={{ backgroundColor: '#ffbaba' }}>
+        <Header style={{ backgroundColor: 'white' }}>
           <Title style={ styles.title }>My Coupons</Title>
         </Header>
         <Content>
@@ -31,8 +31,12 @@ export default HomeView;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
     backgroundColor: 'white',
-    justifyContent: 'center'
+    paddingBottom: 500,
+    width: 410,
+    marginLeft: -18,
+    alignSelf: 'stretch'
   },
   title: {
     lineHeight: 50,

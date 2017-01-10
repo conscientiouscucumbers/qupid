@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native'
 import ListViewEntry from './ListViewEntry';
-import styles from './../styles';
 import { Container, List, Content } from 'native-base';
 import DropdownAlert from 'react-native-dropdownalert'
 import { sqlToJsDate } from '../lib/utils/formatUtils';
@@ -37,7 +36,7 @@ export default class ListView extends Component {
   render() {
     this.props.pushedCoupons.pushedCoupons[0] ? this.showAlert('custom') : null
     return (
-      <View>
+      <View style={ styles.container }>
         <Text>{this.props.pushedCoupons.pushedCoupons[0] ? this.props.pushedCoupons.pushedCoupons[0].title : "null" }</Text>
         <List>
           {/* Render based on sortBy state -- by creation_time/coupon_id */}
@@ -57,7 +56,7 @@ export default class ListView extends Component {
               // compare time left for item a and b
               let tl1 = sqlToJsDate(a.end_at) - this.constructor.timeNow;
               let tl2 = sqlToJsDate(b.end_at) - this.constructor.timeNow;
-              return tl2 - tl1;
+              return  tl1 - tl2;
             }).map((coupon) => (
               <ListViewEntry
                 key={ coupon.coupon_id }
@@ -116,13 +115,10 @@ export default class ListView extends Component {
   }
 }
 
-const styles2 = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // flexDirection: 'column',
-    // justifyContent: 'center',
-    // alignItems:'center'
-    // backgroundColor: 'honeydew'
+    flexDirection: 'column',
   },
   contentContainer: {
     marginTop: 22,
