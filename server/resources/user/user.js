@@ -202,61 +202,36 @@ var sendBeaconCoupons = (params, callback) => {
   // 2) insert into user_coupon
   // 3) select one coupon, send to user
   // (recieve coupon_id, coupon_title)
-  var selectUsableCoupon = `select C.coupon_id
-    from coupon as C
-    inner join coupon_beacon as CB
-    on CB.coupon_id=C.coupon_id
-    where CB.beacon_uuid="${params.beacon_uuid}" and now() < C.end_at;`;
-  db.query(selectUsableCoupon, (err, usable) => {
-    if(err) {
-      console.log('Error in selectedUsableCoupon query');
+  var insertQuery = `insert into user_coupon\
+    (user_id, coupon_id, used, expired, activated)\
+    select *\
+    from
+      (select ${params.user_id}, C.coupon_id, 0 as used, 0 as expired, C.start_at >= now() as activated
+      from coupon as C
+      inner join coupon_beacon as CB
+      on CB.coupon_id=C.coupon_id
+      where CB.beacon_uuid="${params.beacon_uuid}" and now() < C.end_at) as FIND`;
+  db.query(insertQuery, (err, inserted) => {
+    if (err) {
+      console.log('Error occured when inserting newly recieved coupon to the user_coupon join table.');
       callback(err);
+    } else {
+      var selectQuery = `select C.coupon_id, C.title \
+        from coupon as C \
+        left join user_coupon as UC \
+        on C.coupon_id = UC.coupon_id \
+        where UC.user_coupon_id=${inserted.insertId};`
+      db.query(selectQuery, (err, coupon) => {
+        if(err) {
+          console.log('Error occured when selecting newly created coupon from coupon/user_coupon table.')
+          callback(err);
+        } else {
+          callback(null,coupon);
+        }
+      });
     }
-    if(usable.length === 0){
-      console.log('Currently there is no coupon to be sent');
-      callback(null, 'noCoupon');
-    }
-    var selectRegistered = `select coupon_id from user_coupon where coupon_id=${usable[0].coupon_id} and user_id=${params.user_id};`;
-    db.query(selectRegistered, (err, registered) => {
-      if(err) {
-        console.log('Error in selectRegistered query');
-        callback(err);
-      }
-      if(registered.length !== 0 ){
-        console.log('Same coupon is already registered in user_coupon table');
-        callback(null, 'alreadyRegistered');
-      }
-      else {
-        var insertQuery = `insert into user_coupon
-          (user_id, coupon_id, used, expired, activated)
-          values (${params.user_id}, ${usable[0].coupon_id}, false, false, true);`;
-        db.query(insertQuery, (err, inserted) => {
-          if (err) {
-            console.log('Error occured when inserting newly recieved coupon to the user_coupon join table.');
-            callback(err);
-          } else {
-            console.log('inserted');
-            console.log(inserted);
-            var selectQuery = `select C.coupon_id, C.title \
-              from coupon as C \
-              left join user_coupon as UC \
-              on C.coupon_id = UC.coupon_id \
-              where UC.user_coupon_id=${inserted.insertId};`
-            db.query(selectQuery, (err, coupon) => {
-              if(err) {
-                console.log('Error occured when selecting newly created coupon from coupon/user_coupon table.')
-                callback(err);
-              }
-              console.log('last step');
-              console.log(coupon);
-              callback(null, coupon);
-            });
-          }
-        });
-      }
-    });
   });
-}
+};
 module.exports.sendBeaconCouponsAsync = Promise.promisify(sendBeaconCoupons);
 
 var fetchUserByDevice = (params, callback) => {
