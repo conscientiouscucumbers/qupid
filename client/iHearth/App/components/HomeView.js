@@ -12,12 +12,12 @@ class HomeView extends Component {
   render() {
     return (
       <Container>
-        <Header style={{ backgroundColor: 'white' }}>
+        <Content>
+        <Header style={{ backgroundColor: '#ffbaba' }}>
           <Title style={ styles.title }>My Coupons</Title>
         </Header>
-        <Content>
+          <FilterViewContainer />
           <View style={ styles.container }>
-            <FilterViewContainer />
             <ListViewContainer _handleNavigate={ this.props._handleNavigate } />
           </View>
         </Content>
@@ -31,12 +31,11 @@ export default HomeView;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     backgroundColor: 'white',
-    paddingBottom: 500,
-    width: 410,
-    marginLeft: -18,
-    alignSelf: 'stretch'
+    paddingBottom: 7,
+
+    marginLeft: -15,
+    marginRight: -15
   },
   title: {
     lineHeight: 50,
