@@ -67,20 +67,23 @@ export function fetchUserInfoByDevice(route, callback) {
       .then(json => {
 
           // Change isFetching to false
-          dispatch(receiveUserInfoByDevice())
+          dispatch(receiveUserInfoByDevice());
 
           // if no error then navigate to home page
           if (json.error) {
+            console.log('error found in json from fetchUserInfoByDevice')
             return;
           } else {
             // On success dispatch to set loginView state if automatically signed in
+            console.log('inside fetchUserInfoByDevice');
+            console.log(json);
+            console.log(json[0]);
             dispatch(receiveAuth(json[0]));
             // Navigate automatically to tabsroot
             callback(route);
             return;
           }
         })
-
       // Catch errors
       .catch((err) => {
         console.error('Error in fetching user info by device in loginNavRootActions.js', err.message);

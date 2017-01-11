@@ -39,16 +39,24 @@ export function fetchBeaconCoupons(user_id, beacon_uuid) {
       .then(response => {
         console.log('this is it!!!!!!222');
         console.log(response);
-        if(response !== undefined){
-          response.json();
-        } else {
+        if(response.status === 204){
           return null;
+        }
+        if(response.status === 200){
+          console.log('======+GOOOOOD====');
+          console.log('response:'+response);
+          console.log('respon.title'+response.title);
+          console.log('json[0]'+response[0]);
         }
       })
       .then(json => {
         console.log("this is it!!!!!!");
         console.log(json);
-        // return dispatch(beaconReceiveCoupons(json))
+        if(json===null){
+          console.log('json has error in fetchBeaconCoupons');
+          return;
+        }
+        return dispatch(beaconReceiveCoupons(json))
       })
       .catch((err) => {
         console.error('Error in fetching coupons from beacon in tabsRootActions.js' + err.message);
