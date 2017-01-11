@@ -66,7 +66,12 @@ var retrieveOneUser = (params, callback) => {
 };
 module.exports.retrieveOneUserAsync = Promise.promisify(retrieveOneUser);
 
-var retrieveUserCoupons = (active, params, callback) => {
+// (0, 0...): return all related coupons of user 
+// (1, 0...): only return active related coupons of user
+// (0, 1...): only return unused related coupons of user
+// (1, 1...): only return active and unused related coupons of user
+var retrieveUserCoupons = (active, used, params, callback) => {
+  console.log(active, used);
   var queryStr = `select * from coupon as c
                   inner join user_coupon as uc
                   on (c.coupon_id = uc.coupon_id)
@@ -74,6 +79,8 @@ var retrieveUserCoupons = (active, params, callback) => {
                   on (b.business_id=c.business_id)
                   where uc.user_id = ${params.user_id}
                   ${ active ? ' and now() < c.end_at and now() > c.start_at'
+                  : ''}
+                  ${ used ? ' and uc.used=0'
                   : ''}`;
   db.query(queryStr, (err, coupons) => {
     if (err) {
