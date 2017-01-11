@@ -56,6 +56,8 @@ function tabsNav (state = initialState, action) {
         isFetching: true
       }
     case BEACON_RECEIVE_COUPONS:
+      console.log('action is here---------');
+      console.log(action);
       return {
         ...state,
         isFetching: false,

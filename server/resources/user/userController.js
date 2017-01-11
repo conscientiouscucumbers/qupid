@@ -60,10 +60,10 @@ exports.retrievePasswordFromEmail = (req, res) => {
 // retrieve all user coupons that have previously been sent to a specific user
 // coupons must have matching user_id
 // depending on control options, will query based on
-// => Active (now() < end_at and now() > start_at) 
+// => Active (now() < end_at and now() > start_at)
 // => Used (uc.used=0)
 exports.retrieveUserCoupons = (req, res) => {
-  var params = { user_id: req.params.user_id };  
+  var params = { user_id: req.params.user_id };
   // See user model for control details
   userModel.retrieveUserCouponsAsync(1, 1, params)
   .then((coupons) => {
@@ -100,14 +100,15 @@ exports.sendBeaconCoupons = (req, res) => {
       console.log('same coupon already registered to user' + params.user_id);
       res.sendStatus(204);
     } else {
-      console.log('successfully registered new coupon to uer_coupon table, and found entries in user_coupon table');
-      res.status(200).json(coupons);
+      console.log('===successfully registered new coupon to uer_coupon table, and found entries in user_coupon table');
+      console.log(coupons);
+      console.log('===why is this undefined?');
+      res.status(200).json(["dummy"]);
     }
   }).catch((err) => {
     res.status(404).send('could not send coupon from ' + params.beacon_uuid + ' to user_id' + params.user_id);
   });
-};
-// exports.sendBeaconCoupons = (req, res) => {
+};// exports.sendBeaconCoupons = (req, res) => {
 //   var params = { user_id: req.params.user_id, beacon_uuid: req.params.beacon_uuid };
 //   console.log(params);
 //   userModel.sendBeaconCouponsAsync(params)

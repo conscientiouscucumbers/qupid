@@ -34,12 +34,21 @@ export default class ListView extends Component {
   static timeNow = new Date();
 
   render() {
+    // console.log('is this undefined?');
+    // console.log(this.props.pushedCoupons.pushedCoupons);
+    // console.log('is array:' + Array.isArray(this.props.pushedCoupons.pushedCoupons));
+    // console.log('length:'+this.props.pushedCoupons.pushedCoupons.length);
     // this.props.pushedCoupons.pushedCoupons[0] ? this.showAlert('custom') : null
-    // console.log('PROPS HERE....', this.props);
-    // <Text style={{ textAlign: 'center' }}>{this.props.pushedCoupons.pushedCoupons[0] ? this.props.pushedCoupons.pushedCoupons[0].title : "searching for coupons..." }</Text>
+    console.log('PushedCoupons HERE....');
+    console.log(this.props.pushedCoupons);
+    if(this.props.pushedCoupons.pushedCoupons !== undefined && this.props.pushedCoupons.pushedCoupons[0] !== undefined ){
+      console.log('alert called');
+      this.showAlert('custom');
+    }
     return (
       <View style={ styles.container }>
 
+        <Text style={{ textAlign: 'center' }}>{this.props.pushedCoupons.pushedCoupons[0] ? this.props.pushedCoupons.pushedCoupons[0].title : "searching for coupons..." }</Text>
         <List>
           {/* Render spinner */}
           { this.props.coupons.isFetching && (<Spinner color='#484848' />)}
@@ -100,6 +109,7 @@ export default class ListView extends Component {
   }
 
   showAlert(type) {
+    console.log('alert!!');
     // customize alert window if more types needed
      // data = {type, title, message}
      switch (type) {
