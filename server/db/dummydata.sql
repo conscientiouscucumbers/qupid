@@ -31,6 +31,9 @@ values (2, 'qrcode2', '$20 OFF Sneakers', 'https://facebook.github.io/react/img/
 insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
 values (3, 'qrcode3', '$4 OFF Shampoo', 'https://facebook.github.io/react/img/logo_og.png', 'Amino Acid Shampoo', 'A naturally-derived shampoo that cleanses and softens hair. Creates a rich, creamy lather for a delightful shampoo experience. A special blend of moisturizing ingredients imparts softness and shine as the formula adds body and fullness. Suitable for all hair and scalp types when mildness is desired.', 8.00, 4.00, 4.00, '2017-01-06 03:00:00', '2017-02-10 09:00:00');
 
+insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
+values (3, 'qrcode4', '$4 OFF Conditioner', 'https://facebook.github.io/react/img/logo_og.png', 'Conditioner', 'Lorem Ipsum.', 8.00, 4.00, 4.00, '2017-01-15 03:00:00', '2017-02-10 09:00:00');
+
 -- WARNING: DO NOT CHANGE THE ORDER OF QUERIES!
 -- // user_coupon
 insert into user_coupon (user_id, coupon_id, used, expired, activated)
