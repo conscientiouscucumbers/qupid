@@ -34,13 +34,14 @@ export default class ListView extends Component {
   static timeNow = new Date();
 
   render() {
-    this.props.pushedCoupons.pushedCoupons[0] ? this.showAlert('custom') : null
-    console.log('PROPS HERE....', this.props);
+    // this.props.pushedCoupons.pushedCoupons[0] ? this.showAlert('custom') : null
+    // console.log('PROPS HERE....', this.props);
+    // <Text style={{ textAlign: 'center' }}>{this.props.pushedCoupons.pushedCoupons[0] ? this.props.pushedCoupons.pushedCoupons[0].title : "searching for coupons..." }</Text>
     return (
       <View style={ styles.container }>
-        <Text style={{ textAlign: 'center' }}>{this.props.pushedCoupons.pushedCoupons[0] ? this.props.pushedCoupons.pushedCoupons[0].title : "searching for coupons..." }</Text>
+
         <List>
-          {/* Render spinner */}          
+          {/* Render spinner */}
           { this.props.coupons.isFetching && (<Spinner color='#484848' />)}
           {/* Render based on sortBy state -- by creation_time/coupon_id */}
           { this.props.coupons.items && this.props.coupons.sortBy === DATE.key &&
