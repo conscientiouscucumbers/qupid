@@ -103,7 +103,7 @@ exports.sendBeaconCoupons = (req, res) => {
       console.log('===successfully registered new coupon to uer_coupon table, and found entries in user_coupon table');
       console.log(coupons);
       console.log('===why is this undefined?');
-      res.status(200).json(["dummy"]);
+      res.status(200).json({data: []});
     }
   }).catch((err) => {
     res.status(404).send('could not send coupon from ' + params.beacon_uuid + ' to user_id' + params.user_id);
