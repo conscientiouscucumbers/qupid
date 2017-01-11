@@ -59,9 +59,13 @@ exports.retrievePasswordFromEmail = (req, res) => {
 // GET request for /user/:user_id/coupon
 // retrieve all user coupons that have previously been sent to a specific user
 // coupons must have matching user_id
+// depending on control options, will query based on
+// => Active (now() < end_at and now() > start_at)
+// => Used (uc.used=0)
 exports.retrieveUserCoupons = (req, res) => {
   var params = { user_id: req.params.user_id };
-  userModel.retrieveUserCouponsAsync(params)
+  // See user model for control details
+  userModel.retrieveUserCouponsAsync(1, 1, params)
   .then((coupons) => {
     console.log('successfully retrieved all coupons for user with user_id', req.params.user_id);
     res.status(200).json(coupons);
@@ -94,7 +98,7 @@ exports.sendBeaconCoupons = (req, res) => {
   .then(coupons => {
     if(coupons === "alreadyRegistered" || coupons === "noCoupon") {
       console.log('same coupon already registered to user' + params.user_id);
-      res.sendStatus(200);
+      res.sendStatus(204);
     } else {
       console.log('successfully registered new coupon to uer_coupon table, and found entries in user_coupon table');
       res.status(200).json(coupons);
