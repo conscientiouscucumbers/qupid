@@ -37,9 +37,9 @@ export default class LoginNavRoot extends Component {
     this._handleNavigate = _handleNavigate.bind(this);
   }
 
-  // componentWillMount(){
-  //   this.props.fetchUserInfoByDevice(authRoute, this._handleNavigate);
-  // }
+  componentWillMount(){
+    this.props.fetchUserInfoByDevice(authRoute, this._handleNavigate);
+  }
 
   componentDidMount(){
     // Add BackAndroid listener
