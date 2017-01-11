@@ -66,7 +66,7 @@ var retrieveOneUser = (params, callback) => {
 };
 module.exports.retrieveOneUserAsync = Promise.promisify(retrieveOneUser);
 
-// (0, 0...): return all related coupons of user 
+// (0, 0...): return all related coupons of user
 // (1, 0...): only return active related coupons of user
 // (0, 1...): only return unused related coupons of user
 // (1, 1...): only return active and unused related coupons of user
