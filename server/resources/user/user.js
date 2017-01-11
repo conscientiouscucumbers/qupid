@@ -71,7 +71,6 @@ module.exports.retrieveOneUserAsync = Promise.promisify(retrieveOneUser);
 // (0, 1...): only return unused related coupons of user
 // (1, 1...): only return active and unused related coupons of user
 var retrieveUserCoupons = (active, used, params, callback) => {
-  console.log(active, used);
   var queryStr = `select * from coupon as c
                   inner join user_coupon as uc
                   on (c.coupon_id = uc.coupon_id)
