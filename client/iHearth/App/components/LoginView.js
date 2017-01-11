@@ -86,6 +86,7 @@ export default class LoginView extends Component {
           <List style={{ marginTop: 10 }}>
             <Button onPress={ () => this.props.fetchAuth(this.state, authRoute, this.props._handleNavigate) } label="Log In" />
           </List>
+          <ExplodingHearts />
         </View>
       </LinearGradient>
     )
@@ -94,7 +95,7 @@ export default class LoginView extends Component {
 
 var styles = StyleSheet.create({
   title: {
-    paddingTop: 160,
+    paddingTop: 140,
     fontSize: 44,
     fontWeight: '100',
     textAlign: 'center',
