@@ -70,7 +70,7 @@ function shuffleArray(array) {
 }
 
 
-var {
+const {
   Surface,
   Group,
   Shape,
@@ -209,7 +209,7 @@ var ExplodingHearts = React.createClass({
     return (
       <View style={styles.container}>
         <TouchableWithoutFeedback onPress={this.explode} style={styles.container}>
-          <View style={{transform: [{scale: .8}]}}>
+          <View style={{transform: [{scale: .5}]}}>
             <Surface width={deviceWidth} height={deviceHeight}>
               <Group x={75} y={200}>
                 <AnimatedShape
@@ -254,6 +254,8 @@ var AnimatedCircle = React.createClass({displayName: "Circle",
 var styles = StyleSheet.create({
   container: {
     flex: 1,
+    left: deviceWidth / 20,
+    backgroundColor: 'transparent'
   }
 });
 
