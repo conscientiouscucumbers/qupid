@@ -27,7 +27,7 @@ export default class ForgotPassword extends Component {
     return (
       <LinearGradient colors={['#FAF1D6', '#FF9D81']} style={styles.linearGradient}>
         <View style={styles.gradient}>
-          <Text style={styles.title}>Forgot Password?</Text>
+          <Text style={styles.title}>Forgot your password?</Text>
           <View style={{ marginTop: 20, marginBottom: 20 }}></View>
           <Text style={styles.password}>Please enter your email</Text>
           <View style={{ marginTop: 5, marginBottom: 5 }}></View>
@@ -53,7 +53,7 @@ export default class ForgotPassword extends Component {
 var styles = StyleSheet.create({
   title: {
     paddingTop: 100,
-    fontSize: 44,
+    fontSize: 40,
     fontWeight: '100',
     textAlign: 'center',
     color: '#FF3F4E',

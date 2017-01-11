@@ -160,7 +160,7 @@ export default SignupView;
 var styles = StyleSheet.create({
   title: {
     paddingTop: 60,
-    fontSize: 44,
+    fontSize: 40,
     fontWeight: '100',
     textAlign: 'center',
     color: '#FF3F4E',
