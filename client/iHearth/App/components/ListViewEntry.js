@@ -1,59 +1,103 @@
-import React from 'react';
-import { Text, Image, View, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
+import { Text, Image, View, StyleSheet, Dimensions } from 'react-native';
 import {
   Badge,
   ListItem,
   Thumbnail,
   Card
 } from 'native-base';
-import { formatDollars, formatSQLTime, formatSQLDate, timeLeft } from '../lib/utils/formatUtils.js';
+import { formatDollars, formatSQLTime, formatSQLDate, timeLeft, timeLeftInterval } from '../lib/utils/formatUtils.js';
 
-export default ({ label, onPress, coupon }) => {
+var {
+  width: deviceWidth,
+  height: deviceHeight
+} = Dimensions.get('window');
+
+
+
+export default class ListViewEntry extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      countdown: '',
+      interval: 1000,
+      timeUnit: ''
+    };
+  }
+
+  updateInterval() {
+    console.log('updateinterval', this.state)
+    if (this.state.timeUnit === 'sec') { this.setState({ interval: 500 }); }
+    else if (this.state.timeUnit === 'min') { this.setState({ interval: 1000 }); }
+    else { this.setState({ interval: 30000 }); }
+    this.setState({ countdown: timeLeft(this.props.coupon.end_at) });
+    if (this.state.countdown === 'expired') {
+      this.setState({ interval: 1000 * 60 * 5 });
+      clearInterval(this.interval);
+    }
+  }
+
+  componentWillMount() {
+    this.setState({ countdown: timeLeft(this.props.coupon.end_at) });
+    this.setState({ timeUnit: timeLeftInterval(this.props.coupon.end_at) });
+    this.interval = setInterval(() => this.updateInterval(), this.state.interval);
+  }
+
+  componentWillUpdate() {
+    this.interval = setInterval(() => this.updateInterval(), this.state.interval);
+  }
   // Image must be defined statically per docs
   // image = 'https://facebook.github.io/react/img/logo_og.png';
-  return (
-    <ListItem button style={ styles.listItem } onPress={ (event) => { onPress() }} >
-      <View style={ styles.card }>
+  render() {
+    return (
+      <ListItem button style={ styles.listItem } onPress={ (event) => { this.props.onPress() }} >
+        <View style={ styles.card }>
 
-        <View style={ styles.topContainer }>
-          <Image style={ styles.image } source={{ uri: coupon.image }} />
-          <View style={ styles.descriptionContainer }>
-            <View style={ styles.splitContainer }>
-              <View>
-                <Text style={ styles.listItemTitle }> { coupon.title } </Text>
-              </View>
-              <View style={{ flexDirection: 'row' }}>
-                <Text style={ styles.newPrice }>{ formatDollars(coupon.original_price) + '  ' }</Text>
-                <Text style={ styles.originalPrice }>{ formatDollars(coupon.coupon_price) }</Text>
-              </View>
-            </View>
-            <View>
-              <Text style={ styles.listItemName }>{ coupon.item_name }</Text>
-            </View>
-            <View>
-              <Text style={ styles.listItemBusiness }>{ coupon.company_name }</Text>
-            </View>
-            <View>
+          <View style={ styles.topContainer }>
+            <Image style={ styles.image } source={{ uri: this.props.coupon.image }} />
+            <View style={ styles.descriptionContainer }>
               <View style={ styles.splitContainer }>
-                <Text style={ styles.listItemDescription }>
-                {
-                  formatSQLTime(coupon.start_at) + ' - ' + formatSQLTime(coupon.end_at) +
-                  ' ' + formatSQLDate(coupon.start_at)
-                }
-                </Text>
-                <Text style={{ color: '#FF3F4E' }}>{ timeLeft(coupon.end_at) }</Text>
+                <View>
+                  <Text style={ styles.listItemTitle }> { this.props.coupon.title } </Text>
+                </View>
+                <View style={{ flexDirection: 'row' }}>
+                  <Text style={ styles.newPrice }>{ formatDollars(this.props.coupon.original_price) + '  ' }</Text>
+                  <Text style={ styles.originalPrice }>{ formatDollars(this.props.coupon.coupon_price) }</Text>
+                </View>
               </View>
-              <View style={ styles.container }>
+              <View>
+                <Text style={ styles.listItemName }>{ this.props.coupon.item_name }</Text>
               </View>
-            </View>
-            <View>
+              <View>
+                <Text style={ styles.listItemBusiness }>{ this.props.coupon.company_name }</Text>
+              </View>
+              <View>
+                <View style={ styles.splitContainer }>
+                  <View>
+                  <Text style={ styles.listItemDescription }>
+                  {
+                    'Starts ' + formatSQLTime(this.props.coupon.start_at) + ' ' + formatSQLDate(this.props.coupon.start_at)
+                  }
+                  </Text>
+                  <Text style={ styles.listItemDescription }>
+                  {
+                    'Expires ' + formatSQLTime(this.props.coupon.end_at) + ' ' + formatSQLDate(this.props.coupon.end_at)
+                  }
+                  </Text>
+                  </View>
+                  <Text style={{ color: '#FF3F4E' }}>{ this.state.countdown }</Text>
+                </View>
+                <View style={ styles.container }>
+                </View>
+              </View>
+              <View>
+              </View>
             </View>
           </View>
         </View>
-
-      </View>
-    </ListItem>
-  );
+      </ListItem>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -67,7 +111,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: 300
+    width: deviceWidth * (.73),
   },
   descriptionContainer: {
     flexDirection: 'column',
@@ -97,11 +141,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#484848',
     fontWeight: '100',
+    top: -10
   },
   listItemBusiness: {
     fontSize: 12,
     color: '#484848',
     fontWeight: '100',
+    top: -10
   },
   listItemDescription: {
     fontSize: 12,

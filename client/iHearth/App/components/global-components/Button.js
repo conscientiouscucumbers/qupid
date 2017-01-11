@@ -20,16 +20,28 @@ class Button extends Component {
   }
 
   render() {
-    var secondary = ['Cancel', 'Log In'];
-    var tertiary = ['Forgot Password'];
-    if (secondary.indexOf(this.props.label) === -1) {
+    var tertiary = ['Cancel', 'Forgot Password'];
+    var secondary = ['Create New Account'];
+    var primary = ['Log In'];
+    if (tertiary.indexOf(this.props.label) !== -1) {
       return (
         <View style={styles.button}>
           <TouchableHighlight
             underlayColor='#dddddd'
             onPress={ this.props.onPress }
-            style={ styles.primary }>
-            <Text style={ styles.primaryText }>{ this.props.label }</Text>
+            style={ styles.tertiary }>
+            <Text style={ styles.tertiaryText }>{ this.props.label }</Text>
+          </TouchableHighlight>
+        </View>
+      )
+    } else if (secondary.indexOf(this.props.label) !== -1) {
+      return (
+        <View style={styles.button}>
+          <TouchableHighlight
+            underlayColor='#FF9D81'
+            onPress={ this.props.onPress }
+            style={ styles.secondary }>
+            <Text style={ styles.secondaryText }>{ this.props.label }</Text>
           </TouchableHighlight>
         </View>
       )
@@ -37,10 +49,10 @@ class Button extends Component {
       return (
         <View style={styles.button}>
           <TouchableHighlight
-            underlayColor='#dddddd'
+            underlayColor='transparent'
             onPress={ this.props.onPress }
-            style={ styles.secondary }>
-            <Text style={ styles.secondaryText }>{ this.props.label }</Text>
+            style={ styles.primary }>
+            <Text style={ styles.primaryText }>{ this.props.label }</Text>
           </TouchableHighlight>
         </View>
       )
@@ -68,7 +80,18 @@ var styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 25,
     borderWidth: 2,
-    borderColor: '#cccccc',
+    borderColor: '#FF3F4E',
+    backgroundColor: 'transparent'
+  },
+  tertiary: {
+    flex: 1,
+    height: 50,
+    width: 200,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 25,
+    borderWidth: 2,
+    borderColor: '#aaaaaa',
     backgroundColor: 'transparent'
   },
   button: {
@@ -79,6 +102,9 @@ var styles = StyleSheet.create({
     color: 'white'
   },
   secondaryText: {
+    color: '#FF3F4E'
+  },
+  tertiaryText: {
     color: '#484848'
   }
 });
