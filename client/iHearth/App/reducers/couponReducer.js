@@ -16,7 +16,7 @@ const initialState = {
     start_at: '',
     end_at: '',
     created_at: '',
-    id_business: '',
+    business_id: '',
     company_name: ''
   }
 }

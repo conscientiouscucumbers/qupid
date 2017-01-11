@@ -210,8 +210,8 @@ var ExplodingHearts = React.createClass({
       <View style={styles.container}>
         <TouchableWithoutFeedback onPress={this.explode} style={styles.container}>
           <View style={{transform: [{scale: .5}]}}>
-            <Surface width={deviceWidth} height={deviceHeight}>
-              <Group x={75} y={200}>
+            <Surface width={deviceWidth} height={deviceHeight / 2}>
+              <Group x={115} y={100}>
                 <AnimatedShape
                   d={HEART_SVG}
                   x={heart_x}
@@ -254,7 +254,7 @@ var AnimatedCircle = React.createClass({displayName: "Circle",
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    left: deviceWidth / 20,
+    borderColor: 'black',
     backgroundColor: 'transparent'
   }
 });

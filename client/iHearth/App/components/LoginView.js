@@ -77,14 +77,14 @@ export default class LoginView extends Component {
                 secureTextEntry
               />
           </List>
-          <List>
-            <Button onPress={ () => this.props._handleNavigate(route) } label='Create New Account' />
-          </List>
-          <List>
-            <Button onPress={ () => this.props._handleNavigate(route2) } label="Forgot Password" />
-          </List>
-          <List style={{ marginTop: 10 }}>
+          <List style={{ marginTop: 5, marginBottom: 5 }}>
             <Button onPress={ () => this.props.fetchAuth(this.state, authRoute, this.props._handleNavigate) } label="Log In" />
+          </List>
+          <List style={{ marginTop: 5, marginBottom: 5 }}>
+            <Button onPress={ () => this.props._handleNavigate(route) } label="Create New Account" />
+          </List>
+          <List style={{ marginTop: 5, marginBottom: 5 }}>
+            <Button onPress={ () => this.props._handleNavigate(route2) } label="Forgot Password" />
           </List>
           <ExplodingHearts />
         </View>
@@ -95,7 +95,7 @@ export default class LoginView extends Component {
 
 var styles = StyleSheet.create({
   title: {
-    paddingTop: 140,
+    paddingTop: 100,
     fontSize: 44,
     fontWeight: '100',
     textAlign: 'center',
