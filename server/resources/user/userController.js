@@ -61,7 +61,10 @@ exports.retrievePasswordFromEmail = (req, res) => {
 // coupons must have matching user_id
 exports.retrieveUserCoupons = (req, res) => {
   var params = { user_id: req.params.user_id };
-  userModel.retrieveUserCouponsAsync(params)
+  
+  // Set first arg to 1: only return active related coupons of user
+  // Set first arg to 0: return all related coupons of user 
+  userModel.retrieveUserCouponsAsync(1, params)
   .then((coupons) => {
     console.log('successfully retrieved all coupons for user with user_id', req.params.user_id);
     res.status(200).json(coupons);
