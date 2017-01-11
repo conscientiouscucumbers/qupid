@@ -36,9 +36,11 @@ class Tabs extends Component {
     Beacons.startRangingBeaconsInRegion(this.props.region);
     Beacons.startUpdatingLocation();
     Beacons.shouldDropEmptyRanges(true);
+    console.log('beacon trying to work');
     DeviceEventEmitter.addListener(
       'beaconsDidRange',
       (data) => {
+        console.log('beacon works');
         if(data['beacons'].length !==0 ){
           if(data['beacons'][0]['proximity'] === 'far' || data['beacons'][0]['proximity'] === 'near'){
             this._listenBeacon(data['beacons'][0]);
