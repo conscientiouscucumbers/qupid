@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { VioletDataTable, VioletPaginator } from 'violet-paginator';
 
 import './violet.min.scss';
-import './Pagination.scss';
+import './MyCoupons.scss';
 
 function paginate(list, page, pageSize) {
   return list.skip((page - 1) * pageSize).take(pageSize);
@@ -65,7 +65,7 @@ function mockFetch({ query: { pageSize, page, sort, sortOrder } }) {
   });
 }
 
-export function Pagination({ fetch }) {
+export function MyCoupons({ fetch }) {
   const headers = [{
     field: 'name',
     text: 'Name'
@@ -82,8 +82,8 @@ export function Pagination({ fetch }) {
 
   return (
     <section style={{ width: '50%' }}>
-      <h1>Pagination</h1>
-      <Helmet title="Pagination" />
+      <h1>My Coupons</h1>
+      <Helmet title="My Coupons" />
 
       <p>
         This is an example of a datatable in redux with sorting and pagination capability
@@ -101,4 +101,4 @@ export function Pagination({ fetch }) {
 export default connect(
   undefined,
   { fetch: mockFetch }
-)(Pagination);
+)(MyCoupons);
