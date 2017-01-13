@@ -26,9 +26,11 @@ app.use(bodyParser.json());
 
 
 app.use((req, res) => {
+  // splittedUrlPath = ['loadInfo'] || ['loadAuth']
   const splittedUrlPath = req.url.split('?')[0].split('/').slice(1);
-
   const {action, params} = mapUrl(actions, splittedUrlPath);
+  // action is a Promise
+  console.log('URL BEING PROCESSED....', splittedUrlPath);
 
   if (action) {
     action(req, params)
@@ -86,6 +88,8 @@ if (config.apiPort) {
     });
   });
   io.listen(runnable);
+
+
 } else {
   console.error('==>     ERROR: No PORT environment variable has been specified');
 }

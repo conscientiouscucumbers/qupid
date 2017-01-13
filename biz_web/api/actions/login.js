@@ -1,7 +1,22 @@
+import db from '../db';
+
 export default function login(req) {
-  const user = {
-    name: req.body.name
-  };
-  req.session.user = user;
-  return Promise.resolve(user);
+  return new Promise((resolve, reject) => {
+    const business = {
+      email: req.body.email,
+      password: req.body.password
+    };
+    req.session.business = business;
+
+    const queryStr = `select * from business where email = "${business.email}" && password = "${business.password}"`;
+    db.query(queryStr, (err, biz) => {
+      if (err) {
+        console.log('could not find business in business table');
+        reject(err);
+      } else {
+        console.log('successfully logged in business', biz);
+        return resolve(biz);
+      }
+    });
+  });
 }

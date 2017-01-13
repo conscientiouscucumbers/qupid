@@ -2,8 +2,8 @@ import React, {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import surveyValidation from './surveyValidation';
-import * as surveyActions from 'redux/modules/survey';
+import signupValidation from './signupValidation';
+import * as signupActions from 'redux/modules/signup';
 
 function asyncValidate(data, dispatch, {isValidEmail}) {
   if (!data.email) {
@@ -12,17 +12,17 @@ function asyncValidate(data, dispatch, {isValidEmail}) {
   return isValidEmail(data);
 }
 @connect(() => ({}),
-  dispatch => bindActionCreators(surveyActions, dispatch)
+  dispatch => bindActionCreators(signupActions, dispatch)
 )
 @reduxForm({
-  form: 'survey',
-  fields: ['name', 'email', 'occupation', 'currentlyEmployed', 'sex'],
-  validate: surveyValidation,
+  form: 'signup',
+  fields: ['company_name', 'email', 'password', 'address', 'city', 'state', 'zipcode'],
+  validate: signupValidation,
   asyncValidate,
   asyncBlurFields: ['email']
 })
 export default
-class SurveyForm extends Component {
+class SignupForm extends Component {
   static propTypes = {
     active: PropTypes.string,
     asyncValidating: PropTypes.bool.isRequired,
@@ -39,7 +39,7 @@ class SurveyForm extends Component {
     const {
       asyncValidating,
       dirty,
-      fields: {name, email, occupation, currentlyEmployed, sex},
+      fields: {company_name, email, password, address, city, state, zipcode},
       active,
       handleSubmit,
       invalid,
@@ -47,13 +47,19 @@ class SurveyForm extends Component {
       pristine,
       valid
       } = this.props;
-    const styles = require('./SurveyForm.scss');
+    const styles = require('./SignupForm.scss');
     const renderInput = (field, label, showAsyncValidating) =>
       <div className={'form-group' + (field.error && field.touched ? ' has-error' : '')}>
         <label htmlFor={field.name} className="col-sm-2">{label}</label>
         <div className={'col-sm-8 ' + styles.inputGroup}>
           {showAsyncValidating && asyncValidating && <i className={'fa fa-cog fa-spin ' + styles.cog}/>}
-          <input type="text" className="form-control" id={field.name} {...field}/>
+          { (label === 'Company Name') && <input type="text" ref="company_name" className="form-control" id={field.name} {...field}/> }
+          { (label === 'Email') && <input type="email" ref="email" className="form-control" id={field.name} {...field}/> }
+          { (label === 'Password') && <input type="password" ref="password" className="form-control" id={field.name} {...field}/> }
+          { (label === 'Address') && <input type="text" ref="text" className="form-control" id={field.name} {...field}/> }
+          { (label === 'City') && <input type="text" ref="text" className="form-control" id={field.name} {...field}/> }
+          { (label === 'State') && <input type="text" ref="text" className="form-control" id={field.name} {...field}/> }
+          { (label === 'Zip Code') && <input type="text" ref="number" className="form-control" id={field.name} {...field}/> }
           {field.error && field.touched && <div className="text-danger">{field.error}</div>}
           <div className={styles.flags}>
             {field.dirty && <span className={styles.dirty} title="Dirty">D</span>}
@@ -67,24 +73,13 @@ class SurveyForm extends Component {
     return (
       <div>
         <form className="form-horizontal" onSubmit={handleSubmit}>
-          {renderInput(name, 'Full Name')}
+          {renderInput(company_name, 'Company Name')}
           {renderInput(email, 'Email', true)}
-          {renderInput(occupation, 'Occupation')}
-          <div className="form-group">
-            <label htmlFor="currentlyEmployed" className="col-sm-2">Currently Employed?</label>
-            <div className="col-sm-8">
-              <input type="checkbox" id="currentlyEmployed" {...currentlyEmployed}/>
-            </div>
-          </div>
-          <div className="form-group">
-            <label className="col-sm-2">Sex</label>
-            <div className="col-sm-8">
-              <input type="radio" id="sex-male" {...sex} value="male" checked={sex.value === 'male'}/>
-              <label htmlFor="sex-male" className={styles.radioLabel}>Male</label>
-              <input type="radio" id="sex-female" {...sex} value="female" checked={sex.value === 'female'}/>
-              <label htmlFor="sex-female" className={styles.radioLabel}>Female</label>
-            </div>
-          </div>
+          {renderInput(password, 'Password')}
+          {renderInput(address, 'Address')}
+          {renderInput(city, 'City')}
+          {renderInput(state, 'State')}
+          {renderInput(zipcode, 'Zip Code')}
           <div className="form-group">
             <div className="col-sm-offset-2 col-sm-10">
               <button className="btn btn-success" onClick={handleSubmit}>

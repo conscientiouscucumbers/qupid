@@ -11,6 +11,7 @@ class MyCoupons extends Component {
       <section style={{ width: '80%' }}>
         <h1>My Coupons</h1>
         <Helmet title="My Coupons" />
+        <MyCouponsNavPanel />
         <div className={style.Cards}>
           <FlipCouponGrid title="Shoes">
             <p>{content}</p>
@@ -28,7 +29,6 @@ class MyCoupons extends Component {
       </section>
     );
   }
-}
 
 // TODO: fetch
 export default connect(

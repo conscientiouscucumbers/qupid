@@ -84,24 +84,26 @@ export default class App extends Component {
               <LinkContainer to="/widgets">
                 <NavItem eventKey={2}>Widgets</NavItem>
               </LinkContainer>
-              {/* change route name in url */}
               <LinkContainer to="/signup">
                 <NavItem eventKey={3}>Signup</NavItem>
               </LinkContainer>
               <LinkContainer to="/mycoupons">
                 <NavItem eventKey={4}>My Coupons</NavItem>
               </LinkContainer>
+              <LinkContainer to="/newcoupon">
+                <NavItem eventKey={5}>New Coupon</NavItem>
+              </LinkContainer>
               <LinkContainer to="/about">
-                <NavItem eventKey={5}>About Us</NavItem>
+                <NavItem eventKey={6}>About Us</NavItem>
               </LinkContainer>
 
               {!user &&
               <LinkContainer to="/login">
-                <NavItem eventKey={6}>Login</NavItem>
+                <NavItem eventKey={7}>Login</NavItem>
               </LinkContainer>}
               {user &&
               <LinkContainer to="/logout">
-                <NavItem eventKey={7} className="logout-link" onClick={this.handleLogout}>
+                <NavItem eventKey={8} className="logout-link" onClick={this.handleLogout}>
                   Logout
                 </NavItem>
               </LinkContainer>}

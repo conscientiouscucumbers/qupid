@@ -1,9 +1,9 @@
-const IS_VALID = 'redux-example/survey/IS_VALID';
-const IS_VALID_SUCCESS = 'redux-example/survey/IS_VALID_SUCCESS';
-const IS_VALID_FAIL = 'redux-example/survey/IS_VALID_FAIL';
+const IS_VALID = 'redux-example/signup/IS_VALID';
+const IS_VALID_SUCCESS = 'redux-example/signup/IS_VALID_SUCCESS';
+const IS_VALID_FAIL = 'redux-example/signup/IS_VALID_FAIL';
 
 const initialState = {
-  saveError: null,
+  saveError: null
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -16,13 +16,15 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         data: data,
-        saveError: null,
+        saveError: null
       };
     case IS_VALID_FAIL:
-      return typeof action.error === 'string' ? {
-        ...state,
-        saveError: action.error
-      } : state;
+      return typeof action.error === 'string'
+        ? {
+          ...state,
+          saveError: action.error
+        }
+        : state;
     default:
       return state;
   }
@@ -30,9 +32,9 @@ export default function reducer(state = initialState, action = {}) {
 
 export function isValidEmail(data) {
   return {
-    types: [IS_VALID, IS_VALID_SUCCESS, IS_VALID_FAIL],
-    promise: (client) => client.post('/survey/isValid', {
-      data
-    })
+    types: [
+      IS_VALID, IS_VALID_SUCCESS, IS_VALID_FAIL
+    ],
+    promise: (client) => client.post('/signup/isValid', {data})
   };
 }
