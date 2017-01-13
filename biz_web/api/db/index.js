@@ -1,6 +1,6 @@
-var mysql = require('mysql');
+import mysql from 'mysql';
 
-var connection = mysql.createConnection({
+let connection = mysql.createConnection({
   // host: '104.198.215.160',
   user: 'root',
   password: '',
