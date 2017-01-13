@@ -9,14 +9,14 @@ export default function logout(req) {
         email: req.body.email,
       };
 
-      var queryStr = `select * from business where email = "${business.email}"`;
-      db.query(queryStr, (err, business) => {
+      const queryStr = `select * from business where email = "${business.email}"`;
+      db.query(queryStr, (err, biz) => {
         if (err) {
           console.log('could not find business in business table');
           reject(err);
         } else {
-          console.log('successfully found business to log out = ', business);
-          return resolve(business);
+          console.log('successfully found business to log out = ', biz);
+          return resolve(biz);
         }
       });
     });
