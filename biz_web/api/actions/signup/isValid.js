@@ -1,4 +1,4 @@
-export default function survey(req) {
+export default function signup(req) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const errors = {};

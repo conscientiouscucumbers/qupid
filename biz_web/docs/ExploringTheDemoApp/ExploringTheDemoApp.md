@@ -38,10 +38,10 @@ in the form.  Notice how much state affects the display and formatting of button
 
 ![Screenshot with Annotations](widgets_markup.png)
 
-### Explore the Survey Page
+### Explore the Signup Page
 
-Click on the *Survey* link.  Following the programming style of this kit, the code for this page is 
-spread over a [Survey container][scont], a [SurveyForm component][scomp], mentioned in the 
+Click on the *Signup* link.  Following the programming style of this kit, the code for this page is 
+spread over a [Signup container][scont], a [SignupForm component][scomp], mentioned in the 
 [container][conlist] and [component][complist] lists, 
 mentioned in the [routes][routes] function and the navigation of the main [App][app].  The code also uses
 various libraries for React, Redux, validation, memoize and other functions.   Learn to use [ack](http://beyondgrep.com) 
@@ -51,9 +51,9 @@ Try clicking on the 'Initialize Form' button and then hitting Submit.  You will 
 'Little Bobby Tables'.  Now click in the email field then the name field.   You now see errors in both
 the name and the email.  Even with a good kit, forms can be difficult to code.
 
-![Screenshot with Annotations](survey_markup.png)
-[scont]: https://github.com/erikras/react-redux-universal-hot-example/tree/master/src/containers/Survey
-[scomp]: https://github.com/erikras/react-redux-universal-hot-example/tree/master/src/components/SurveyForm
+![Screenshot with Annotations](signup_markup.png)
+[scont]: https://github.com/erikras/react-redux-universal-hot-example/tree/master/src/containers/Signup
+[scomp]: https://github.com/erikras/react-redux-universal-hot-example/tree/master/src/components/SignupForm
 [conlist]: https://github.com/erikras/react-redux-universal-hot-example/blob/master/src/containers/index.js
 [complist]: https://github.com/erikras/react-redux-universal-hot-example/blob/master/src/components/index.js
 [routes]: https://github.com/erikras/react-redux-universal-hot-example/blob/master/src/routes.js
@@ -88,7 +88,7 @@ Here are some additional quests you could undertake:
 * How would you add a fourth counter that incremented by two?   How many files would you need
   to touch?
 * What order are calls made when you click "Reload Widgets" on the widgets page?
-* Why does surveyValidation use memoize?
+* Why does signupValidation use memoize?
 
 Install, hack, explore!
 
