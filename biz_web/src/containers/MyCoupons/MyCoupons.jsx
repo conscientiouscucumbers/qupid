@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import FlipCouponGrid from '../../components/FlipCouponGrid/FlipCouponGrid';
+import { MyCouponsNavPanel, FlipCouponGrid } from 'components';
 
 class MyCoupons extends Component {
   render() {
