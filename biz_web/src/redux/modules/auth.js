@@ -84,13 +84,12 @@ export function load() {
   };
 }
 
-export function login(name, password) {
-  console.log(name, password, 'this is name inauth.js');
+export function login(email, password) {
   return {
     types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
     promise: (client) => client.post('/login', {
       data: {
-        name: name,
+        email: email,
         password: password
       }
     })
