@@ -1,3 +1,22 @@
 a {
   cursor: pointer;
 }
+
+.Cards {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+
+  .Card:nth-child(2n+2) {
+    .CardFront { background-color: #804815; color: #FFD3AA; }
+    .CardBack { background-color: #D49D6A; color: #012E34; }
+  }
+  .Card:nth-child(3n+3) {
+    .CardFront { background-color: #801D15; color: #FFB0AA; }
+    .CardBack { background-color: #FFB0AA; color: #012E34; }
+  }
+  .Card:nth-child(4n+4) {
+    .CardFront { background-color: #805E15; color: #FFE4AA; }
+    .CardBack { background-color: #FFE4AA; color: #012E34; }
+  }
+}
