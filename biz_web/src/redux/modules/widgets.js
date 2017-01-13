@@ -94,6 +94,7 @@ export function load() {
 }
 
 export function save(widget) {
+  console.log('CALLED WIDGET SAVE.....');
   return {
     types: [SAVE, SAVE_SUCCESS, SAVE_FAIL],
     id: widget.id,

@@ -8,3 +8,4 @@ export LoginSuccess from './LoginSuccess/LoginSuccess';
 export Signup from './Signup/Signup';
 export NotFound from './NotFound/NotFound';
 export MyCoupons from './MyCoupons/MyCoupons';
+export NewCoupon from './NewCoupon/NewCoupon';

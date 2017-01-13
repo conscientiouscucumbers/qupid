@@ -11,3 +11,5 @@ export InfoBar from './InfoBar/InfoBar';
 export MiniInfoBar from './MiniInfoBar/MiniInfoBar';
 export SignupForm from './SignupForm/SignupForm';
 export WidgetForm from './WidgetForm/WidgetForm';
+
+export MyCouponsNavPanel from './MyCouponsNavPanel/MyCouponsNavPanel';

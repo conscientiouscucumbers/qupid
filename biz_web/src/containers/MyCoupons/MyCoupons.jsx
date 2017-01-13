@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 import { List } from 'immutable';
 import { connect } from 'react-redux';
 import { VioletDataTable, VioletPaginator } from 'violet-paginator';
+import { MyCouponsNavPanel } from 'components';
 
 import './violet.min.scss';
 import './MyCoupons.scss';
@@ -84,7 +85,7 @@ export function MyCoupons({ fetch }) {
     <section style={{ width: '50%' }}>
       <h1>My Coupons</h1>
       <Helmet title="My Coupons" />
-
+      <MyCouponsNavPanel />
       <p>
         This is an example of a datatable in redux with sorting and pagination capability
         provided by <a href="https://www.npmjs.com/package/violet-paginator" target="_blank">violet-paginator</a>.
