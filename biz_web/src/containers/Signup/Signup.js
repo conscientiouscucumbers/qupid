@@ -20,7 +20,7 @@ export default class Signup extends Component {
   handleInitialize = () => {
     this.props.initialize('signup', {
       company_name: 'Company',
-      email: 'company@gmail.com',
+      email: 'company@email.com',
       password: 'password',
       address: 'address',
       city: 'city',
