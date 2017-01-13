@@ -53,11 +53,13 @@ class SignupForm extends Component {
         <label htmlFor={field.name} className="col-sm-2">{label}</label>
         <div className={'col-sm-8 ' + styles.inputGroup}>
           {showAsyncValidating && asyncValidating && <i className={'fa fa-cog fa-spin ' + styles.cog}/>}
-          {
-            (label === 'Password') ?
-            <input type="password" className="form-control" id={field.name} {...field}/> :
-            <input type="text" className="form-control" id={field.name} {...field}/>
-          }
+          { (label === 'Company Name') && <input type="text" ref="company_name" className="form-control" id={field.name} {...field}/> }
+          { (label === 'Email') && <input type="email" ref="email" className="form-control" id={field.name} {...field}/> }
+          { (label === 'Password') && <input type="password" ref="password" className="form-control" id={field.name} {...field}/> }
+          { (label === 'Address') && <input type="text" ref="text" className="form-control" id={field.name} {...field}/> }
+          { (label === 'City') && <input type="text" ref="text" className="form-control" id={field.name} {...field}/> }
+          { (label === 'State') && <input type="text" ref="text" className="form-control" id={field.name} {...field}/> }
+          { (label === 'Zip Code') && <input type="text" ref="number" className="form-control" id={field.name} {...field}/> }
           {field.error && field.touched && <div className="text-danger">{field.error}</div>}
           <div className={styles.flags}>
             {field.dirty && <span className={styles.dirty} title="Dirty">D</span>}

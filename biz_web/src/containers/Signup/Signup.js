@@ -14,6 +14,7 @@ export default class Signup extends Component {
 
   handleSubmit = (data) => {
     window.alert('Data submitted! ' + JSON.stringify(data));
+    console.log('signup data submitted', data);
     this.props.initialize('signup', {});
   }
 
@@ -25,7 +26,7 @@ export default class Signup extends Component {
       address: 'address',
       city: 'city',
       state: 'state',
-      zipcode: '12345'
+      zipcode: 12345
     });
   }
 
