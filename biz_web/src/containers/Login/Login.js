@@ -16,8 +16,10 @@ export default class Login extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const input = this.refs.username;
-    this.props.login(input.value);
+    const inputPassword = this.refs.password;
+    this.props.login(input.value, inputPassword.value);
     input.value = '';
+    inputPassword.value = '';
   }
 
   render() {
@@ -26,17 +28,18 @@ export default class Login extends Component {
     return (
       <div className={styles.loginPage + ' container'}>
         <Helmet title="Login"/>
-        <h1>Login</h1>
+        <h1>Business Owner Login</h1>
         {!user &&
         <div>
           <form className="login-form form-inline" onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <input type="text" ref="username" placeholder="Enter a username" className="form-control"/>
+              <input type="text" ref="username" placeholder="Email" className="form-control"/>
+              <input type="text" ref="password" placeholder="Password"
+              secureTextEntry="true" className="form-control"/>
             </div>
             <button className="btn btn-success" onClick={this.handleSubmit}><i className="fa fa-sign-in"/>{' '}Log In
             </button>
           </form>
-          <p>This will "log you in" as this user, storing the username in the session of the API server.</p>
         </div>
         }
         {user &&
