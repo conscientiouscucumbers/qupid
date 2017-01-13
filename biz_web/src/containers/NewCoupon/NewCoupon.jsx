@@ -13,8 +13,10 @@ export default class NewCoupon extends Component {
   }
 
   handleSubmit = (data) => {
-    console.log('CALLING SUBMIT........');
     window.alert('Data submitted! ' + JSON.stringify(data));
+    // if (callback) {
+    //   callback(data);
+    // }
     this.props.initialize('newCoupon', {});
   }
 

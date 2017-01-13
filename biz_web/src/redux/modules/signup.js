@@ -9,8 +9,10 @@ const initialState = {
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case IS_VALID:
+      console.log('REDUCER IS_VALID CASE');
       return state; // 'saving' flag handled by redux-form
     case IS_VALID_SUCCESS:
+      console.log('REDUCER IS_VALID_SUCCESS CASE');
       const data = [...state.data];
       data[action.result.id - 1] = action.result;
       return {
@@ -19,6 +21,7 @@ export default function reducer(state = initialState, action = {}) {
         saveError: null
       };
     case IS_VALID_FAIL:
+      console.log('REDUCER IS_VALID_FAIL CASE');
       return typeof action.error === 'string'
         ? {
           ...state,

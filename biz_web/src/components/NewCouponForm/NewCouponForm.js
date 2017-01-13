@@ -5,7 +5,12 @@ import {bindActionCreators} from 'redux';
 import newCouponValidation from './newCouponValidation';
 import * as newCouponActions from 'redux/modules/newCoupon';
 
+// Can insert asyncValidation here if we want validation as user is entering info
+// (redux form compliant)
+
 @connect(() => ({}),
+  // Wraps every action creator (values in obj passed in) in dispatches
+  // In this case { isValidCoupon: fn }
   dispatch => bindActionCreators(newCouponActions, dispatch)
 )
 
@@ -37,7 +42,8 @@ export default class NewCouponForm extends Component {
     resetForm: PropTypes.func.isRequired,
     invalid: PropTypes.bool.isRequired,
     pristine: PropTypes.bool.isRequired,
-    valid: PropTypes.bool.isRequired
+    valid: PropTypes.bool.isRequired,
+    isValidCoupon: PropTypes.func.isRequired
   }
 
   render() {
@@ -52,9 +58,9 @@ export default class NewCouponForm extends Component {
         coupon_savings,
         start_at,
         end_at
-      }
+      },
+      isValidCoupon
     } = this.props;
-    console.log('THIS ONSUBMIT', handleSubmit);
     const styles = require('./NewCouponForm.scss');
     const renderInput = (field, label, placeholder) =>
       <div className={'form-group' + (field.error && field.touched ? ' has-error' : '')}>
@@ -79,7 +85,7 @@ export default class NewCouponForm extends Component {
     return (
       <div className="container">
         <h1>NewCouponForm</h1>
-        <form className="form-horizontal" onSubmit={handleSubmit}>
+        <form className="form-horizontal" onSubmit={(data) => { handleSubmit(data); }}>
           {renderInput(title, 'Coupon Title', '$5 off Beard Papas')}
           {renderInput(image, 'Image Url', 'https://upload.wikimedia.org/wikipedia/commons/6/64/Banana_Peel.JPG')}
           {renderInput(item_name, 'Item Name', 'Cream Puff')}
@@ -90,7 +96,7 @@ export default class NewCouponForm extends Component {
           {renderInput(end_at, 'End Time', '2017-05-21 12:00:00')}
           <div className="form-group">
             <div className="col-sm-offset-2 col-sm-10">
-              <button className="btn btn-success" onClick={handleSubmit}>
+              <button className="btn btn-success" onClick={(data) => { handleSubmit(data); isValidCoupon(data); }}>
                 <i className="fa fa-paper-plane"/> Submit
               </button>
             </div>
