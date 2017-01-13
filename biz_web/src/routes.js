@@ -12,6 +12,7 @@ import {
     Signup,
     NotFound,
     MyCoupons,
+    NewCoupon
   } from 'containers';
 
 export default (store) => {
@@ -52,6 +53,7 @@ export default (store) => {
       <Route path="mycoupons" component={MyCoupons}/>
       <Route path="signup" component={Signup}/>
       <Route path="widgets" component={Widgets}/>
+      <Route path="newcoupon" component={NewCoupon}/>
 
       { /* Catch all route */ }
       <Route path="*" component={NotFound} status={404} />
