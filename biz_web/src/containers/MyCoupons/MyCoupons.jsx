@@ -29,6 +29,7 @@ class MyCoupons extends Component {
       </section>
     );
   }
+}
 
 // TODO: fetch
 export default connect(
