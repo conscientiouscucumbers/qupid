@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import Helmet from 'react-helmet';
 import {initialize} from 'redux-form';
-import {SignupForm} from 'components';
+import {NewCouponForm} from 'components';
 
 @connect(
   () => ({}),
@@ -13,24 +13,28 @@ export default class NewCoupon extends Component {
   }
 
   handleSubmit = (data) => {
+    console.log('CALLING SUBMIT........');
     window.alert('Data submitted! ' + JSON.stringify(data));
-    this.props.initialize('survey', {});
+    this.props.initialize('newCoupon', {});
   }
 
   handleInitialize = () => {
-    this.props.initialize('survey', {
-      name: 'Little Bobby Tables',
-      email: 'bobby@gmail.com',
-      occupation: 'Redux Wizard',
-      currentlyEmployed: true,
-      sex: 'male'
+    this.props.initialize('newCoupon', {
+      title: '$5 off Beard Papas',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/6/64/Banana_Peel.JPG',
+      item_name: 'Cream Puff',
+      description: 'Lorem Ipsum',
+      original_price: 5,
+      coupon_savings: 2,
+      start_at: '2017-05-21 12:00:00',
+      end_at: '2017-05-21 12:00:00',
     });
   }
 
   render() {
     return (
       <div className="container">
-        <h1>Create New Account</h1>
+        <h1>Create New Coupon</h1>
         <Helmet title="New Coupon"/>
 
         <div style={{textAlign: 'left', margin: 15}}>
@@ -38,8 +42,7 @@ export default class NewCoupon extends Component {
             <i className="fa fa-pencil"/> Initialize Form
           </button>
         </div>
-
-        <SignupForm onSubmit={this.handleSubmit}/>
+          <NewCouponForm onSubmit={this.handleSubmit}/>
       </div>
     );
   }

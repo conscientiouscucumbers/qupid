@@ -13,3 +13,4 @@ export SignupForm from './SignupForm/SignupForm';
 export WidgetForm from './WidgetForm/WidgetForm';
 
 export MyCouponsNavPanel from './MyCouponsNavPanel/MyCouponsNavPanel';
+export NewCouponForm from './NewCouponForm/NewCouponForm';
