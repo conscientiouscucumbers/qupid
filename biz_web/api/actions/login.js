@@ -14,7 +14,7 @@ export default function login(req) {
         console.log('could not find business in business table');
         reject(err);
       } else {
-        console.log('successfully found business to log in = ', biz);
+        console.log('successfully logged in business', biz);
         return resolve(biz);
       }
     });
