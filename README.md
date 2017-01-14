@@ -1,6 +1,7 @@
 # **iHearth**
 
-  **iHearth**: Currently, there is a disconnect between customer traffic and the number of online reviews. iHearth provides a dynamic business-to-client store management system using the iBeacon technology platform to drive consumer traffic while cultivating in-depth client reviews. Users receive real-time coupons when they are in the vicinity of the iHearth. In turn, business owners are provided data-driven statistics for consumer trends and given the opportunity to collect online reviews.
+  **iHearth**:  
+Currently, there is a disconnect between customer traffic and the number of online reviews. iHearth provides a dynamic business-to-client store management system using the iBeacon technology platform to drive consumer traffic while cultivating in-depth client reviews. Users receive real-time coupons when they are in the vicinity of the iHearth. In turn, business owners are provided data-driven statistics for consumer trends and given the opportunity to collect online reviews.
 
 ## Team
 
@@ -21,8 +22,8 @@
 ## Usage
 ### Users 
 - Create a user account
-- Estimote beacons are constantly emitting a low energy bluetooth signal which ios/android devices can pick up, coupons are automatically sent to users via push notifications when they are within close proximity of an Estimote beacon 
-- Users can browse through coupons and sort by used, expired, activated, store, etc.
+- Estimote beacons are constantly emitting low energy bluetooth signals which ios devices can pick up, coupons are automatically sent to users via push notifications when they are within close proximity of an Estimote beacon 
+- Users can browse through coupons and sort by time left, date, savings, used, expired, activated, store, etc.
 - When users select a coupon to use, the app will generate a unique QR code which can be scanned at checkout
   
 ### Business Owners  
@@ -40,7 +41,7 @@
 ## Development
 
 - Server deployed using Heroku
-- Google Cloud MySQL client
+- MySQL database deployed with Google Cloud
 
 ### Installing Dependencies
 
