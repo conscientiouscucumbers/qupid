@@ -26,6 +26,7 @@ export default function reducer(state = initialState, action = {}) {
         }
         : state;
     default:
+      console.log('in signup reducer default case');
       return state;
   }
 }

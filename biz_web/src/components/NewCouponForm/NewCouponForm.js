@@ -8,7 +8,7 @@ import * as newCouponActions from 'redux/modules/newCoupon';
 // Can insert asyncValidation here if we want validation as user is entering info
 // (redux form compliant)
 function asyncValidate(data, dispatch, {isValidCoupon}) {
-  if (!data.email) {
+  if (!data.title) {
     return Promise.resolve({});
   }
   return isValidCoupon(data);
@@ -36,7 +36,7 @@ function asyncValidate(data, dispatch, {isValidCoupon}) {
   ],
   validate: newCouponValidation,
   asyncValidate,
-  // asyncBlurFields: ['title']
+  asyncBlurFields: ['title']
 })
 
 export default class NewCouponForm extends Component {
@@ -74,7 +74,6 @@ export default class NewCouponForm extends Component {
       resetForm,
       // pristine,
       // valid
-      isValidCoupon
     } = this.props;
     // console.log('ISVALIDCOUPON HERE....', isValidCoupon);
     const styles = require('./NewCouponForm.scss');

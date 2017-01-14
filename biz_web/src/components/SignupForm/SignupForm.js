@@ -6,6 +6,7 @@ import signupValidation from './signupValidation';
 import * as signupActions from 'redux/modules/signup';
 
 function asyncValidate(data, dispatch, {isValidEmail}) {
+  console.log('CALLING ASYNC VALIDATE....', data, dispatch, {isValidEmail} );
   if (!data.email) {
     return Promise.resolve({});
   }

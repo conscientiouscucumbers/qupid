@@ -221,44 +221,6 @@ var userSignup = (params, callback) => {
 };
 module.exports.userSignupAsync = Promise.promisify(userSignup);
 
-// var sendBeaconCoupons = (params, callback) => {
-//   // 1) select coupon
-//   // - matching beacon_uuid
-//   // - currtime < end_at
-//   // 2) insert into user_coupon
-//   // 3) select one coupon, send to user
-//   // (recieve coupon_id, coupon_title)
-//   var insertQuery = `insert into user_coupon\
-//     (user_id, coupon_id, used, expired, activated)\
-//     select *\
-//     from
-//       (select ${params.user_id}, C.coupon_id, 0 as used, 0 as expired, C.start_at >= now() as activated
-//       from coupon as C
-//       inner join coupon_beacon as CB
-//       on CB.coupon_id=C.coupon_id
-//       where CB.beacon_uuid="${params.beacon_uuid}" and now() < C.end_at) as FIND`;
-//   db.query(insertQuery, (err, inserted) => {
-//     if (err) {
-//       console.log('Error occured when inserting newly recieved coupon to the user_coupon join table.');
-//       callback(err);
-//     } else {
-//       var selectQuery = `select C.coupon_id, C.title \
-//         from coupon as C \
-//         left join user_coupon as UC \
-//         on C.coupon_id = UC.coupon_id \
-//         where UC.user_coupon_id=${inserted.insertId};`
-//       db.query(selectQuery, (err, coupon) => {
-//         if(err) {
-//           console.log('Error occured when selecting newly created coupon from coupon/user_coupon table.')
-//           callback(err);
-//         } else {
-//           callback(null,coupon);
-//         }
-//       });
-//     }
-//   });
-// };
-// module.exports.sendBeaconCouponsAsync = Promise.promisify(sendBeaconCoupons);
 var sendBeaconCoupons = (params, callback) => {
   // 1) select coupon
   // - matching beacon_uuid
