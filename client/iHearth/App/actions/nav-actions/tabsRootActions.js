@@ -36,19 +36,7 @@ export function fetchBeaconCoupons(user_id, beacon_uuid) {
   return dispatch => {
     dispatch(beaconRequestCoupons());
     return fetch(URL + 'user/' + user_id + '/beacon/' + beacon_uuid)
-      .then(response => {
-        console.log('this is it!!!!!!222');
-        console.log(response);
-        if(response.status === 204){
-          return null;
-        }
-        if(response.status === 200){
-          console.log('======+GOOOOOD====');
-          console.log('response:'+response);
-          console.log('respon.title'+response.title);
-          console.log('json[0]'+response[0]);
-        }
-      })
+      .then(response => response.json())
       .then(json => {
         console.log("this is it!!!!!!");
         console.log(json);
