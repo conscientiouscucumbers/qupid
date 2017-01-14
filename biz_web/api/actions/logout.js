@@ -15,7 +15,7 @@ export default function logout(req) {
           reject(err);
         } else {
           console.log('successfully logged out business', biz);
-          return resolve(biz);
+          return resolve(biz[0]);
         }
       });
     });

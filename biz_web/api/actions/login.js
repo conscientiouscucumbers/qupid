@@ -15,7 +15,7 @@ export default function login(req) {
         reject(err);
       } else {
         console.log('successfully logged in business', biz);
-        return resolve(biz);
+        return resolve(biz[0]);
       }
     });
   });
