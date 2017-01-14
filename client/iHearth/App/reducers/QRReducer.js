@@ -18,7 +18,8 @@ export default function QRState(state = initialState, action) {
         ...state,
         isFetching: false,
         coupon: action.coupons,
-        lastUpdated: action.receivedAt
+        lastUpdated: action.receivedAt,
+        QRCode: action.QRCode
       }
 
     default:

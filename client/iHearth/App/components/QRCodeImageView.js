@@ -11,9 +11,13 @@ export default class QRCodeImageView extends Component {
     this.coupon_id = this.props.currentCoupon.couponInfo.coupon_id;
   }
 
+  componentWillMount() {
+    this.props.fetchCoupon(this.user_id, this.coupon_id);
+  }
+
   render() {
-    console.log(this.props);
-    console.log(this.user_id, this.coupon_id)
+    console.log('this.props', this.props)
+    console.log('user_qrcode', this.user_qrcode)
     return (
       <Container>
         <Content>
@@ -21,7 +25,7 @@ export default class QRCodeImageView extends Component {
             <CardItem cardBody>
               <View style={{ alignSelf: 'center' }}>
                 <QRCode
-                  value={this.props.currentCoupon.couponInfo.qrcode}
+                  value={this.props.QRInfo.QRCode}
                   size={200}
                   bgColor='#484848'
                   fgColor='white'

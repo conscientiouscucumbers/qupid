@@ -222,7 +222,13 @@ var userSignup = (params, callback) => {
 module.exports.userSignupAsync = Promise.promisify(userSignup);
 
 var sendBeaconCoupons = (params, callback) => {
-  var selectUsableCoupon = `select C.coupon_id
+  // 1) select coupon
+  // - matching beacon_uuid
+  // - currtime < end_at
+  // 2) insert into user_coupon
+  // 3) select one coupon, send to user
+  // (recieve coupon_id, coupon_title)
+  var selectUsableCoupon = `select C.qrcode, C.coupon_id
     from coupon as C
     inner join coupon_beacon as CB
     on CB.coupon_id=C.coupon_id
@@ -250,8 +256,8 @@ var sendBeaconCoupons = (params, callback) => {
       }
       else {
         var insertQuery = `insert into user_coupon
-          (user_id, coupon_id, used, expired, activated)
-          values (${params.user_id}, ${usable[0].coupon_id}, false, false, true);`;
+          (user_id, coupon_id, user_qrcode, used, expired, activated)
+          values (${params.user_id}, ${usable[0].coupon_id}, ${usable[0].qrcode + ":" + params.user_id}, false, false, true);`;
         db.query(insertQuery, (err, inserted) => {
           if (err) {
             console.log('Error occured when inserting newly recieved coupon to the user_coupon join table.');
@@ -259,7 +265,7 @@ var sendBeaconCoupons = (params, callback) => {
           } else {
             console.log('inserted');
             console.log(inserted);
-            var selectQuery = `select C.coupon_id, C.title \
+            var selectQuery = `select C.coupon_id, C.title, UC.user_qrcode \
               from coupon as C \
               left join user_coupon as UC \
               on C.coupon_id = UC.coupon_id \
