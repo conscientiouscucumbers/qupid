@@ -49,7 +49,7 @@ export default function signup(req) {
               } else {
 
                 console.log('successfully signed up a new business', selectedBiz);
-                return resolve(selectedBiz);
+                return resolve(selectedBiz[0]);
               }
             });
           }
