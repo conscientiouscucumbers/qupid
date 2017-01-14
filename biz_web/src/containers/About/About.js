@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Helmet from 'react-helmet';
-import { MiniInfoBar } from 'components';
 
 export default class About extends Component {
 
@@ -13,37 +12,44 @@ export default class About extends Component {
   render() {
     const {showKitten} = this.state;
     const kitten = require('./kitten.jpg');
+    const james = require('./JamesGu.jpg');
+    const josh = require('./JoshuaPeng.jpg');
+    const susan = require('./Susan.jpg');
+    const blake = require('./Blake.jpg');
+    const styles = require('./About.scss');
+
     return (
       <div className="container">
-        <h1>About Us</h1>
-        <Helmet title="About Us"/>
+        <h1>Meet The Team</h1>
+        <Helmet title="Meet The Team"/>
 
-        <p>This project was originally created by Erik Rasmussen
-          (<a href="https://twitter.com/erikras" target="_blank">@erikras</a>), but has since seen many contributions
-          from the open source community. Thank you to <a
-            href="https://github.com/erikras/react-redux-universal-hot-example/graphs/contributors"
-            target="_blank">all the contributors</a>.
+        <p>Coupons and great deals get washed out by the noise of everyday life. Instead of alerting your customers of deals in the local paper where the potential transaction is 4-5 hours away. iHearth gives the customer a notification of the coupon when it is most pertinant for them... In the store, making the decision.
         </p>
 
-        <h3>Mini Bar <span style={{color: '#aaa'}}>(not that kind)</span></h3>
-
-        <p>Hey! You found the mini info bar! The following component is display-only. Note that it shows the same
-          time as the info bar.</p>
-
-        <MiniInfoBar/>
-
-        <h3>Images</h3>
+        <h3>Coupon Image</h3>
 
         <p>
-          Psst! Would you like to see a kitten?
+          Psst! Would you like to see an example coupon?
 
           <button className={'btn btn-' + (showKitten ? 'danger' : 'success')}
                   style={{marginLeft: 50}}
                   onClick={this.handleToggleKitten}>
-            {showKitten ? 'No! Take it away!' : 'Yes! Please!'}</button>
+            {showKitten ? 'Okay, Thanks!' : 'Yes! Please!'}</button>
         </p>
 
         {showKitten && <div><img src={kitten}/></div>}
+        <p><img src={james} align="left"/>
+        <font className={styles.about}>James Gu</font></p>
+
+        <p><img src={josh} align="left"/>
+        <font className={styles.about}>Josh Peng</font></p><br></br>
+
+        <p><img src={susan} align="left"/>
+        <font className={styles.about}>Susan Hong</font></p><br></br>
+
+        <p><img src={blake} align="left"/>
+        <font className={styles.about}>Blake Fleck</font></p>
+
       </div>
     );
   }

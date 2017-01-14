@@ -94,7 +94,7 @@ export default class App extends Component {
                 <NavItem eventKey={5}>New Coupon</NavItem>
               </LinkContainer>
               <LinkContainer to="/about">
-                <NavItem eventKey={6}>About Us</NavItem>
+                <NavItem eventKey={6}>Meet the Team</NavItem>
               </LinkContainer>
 
               {!user &&
