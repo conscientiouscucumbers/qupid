@@ -31,23 +31,25 @@ export default class ListView extends Component {
     this.props.fetchCoupons(this.user_id);
   }
 
+  componentDidMount() {
+    if(this.props.pushedCoupons.pushedCoupons[0] !== undefined && !this.props.pushedCoupons.pushedCoupons[0].empty){
+      console.log('alert called');
+      this.showAlert('custom');
+      // this.props.fetchCoupons(this.user_id);
+    }
+  }
+
   static timeNow = new Date();
 
   render() {
-    // console.log('is this undefined?');
-    // console.log(this.props.pushedCoupons.pushedCoupons);
-    // console.log('is array:' + Array.isArray(this.props.pushedCoupons.pushedCoupons));
-    // console.log('length:'+this.props.pushedCoupons.pushedCoupons.length);
-    // this.props.pushedCoupons.pushedCoupons[0] ? this.showAlert('custom') : null
-    console.log('PushedCoupons HERE....');
-    console.log(this.props.pushedCoupons);
-    if(this.props.pushedCoupons.pushedCoupons !== undefined && this.props.pushedCoupons.pushedCoupons[0] !== undefined ){
-      console.log('alert called');
-      this.showAlert('custom');
-    }
+    // console.log('====PROPS');
+    // console.log(this.props);
+    // debugger;
+    // console.log('PushedCoupons HERE....');
+    // console.log(this.props.pushedCoupons);
     return (
       <View style={ styles.container }>
-
+        {}
         <Text style={{ textAlign: 'center' }}>{this.props.pushedCoupons.pushedCoupons[0] ? this.props.pushedCoupons.pushedCoupons[0].title : "searching for coupons..." }</Text>
         <List>
           {/* Render spinner */}
@@ -111,12 +113,10 @@ export default class ListView extends Component {
   showAlert(type) {
     console.log('alert!!');
     // customize alert window if more types needed
-     // data = {type, title, message}
      switch (type) {
       case 'custom':
         this.dropdown.alert('A new coupon has arrived!', this.props.pushedCoupons.pushedCoupons[0].title);
-        // this.dropdown.alert('Custom','A new coupon has arrived!', 'eyy');
-        // this.dropdown.alertWithType(type, 'Error', 'A new coupon has arrived!', 'eyy');
+        // this.forceUpdate(); // Doesn't work
       break;
     }
 

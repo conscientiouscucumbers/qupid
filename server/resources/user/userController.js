@@ -98,12 +98,13 @@ exports.sendBeaconCoupons = (req, res) => {
   .then(coupons => {
     if(coupons === "alreadyRegistered" || coupons === "noCoupon") {
       console.log('same coupon already registered to user' + params.user_id);
-      res.sendStatus(204);
+      // res.sendStatus(204);
+      res.json([{"empty": "already registered"}]);
     } else {
       console.log('===successfully registered new coupon to uer_coupon table, and found entries in user_coupon table');
       console.log(coupons);
       console.log('===why is this undefined?');
-      res.status(200).json({data: []});
+      res.json(coupons);
     }
   }).catch((err) => {
     res.status(404).send('could not send coupon from ' + params.beacon_uuid + ' to user_id' + params.user_id);
