@@ -4,12 +4,16 @@ import Helmet from 'react-helmet';
 import {initialize} from 'redux-form';
 import {NewCouponForm} from 'components';
 
+import * as newCouponActions from 'redux/modules/newCoupon';
+
 @connect(
   () => ({}),
+  dispatch => bindActionCreators(newCouponActions, dispatch),
   {initialize})
 export default class NewCoupon extends Component {
   static propTypes = {
-    initialize: PropTypes.func.isRequired
+    initialize: PropTypes.func.isRequired,
+    isValidCoupon: PropTypes.func.isRequired
   }
 
   handleSubmit = (data) => {
@@ -17,6 +21,7 @@ export default class NewCoupon extends Component {
     // if (callback) {
     //   callback(data);
     // }
+    isValidCoupon(data);
     this.props.initialize('newCoupon', {});
   }
 

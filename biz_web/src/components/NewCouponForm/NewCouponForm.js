@@ -103,7 +103,7 @@ export default class NewCouponForm extends Component {
 
     return (
       <div className="container">
-        <form className="form-horizontal" onSubmit={(data) => { handleSubmit(data); }}>
+        <form className="form-horizontal" onSubmit={handleSubmit}>
           {renderInput(title, 'Coupon Title', '$5 off Beard Papas', true)}
           {renderInput(image, 'Image Url', 'https://upload.wikimedia.org/wikipedia/commons/6/64/Banana_Peel.JPG')}
           {renderInput(item_name, 'Item Name', 'Cream Puff')}
@@ -114,7 +114,7 @@ export default class NewCouponForm extends Component {
           {renderInput(end_at, 'End Time', '2017-05-21 12:00:00')}
           <div className="form-group">
             <div className="col-sm-offset-2 col-sm-10">
-              <button className="btn btn-success" onClick={(data) => { handleSubmit(data); isValidCoupon(data); }}>
+              <button className="btn btn-success" onClick={handleSubmit}>
                 <i className="fa fa-paper-plane"/> Submit
               </button>
               <button className="btn btn-warning" onClick={resetForm} style={{marginLeft: 15}}>

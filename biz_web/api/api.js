@@ -50,7 +50,6 @@ app.use((req, res) => {
         }
       });
   } else {
-    console.log('SEND 404...');
     res.status(404).end('NOT FOUND');
   }
 });
