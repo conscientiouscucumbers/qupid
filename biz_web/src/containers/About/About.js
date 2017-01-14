@@ -16,11 +16,12 @@ export default class About extends Component {
     const josh = require('./JoshuaPeng.jpg');
     const susan = require('./Susan.jpg');
     const blake = require('./Blake.jpg');
+    const styles = require('./About.scss');
 
     return (
       <div className="container">
-        <h1>Why join Cupid?</h1>
-        <Helmet title="Why join Cupid?"/>
+        <h1>Meet The Team</h1>
+        <Helmet title="Meet The Team"/>
 
         <p>Coupons and great deals get washed out by the noise of everyday life. Instead of alerting your customers of deals in the local paper where the potential transaction is 4-5 hours away. iHearth gives the customer a notification of the coupon when it is most pertinant for them... In the store, making the decision.
         </p>
@@ -37,10 +38,18 @@ export default class About extends Component {
         </p>
 
         {showKitten && <div><img src={kitten}/></div>}
-        <img src={james}/><br></br>
-        <img src={josh}/><br></br>
-        <img src={susan}/><br></br>
-        <img src={blake}/>
+        <p><img src={james} align="left"/>
+        <font className={styles.about}>James Gu</font></p>
+
+        <p><img src={josh} align="left"/>
+        <font className={styles.about}>Josh Peng</font></p><br></br>
+
+        <p><img src={susan} align="left"/>
+        <font className={styles.about}>Susan Hong</font></p><br></br>
+
+        <p><img src={blake} align="left"/>
+        <font className={styles.about}>Blake Fleck</font></p>
+
       </div>
     );
   }
