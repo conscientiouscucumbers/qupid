@@ -26,11 +26,12 @@ app.use(bodyParser.json());
 
 
 app.use((req, res) => {
+  console.log('actions at beginning of api server... ', actions);
   // splittedUrlPath = ['loadInfo'] || ['loadAuth']
   const splittedUrlPath = req.url.split('?')[0].split('/').slice(1);
   const {action, params} = mapUrl(actions, splittedUrlPath);
   // action is a Promise
-  console.log('URL BEING PROCESSED....', splittedUrlPath);
+  console.log('URL BEING PROCESSED....', splittedUrlPath, action, params);
 
   if (action) {
     action(req, params)
@@ -49,6 +50,7 @@ app.use((req, res) => {
         }
       });
   } else {
+    console.log('SEND 404...');
     res.status(404).end('NOT FOUND');
   }
 });

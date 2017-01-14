@@ -1,0 +1,1 @@
+export isValidNewCoupon from './isValidNewCoupon';

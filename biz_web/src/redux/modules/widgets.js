@@ -53,8 +53,10 @@ export default function reducer(state = initialState, action = {}) {
         }
       };
     case SAVE:
+      console.log('SAVE ACTION CAUGHT IN REDUCER');
       return state; // 'saving' flag handled by redux-form
     case SAVE_SUCCESS:
+      console.log('SAVE SUCCESS ACTION CAUGHT IN REDUCER');
       const data = [...state.data];
       data[action.result.id - 1] = action.result;
       return {
@@ -70,6 +72,7 @@ export default function reducer(state = initialState, action = {}) {
         }
       };
     case SAVE_FAIL:
+      console.log('SAVE FAIL ACTION CAUGHT IN REDUCER');
       return typeof action.error === 'string' ? {
         ...state,
         saveError: {
@@ -94,7 +97,7 @@ export function load() {
 }
 
 export function save(widget) {
-  console.log('CALLED WIDGET SAVE.....');
+  console.log('CALLED WIDGET SAVE.....', widget);
   return {
     types: [SAVE, SAVE_SUCCESS, SAVE_FAIL],
     id: widget.id,

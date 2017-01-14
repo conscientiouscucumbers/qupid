@@ -9,12 +9,14 @@ import counter from './counter';
 import {reducer as form} from 'redux-form';
 import info from './info';
 import widgets from './widgets';
+import newCoupon from './newCoupon';
 
 export default combineReducers({
   routing: routerReducer,
   reduxAsyncConnect,
   auth,
   form,
+  newCoupon,
   multireducer: multireducer({
     counter1: counter,
     counter2: counter,
@@ -22,5 +24,5 @@ export default combineReducers({
   }),
   info,
   pagination,
-  widgets
+  widgets,
 });

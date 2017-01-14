@@ -1,6 +1,6 @@
-const IS_VALID = 'redux-example/newCoupon/IS_VALID';
-const IS_VALID_SUCCESS = 'redux-example/newCoupon/IS_VALID_SUCCESS';
-const IS_VALID_FAIL = 'redux-example/newCoupon/IS_VALID_FAIL';
+const IS_VALID = 'redux-example/newcoupon/IS_VALID';
+const IS_VALID_SUCCESS = 'redux-example/newcoupon/IS_VALID_SUCCESS';
+const IS_VALID_FAIL = 'redux-example/newcoupon/IS_VALID_FAIL';
 
 const initialState = {
   saveError: null
@@ -29,17 +29,18 @@ export default function reducer(state = initialState, action = {}) {
         }
         : state;
     default:
-      console.log('DEFAULT CASE');
+      console.log('DEFAULT CASE IN NEWCOUPON');
       return state;
   }
 }
 
 export function isValidCoupon(data) {
-  console.log('ISVALIDCOUPON CALLED');
+  console.log('ISVALIDCOUPON CALLED', data);
   return {
     types: [
       IS_VALID, IS_VALID_SUCCESS, IS_VALID_FAIL
     ],
-    promise: (client) => client.post('/newcoupon/isValid', {data})
+    // data: data
+    promise: (client) => client.post('/newcoupon/isValidNewCoupon', {data})
   };
 }
