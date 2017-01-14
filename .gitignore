@@ -2,6 +2,7 @@ node_modules/
 bower_components/
 iHearth.xcodeproj/
 *.log
+*.DS_Store
 
 build/
 dist/

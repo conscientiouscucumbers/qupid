@@ -20,13 +20,13 @@ export default class ListViewEntry extends Component {
     super(props);
     this.state = {
       countdown: '',
-      interval: 1000,
+      interval: 30000,
       timeUnit: ''
     };
   }
 
   updateInterval() {
-    console.log('updateinterval', this.state)
+    // console.log('updateinterval', this.state)
     if (this.state.timeUnit === 'sec') { this.setState({ interval: 500 }); }
     else if (this.state.timeUnit === 'min') { this.setState({ interval: 1000 }); }
     else { this.setState({ interval: 30000 }); }

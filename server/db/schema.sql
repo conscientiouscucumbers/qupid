@@ -58,6 +58,7 @@ create table user_coupon (
   user_coupon_id int not null auto_increment,
   user_id int,
   coupon_id int,
+  user_qrcode varchar(100) not null,
   used boolean not null,
   expired boolean not null,
   activated boolean not null,

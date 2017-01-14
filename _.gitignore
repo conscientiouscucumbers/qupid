@@ -28,3 +28,6 @@ dist/
 node_modules/
 bower_components/
 iHearth.xcodeproj/
+
+# DS_Store
+*.DS_Store
