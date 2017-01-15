@@ -25,18 +25,18 @@ export default class About extends Component {
         <Helmet title="Meet The Team"/>
 
         <p><img src={james} align="left"/>
-        <font className={styles.about}>James Gu</font></p>
+        <font className={styles.about}>James Gu</font>
 
-        <p><img src={josh} align="left"/>
-        <font className={styles.about}>Josh Peng</font></p>
+        <img className= {styles.aboutRight} src={josh} align="left"/>
+        <font className={styles.about}>Joshua Peng</font></p>
 
         <p><img src={susan} align="left"/>
-        <font className={styles.about}>Susan Hong</font></p>
+        <font className={styles.about}>Susan Hong</font>
 
-        <p><img src={blake} align="left"/>
+        <img className= {styles.aboutRightBlake} src={blake} align="left"/>
         <font className={styles.about}>Blake Fleck</font></p>
 
-        <p className={styles.heading}>
+        <p className={styles.headingTwo}>
           Psst! Would you like to see an example coupon?
 
           <button className={'btn btn-' + (showCoupon ? 'danger' : 'success')}
@@ -45,9 +45,9 @@ export default class About extends Component {
             {showCoupon ? 'Okay, Thanks!' : 'Yes! Please!'}</button>
         </p>
 
-        {showCoupon && <div><img className={styles.heading} src={coupon}/><img className={styles.heading} src={backCoupon}/></div>}
+        {showCoupon && <div><img className={styles.headingTwo} src={coupon}/><img className={styles.heading} src={backCoupon}/></div>}
 
-         <p className={styles.heading}>Coupons and great deals get washed out by the noise of everyday life. Instead of alerting your customers of deals in the local paper where the potential transaction is 4-5 hours away. iHearth gives the customer a notification of the coupon when it is most pertinant for them... In the store, making the decision.
+         <p className={styles.headingTwo}>Coupons and great deals get washed out by the noise of everyday life. Instead of alerting your customers of deals in the local paper where the potential transaction is 4-5 hours away. iHearth gives the customer a notification of the coupon when it is most pertinant for them... In the store, making the decision.
         </p>
 
       </div>
