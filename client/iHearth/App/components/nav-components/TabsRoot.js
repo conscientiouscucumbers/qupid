@@ -37,27 +37,29 @@ class Tabs extends Component {
 
   componentDidMount() {
     // Mimic beacon signal
-    // setInterval(() => this.props.fetchBeaconCoupons(1, 'UUID2'), 1000);
+    setInterval(() => {
+      this.props.fetchBeaconCoupons(1, 'UUID1');
+    }, 5000);
 
     // Real Beacon signal
-    Beacons.requestWhenInUseAuthorization();
-    Beacons.startRangingBeaconsInRegion(this.props.region);
-    Beacons.startUpdatingLocation();
-    Beacons.shouldDropEmptyRanges(true);
-    console.log('beacon trying to work');
-    DeviceEventEmitter.addListener(
-      'beaconsDidRange',
-      (data) => {
-        console.log('beacon works');
-        if(data['beacons'].length !==0 ){
-          if(data['beacons'][0]['proximity'] === 'far' || data['beacons'][0]['proximity'] === 'near'){
-            this._listenBeacon(data['beacons'][0]);
-            this.props.fetchBeaconCoupons(this.user_id, 'UUID1');
-            Beacons.stopUpdatingLocation(); // doesn't seem like it's working.. but it's okay for now.
-          }
-        }
-      }
-    );
+    // Beacons.requestWhenInUseAuthorization();
+    // Beacons.startRangingBeaconsInRegion(this.props.region);
+    // Beacons.startUpdatingLocation();
+    // Beacons.shouldDropEmptyRanges(true);
+    // console.log('beacon trying to work');
+    // DeviceEventEmitter.addListener(
+    //   'beaconsDidRange',
+    //   (data) => {
+    //     console.log('beacon works');
+    //     if(data['beacons'].length !==0 ){
+    //       if(data['beacons'][0]['proximity'] === 'far' || data['beacons'][0]['proximity'] === 'near'){
+    //         this._listenBeacon(data['beacons'][0]);
+    //         this.props.fetchBeaconCoupons(this.user_id, 'UUID1');
+    //         Beacons.stopUpdatingLocation(); // doesn't seem like it's working.. but it's okay for now.
+    //       }
+    //     }
+    //   }
+    // );
   }
 
   render() {

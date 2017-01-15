@@ -86,7 +86,7 @@ export default class ListViewEntry extends Component {
                   }
                   </Text>
                   </View>
-                  <Text style={{ color: '#FF3F4E' }}>{ this.state.countdown }</Text>
+                  <Text style={{ color: '#FF3F4E', height: 20 }}>{ this.state.countdown }</Text>
                 </View>
                 <View style={ styles.container }>
                 </View>
@@ -109,20 +109,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   splitContainer: {
-    flex: 1,
+    // flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: deviceWidth * (.73),
+    width: deviceWidth * (.70),
+    height: deviceHeight * (.06)
   },
   descriptionContainer: {
     flexDirection: 'column',
     paddingLeft: 10
   },
   listItem: {
-    flex: 1,
+    // flex: 1,
     borderBottomWidth: 1,
-    paddingBottom: 4,
+    paddingBottom: -8,
+    marginTop: 2,
     marginBottom: -8,
+    height: 115
   },
   originalPrice: {
     textDecorationLine: 'line-through',
@@ -152,7 +155,8 @@ const styles = StyleSheet.create({
   },
   listItemDescription: {
     fontSize: 12,
-    color: '#484848'
+    color: '#484848',
+    top: -10
   },
   image: {
     width: 95,
