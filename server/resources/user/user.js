@@ -257,7 +257,7 @@ var sendBeaconCoupons = (params, callback) => {
       else {
         var insertQuery = `insert into user_coupon
           (user_id, coupon_id, user_qrcode, used, expired, activated)
-          values (${params.user_id}, ${usable[0].coupon_id}, ${usable[0].qrcode + ":" + params.user_id}, false, false, true);`;
+          values (${params.user_id}, ${usable[0].coupon_id}, "${usable[0].qrcode + ":" + params.user_id}", false, false, true);`;
         db.query(insertQuery, (err, inserted) => {
           if (err) {
             console.log('Error occured when inserting newly recieved coupon to the user_coupon join table.');

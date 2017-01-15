@@ -4,6 +4,7 @@ import { push, pop } from '../actions/nav-actions/navRootActions';
 import { fetchPosts } from '../actions/listViewActions.js';
 import { fetchCoupon } from '../actions/couponViewActions.js';
 import { _handleNavigate } from '../lib/utils/navUtils';
+import { sortCouponsBySavings, sortCouponsByDate } from '../actions/listViewActions.js';
 
 function mapStateToProps(state) {
   return {
@@ -18,7 +19,9 @@ function mapDispatchToProps(dispatch) {
     pushRoute: (route) => dispatch(push(route)),
     popRoute: () => dispatch(pop()),
     fetchCoupons: (user_id) => dispatch(fetchPosts(user_id)),
-    fetchCoupon: (coupon_id) => dispatch(fetchCoupon(coupon_id))
+    fetchCoupon: (coupon_id) => dispatch(fetchCoupon(coupon_id)),
+    sortCouponsBySavings: () => dispatch(sortCouponsBySavings()),
+    sortCouponsByDate: () => dispatch(sortCouponsByDate()),
   }
 }
 

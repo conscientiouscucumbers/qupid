@@ -32,21 +32,16 @@ export default class ListView extends Component {
   }
 
   componentDidMount() {
-    if(this.props.pushedCoupons.pushedCoupons[0] !== undefined && !this.props.pushedCoupons.pushedCoupons[0].empty){
-      console.log('alert called');
-      this.showAlert('custom');
-      // this.props.fetchCoupons(this.user_id);
-    }
   }
 
   static timeNow = new Date();
 
   render() {
-    // console.log('====PROPS');
-    // console.log(this.props);
-    // debugger;
-    // console.log('PushedCoupons HERE....');
-    // console.log(this.props.pushedCoupons);
+    if(this.props.pushedCoupons.pushedCoupons[0] !== undefined && !this.props.pushedCoupons.pushedCoupons[0].empty){
+      console.log('alert called');
+      this.showAlert('custom');
+      // this.props.fetchCoupons(this.user_id);
+    }
     return (
       <View style={ styles.container }>
         {}
@@ -95,16 +90,20 @@ export default class ListView extends Component {
           ref={(ref) => this.dropdown = ref}
           titleNumOfLines={1}
           messageNumOfLines={5}
-          closeInterval={0}
+          
           containerStyle={{
             backgroundColor: "#6441A4",
             margin: 30,
             borderRadius: 8
           }}
-          onClose={(data) => this.onClose(data)}
+          onClose={(data) => {
+            this.onClose(data);
+          }}
           onCancel={(data) => this.onClose(data)}
           showCancel={true}
-          imageSrc={'https://facebook.github.io/react/img/logo_og.png'}
+          tapToCloseEnabled={true}
+
+          // imageSrc={'https://facebook.github.io/react/img/logo_og.png'}
         />
       </View>
     );
@@ -122,10 +121,12 @@ export default class ListView extends Component {
 
   }
   closeAlert() {
+    console.log('YOOOOOO ON CLOSE BEING CALLED NOW........')
     this.dropdown.onClose()
   }
   onClose(data) {
-    console.log(data)
+    console.log('YOOOOOO ON CLOSE BEING CALLED NOW tap........')
+    this.props.fetchCoupons(this.props.userInfo.userInfo.user_id);
   }
 }
 
