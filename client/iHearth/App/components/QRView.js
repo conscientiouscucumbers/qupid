@@ -7,6 +7,7 @@ export default class QRView extends Component {
   constructor(props) {
     super(props);
     _goBack = this.props._goBack;
+    _handleNavigate = this.props._handleNavigate;
   }
 
   // Before rendering, get state from server
@@ -18,13 +19,13 @@ export default class QRView extends Component {
     return (
       <Container>
         <Header style={{ backgroundColor: '#ffffff' }}>
-          <Button transparent onPress={ _goBack } label='Return to Coupon List'>
+          <Button transparent onPress={ _goBack }>
             <Icon style={styles.arrow} name='ios-arrow-back' />
           </Button>
           <Title style={styles.title}>Selected QR Code</Title>
         </Header>
         <Content>
-          <QRCodeImageViewContainer />
+          <QRCodeImageViewContainer _handleNavigate={ _handleNavigate } _goBack={ _goBack }/>
         </Content>
       </Container>
     );

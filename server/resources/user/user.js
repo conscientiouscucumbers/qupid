@@ -240,7 +240,7 @@ var sendBeaconCoupons = (params, callback) => {
     }
     if(usable.length === 0){
       console.log('Currently there is no coupon to be sent');
-      callback(null, 'noCoupon');
+      return callback(null, 'noCoupon');
       // callback(err);
     }
     var selectRegistered = `select coupon_id from user_coupon where coupon_id=${usable[0].coupon_id} and user_id=${params.user_id};`;

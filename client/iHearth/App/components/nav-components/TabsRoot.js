@@ -38,7 +38,7 @@ class Tabs extends Component {
   componentDidMount() {
     // Mimic beacon signal
     setInterval(() => {
-      this.props.fetchBeaconCoupons(1, 'UUID1');
+      // this.props.fetchBeaconCoupons(1, 'UUID1');
     }, 5000);
 
     // Real Beacon signal

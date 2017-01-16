@@ -36,15 +36,15 @@ export default class NavRoot extends Component {
     switch (route.key) {
       case 'list':
         return (
-          <HomeView _handleNavigate= { this._handleNavigate } />
+          <HomeView _handleNavigate={ this._handleNavigate } />
         )
       case 'coupon':
         return (
-          <CouponView _handleNavigate= { this._handleNavigate } _goBack={ this._handleBackAction } />
+          <CouponView _handleNavigate={ this._handleNavigate } _goBack={ this._handleBackAction } />
         )
       case 'QR':
         return (
-          <QRView _goBack={ this._handleBackAction } />
+          <QRView _handleNavigate={ this._handleNavigate } _goBack={ this._handleBackAction } />
         )
     }
   }
