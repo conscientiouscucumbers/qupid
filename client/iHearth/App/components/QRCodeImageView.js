@@ -3,16 +3,36 @@ import { Image, View } from 'react-native';
 import Button from './global-components/Button';
 import { Container, Content, Card, CardItem, Text } from 'native-base';
 import QRCode from 'react-native-qrcode';
+import ioClient from 'socket.io-client';
+import { URL } from '../constants/NetworkUrls';
+
+const route = {
+  type: 'push',
+  route: {
+    key: 'list',
+    title: 'ListView'
+  }
+};
 
 export default class QRCodeImageView extends Component {
   constructor(props) {
     super(props);
     this.user_id = this.props.userInfo.userInfo.user_id;
     this.coupon_id = this.props.currentCoupon.couponInfo.coupon_id;
+    
+    // Setup socket
+    this.io = ioClient(URL);
   }
 
   componentWillMount() {
     this.props.fetchCoupon(this.user_id, this.coupon_id);
+  }
+
+  componentDidMount() {
+    console.log('CHANNEL NAME HERE:', this.props.QRInfo.QRCode);
+    this.io.on(this.props.QRInfo.QRCode, (message) => {
+
+    });
   }
 
   render() {

@@ -7,6 +7,7 @@ export default class QRView extends Component {
   constructor(props) {
     super(props);
     _goBack = this.props._goBack;
+    _handleNavigate = this.props._handleNavigate;
   }
 
   // Before rendering, get state from server
@@ -24,7 +25,7 @@ export default class QRView extends Component {
           <Title style={styles.title}>Selected QR Code</Title>
         </Header>
         <Content>
-          <QRCodeImageViewContainer />
+          <QRCodeImageViewContainer _handleNavigate={ _handleNavigate } />
         </Content>
       </Container>
     );
