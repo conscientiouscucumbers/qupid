@@ -48,7 +48,7 @@ export default class scanner extends Component {
           <Button text="Camera" raised={true} onPress={ () => this.activateCamera() }/>
         </View>
         }
-        { this.state.camera && <QRCamera /> }
+        { this.state.camera && <QRCamera cancelCamera={ this.cancelCamera.bind(this) }/> }
       </View>
     );
   }

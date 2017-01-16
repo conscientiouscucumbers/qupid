@@ -8,8 +8,62 @@ import {
   View
 } from 'react-native';
 import Camera from 'react-native-camera';
+import _ from 'lodash';
+const URL = 'http://127.0.0.1:4569/'; 
+
 
 class QRCamera extends Component {
+  constructor(props) {
+    super(props);
+    // this.state = { onCamera: true };
+  }
+
+  useCoupon(user_qrcode) {
+    console.log('calling useCoupon with URL', URL + `business/${user_qrcode}`);
+    var request = new Request(URL + `business/${user_qrcode}`, {
+      method: 'PUT',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    });
+
+    return fetch(request)
+      .then(response => response.json())
+      .then(json => {
+          console.log('Successfully updated user_coupon tables: ', json);
+          // this.setState({ onCamera: false });
+          this.props.cancelCamera();
+        })
+      .catch((err) => {
+        console.error('Error! in updating user coupon in QRCamera.js', err.message);
+      })
+  }
+
+  componentDidMount() {
+    // if (this.state.onCamera === true) {
+      // setInterval(() => { this.useCoupon('qrcode1:1') }, 1000);
+    // }
+  }
+
+  onBarCodeRead(e) {
+    // _.throttle(() => { this.useCoupon(e.data) }, 1000);
+    this.useCoupon(e.data);
+    // this.useCoupon('qrcode1:1');
+
+    // console.log(
+    //   "Barcode Found!",
+    //   "Type: " + e.type + "\nData: " + e.data
+    // );
+
+    // 'Barcode Found!', 'Type: org.iso.QRCode\nData: qrcode1:1'
+  }
+
+  takePicture() {
+    this.camera.capture()
+      .then((data) => console.log(data))
+      .catch(err => console.error(err));
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -26,18 +80,6 @@ class QRCamera extends Component {
     );
   }
 
-  onBarCodeRead(e) {
-    console.log(
-      "Barcode Found!",
-      "Type: " + e.type + "\nData: " + e.data
-    );
-  }
-
-  takePicture() {
-    this.camera.capture()
-      .then((data) => console.log(data))
-      .catch(err => console.error(err));
-  }
 }
 
 const styles = StyleSheet.create({
