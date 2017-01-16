@@ -37,46 +37,46 @@ values (3, 'qrcode4', '$4 OFF Conditioner', 'https://facebook.github.io/react/im
 -- WARNING: DO NOT CHANGE THE ORDER OF QUERIES!
 -- // user_coupon
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (1, 1, 'qrcode:1', false, false, true);
+values (1, 1, 'qrcode1:1', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (2, 1, 'qrcode:2', false, false, true);
+values (2, 1, 'qrcode1:2', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (2, 2, 'qrcode:2', false, false, true);
+values (2, 2, 'qrcode1:2', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (1, 2, 'qrcode:1', false, false, true);
+values (1, 2, 'qrcode1:1', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (1, 3, 'qrcode:1', false, false, true);
+values (1, 3, 'qrcode1:1', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (1, 4, 'qrcode:1', false, false, true);
+values (1, 4, 'qrcode1:1', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (3, 1, 'qrcode:3', false, false, true);
+values (3, 1, 'qrcode1:3', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (3, 2, 'qrcode:3', false, false, true);
+values (3, 2, 'qrcode1:3', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (3, 3, 'qrcode:3', false, false, true);
+values (3, 3, 'qrcode1:3', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (3, 4, 'qrcode:3', false, false, true);
+values (3, 4, 'qrcode1:3', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (3, 1, 'qrcode:3', false, false, true);
+values (3, 1, 'qrcode1:3', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (3, 2, 'qrcode:3', false, false, true);
+values (3, 2, 'qrcode1:3', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (3, 3, 'qrcode:3', false, false, true);
+values (3, 3, 'qrcode1:3', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (3, 4, 'qrcode:3', false, false, true);
+values (3, 4, 'qrcode1:3', false, false, true);
 
 -- // beacon
 insert into beacon (business_id, beacon_uuid, section)
