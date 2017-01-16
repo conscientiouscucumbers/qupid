@@ -4,12 +4,12 @@ import Button from './global-components/Button';
 import { Container, Content, Card, CardItem, Text } from 'native-base';
 import QRCode from 'react-native-qrcode';
 import ioClient from 'socket.io-client';
-import { URL } from '../constants/NetworkUrls';
+import { scannerURL } from '../constants/NetworkUrls';
 
 const route = {
   type: 'push',
   route: {
-    key: 'list',
+    key: 'home',
     title: 'ListView'
   }
 };
@@ -21,23 +21,33 @@ export default class QRCodeImageView extends Component {
     this.coupon_id = this.props.currentCoupon.couponInfo.coupon_id;
     
     // Setup socket
-    this.io = ioClient(URL);
+    this.io = ioClient(scannerURL);
+    _handleNavigate = this.props._handleNavigate;
+    _goBack = this.props._goBack;
   }
 
   componentWillMount() {
     this.props.fetchCoupon(this.user_id, this.coupon_id);
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
     console.log('CHANNEL NAME HERE:', this.props.QRInfo.QRCode);
-    this.io.on(this.props.QRInfo.QRCode, (message) => {
+    // _handleNavigate(route);
 
+    // Upon open will fetch QRInfo and set channel as undefined
+    // On rerender will set new socket with channel of user_qrcode 
+    this.io.removeAllListeners();
+    console.log('TRYING TO CONNECT TO SOCKET......', this.io.connected);
+    this.io.on('connect', (socket) => {
+      console.log('Connected to socket: ', socket.id);
+    })
+    this.io.on(this.props.QRInfo.QRCode, (message) => {
+      console.log('Message from server socket: ', message);
+      _goBack();
     });
   }
 
   render() {
-    console.log('this.props', this.props)
-    console.log('user_qrcode', this.user_qrcode)
     return (
       <Container>
         <Content>
@@ -52,10 +62,6 @@ export default class QRCodeImageView extends Component {
                 />
               </View>
               <Text style={{fontWeight: '300', textAlign: 'center'}}>Scan QR Code</Text>
-              <Button onPress={ () => { this.props.useCoupon(
-                this.user_id,
-                this.coupon_id)
-              }} label='Use Coupon'></Button>
             </CardItem>
           </Card>
         </Content>

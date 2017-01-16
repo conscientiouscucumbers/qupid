@@ -1,6 +1,9 @@
 import { REQUEST_USE_COUPON, RECEIVE_USE_COUPON } from '../constants/ActionTypes';
 import { URL } from '../constants/NetworkUrls';
-import { fetchPosts } from '../actions/listViewActions'
+import { fetchPosts } from '../actions/listViewActions';
+import ioClient from 'socket.io-client';
+import { scannerURL } from '../constants/NetworkUrls';
+
 // Will change isFetching state of list to true
 function requestUseCoupon() {
   return {
