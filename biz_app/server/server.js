@@ -6,7 +6,20 @@ var businessRouter = require('./resources/business/businessRouter.js');
 var app = express();
 // var server = require('http').Server(app);
 // var io = require('socket.io')(server);
-var io = require('socket.io').listen(69);
+var socketio = require('socket.io');
+var http = require('http');
+var server = http.Server(app);
+var websocket = socketio(server);
+server.listen(4570, () => console.log('listening on *: 4570'));
+
+websocket.on('connection', (socket) => {
+  console.log('A client just joined on', socket.id);
+  setInterval(() => {
+    var msg = Math.random();
+    socket.emit('qrcode', msg);
+    console.log(msg);
+  }, 1000);
+});
 
 // app.use(express.static('socket.io'));
 
@@ -17,18 +30,6 @@ var io = require('socket.io').listen(69);
 //   // socket.on('qrcode', (message) => {
 //   // });
 // });
-io.sockets.on('connection', (socket) => {
-  socket.on('qrcode', (name, fn) => {
-    fn({data: 'some random data'});
-  });
-});
-
-
-// setInterval(() => {
-//   var msg = Math.random();
-//   io.emit('qrcode1:1', msg);
-//   console.log(msg);
-// }, 1000);
 
 // Attach middleware
 app.use(bodyParser.json());
