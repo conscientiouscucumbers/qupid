@@ -4,8 +4,9 @@ var businessRouter = require('./resources/business/businessRouter.js');
 
 // Create express app
 var app = express();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+// var server = require('http').Server(app);
+// var io = require('socket.io')(server);
+var io = require('socket.io').listen(69);
 
 // app.use(express.static('socket.io'));
 
@@ -16,11 +17,18 @@ var io = require('socket.io')(server);
 //   // socket.on('qrcode', (message) => {
 //   // });
 // });
-setInterval(() => {
-  var msg = Math.random();
-  io.emit('qrcode1:1', msg);
-  console.log(msg);
-}, 1000);
+io.sockets.on('connection', (socket) => {
+  socket.on('qrcode', (name, fn) => {
+    fn({data: 'some random data'});
+  });
+});
+
+
+// setInterval(() => {
+//   var msg = Math.random();
+//   io.emit('qrcode1:1', msg);
+//   console.log(msg);
+// }, 1000);
 
 // Attach middleware
 app.use(bodyParser.json());
