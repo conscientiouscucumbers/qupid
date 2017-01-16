@@ -3,7 +3,7 @@ import { Image, View } from 'react-native';
 import Button from './global-components/Button';
 import { Container, Content, Card, CardItem, Text } from 'native-base';
 import QRCode from 'react-native-qrcode';
-import ioClient from 'socket.io-client';
+import WebSocket from 'ws';
 import { scannerURL } from '../constants/NetworkUrls';
 
 const route = {
@@ -14,14 +14,14 @@ const route = {
   }
 };
 
+const ws = new WebSocket(scannerUrl);
+
 export default class QRCodeImageView extends Component {
   constructor(props) {
     super(props);
     this.user_id = this.props.userInfo.userInfo.user_id;
     this.coupon_id = this.props.currentCoupon.couponInfo.coupon_id;
-    
-    // Setup socket
-    this.io = ioClient(scannerURL);
+
     _handleNavigate = this.props._handleNavigate;
     _goBack = this.props._goBack;
   }
@@ -32,19 +32,6 @@ export default class QRCodeImageView extends Component {
 
   componentDidUpdate() {
     console.log('CHANNEL NAME HERE:', this.props.QRInfo.QRCode);
-    // _handleNavigate(route);
-
-    // Upon open will fetch QRInfo and set channel as undefined
-    // On rerender will set new socket with channel of user_qrcode 
-    this.io.removeAllListeners();
-    console.log('TRYING TO CONNECT TO SOCKET......', this.io.connected);
-    this.io.on('connect', (socket) => {
-      console.log('Connected to socket: ', socket.id);
-    })
-    this.io.on(this.props.QRInfo.QRCode, (message) => {
-      console.log('Message from server socket: ', message);
-      _goBack();
-    });
   }
 
   render() {
