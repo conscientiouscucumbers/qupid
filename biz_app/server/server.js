@@ -4,22 +4,38 @@ var businessRouter = require('./resources/business/businessRouter.js');
 
 // Create express app
 var app = express();
-// var server = require('http').Server(app);
-// var io = require('socket.io')(server);
-var socketio = require('socket.io');
-var http = require('http');
-var server = http.Server(app);
-var websocket = socketio(server);
-server.listen(4570, () => console.log('listening on *: 4570'));
 
-websocket.on('connection', (socket) => {
-  console.log('A client just joined on', socket.id);
-  setInterval(() => {
-    var msg = Math.random();
-    socket.emit('qrcode', msg);
-    console.log(msg);
-  }, 1000);
+const WebSocket = require('ws');
+const http = require('http');
+const url = require('url');
+
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
+
+wss.on('connection', function connection(ws) {
+
+  ws.on('message', function incoming(message) {
+    console.log('received: %s', message);
+  });
+
+  ws.send('something');
 });
+
+
+// var http = require('http');
+// var socketio = require('socket.io');
+// var server = http.Server(app);
+// var websocket = socketio(server);
+// server.listen(4570, () => console.log('listening on *: 4570'));
+//
+// websocket.on('connection', (socket) => {
+//   console.log('A client just joined on', socket.id);
+//   setInterval(() => {
+//     var msg = Math.random();
+//     socket.emit('qrcode', msg);
+//     console.log(msg);
+//   }, 1000);
+// });
 
 // app.use(express.static('socket.io'));
 
