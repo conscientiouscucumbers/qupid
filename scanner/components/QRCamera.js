@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Camera from 'react-native-camera';
 import _ from 'lodash';
-const URL = 'https://lit-brushlands-36263.herokuapp.com/'; 
+const URL = 'https://lit-brushlands-36263.herokuapp.com/';
 
 
 class QRCamera extends Component {
@@ -47,7 +47,7 @@ class QRCamera extends Component {
 
   onBarCodeRead(e) {
     // _.throttle(() => { this.useCoupon(e.data) }, 1000);
-    this.useCoupon(e.data);
+    _.throttle(() => { this.useCoupon(e.data) }, 2000);
     // this.useCoupon('qrcode1:1');
 
     // console.log(
