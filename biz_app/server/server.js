@@ -1,51 +1,16 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var businessRouter = require('./resources/business/businessRouter.js');
+var { useCouponAsync } = require('./resources/business/business.js');
 
 // Create express app
 var app = express();
 
-const WebSocket = require('ws');
-const http = require('http');
-const url = require('url');
-
-const server = http.createServer(app);
-const wss = new WebSocket.Server({ server });
-
-wss.on('connection', function connection(ws) {
-
-  ws.on('message', function incoming(message) {
-    console.log('received: %s', message);
-  });
-
-  ws.send('something');
-});
-
-
-// var http = require('http');
-// var socketio = require('socket.io');
-// var server = http.Server(app);
-// var websocket = socketio(server);
-// server.listen(4570, () => console.log('listening on *: 4570'));
-//
-// websocket.on('connection', (socket) => {
-//   console.log('A client just joined on', socket.id);
-//   setInterval(() => {
-//     var msg = Math.random();
-//     socket.emit('qrcode', msg);
-//     console.log(msg);
-//   }, 1000);
-// });
-
-// app.use(express.static('socket.io'));
-
-// socket to signal when we have scanned a qr code
-// io.on('connection', (socket) => {
-//   console.log('A client just joined on', socket.id);
-//   // socket.emit(user_qrcode, 'qrcode');
-//   // socket.on('qrcode', (message) => {
-//   // });
-// });
+var http = require('http');
+var socketio = require('socket.io');
+var server = http.Server(app);
+var websocket = socketio(server);
+server.listen(4570, () => console.log('listening on *: 4570'));
 
 // Attach middleware
 app.use(bodyParser.json());
@@ -59,15 +24,25 @@ app.use(function(req, res, next) {
   next();
 });
 
-// Allow clientside access
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT");
-  next();
+websocket.on('connection', (socket) => {
+  console.log('A client just joined on', socket.id);
+  // socket.removeAllListeners();
+  // Attach business routes
+  // app.use('/business', businessRouter);
+  // create useCoupon with reference to socket
+  app.put('/business/:user_qrcode', (req, res) => {
+    var params = { user_qrcode: req.params.user_qrcode };
+    useCouponAsync(params, socket)
+    .then((coupon) => {
+      res.status(200).json(coupon);
+    })
+    .catch((err) => {
+      res.status(400).send('could not use a coupon with coupon_id', req.params.user_qrcode);
+    })
+  });
+
 });
 
-// Attach business routes
-app.use('/business', businessRouter);
-
-module.exports = app;
+app.listen(process.env.PORT || 4569, function() {
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});

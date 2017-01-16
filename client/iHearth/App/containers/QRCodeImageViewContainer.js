@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import QRCodeImageView from '../components/QRCodeImageView';
 import { useCoupon, fetchCoupon } from '../actions/QRCodeViewActions.js';
+import { fetchPosts } from '../actions/listViewActions.js';
 
 function mapStateToProps(state) {
   return {
@@ -13,7 +14,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     useCoupon: (user_id, coupon_id) => { dispatch(useCoupon(user_id, coupon_id)) },
-    fetchCoupon: (user_id, coupon_id) => { dispatch(fetchCoupon(user_id, coupon_id)) }
+    fetchCoupon: (user_id, coupon_id) => { dispatch(fetchCoupon(user_id, coupon_id)) },
+    fetchCoupons: (user_id) => { dispatch(fetchPosts(user_id)) },
   }
 }
 

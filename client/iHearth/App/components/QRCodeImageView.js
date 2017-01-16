@@ -21,7 +21,10 @@ export default class QRCodeImageView extends Component {
     this.coupon_id = this.props.currentCoupon.couponInfo.coupon_id;
     
     // Setup socket
-    this.socket = SocketIOClient('https://lit-brushlands-36263.herokuapp.com:4570');
+    this.socket = SocketIOClient('http://127.0.0.1:4570');
+    this.socket.on('connect', () => {
+      console.log('CONNECTED HERE.......')
+    })
     _handleNavigate = this.props._handleNavigate;
     _goBack = this.props._goBack;
   }
@@ -36,18 +39,13 @@ export default class QRCodeImageView extends Component {
 
     // Upon open will fetch QRInfo and set channel as undefined
     // On rerender will set new socket with channel of user_qrcode 
-    // this.io.removeAllListeners();
-    console.log('TRYING TO CONNECT TO SOCKET......', this.socket.connected);
-    // this.io.on('connect', (socket) => {
-    //   console.log('Connected to socket: ', socket.id);
-    // })
-    // this.io.on(this.props.QRInfo.QRCode, (message) => {
-    //   console.log('Message from server socket: ', message);
-    //   _goBack();
-    // });
-    this.socket.on('qrcode', (message) => {
+    // this.socket.removeAllListeners();
+    // console.log('TRYING TO CONNECT TO SOCKET......', this.socket.connected);
+    this.socket.on(this.props.QRInfo.QRCode, (message) => {
       console.log('Message from server socket: ', message);
       _goBack();
+      _goBack();
+      this.props.fetchCoupons(this.user_id);
     });
   }
 
