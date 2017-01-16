@@ -1,12 +1,21 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var fs = require('fs');
-var morgan = require('morgan');
-var path = require('path');
 var businessRouter = require('./resources/business/businessRouter.js');
 
 // Create express app
 var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+
+// app.use(express.static('socket.io'));
+
+// socket to signal when we have scanned a qr code
+io.on('connection', (socket) => {
+  console.log('A client just joined on', socket.id);
+  // socket.emit(user_qrcode, 'qrcode');
+  // socket.on('qrcode', (message) => {
+  // });
+});
 
 // Attach middleware
 app.use(bodyParser.json());
@@ -19,12 +28,6 @@ app.use(function(req, res, next) {
   res.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   next();
 });
-
-// create a write stream (in append mode)
-var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'})
-
-// setup the logger
-app.use(morgan('combined', {stream: accessLogStream}))
 
 // Allow clientside access
 app.use(function(req, res, next) {
