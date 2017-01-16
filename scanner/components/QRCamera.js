@@ -11,6 +11,7 @@ import Camera from 'react-native-camera';
 import _ from 'underscore';
 import Button from './Button';
 const URL = 'https://lit-brushlands-36263.herokuapp.com/';
+// import websocket from '../server/index';
 
 
 class QRCamera extends Component {
@@ -33,7 +34,16 @@ class QRCamera extends Component {
       .then(response => response.json())
       .then(json => {
           console.log('SUCCESS: Successfully updated user_coupon tables:', json);
-          // this.setState({ onCamera: false });
+
+          // socket to signal when we have scanned a qr code
+          websocket.on('connection', (socket) => {
+            console.log('A client just joined on', socket.id);
+
+            socket.emit(user_qrcode, 'qrcode');
+            socket.on('qrcode', (message) => {
+            });
+          });
+
           this.props.cancelCamera();
         })
       .catch((err) => {
