@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Camera from 'react-native-camera';
 import _ from 'lodash';
-const URL = 'http://127.0.0.1:4569/'; 
+const URL = 'https://lit-brushlands-36263.herokuapp.com/; 
 
 
 class QRCamera extends Component {
