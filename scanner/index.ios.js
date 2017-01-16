@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import QRCamera from './components/QRCamera';
 import Button from './components/Button';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default class scanner extends Component {
   constructor(props) {
@@ -45,6 +46,8 @@ export default class scanner extends Component {
         </View>
         :
         <View>
+          <Text style={styles.title}>Cupid</Text>
+          <Text style={styles.text}>QR Code Scanner</Text>
           <Button label="Camera" raised={true} onPress={ () => this.activateCamera() }/>
         </View>
         }
@@ -76,6 +79,22 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  title: {
+    fontSize: 30,
+    fontWeight: '200',
+    color: '#FF3F4E',
+    textAlign: 'center',
+    marginTop: 5,
+    marginBottom: 5
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: '200',
+    color: '#484848',
+    textAlign: 'center',
+    marginTop: 5,
+    marginBottom: 5
+  }
 });
 
 AppRegistry.registerComponent('scanner', () => scanner);
