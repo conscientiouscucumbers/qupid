@@ -33,11 +33,11 @@ var createCoupon = (params, callback) => {
 module.exports.createCouponAsync = Promise.promisify(createCoupon);
 
 var retrieveOneCoupon = (params, callback) => {
-  var queryStr = `select C.coupon_id, C.business_id, C.qrcode, C.title, C.image, C.item_name, C.description,
-    C.original_price, C.coupon_price, C.coupon_savings, C.start_at, C.end_at, C.created_at, B.company_name
-    from coupon as C
-    left join business as B
-    on C.business_id = B.business_id
+  var queryStr = `select C.coupon_id, C.business_id, C.qrcode, C.title, C.image, C.item_name, C.description, \
+    C.original_price, C.coupon_price, C.coupon_savings, C.start_at, C.end_at, C.created_at, B.company_name \
+    from coupon as C \
+    left join business as B \
+    on C.business_id = B.business_id \
     where coupon_id="${params.coupon_id}"`;
   db.query(queryStr, function(err, res) {
     if (err) {

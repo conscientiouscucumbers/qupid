@@ -38,9 +38,7 @@ export function fetchBeaconCoupons(user_id, beacon_uuid) {
     return fetch(URL + 'user/' + user_id + '/beacon/' + beacon_uuid)
       .then(response => response.json())
       .then(json => {
-        console.log("this is it!!!!!!");
-        console.log(json);
-        if(json===null){
+        if(json === null){
           console.log('json has error in fetchBeaconCoupons');
           return;
         }

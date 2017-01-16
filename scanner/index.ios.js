@@ -8,7 +8,7 @@ import {
   View
 } from 'react-native';
 import QRCamera from './components/QRCamera';
-import { Button } from 'react-native-material-design';
+import Button from './components/Button';
 
 export default class scanner extends Component {
   constructor(props) {
@@ -40,12 +40,12 @@ export default class scanner extends Component {
           To get started, edit index.ios.js
         </Text> */}
         { this.state.camera ?
-        <View style={{ marginTop: 20 }}>
-          <Button text="Cancel" raised={true} onPress={ () => this.cancelCamera() }/>
+        <View style={{ marginTop: 25, marginBottom: 5, backgroundColor: 'transparent' }}>
+          <Button label="Cancel" raised={true} onPress={ () => this.cancelCamera() }/>
         </View>
         :
         <View>
-          <Button text="Camera" raised={true} onPress={ () => this.activateCamera() }/>
+          <Button label="Camera" raised={true} onPress={ () => this.activateCamera() }/>
         </View>
         }
         { this.state.camera && <QRCamera cancelCamera={ this.cancelCamera.bind(this) }/> }
@@ -59,12 +59,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: 0,
     backgroundColor: '#F5FCFF',
+  },
+  linearGradient: {
+    flex: 1
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+    backgroundColor: 'transparent'
   },
   instructions: {
     textAlign: 'center',
