@@ -5,7 +5,6 @@ var morgan = require('morgan');
 var path = require('path');
 var businessRouter = require('./resources/business/businessRouter.js');
 
-
 // Create express app
 var app = express();
 
