@@ -10,12 +10,17 @@ var io = require('socket.io')(server);
 // app.use(express.static('socket.io'));
 
 // socket to signal when we have scanned a qr code
-io.on('connection', (socket) => {
-  console.log('A client just joined on', socket.id);
-  // socket.emit(user_qrcode, 'qrcode');
-  // socket.on('qrcode', (message) => {
-  // });
-});
+// io.on('connection', (socket) => {
+//   console.log('A client just joined on', socket.id);
+//   // socket.emit(user_qrcode, 'qrcode');
+//   // socket.on('qrcode', (message) => {
+//   // });
+// });
+setInterval(() => {
+  var msg = Math.random();
+  io.emit('qrcode1:1', msg);
+  console.log(msg);
+}, 1000);
 
 // Attach middleware
 app.use(bodyParser.json());
