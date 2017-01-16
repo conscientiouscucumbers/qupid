@@ -2,7 +2,7 @@
   "name": "iHearth-Server",
   "version": "0.0.1",
   "engines": {
-    "node": "5.9.1"
+    "node": "6.1.0"
   },
   "private": true,
   "scripts": {
