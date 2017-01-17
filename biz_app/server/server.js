@@ -46,4 +46,5 @@ websocket.on('connection', (socket) => {
 
 });
 
+app.use(express.static('socket.io'));
 server.listen(port);
