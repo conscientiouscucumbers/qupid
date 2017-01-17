@@ -32,7 +32,6 @@ app.use((req, res) => {
   const {action, params} = mapUrl(actions, splittedUrlPath);
   // action is a Promise
   console.log('URL BEING PROCESSED....', splittedUrlPath, action, params);
-
   if (action) {
     action(req, params)
       .then((result) => {
