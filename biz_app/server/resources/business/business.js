@@ -10,7 +10,7 @@ var useCoupon = (params, socket, callback) => {
     } else {
       console.log('successfully used a coupon with user_qrcode', params.user_qrcode);
       socket.emit(params.user_qrcode, {data: socket.id});
-      setTimeout((coupon) => { callback(null, coupon) }, 3000);
+      setTimeout((coupon) => { callback(null, coupon) }, 1000);
     }
   });
 };
