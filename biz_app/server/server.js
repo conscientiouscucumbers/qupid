@@ -10,7 +10,7 @@ var http = require('http');
 var socketio = require('socket.io');
 var server = http.Server(app);
 var websocket = socketio(server);
-server.listen(process.env.PORT + 1 || 4570, () => {
+server.listen(4570, () => {
   console.log('websocket listening on port %d in %s mode', this.address().port, app.settings.env);
 });
 
