@@ -11,7 +11,7 @@ var socketio = require('socket.io');
 var server = http.Server(app);
 var websocket = socketio(server);
 server.listen(4570, () => {
-  console.log('websocket listening on port %d in %s mode', this.address().port, app.settings.env);
+  console.log('websocket listening on port: *4570');
 });
 
 // Attach middleware
