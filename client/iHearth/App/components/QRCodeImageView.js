@@ -19,9 +19,9 @@ export default class QRCodeImageView extends Component {
     super(props);
     this.user_id = this.props.userInfo.userInfo.user_id;
     this.coupon_id = this.props.currentCoupon.couponInfo.coupon_id;
-    
+
     // Setup socket
-    this.socket = SocketIOClient('http://127.0.0.1:4570');
+    this.socket = SocketIOClient(scannerURL.slice(0, -1));
     this.socket.on('connect', () => {
       console.log('CONNECTED HERE.......')
     })
@@ -38,7 +38,7 @@ export default class QRCodeImageView extends Component {
     // _handleNavigate(route);
 
     // Upon open will fetch QRInfo and set channel as undefined
-    // On rerender will set new socket with channel of user_qrcode 
+    // On rerender will set new socket with channel of user_qrcode
     // this.socket.removeAllListeners();
     // console.log('TRYING TO CONNECT TO SOCKET......', this.socket.connected);
     this.socket.on(this.props.QRInfo.QRCode, (message) => {

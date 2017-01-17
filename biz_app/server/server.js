@@ -10,7 +10,9 @@ var http = require('http');
 var socketio = require('socket.io');
 var server = http.Server(app);
 var websocket = socketio(server);
-server.listen(4570, () => console.log('listening on *: 4570'));
+server.listen(process.env.PORT || 4570, () => {
+  console.log('websocket listening on port %d in %s mode', this.address().port, app.settings.env
+});
 
 // Attach middleware
 app.use(bodyParser.json());
