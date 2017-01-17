@@ -76,8 +76,6 @@ export default class NewCouponForm extends Component {
       // pristine,
       // valid
     } = this.props;
-    console.log('THIS SUBMIT...', handleSubmit);
-    console.log('THIS PROPS...', this.props);
     // console.log('ISVALIDCOUPON HERE....', isValidCoupon);
     const styles = require('./NewCouponForm.scss');
     const renderInput = (field, label, placeholder, showAsyncValidating) =>
