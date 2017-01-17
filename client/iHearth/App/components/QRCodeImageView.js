@@ -22,7 +22,7 @@ export default class QRCodeImageView extends Component {
 
     _handleNavigate = this.props._handleNavigate;
     _goBack = this.props._goBack;
-    
+
     // Setup socket
     this.socket = SocketIOClient(scannerURL.slice(0, -1));
   }
@@ -43,6 +43,8 @@ export default class QRCodeImageView extends Component {
       this.props.fetchCoupons(this.user_id);
       // this.socket.disconnect(this.props.QRInfo.QRCode);
     });
+
+    this.socket.emit('channel', 'client', 'test message');
   }
 
   render() {
