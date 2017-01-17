@@ -18,7 +18,7 @@ import {toggleForm} from 'redux/modules/newCoupon';
 export default class NewCoupon extends Component {
   static propTypes = {
     initialize: PropTypes.func.isRequired,
-    isValidCoupon: PropTypes.func.isRequired,
+    // isValidCoupon: PropTypes.func.isRequired,
     toggleForm: PropTypes.func.isRequired,
   }
 
@@ -28,8 +28,8 @@ export default class NewCoupon extends Component {
 
   handleState = (data) => {
     const {form} = this.props;
-    this.props.toggleForm(form);
-    // this.props.initialize('newCoupon', {});
+    // this.props.toggleForm(form);
+    this.props.initialize('newCoupon', {});
   }
 
   handleInitialize = () => {
