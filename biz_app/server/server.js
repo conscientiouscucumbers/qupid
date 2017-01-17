@@ -46,8 +46,4 @@ websocket.on('connection', (socket) => {
 
 });
 
-app.use(express.static('socket.io'));
 server.listen(port);
-// app.listen(port, function() {
-//   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-// });
