@@ -3,7 +3,7 @@ import { Image, View } from 'react-native';
 import Button from './global-components/Button';
 import { Container, Content, Card, CardItem, Text } from 'native-base';
 import QRCode from 'react-native-qrcode';
-import ioClient from 'socket.io-client';
+import SocketIOClient from 'socket.io-client';
 import { scannerURL } from '../constants/NetworkUrls';
 
 const route = {
@@ -21,7 +21,10 @@ export default class QRCodeImageView extends Component {
     this.coupon_id = this.props.currentCoupon.couponInfo.coupon_id;
     
     // Setup socket
-    this.io = ioClient(scannerURL);
+    this.socket = SocketIOClient('http://127.0.0.1:4570');
+    this.socket.on('connect', () => {
+      console.log('CONNECTED HERE.......')
+    })
     _handleNavigate = this.props._handleNavigate;
     _goBack = this.props._goBack;
   }
@@ -36,14 +39,13 @@ export default class QRCodeImageView extends Component {
 
     // Upon open will fetch QRInfo and set channel as undefined
     // On rerender will set new socket with channel of user_qrcode 
-    this.io.removeAllListeners();
-    console.log('TRYING TO CONNECT TO SOCKET......', this.io.connected);
-    this.io.on('connect', (socket) => {
-      console.log('Connected to socket: ', socket.id);
-    })
-    this.io.on(this.props.QRInfo.QRCode, (message) => {
+    // this.socket.removeAllListeners();
+    // console.log('TRYING TO CONNECT TO SOCKET......', this.socket.connected);
+    this.socket.on(this.props.QRInfo.QRCode, (message) => {
       console.log('Message from server socket: ', message);
       _goBack();
+      _goBack();
+      this.props.fetchCoupons(this.user_id);
     });
   }
 
