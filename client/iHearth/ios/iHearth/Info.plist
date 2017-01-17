@@ -61,6 +61,7 @@
       <string>Skia.ttf</string>
       <string>Times New Roman.ttf</string>
       <string>MaterialCommunityIcons.ttf</string>
+      <string>MaterialCommunityIcons.ttf</string>
     </array>
     <key>UIBackgroundModes</key>
     <array>
