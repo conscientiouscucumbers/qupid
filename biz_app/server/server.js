@@ -5,12 +5,13 @@ var { useCouponAsync } = require('./resources/business/business.js');
 
 // Create express app
 var app = express();
+const port = process.env.PORT || 4569;
 
 var http = require('http');
 var socketio = require('socket.io');
-var server = http.Server(app);
+var server = http.createServer(app);
 var websocket = socketio.listen(server);
-server.listen(process.env.PORT || 4569);
+server.listen(port);
 // server.listen(process.env.PORT || 4569, function() {
 //   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 // });
@@ -46,6 +47,6 @@ websocket.on('connection', (socket) => {
 
 });
 
-app.listen(process.env.PORT || 4570, function() {
+app.listen(port, function() {
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
