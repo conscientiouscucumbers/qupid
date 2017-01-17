@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import {reduxForm} from 'redux-form';
+import {reduxForm, Field} from 'redux-form';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import newCouponValidation from './newCouponValidation';
@@ -11,6 +11,7 @@ function asyncValidate(data, dispatch, {isValidCoupon}) {
   if (!data.title) {
     return Promise.resolve({});
   }
+  console.log('DATA IS HERE...........', data);
   return isValidCoupon(data);
 }
 @connect(
@@ -27,7 +28,6 @@ function asyncValidate(data, dispatch, {isValidCoupon}) {
   // initialize must refer to this form property in container
   form: 'newCoupon',
   fields: [
-  // TODO: will need to generate random QR code for coupon
     'title',
     'image',
     'item_name',
@@ -119,7 +119,7 @@ export default class NewCouponForm extends Component {
           {renderInput(coupon_savings, 'Savings', '2.50')}
           {renderInput(start_at, 'Start Time', '2017-05-21 12:00:00')}
           {renderInput(end_at, 'End Time', '2017-05-21 12:00:00')}
-          {renderInput(business_id, 'Business ID', user ? user.business_id : '')}
+          
           <div className="form-group">
             <div className="col-sm-offset-2 col-sm-10">
               <button className="btn btn-success" onClick={() => {handleSubmit(); customSubmit()}}>
@@ -135,3 +135,4 @@ export default class NewCouponForm extends Component {
     );
   }
 }
+          // {renderInput(business_id, 'Business ID', user ? user.business_id : '')}

@@ -38,6 +38,7 @@ export default function reducer(state = initialState, action = {}) {
 }
 
 export function isValidCoupon(data) {
+  console.log('DATA BEING SENT TO ROUTE....', data);
   return {
     types: [
       IS_VALID, IS_VALID_SUCCESS, IS_VALID_FAIL
@@ -46,9 +47,9 @@ export function isValidCoupon(data) {
   };
 }
 
-export function toggleForm(current) {
-  return {
-    type: TOGGLE_FORM,
-    bool: false
-  };
-}
+// export function toggleForm(current) {
+//   return {
+//     type: TOGGLE_FORM,
+//     bool: false
+//   };
+// }
