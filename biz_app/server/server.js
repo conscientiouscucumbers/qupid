@@ -38,7 +38,7 @@ websocket.on('connection', (socket) => {
     useCouponAsync(params, socket)
     .then((emission) => {
       emission();
-      // res.status(200).json({ data: 'success' });
+      setTimeout(() => { res.status(200).json({ data: 'success' }) }, 50);
     })
     .catch((err) => {
       res.status(400).send('could not use a coupon with coupon_id', req.params.user_qrcode);
