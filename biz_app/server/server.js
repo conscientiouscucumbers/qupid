@@ -36,8 +36,9 @@ websocket.on('connection', (socket) => {
   app.put('/business/:user_qrcode', (req, res) => {
     var params = { user_qrcode: req.params.user_qrcode };
     useCouponAsync(params, socket)
-    .then((coupon) => {
-      res.status(200).json(coupon);
+    .then((emission) => {
+      emission();
+      res.status(200).json({ data: 'success' });
     })
     .catch((err) => {
       res.status(400).send('could not use a coupon with coupon_id', req.params.user_qrcode);

@@ -9,8 +9,8 @@ var useCoupon = (params, socket, callback) => {
       callback(err);
     } else {
       console.log('successfully used a coupon with user_qrcode', params.user_qrcode);
-      callback(null, coupon);
-      socket.emit(params.user_qrcode, {data: socket.id});
+
+      callback(null, () => { socket.emit(params.user_qrcode, {data: socket.id}); } );
     }
   });
 };
