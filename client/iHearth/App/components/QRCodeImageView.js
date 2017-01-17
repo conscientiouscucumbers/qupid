@@ -14,8 +14,6 @@ const route = {
   }
 };
 
-const ws = new WebSocket(scannerUrl);
-
 export default class QRCodeImageView extends Component {
   constructor(props) {
     super(props);
