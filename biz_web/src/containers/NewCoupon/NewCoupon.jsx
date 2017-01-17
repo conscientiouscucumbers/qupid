@@ -17,10 +17,12 @@ export default class NewCoupon extends Component {
 
   handleSubmit = (data) => {
     window.alert('Data submitted! ' + JSON.stringify(data));
-    // if (callback) {
-    //   callback(data);
-    // }
+    console.log('HANDLE SUBMIT BEING CALLED')
     this.props.initialize('newCoupon', {});
+  }
+
+  handleState = (data) => {
+    window.alert('Data submitted! ' + JSON.stringify(data));
   }
 
   handleInitialize = () => {
@@ -47,7 +49,7 @@ export default class NewCoupon extends Component {
             <i className="fa fa-pencil"/> Initialize Form
           </button>
         </div>
-          <NewCouponForm onSubmit={this.handleSubmit}/>
+          <NewCouponForm customSubmit={this.handleState} onSubmit={this.handleSubmit.bind(this)}/>
       </div>
     );
   }

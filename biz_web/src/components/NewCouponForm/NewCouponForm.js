@@ -36,7 +36,7 @@ function asyncValidate(data, dispatch, {isValidCoupon}) {
   ],
   validate: newCouponValidation,
   asyncValidate,
-  asyncBlurFields: ['title']
+  asyncBlurFields: ['title'],
 })
 
 export default class NewCouponForm extends Component {
@@ -72,9 +72,12 @@ export default class NewCouponForm extends Component {
       handleSubmit,
       // invalid,
       resetForm,
+      customSubmit
       // pristine,
       // valid
     } = this.props;
+    console.log('THIS SUBMIT...', handleSubmit);
+    console.log('THIS PROPS...', this.props);
     // console.log('ISVALIDCOUPON HERE....', isValidCoupon);
     const styles = require('./NewCouponForm.scss');
     const renderInput = (field, label, placeholder, showAsyncValidating) =>
@@ -113,7 +116,7 @@ export default class NewCouponForm extends Component {
           {renderInput(end_at, 'End Time', '2017-05-21 12:00:00')}
           <div className="form-group">
             <div className="col-sm-offset-2 col-sm-10">
-              <button className="btn btn-success" onClick={handleSubmit}>
+              <button className="btn btn-success" onClick={() => {handleSubmit(); customSubmit()}}>
                 <i className="fa fa-paper-plane"/> Submit
               </button>
               <button className="btn btn-warning" onClick={resetForm} style={{marginLeft: 15}}>
