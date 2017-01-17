@@ -3,6 +3,23 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { MyCouponsNavPanel, FlipCouponGrid } from 'components';
 import * as authActions from 'redux/modules/auth';
+import { formatDollars, formatSQLTime, formatSQLDate, timeLeft, timeLeftInterval } from '../../utils/formatUtils.js';
+
+const styles = {
+ footer: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    fontSize: "120%"
+  },
+  footerLeft: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    fontSize: "120%"
+  }
+};
+
 
 @connect(
   state => ({user: state.auth.user}),
@@ -41,25 +58,24 @@ export default class MyCoupons extends Component {
     const style = require('./MyCoupons.scss');
     const content = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore dolores facilis perspiciatis. Excepturi temporibus laborum odio possimus error.';
     const {user} = this.props;
-    console.log(this.state.coupons, 'this is this.state.coupons')
     return (
       <section style={{ width: '80%' }}>
         <h1>My Coupons</h1>
         <Helmet title="My Coupons" />
         <MyCouponsNavPanel />
         <div className={style.Cards}>
-          <FlipCouponGrid title={this.state.coupons[0].item_name}>
-            <p>{this.state.coupons[0].description}</p>
+        {this.state.coupons.map((item) => {
+          return(
+          <FlipCouponGrid title={item.item_name} img={item.image}>
+            <h2>{item.title}</h2><br></br>
+            <h6>{item.description}</h6>
+            <h3><strike>{formatDollars(item.original_price)}</strike></h3>
+            <h3>{formatDollars(item.coupon_price)}</h3>
+            <div style={styles.footer}>Ends at: {formatSQLDate(item.end_at)}</div>
+            <div style={styles.footerLeft}>Starts at: {formatSQLDate(item.start_at)}</div>
           </FlipCouponGrid>
-          <FlipCouponGrid title="Hoodie">
-            <p>{content}</p>
-          </FlipCouponGrid>
-          <FlipCouponGrid title="Shampoo">
-            <p>{content}</p>
-          </FlipCouponGrid>
-          <FlipCouponGrid title="Cookie">
-            <p>{content}</p>
-          </FlipCouponGrid>
+          )
+        })}
         </div>
       </section>
     );
@@ -71,3 +87,4 @@ export default class MyCoupons extends Component {
 //   undefined,
 //   undefined
 // )(MyCoupons);
+
