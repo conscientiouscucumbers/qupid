@@ -86,39 +86,12 @@ class SignupForm extends Component {
               <button className="btn btn-success" onClick={handleSubmit}>
                 <i className="fa fa-paper-plane"/> Submit
               </button>
-              <button className="btn btn-warning" onClick={resetForm} style={{marginLeft: 15}}>
+              <button className="btn btn-danger" onClick={resetForm} style={{marginLeft: 15}}>
                 <i className="fa fa-undo"/> Reset
               </button>
             </div>
           </div>
         </form>
-
-        <h4>Props from redux-form</h4>
-
-        <table className="table table-striped">
-          <tbody>
-          <tr>
-            <th>Active Field</th>
-            <td>{active}</td>
-          </tr>
-          <tr>
-            <th>Dirty</th>
-            <td className={dirty ? 'success' : 'danger'}>{dirty ? 'true' : 'false'}</td>
-          </tr>
-          <tr>
-            <th>Pristine</th>
-            <td className={pristine ? 'success' : 'danger'}>{pristine ? 'true' : 'false'}</td>
-          </tr>
-          <tr>
-            <th>Valid</th>
-            <td className={valid ? 'success' : 'danger'}>{valid ? 'true' : 'false'}</td>
-          </tr>
-          <tr>
-            <th>Invalid</th>
-            <td className={invalid ? 'success' : 'danger'}>{invalid ? 'true' : 'false'}</td>
-          </tr>
-          </tbody>
-        </table>
       </div>
     );
   }
