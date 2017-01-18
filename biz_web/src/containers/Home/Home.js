@@ -29,14 +29,14 @@ export default class Home extends Component {
                 <i className="fa fa-github"/> View on Github
               </a>
             </p>
-            <GithubButton user="erikras"
-                          repo="react-redux-universal-hot-example"
+            <GithubButton user="conscientiouscucumbers"
+                          repo="iHearth"
                           type="star"
                           width={160}
                           height={30}
                           count large/>
-            <GithubButton user="erikras"
-                          repo="react-redux-universal-hot-example"
+            <GithubButton user="conscientiouscucumbers"
+                          repo="iHearth"
                           type="fork"
                           width={160}
                           height={30}
