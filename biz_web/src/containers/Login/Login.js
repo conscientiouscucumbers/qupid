@@ -28,17 +28,26 @@ export default class Login extends Component {
     return (
       <div className={styles.loginPage + ' container'}>
         <Helmet title="Login"/>
-        <h1>Business Owner Login</h1>
+        <h1>Business Owner Portal</h1>
         {!user &&
         <div>
           <form className="login-form form-inline" onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <input type="email" ref="email" placeholder="Email" className="form-control"/>
-              <input type="password" ref="password" placeholder="Password"
-              secureTextEntry="true" className="form-control"/>
+              <table>
+                <tr>
+                  <td>Email</td>
+                  <td><input type="email" ref="email" className="form-control"/></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Password&nbsp;</td>
+                  <td><input type="password" ref="password"
+                    secureTextEntry="true" className="form-control"/></td>
+                  <td><button className="btn btn-success" onClick={this.handleSubmit}><i className="fa fa-sign-in"/>{' '}Log In
+                  </button></td>
+                </tr>
+              </table>
             </div>
-            <button className="btn btn-success" onClick={this.handleSubmit}><i className="fa fa-sign-in"/>{' '}Log In
-            </button>
           </form>
         </div>
         }

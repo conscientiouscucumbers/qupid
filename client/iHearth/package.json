@@ -28,6 +28,7 @@
     "react-native-material-ui": "^1.5.0",
     "react-native-modal-dropdown": "^0.4.0",
     "react-native-multi-select": "^0.1.1",
+    "react-native-push-notification": "^2.2.1",
     "react-native-qrcode": "^0.2.3",
     "react-native-radio-buttons": "^0.13.0",
     "react-native-textinput-effects": "^0.3.0",

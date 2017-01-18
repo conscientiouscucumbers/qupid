@@ -62,11 +62,11 @@ export default class LoginNavRoot extends Component {
         )
       case 'list':
         return (
-          <Home />
+          <Home _handleNavigate={ this._handleNavigate } _goBack={ this._handleBackAction} />
         )
       case 'forgotPassword':
       return (
-        <ForgotPasswordViewContainer _handleNaviagte= {this._handleNavigate} _goBack={ this._handleBackAction } />
+        <ForgotPasswordViewContainer _handleNavigate= {this._handleNavigate} _goBack={ this._handleBackAction } />
         )
     }
   }

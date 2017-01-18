@@ -17,39 +17,53 @@ const route = {
 export default class QRCodeImageView extends Component {
   constructor(props) {
     super(props);
+    this.state = { qrcodeUsed: false };
+    this.timeout = null;
+
     this.user_id = this.props.userInfo.userInfo.user_id;
     this.coupon_id = this.props.currentCoupon.couponInfo.coupon_id;
 
-    // Setup socket
-    this.socket = SocketIOClient(scannerURL.slice(0, -1));
-    this.socket.on('connect', () => {
-      console.log('CONNECTED HERE.......')
-    })
     _handleNavigate = this.props._handleNavigate;
     _goBack = this.props._goBack;
+
+    // Setup socket
+    this.socket = SocketIOClient(scannerURL.slice(0, -1));
   }
 
   componentWillMount() {
     this.props.fetchCoupon(this.user_id, this.coupon_id);
+    // this.timeout = setTimeout(() => {
+    //   let coupon = this.props.fetchCoupon(this.user_id, this.coupon_id);
+    //   console.log('coupon', coupon);
+    //   if (coupon.used === true) {
+    //     this.setState({ qrcodeUsed: true });
+    //   }
+    // }, 1000);
   }
 
   componentDidUpdate() {
     console.log('CHANNEL NAME HERE:', this.props.QRInfo.QRCode);
-    // _handleNavigate(route);
-
-    // Upon open will fetch QRInfo and set channel as undefined
-    // On rerender will set new socket with channel of user_qrcode
-    // this.socket.removeAllListeners();
-    // console.log('TRYING TO CONNECT TO SOCKET......', this.socket.connected);
+    this.socket.on('connect', () => {
+      console.log('Socket connected to server============================', this.props.QRInfo.QRCode);
+    });
     this.socket.on(this.props.QRInfo.QRCode, (message) => {
       console.log('Message from server socket: ', message);
       _goBack();
       _goBack();
       this.props.fetchCoupons(this.user_id);
+      // this.socket.disconnect(this.props.QRInfo.QRCode);
     });
+
+    // if (this.state.qrcodeUsed === true) {
+    //   clearInterval(this.timeout);
+    //   _goBack();
+    //   _goBack();
+    //   this.props.fetchCoupons(this.user_id);
+    // }
   }
 
   render() {
+    console.log(this.props);
     return (
       <Container>
         <Content>

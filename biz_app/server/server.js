@@ -10,7 +10,7 @@ const port = process.env.PORT || 4569;
 var http = require('http');
 var socketio = require('socket.io');
 var server = http.createServer(app);
-var websocket = socketio.listen(server);
+var io = socketio.listen(server);
 // server.listen(process.env.PORT || 4569, function() {
 //   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 // });
@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-websocket.on('connection', (socket) => {
+io.sockets.on('connection', (socket) => {
   console.log('A client just joined on', socket.id);
   // socket.removeAllListeners();
   // Attach business routes

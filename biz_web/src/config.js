@@ -16,17 +16,17 @@ module.exports = Object.assign({
   apiPort: process.env.APIPORT,
   app: {
     title: 'Cupid',
-    description: 'All the modern best practices in one example.',
+    description: 'Connect Store Coupons using iBeacon Technology',
     head: {
       titleTemplate: 'React Redux Example: %s',
       meta: [
-        {name: 'description', content: 'All the modern best practices in one example.'},
+        {name: 'description', content: 'Connect Store Coupons using iBeacon Technology'},
         {charset: 'utf-8'},
         {property: 'og:site_name', content: 'React Redux Example'},
         {property: 'og:image', content: 'https://react-redux.herokuapp.com/logo.jpg'},
         {property: 'og:locale', content: 'en_US'},
         {property: 'og:title', content: 'React Redux Example'},
-        {property: 'og:description', content: 'All the modern best practices in one example.'},
+        {property: 'og:description', content: 'Connect Store Coupons using iBeacon Technology'},
         {property: 'og:card', content: 'summary'},
         {property: 'og:site', content: '@erikras'},
         {property: 'og:creator', content: '@erikras'},

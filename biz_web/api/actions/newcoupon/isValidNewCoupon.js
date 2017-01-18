@@ -1,11 +1,11 @@
 import db from '../../db';
 
 export default function isValidNewCoupon(req) {
-  console.log('INSIDE ROUTE.......isValidNewCoupon');
   return new Promise((resolve, reject) => {
+
     const coupon = {
-      business_id: 1,
-      qrcode: 'somethingrandom.com',
+      business_id: req.body.business_id,
+      qrcode: req.body.title,
       title: req.body.title,
       image: req.body.image,
       item_name: req.body.item_name,
@@ -16,8 +16,6 @@ export default function isValidNewCoupon(req) {
       start_at: req.body.start_at,
       end_at: req.body.end_at
     };
-    // console.log('REQ SESSION....', req.session.business);
-    console.log('INFO BEING PUT IN DB', coupon);
 
     const queryStr = `insert into coupon (business_id, qrcode, title, image, item_name,
                       description, original_price, coupon_price, coupon_savings, start_at, end_at) values (
@@ -32,11 +30,6 @@ export default function isValidNewCoupon(req) {
                       ${coupon.coupon_savings},
                       "${coupon.start_at}",
                       "${coupon.end_at}")`;
-
-//     const queryStr = `insert into coupon (business_id, qrcode, title, image, item_name,
-// description, original_price, coupon_price, coupon_savings, start_at, end_at,
-// created_at) values (1, 'somethingrandom.com', 'adas', 'image', 'shoes', 'lorem ipsum',
-// 10, 5, 5, '2017-01-05 12:00:00', '2017-01-13 12:00:00', now())`;
 
     db.query(queryStr, (err, coupon) => {
       if (err) {

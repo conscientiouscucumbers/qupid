@@ -1,6 +1,7 @@
 package com.ihearth;
 
 import com.facebook.react.ReactActivity;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.mmazzarolo.beaconsandroid.BeaconsAndroidPackage;
 

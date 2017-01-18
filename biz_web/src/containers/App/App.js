@@ -8,7 +8,6 @@ import NavItem from 'react-bootstrap/lib/NavItem';
 import Helmet from 'react-helmet';
 import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
-import { InfoBar } from 'components';
 import { push } from 'react-router-redux';
 import config from '../../config';
 import { asyncConnect } from 'redux-async-connect';
@@ -52,6 +51,10 @@ export default class App extends Component {
     }
   }
 
+  handleDemo = (event) => {
+    event.preventDefault();
+    alert("call 832-427-9017 for a free consultation");
+  }
   handleLogout = (event) => {
     event.preventDefault();
     this.props.logout();
@@ -67,7 +70,7 @@ export default class App extends Component {
         <Navbar fixedTop>
           <Navbar.Header>
             <Navbar.Brand>
-              <IndexLink to="/" activeStyle={{color: '#33e0ff'}}>
+              <IndexLink to="/" activeStyle={{color: '#E61727'}}>
                 <div className={styles.brand}/>
                 <span>{config.app.title}</span>
               </IndexLink>
@@ -80,30 +83,26 @@ export default class App extends Component {
               {user && <LinkContainer to="/chat">
                 <NavItem eventKey={1}>Chat</NavItem>
               </LinkContainer>}
-
-              <LinkContainer to="/widgets">
-                <NavItem eventKey={2}>Widgets</NavItem>
-              </LinkContainer>
               <LinkContainer to="/signup">
-                <NavItem eventKey={3}>Signup</NavItem>
+                <NavItem eventKey={2}>Signup</NavItem>
               </LinkContainer>
               <LinkContainer to="/mycoupons">
-                <NavItem eventKey={4}>My Coupons</NavItem>
+                <NavItem eventKey={3}>My Coupons</NavItem>
               </LinkContainer>
               <LinkContainer to="/newcoupon">
-                <NavItem eventKey={5}>New Coupon</NavItem>
+                <NavItem eventKey={4}>New Coupon</NavItem>
               </LinkContainer>
               <LinkContainer to="/about">
-                <NavItem eventKey={6}>Meet the Team</NavItem>
+                <NavItem eventKey={5}>Meet the Team</NavItem>
               </LinkContainer>
 
               {!user &&
               <LinkContainer to="/login">
-                <NavItem eventKey={7}>Login</NavItem>
+                <NavItem eventKey={6}>Login</NavItem>
               </LinkContainer>}
               {user &&
               <LinkContainer to="/logout">
-                <NavItem eventKey={8} className="logout-link" onClick={this.handleLogout}>
+                <NavItem eventKey={7} className="logout-link" onClick={this.handleLogout}>
                   Logout
                 </NavItem>
               </LinkContainer>}
@@ -111,7 +110,8 @@ export default class App extends Component {
             {user &&
             <p className={styles.loggedInMessage + ' navbar-text'}>Logged in as <strong>{user.email}</strong>.</p>}
             <Nav navbar pullRight>
-              <NavItem eventKey={1} target="_blank" title="View on Github" href="https://github.com/erikras/react-redux-universal-hot-example">
+            <NavItem eventKey={1} target="_blank" title="schedule a demo" onClick={this.handleDemo}>Schedule a Demo</NavItem>
+              <NavItem eventKey={2} target="_blank" title="View on Github" href="https://github.com/conscientiouscucumbers/iHearth">
                 <i className="fa fa-github"/>
               </NavItem>
             </Nav>
@@ -120,14 +120,6 @@ export default class App extends Component {
 
         <div className={styles.appContent}>
           {this.props.children}
-        </div>
-        <InfoBar/>
-
-        <div className="well text-center">
-          Have questions? Ask for help <a
-          href="https://github.com/erikras/react-redux-universal-hot-example/issues"
-          target="_blank">on Github</a> or in the <a
-          href="https://discord.gg/0ZcbPKXt5bZZb1Ko" target="_blank">#react-redux-universal</a> Discord channel.
         </div>
       </div>
     );

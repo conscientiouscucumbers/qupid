@@ -1,7 +1,15 @@
 import { connect } from 'react-redux';
 import TabsRoot from '../../components/nav-components/TabsRoot';
 import { changeTab, listenBeacon, fetchBeaconCoupons } from '../../actions/nav-actions/tabsRootActions';
-import { sortCouponsBySavings, sortCouponsByDate } from '../../actions/listViewActions.js';
+import {
+  sortCouponsBySavings,
+  sortCouponsByDate,
+  sortCouponsByTimeLeft,
+  // sortCouponsByUsed,
+  // sortCouponsByExpired,
+  // sortCouponsByActivated
+} from '../../actions/historyViewActions.js';
+import { fetchUserInfoByDevice } from '../../actions/nav-actions/loginNavRootActions';
 
 function mapStateToProps(state) {
   return {
@@ -20,6 +28,11 @@ function mapDispatchToProps(dispatch) {
     fetchBeaconCoupons: (user_id, beacon_uuid) => dispatch(fetchBeaconCoupons(user_id, beacon_uuid)),
     sortCouponsBySavings: () => dispatch(sortCouponsBySavings()),
     sortCouponsByDate: () => dispatch(sortCouponsByDate()),
+    sortCouponsByTimeLeft: () => dispatch(sortCouponsByTimeLeft()),
+    // sortCouponsByUsed: () => dispatch(sortCouponsByUsed()),
+    // sortCouponsByExpired: () => dispatch(sortCouponsByExpired()),
+    // sortCouponsByActivated: () => dispatch(sortCouponsByActivated()),
+    fetchUserInfoByDevice: (route, callback) => dispatch(fetchUserInfoByDevice(route, callback))
   }
 }
 

@@ -48,10 +48,10 @@ export default class ListViewEntry extends Component {
   // Image must be defined statically per docs
   // image = 'https://facebook.github.io/react/img/logo_og.png';
   render() {
+    console.log(this.props.img, 'this is the image')
     return (
       <ListItem button style={ styles.listItem } onPress={ (event) => { this.props.onPress() }} >
         <View style={ styles.card }>
-
           <View style={ styles.topContainer }>
             <Image style={ styles.image } source={{ uri: this.props.coupon.image }} />
             <View style={ styles.descriptionContainer }>
@@ -143,13 +143,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#484848',
     fontWeight: '100',
-    top: -10
+    top: -20
   },
   listItemBusiness: {
     fontSize: 12,
     color: '#484848',
     fontWeight: '100',
-    top: -10
+    top: -20
   },
   listItemDescription: {
     fontSize: 12,
@@ -160,6 +160,7 @@ const styles = StyleSheet.create({
     width: 95,
     height: 95,
     alignSelf: 'flex-start',
+    marginTop: 3
     // borderRadius: 47.5
   },
   card: {
