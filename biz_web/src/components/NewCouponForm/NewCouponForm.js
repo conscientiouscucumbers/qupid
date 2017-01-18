@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import newCouponValidation from './newCouponValidation';
 import * as newCouponActions from 'redux/modules/newCoupon';
 import Dropzone from 'react-dropzone';
+import Spinner from '../../../static/light_blue_material_design_loading.gif'
 
 const FILE_FIELD_NAME = 'files';
 
@@ -42,7 +43,7 @@ function asyncValidate(data, dispatch, {isValidCoupon}) {
   ],
   validate: newCouponValidation,
   asyncValidate,
-  asyncBlurFields: ['title']
+  // asyncBlurFields: ['title']
 })
 
 export default class NewCouponForm extends Component {
@@ -67,13 +68,9 @@ export default class NewCouponForm extends Component {
     initialize: PropTypes.func.isRequired
   }
 
+  // Takes acceptedFiles and passes image url in the form of
+  // "https://storage.googleapis.com/ihearth-image/Screen%20Shot%202017-01-17%20at%204.59.37%20PM.png"
   getPhotoURL(acceptedFiles, callback) {
-
-    // const image = {
-    //   uri: acceptedFiles[0].preview,
-    //   type: 'image/jpeg',
-    //   name: 'myImage' + '-' + Date.now() + '.jpg'
-    // }
 
     const imgBody = new FormData();
     imgBody.append('image', acceptedFiles[0]);
@@ -91,25 +88,25 @@ export default class NewCouponForm extends Component {
     .then((res) => res.json())
     .then((results) => {
       console.log('RESPONSE FROM IMG SERVER>..', results);
-      callback(results);
+      callback(results.imageUrl);
     })
     .catch((err) => {
       console.error(err);
     })
   }
 
+  // Once user drops in an image file
+  // Updated state updates view
+  // And reinitializes form with updated google url once http call resolves
   onDrop(acceptedFiles, rejectedFiles) {
     this.setState({
       files: acceptedFiles
     }, () => {
       this.getPhotoURL(acceptedFiles, (url) => {
-        
+        console.log('URL GOING INTO FIELD...', url);
         this.props.handleInitialize('newCoupon', {
           title: this.props.fields.title.value,
-          
-          // ADJUST IMAGE BASED ON JSON
           image: url,
-
           item_name: this.props.fields.item_name.value,
           description: this.props.fields.description.value,
           original_price: this.props.fields.original_price.value,
@@ -119,6 +116,14 @@ export default class NewCouponForm extends Component {
           business_id: this.props.fields.business_id.value,
         });
       })
+    });
+  }
+
+  // Called on submit for UI rendering purposes 
+  clearState() {
+    console.log('INITIALIZING LOCAL STATE')
+    this.setState({
+      files: []
     });
   }
 
@@ -185,7 +190,7 @@ export default class NewCouponForm extends Component {
           </div>
         </div>
       </div>;
-    console.log('FIELD COMPONENT HERE>..', Field, reduxForm);
+    console.log('IMAGE PROP..', image);
     return (
       <div className="container">
         <form className="form-horizontal" onSubmit={handleSubmit}>
@@ -196,12 +201,13 @@ export default class NewCouponForm extends Component {
           {renderInput(coupon_savings, 'Savings', '2.50')}
           {renderInput(start_at, 'Start Time', '2017-05-21 12:00:00')}
           {renderInput(end_at, 'End Time', '2017-05-21 12:00:00')}
-          {renderInput(dropzone, 'Coupon Image', '')}
-          {files[0] && renderInput(image, 'Image URL', 'FILE URL')}
-          {files[0] && <div>{this.state.files.map((file) => <img width="400" src={file.preview} /> )}</div>}
+          {!files[0] && renderInput(dropzone, 'Coupon Image', '')}
+          {files[0] && image.value && renderInput(image, 'Image URL', 'FILE URL')}
+          {files[0] && !image.value && <div><img width="100" src={Spinner} /></div>}
+          {files[0] && image.value && <div>{this.state.files.map((file) => <img width="400" src={file.preview} /> )}</div>}
           <div className="form-group">
             <div className="col-sm-offset-2 col-sm-10">
-              <button className="btn btn-success" onClick={() => {handleSubmit(); customSubmit()}}>
+              <button className="btn btn-success" onClick={() => {handleSubmit(); customSubmit(); this.clearState(); }}>
                 <i className="fa fa-paper-plane"/> Submit
               </button>
               <button className="btn btn-warning" onClick={resetForm} style={{marginLeft: 15}}>

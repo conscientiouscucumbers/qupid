@@ -55,13 +55,9 @@ const multer = Multer({
 router.post('/image-upload', multer.single('image'), ImgUpload.uploadToGcs, function(request, response, next) {
   const data = request.body;
   
-  console.log('REQUEST BODY HERE....', request.file);
-
   if (request.file && request.file.cloudStoragePublicUrl) {
     data.imageUrl = request.file.cloudStoragePublicUrl;
   }
-
-  console.log('AFTER SENDING TO GOOGLE....', data);
 
   response.send(data);
   // response.send('hello world');

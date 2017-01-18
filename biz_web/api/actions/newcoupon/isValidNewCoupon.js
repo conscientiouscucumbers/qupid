@@ -6,6 +6,9 @@ import db from '../../db';
 export default function isValidNewCoupon(req) {
   return new Promise((resolve, reject) => {
 
+    // Ensure we're only processing request when image url is resolved
+    if(!req.body.image)  { return resolve({data: 'Need to supply a resolved image url'}); }
+
     const coupon = {
       business_id: req.body.business_id,
       qrcode: req.body.title,
@@ -20,50 +23,21 @@ export default function isValidNewCoupon(req) {
       end_at: req.body.end_at
     };
 
-    console.log('COUPON IMAGE HERE...', coupon.image);
+    // Checker query to prevent simultaneous entries of the same exact data
+    const queryCheckerStr = `select * from coupon where
+                               (business_id=${coupon.business_id}) and
+                               (qrcode="${coupon.qrcode}") and
+                               (title="${coupon.title}") and
+                               (image="${coupon.image}") and
+                               (item_name="${coupon.item_name}") and
+                               (description="${coupon.description}") and
+                               (original_price=${coupon.original_price}) and
+                               (coupon_price=${coupon.coupon_price}) and
+                               (coupon_savings=${coupon.coupon_savings}) and
+                               (start_at="${coupon.start_at}") and
+                               (end_at="${coupon.end_at}")`;
 
-    // const image = {
-    //   uri: JSON.parse(coupon.image)[0].preview,
-    //   type: 'image/jpeg',
-    //   name: 'myImage' + '-' + Date.now() + '.jpg'
-    // }
-
-    // placeholder url
-    // const url = `https://quiet-beyond-88440.herokuapp.com/coupon`;
-
-    // fetch(url, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'multipart/form-data',
-    //   },
-    //   body: imgBody
-    // })
-    // .then((res) => {res.json()})
-    // .then((json) => {
-    //   console.log('RESPONSE FROM SERVER HERE...', json);
-    // })
-    // .catch((err) => {
-    //   console.error(err);
-    // })
-
-    // fetch(url, {
-    //   method: 'GET',
-    //   // headers: {
-    //   //   'Accept': 'application/json',
-    //   //   'Content-Type': 'multipart/form-data',
-    //   // },
-    //   // body: imgBody
-    // })
-    // .then((res) => {res.json()})
-    // .then((json) => {
-    //   console.log('RESPONSE FROM SERVER HERE...', json);
-    // })
-    // .catch((err) => {
-    //   console.error(err);
-    // })
-
-    console.log('after fetch!!!!!')
+    // Insertion query string
     const queryStr = `insert into coupon (business_id, qrcode, title, image, item_name,
                       description, original_price, coupon_price, coupon_savings, start_at, end_at) values (
                       ${coupon.business_id},
@@ -78,13 +52,27 @@ export default function isValidNewCoupon(req) {
                       "${coupon.start_at}",
                       "${coupon.end_at}")`;
 
-    db.query(queryStr, (err, coupon) => {
+    db.query(queryCheckerStr, (err, coupon) => {
       if (err) {
+        console.error('Error in connecting to db in check query in isValidNewCoupon.js');
         reject(err);
       } else {
-        // if there is a biz returned, it is an invalid signup, return
-        console.log('resolving query');
-        return resolve(coupon);
+        
+        // If exists, resolve without inserting into db
+        if (coupon.length > 0) {
+          return resolve({data: 'Entry already exists in database'});  
+        }
+
+        // Insert entry into db if is new, valid entry
+        db.query(queryStr, (err, coupon) => {
+          if (err) {
+            console.error('Error in connecting to db in insert query in isValidNewCoupon.js');
+            reject(err);
+          } else {
+            console.log('Success! Inserting new coupon into database');
+            return resolve(coupon);
+          }
+        });
       }
     });
   });

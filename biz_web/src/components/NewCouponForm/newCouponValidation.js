@@ -2,7 +2,7 @@ import memoize from 'lru-memoize';
 import {createValidator, required, maxLength} from 'utils/validation';
 
 const newCouponValidation = createValidator({
-  title: [required, maxLength(20)],
+  title: [required, maxLength(30)],
   item_name: [required],
   description: maxLength(100), // single rules don't have to be in an array
   original_price: [required],
