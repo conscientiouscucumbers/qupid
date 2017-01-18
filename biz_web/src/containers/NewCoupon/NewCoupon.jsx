@@ -37,15 +37,15 @@ export default class NewCoupon extends Component {
     const {user} = this.props;
     console.log('USER HERE...', user);
     this.props.initialize('newCoupon', {
-      title: '',
+      title: 'asdasdasd',
       image: '',
-      item_name: '',
-      description: '',
-      original_price: '',
-      coupon_savings: '',
-      start_at: '',
-      end_at: '',
-      business_id: user.business_id
+      item_name: 'asdasd',
+      description: 'asdasdas',
+      original_price: 5.00,
+      coupon_savings: 2.00,
+      start_at: '2017-01-25 12:00:00',
+      end_at: '2017-01-30 12:00:00',
+      business_id: user ? user.business_id : ''
     });
   }
 
@@ -59,7 +59,8 @@ export default class NewCoupon extends Component {
       <div className="container">
         <h1>Create New Coupon</h1>
         <Helmet title="New Coupon"/>
-        {this.props.user !== null &&
+        
+        {this.props &&
           <div>
             <div style={{textAlign: 'left', margin: 15}}>
               <button className="btn btn-primary" onClick={this.handleInitialize}>
@@ -67,7 +68,7 @@ export default class NewCoupon extends Component {
               </button>
             </div>
             <div>
-              <NewCouponForm customSubmit={this.handleState} onSubmit={this.handleSubmit.bind(this)}/>
+              <NewCouponForm customSubmit={this.handleState} onSubmit={this.handleSubmit.bind(this)} handleInitialize={this.props.initialize.bind(this)} />
             </div>
           </div>
         }

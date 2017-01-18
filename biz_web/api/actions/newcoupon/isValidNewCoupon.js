@@ -1,9 +1,7 @@
 import db from '../../db';
 
 export default function isValidNewCoupon(req) {
-  console.log('INSIDE ROUTE.......isValidNewCoupon', req.session);
   return new Promise((resolve, reject) => {
-    
 
     const coupon = {
       business_id: req.body.business_id,
@@ -18,8 +16,6 @@ export default function isValidNewCoupon(req) {
       start_at: req.body.start_at,
       end_at: req.body.end_at
     };
-    // console.log('REQ SESSION....', req.session.business);
-    console.log('INFO BEING PUT IN DB', coupon);
 
     const queryStr = `insert into coupon (business_id, qrcode, title, image, item_name,
                       description, original_price, coupon_price, coupon_savings, start_at, end_at) values (
