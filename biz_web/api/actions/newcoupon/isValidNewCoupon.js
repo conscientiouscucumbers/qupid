@@ -1,3 +1,6 @@
+import fetch from 'node-fetch';
+import FormData from 'form-data';
+import fs from 'fs';
 import db from '../../db';
 
 export default function isValidNewCoupon(req) {
@@ -17,6 +20,54 @@ export default function isValidNewCoupon(req) {
       end_at: req.body.end_at
     };
 
+    console.log('COUPON IMAGE HERE...', coupon.image);
+
+    // const image = {
+    //   uri: JSON.parse(coupon.image)[0].preview,
+    //   type: 'image/jpeg',
+    //   name: 'myImage' + '-' + Date.now() + '.jpg'
+    // }
+
+    console.log('before appending to formdata....', image);
+
+    const imgBody = new FormData();
+
+    // placeholder url
+    const url = `https://quiet-beyond-88440.herokuapp.com/coupon`;
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'multipart/form-data',
+      },
+      body: imgBody
+    })
+    .then((res) => {res.json()})
+    .then((json) => {
+      console.log('RESPONSE FROM SERVER HERE...', json);
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+
+    // fetch(url, {
+    //   method: 'GET',
+    //   // headers: {
+    //   //   'Accept': 'application/json',
+    //   //   'Content-Type': 'multipart/form-data',
+    //   // },
+    //   // body: imgBody
+    // })
+    // .then((res) => {res.json()})
+    // .then((json) => {
+    //   console.log('RESPONSE FROM SERVER HERE...', json);
+    // })
+    // .catch((err) => {
+    //   console.error(err);
+    // })
+
+    console.log('after fetch!!!!!')
     const queryStr = `insert into coupon (business_id, qrcode, title, image, item_name,
                       description, original_price, coupon_price, coupon_savings, start_at, end_at) values (
                       ${coupon.business_id},

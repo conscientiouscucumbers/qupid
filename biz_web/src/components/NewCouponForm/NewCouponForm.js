@@ -71,9 +71,14 @@ export default class NewCouponForm extends Component {
     this.setState({
       files: acceptedFiles
     }, () => {
+      var form = new FormData();
+      form.append('image', acceptedFiles);
+      console.log(form);
+      console.log(JSON.stringify(form));
+      console.log('FILES UPLOADED: ', JSON.stringify(acceptedFiles));
       this.props.handleInitialize('newCoupon', {
         title: this.props.fields.title.value,
-        image: this.state.files[0].preview,
+        image: JSON.stringify(this.state.files),
         item_name: this.props.fields.item_name.value,
         description: this.props.fields.description.value,
         original_price: this.props.fields.original_price.value,
