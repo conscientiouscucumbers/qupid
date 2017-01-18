@@ -1,10 +1,11 @@
 // Actions to be dispatched to reducers to signify change of nav state
-import { AUTH_PUSH_ROUTE,
-         AUTH_POP_ROUTE,
-         REQUEST_USER_INFO_BY_DEVICE,
-         RECEIVE_USER_INFO_BY_DEVICE,
-         RECEIVE_AUTH
-       } from '../../constants/ActionTypes';
+import {
+  AUTH_PUSH_ROUTE,
+  AUTH_POP_ROUTE,
+  REQUEST_USER_INFO_BY_DEVICE,
+  RECEIVE_USER_INFO_BY_DEVICE,
+  RECEIVE_AUTH
+} from '../../constants/ActionTypes';
 import { URL } from '../../constants/NetworkUrls';
 import DeviceInfo from 'react-native-device-info';
 
@@ -89,5 +90,4 @@ export function fetchUserInfoByDevice(route, callback) {
         console.error('Error in fetching user info by device in loginNavRootActions.js', err.message);
       })
   }
-
 }

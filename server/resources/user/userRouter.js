@@ -14,6 +14,9 @@ userRouter.route('/forgot/:user_email')
 userRouter.route('/:user_id/coupon')
   .get(userController.retrieveUserCoupons)
 
+userRouter.route('/:user_id/history')
+  .get(userController.retrieveAllUserCoupons)
+
 userRouter.route('/:user_id/coupon/:coupon_id')
   .get(userController.retrieveOneUserCoupon)
   .put(userController.useCoupon)

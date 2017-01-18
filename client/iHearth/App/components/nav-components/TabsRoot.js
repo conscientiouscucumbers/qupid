@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { TabBarIOS } from 'react-native';
 import Home from '../../containers/nav-containers/NavRootContainer';
 import Settings from '../../components/Settings';
+import History from '../../containers/HistoryViewContainer';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 // BeaconListener
@@ -25,7 +26,9 @@ class Tabs extends Component {
   _renderTabContent(key) {
     switch (key) {
       case 'home':
-        return <Home />
+        return <Home _handleNavigate={ this._handleNavigate } _goBack={ this._handleBackAction} />
+      case 'history':
+        return <History _handleNavigate={ this._handleNavigate } _goBack={ this._handleBackAction} />
       case 'settings':
         return <Settings _handleNavigate={ this._handleNavigate } _goBack={ this._handleBackAction} />
     }
@@ -69,7 +72,7 @@ class Tabs extends Component {
     // let temp;
     // this.props.pushedCoupons[0] === undefined? temp="null" : temp=this.props.pushedCoupons[0].title
     // console.log(temp);
-    const icons = ["list-alt", "dashboard"];
+    const icons = ["heartbeat", "qrcode", "cart-arrow-down"];
     const tabs = this.props.tabs.map((tab, i) => {
       return (
         <Icon.TabBarItem key={ tab.key }

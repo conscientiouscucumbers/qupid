@@ -13,3 +13,18 @@ export const SAVINGS = {
   key: 'savings',
   value: 'Savings'
 }
+
+// export const USED = {
+//   key: 'used',
+//   value: 'Used'
+// }
+//
+// export const EXPIRED = {
+//   key: 'expired',
+//   value: 'Expired'
+// }
+//
+// export const ACTIVATED = {
+//   key: 'activated',
+//   value: 'Activated'
+// }
