@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import {reduxForm} from 'redux-form';
+import {reduxForm, Field} from 'redux-form';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import newCouponValidation from './newCouponValidation';
@@ -11,9 +11,13 @@ function asyncValidate(data, dispatch, {isValidCoupon}) {
   if (!data.title) {
     return Promise.resolve({});
   }
+  console.log('DATA IS HERE...........', data);
   return isValidCoupon(data);
 }
-@connect(() => ({}),
+@connect(
+  state => ({
+    user: state.auth.user,
+  }),
   // Wraps every action creator (values in obj passed in) in dispatches
   // In this case { isValidCoupon: fn }
   dispatch => bindActionCreators(newCouponActions, dispatch)
@@ -24,7 +28,6 @@ function asyncValidate(data, dispatch, {isValidCoupon}) {
   // initialize must refer to this form property in container
   form: 'newCoupon',
   fields: [
-  // TODO: will need to generate random QR code for coupon
     'title',
     'image',
     'item_name',
@@ -32,11 +35,12 @@ function asyncValidate(data, dispatch, {isValidCoupon}) {
     'original_price',
     'coupon_savings',
     'start_at',
-    'end_at'
+    'end_at',
+    'business_id',
   ],
   validate: newCouponValidation,
   asyncValidate,
-  asyncBlurFields: ['title']
+  asyncBlurFields: ['title'],
 })
 
 export default class NewCouponForm extends Component {
@@ -66,18 +70,21 @@ export default class NewCouponForm extends Component {
         original_price,
         coupon_savings,
         start_at,
-        end_at
+        end_at,
+        business_id,
       },
       // active,
       handleSubmit,
       // invalid,
       resetForm,
+      customSubmit,
+      user
       // pristine,
       // valid
     } = this.props;
-    // console.log('ISVALIDCOUPON HERE....', isValidCoupon);
+    console.log('BUSINESSID HERE....', user);
     const styles = require('./NewCouponForm.scss');
-    const renderInput = (field, label, placeholder, showAsyncValidating) =>
+    const renderInput = (field, label, placeholder, showAsyncValidating, value) =>
       <div className={'form-group' + (field.error && field.touched ? ' has-error' : '')}>
         <label htmlFor={field.name} className="col-sm-2">{label}</label>
         <div className={'col-sm-8 ' + styles.inputGroup}>
@@ -90,6 +97,7 @@ export default class NewCouponForm extends Component {
           { (label === 'Savings') && <input type="text" ref="company_name" className="form-control" placeholder={placeholder} id={field.name} {...field}/> }
           { (label === 'Start Time') && <input type="text" ref="company_name" className="form-control" placeholder={placeholder} id={field.name} {...field}/> }
           { (label === 'End Time') && <input type="text" ref="company_name" className="form-control" placeholder={placeholder} id={field.name} {...field}/> }
+          { (label === 'Business ID') && <input type="text" ref="company_name" className="form-control" placeholder={placeholder} id={field.name} {...field}/> }
           {field.error && field.touched && <div className="text-danger">{field.error}</div>}
           <div className={styles.flags}>
             {field.dirty && <span className={styles.dirty} title="Dirty">D</span>}
@@ -111,9 +119,10 @@ export default class NewCouponForm extends Component {
           {renderInput(coupon_savings, 'Savings', '2.50')}
           {renderInput(start_at, 'Start Time', '2017-05-21 12:00:00')}
           {renderInput(end_at, 'End Time', '2017-05-21 12:00:00')}
+          
           <div className="form-group">
             <div className="col-sm-offset-2 col-sm-10">
-              <button className="btn btn-success" onClick={handleSubmit}>
+              <button className="btn btn-success" onClick={() => {handleSubmit(); customSubmit()}}>
                 <i className="fa fa-paper-plane"/> Submit
               </button>
               <button className="btn btn-warning" onClick={resetForm} style={{marginLeft: 15}}>
@@ -126,3 +135,4 @@ export default class NewCouponForm extends Component {
     );
   }
 }
+          // {renderInput(business_id, 'Business ID', user ? user.business_id : '')}
