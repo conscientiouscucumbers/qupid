@@ -81,10 +81,3 @@ export default class MyCoupons extends Component {
     );
   }
 }
-
-// TODO: fetch
-// export default connect(
-//   undefined,
-//   undefined
-// )(MyCoupons);
-

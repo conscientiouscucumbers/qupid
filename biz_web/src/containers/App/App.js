@@ -80,37 +80,32 @@ export default class App extends Component {
 
           <Navbar.Collapse eventKey={0}>
             <Nav navbar>
-              {user && <LinkContainer to="/chat">
-                <NavItem eventKey={1}>Chat</NavItem>
-              </LinkContainer>}
               <LinkContainer to="/signup">
-                <NavItem eventKey={2}>Signup</NavItem>
+                <NavItem eventKey={1}>Signup</NavItem>
               </LinkContainer>
               <LinkContainer to="/mycoupons">
-                <NavItem eventKey={3}>My Coupons</NavItem>
+                <NavItem eventKey={2}>My Coupons</NavItem>
               </LinkContainer>
               <LinkContainer to="/newcoupon">
-                <NavItem eventKey={4}>New Coupon</NavItem>
+                <NavItem eventKey={3}>New Coupon</NavItem>
               </LinkContainer>
               <LinkContainer to="/about">
-                <NavItem eventKey={5}>Meet the Team</NavItem>
+                <NavItem eventKey={4}>Meet the Team</NavItem>
               </LinkContainer>
 
               {!user &&
               <LinkContainer to="/login">
-                <NavItem eventKey={6}>Login</NavItem>
+                <NavItem eventKey={5}>Login</NavItem>
               </LinkContainer>}
               {user &&
               <LinkContainer to="/logout">
-                <NavItem eventKey={7} className="logout-link" onClick={this.handleLogout}>
+                <NavItem eventKey={6} className="logout-link" onClick={this.handleLogout}>
                   Logout
                 </NavItem>
               </LinkContainer>}
             </Nav>
-            {user &&
-            <p className={styles.loggedInMessage + ' navbar-text'}>Logged in as <strong>{user.email}</strong>.</p>}
             <Nav navbar pullRight>
-            <NavItem eventKey={1} target="_blank" title="schedule a demo" onClick={this.handleDemo}>Schedule a Demo</NavItem>
+            <NavItem eventKey={1} target="_blank" title="Schedule a Demo" onClick={this.handleDemo}>Schedule a Demo</NavItem>
               <NavItem eventKey={2} target="_blank" title="View on Github" href="https://github.com/conscientiouscucumbers/iHearth">
                 <i className="fa fa-github"/>
               </NavItem>
