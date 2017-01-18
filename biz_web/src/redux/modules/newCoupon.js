@@ -46,10 +46,3 @@ export function isValidCoupon(data) {
     promise: (client) => client.post('/newcoupon/isValidNewCoupon', {data})
   };
 }
-
-// export function toggleForm(current) {
-//   return {
-//     type: TOGGLE_FORM,
-//     bool: false
-//   };
-// }
