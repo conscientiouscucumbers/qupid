@@ -104,8 +104,6 @@ export default class App extends Component {
                 </NavItem>
               </LinkContainer>}
             </Nav>
-            {user &&
-            <p className={styles.loggedInMessage + ' navbar-text'}>Logged in as <strong>{user.email}</strong>.</p>}
             <Nav navbar pullRight>
             <NavItem eventKey={1} target="_blank" title="Schedule a Demo" onClick={this.handleDemo}>Schedule a Demo</NavItem>
               <NavItem eventKey={2} target="_blank" title="View on Github" href="https://github.com/conscientiouscucumbers/iHearth">
