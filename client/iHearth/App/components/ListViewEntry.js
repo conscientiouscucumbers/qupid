@@ -48,6 +48,7 @@ export default class ListViewEntry extends Component {
   // Image must be defined statically per docs
   // image = 'https://facebook.github.io/react/img/logo_og.png';
   render() {
+    console.log(this.props.img, 'this is the image')
     return (
       <ListItem button style={ styles.listItem } onPress={ (event) => { this.props.onPress() }} >
         <View style={ styles.card }>

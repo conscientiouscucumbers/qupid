@@ -80,30 +80,26 @@ export default class App extends Component {
               {user && <LinkContainer to="/chat">
                 <NavItem eventKey={1}>Chat</NavItem>
               </LinkContainer>}
-
-              <LinkContainer to="/widgets">
-                <NavItem eventKey={2}>Widgets</NavItem>
-              </LinkContainer>
               <LinkContainer to="/signup">
-                <NavItem eventKey={3}>Signup</NavItem>
+                <NavItem eventKey={2}>Signup</NavItem>
               </LinkContainer>
               <LinkContainer to="/mycoupons">
-                <NavItem eventKey={4}>My Coupons</NavItem>
+                <NavItem eventKey={3}>My Coupons</NavItem>
               </LinkContainer>
               <LinkContainer to="/newcoupon">
-                <NavItem eventKey={5}>New Coupon</NavItem>
+                <NavItem eventKey={4}>New Coupon</NavItem>
               </LinkContainer>
               <LinkContainer to="/about">
-                <NavItem eventKey={6}>Meet the Team</NavItem>
+                <NavItem eventKey={5}>Meet the Team</NavItem>
               </LinkContainer>
 
               {!user &&
               <LinkContainer to="/login">
-                <NavItem eventKey={7}>Login</NavItem>
+                <NavItem eventKey={6}>Login</NavItem>
               </LinkContainer>}
               {user &&
               <LinkContainer to="/logout">
-                <NavItem eventKey={8} className="logout-link" onClick={this.handleLogout}>
+                <NavItem eventKey={7} className="logout-link" onClick={this.handleLogout}>
                   Logout
                 </NavItem>
               </LinkContainer>}

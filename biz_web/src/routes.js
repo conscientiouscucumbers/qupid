@@ -21,7 +21,7 @@ export default (store) => {
       const { auth: { user }} = store.getState();
       if (!user) {
         // oops, not logged in, so can't be here!
-        replace('/');
+        replace('/login');
       }
       cb();
     }
@@ -32,7 +32,6 @@ export default (store) => {
       checkAuth();
     }
   };
-
   /**
    * Please keep routes in alphabetical order
    */
@@ -45,16 +44,15 @@ export default (store) => {
       <Route onEnter={requireLogin}>
         <Route path="chat" component={Chat}/>
         <Route path="loginSuccess" component={LoginSuccess}/>
+        <Route path="mycoupons" component={MyCoupons}/>
+         <Route path="newcoupon" component={NewCoupon}/>
       </Route>
 
       { /* Routes */ }
       <Route path="about" component={About}/>
       <Route path="login" component={Login}/>
-      <Route path="mycoupons" component={MyCoupons}/>
       <Route path="signup" component={Signup}/>
       <Route path="widgets" component={Widgets}/>
-      <Route path="newcoupon" component={NewCoupon}/>
-
       { /* Catch all route */ }
       <Route path="*" component={NotFound} status={404} />
     </Route>

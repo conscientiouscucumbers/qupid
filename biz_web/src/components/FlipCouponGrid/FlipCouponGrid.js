@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
 
+const styles = {
+ image: {
+    width: 200,
+    height: 150,
+    alignSelf: 'flex-start',
+  }
+};
+
 export default class FlipCouponGrid extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +30,8 @@ export default class FlipCouponGrid extends Component {
     return (
       <div className={style.Card} onClick={this.flip.bind(this)}>
         <div className={style.CardFront + ' ' + style[flippedCSS]}>
-          <h3>{this.props.title}</h3>
+          <h3>{this.props.title}</h3><br></br>
+          <img src ={this.props.img} style={ styles.image }/>
         </div>
         <div className={style.CardBack + ' ' + style[flippedCSS]}>
           {this.props.children}
