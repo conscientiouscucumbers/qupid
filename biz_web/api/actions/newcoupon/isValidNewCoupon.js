@@ -28,28 +28,24 @@ export default function isValidNewCoupon(req) {
     //   name: 'myImage' + '-' + Date.now() + '.jpg'
     // }
 
-    console.log('before appending to formdata....', image);
-
-    const imgBody = new FormData();
-
     // placeholder url
-    const url = `https://quiet-beyond-88440.herokuapp.com/coupon`;
+    // const url = `https://quiet-beyond-88440.herokuapp.com/coupon`;
 
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'multipart/form-data',
-      },
-      body: imgBody
-    })
-    .then((res) => {res.json()})
-    .then((json) => {
-      console.log('RESPONSE FROM SERVER HERE...', json);
-    })
-    .catch((err) => {
-      console.error(err);
-    })
+    // fetch(url, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'multipart/form-data',
+    //   },
+    //   body: imgBody
+    // })
+    // .then((res) => {res.json()})
+    // .then((json) => {
+    //   console.log('RESPONSE FROM SERVER HERE...', json);
+    // })
+    // .catch((err) => {
+    //   console.error(err);
+    // })
 
     // fetch(url, {
     //   method: 'GET',

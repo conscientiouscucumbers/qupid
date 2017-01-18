@@ -67,26 +67,58 @@ export default class NewCouponForm extends Component {
     initialize: PropTypes.func.isRequired
   }
 
+  getPhotoURL(acceptedFiles, callback) {
+
+    // const image = {
+    //   uri: acceptedFiles[0].preview,
+    //   type: 'image/jpeg',
+    //   name: 'myImage' + '-' + Date.now() + '.jpg'
+    // }
+
+    const imgBody = new FormData();
+    imgBody.append('image', acceptedFiles[0]);
+    const url = `http://127.0.0.1:9000/img/image-upload`;
+
+    console.log('BEFORE FETCH.....')
+    fetch(url, {
+      method: 'POST',
+      // headers: {
+      //   'Accept': 'application/json',
+      //   'Content-Type': 'multipart/form-data',
+      // },
+      body: imgBody
+    })
+    .then((res) => res.json())
+    .then((results) => {
+      console.log('RESPONSE FROM IMG SERVER>..', results);
+      callback(results);
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+  }
+
   onDrop(acceptedFiles, rejectedFiles) {
     this.setState({
       files: acceptedFiles
     }, () => {
-      var form = new FormData();
-      form.append('image', acceptedFiles);
-      console.log(form);
-      console.log(JSON.stringify(form));
-      console.log('FILES UPLOADED: ', JSON.stringify(acceptedFiles));
-      this.props.handleInitialize('newCoupon', {
-        title: this.props.fields.title.value,
-        image: JSON.stringify(this.state.files),
-        item_name: this.props.fields.item_name.value,
-        description: this.props.fields.description.value,
-        original_price: this.props.fields.original_price.value,
-        coupon_savings: this.props.fields.coupon_savings.value,
-        start_at: this.props.fields.start_at.value,
-        end_at: this.props.fields.end_at.value,
-        business_id: this.props.fields.business_id.value,
-      });
+      this.getPhotoURL(acceptedFiles, (url) => {
+        
+        this.props.handleInitialize('newCoupon', {
+          title: this.props.fields.title.value,
+          
+          // ADJUST IMAGE BASED ON JSON
+          image: url,
+
+          item_name: this.props.fields.item_name.value,
+          description: this.props.fields.description.value,
+          original_price: this.props.fields.original_price.value,
+          coupon_savings: this.props.fields.coupon_savings.value,
+          start_at: this.props.fields.start_at.value,
+          end_at: this.props.fields.end_at.value,
+          business_id: this.props.fields.business_id.value,
+        });
+      })
     });
   }
 
