@@ -75,6 +75,25 @@ exports.retrieveUserCoupons = (req, res) => {
   });
 };
 
+// GET request for /user/:user_id/history
+// retrieve all user coupons that have previously been sent to a specific user
+// coupons must have matching user_id
+// depending on control options, will query based on
+// => Active (now() < end_at and now() > start_at)
+// => Used (uc.used=0)
+exports.retrieveAllUserCoupons = (req, res) => {
+  var params = { user_id: req.params.user_id };
+  // See user model for control details
+  userModel.retrieveAllUserCouponsAsync(params)
+  .then((coupons) => {
+    console.log('successfully retrieved all coupons for user with user_id', req.params.user_id);
+    res.status(200).json(coupons);
+  }).catch((err) => {
+    console.log('could not find coupons for user with user_id', req.params.user_id);
+    res.status(404).send('could not find coupons for user with user_id', req.params.user_id);
+  });
+};
+
 // GET request for /user/:user_id/coupon/:coupon_id
 // retrieve a specific coupon with coupon_id for user with user_id
 exports.retrieveOneUserCoupon = (req, res) => {

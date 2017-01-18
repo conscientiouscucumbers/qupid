@@ -1,4 +1,11 @@
-import { CHANGE_TAB, LISTEN_BEACON, BEACON_REQUEST_COUPONS, BEACON_RECEIVE_COUPONS } from '../../constants/ActionTypes';
+import {
+  CHANGE_TAB,
+  LISTEN_BEACON,
+  BEACON_REQUEST_COUPONS,
+  BEACON_RECEIVE_COUPONS,
+  REQUEST_USER_INFO_BY_DEVICE,
+  RECEIVE_USER_INFO_BY_DEVICE
+} from '../../constants/ActionTypes';
 
 const settingsIcon = {
   scale: 2.3,
@@ -8,9 +15,14 @@ const homeIcon = {
   scale: 2.3,
 }
 
+const historyIcon = {
+  scale: 2.3,
+}
+
 const tabs = [
-  { key: 'home', icon: homeIcon, title: 'HOME' },
-  { key: 'settings', icon: settingsIcon, title: 'SETTINGS' }
+  { key: 'home', icon: homeIcon, title: 'Home' },
+  { key: 'history', icon: historyIcon, title: 'History' },
+  { key: 'settings', icon: settingsIcon, title: 'Settings' },
 ]
 
 const region = {
@@ -56,12 +68,21 @@ function tabsNav (state = initialState, action) {
         isFetching: true
       }
     case BEACON_RECEIVE_COUPONS:
-      console.log('action is here---------');
       console.log(action);
       return {
         ...state,
         isFetching: false,
         pushedCoupons: action.pushedCoupons
+      }
+    case REQUEST_USER_INFO_BY_DEVICE:
+      return {
+        ...state,
+        isFetching: true
+      }
+    case RECEIVE_USER_INFO_BY_DEVICE:
+      return {
+        ...state,
+        isFetching: false
       }
     default:
       return state;

@@ -2,13 +2,19 @@ import { connect } from 'react-redux';
 import {
   sortCouponsByDate,
   sortCouponsByTimeLeft,
-  sortCouponsBySavings
-} from '../actions/listViewActions'
+  sortCouponsBySavings,
+  // sortCouponsByUsed,
+  // sortCouponsByExpired,
+  // sortCouponsByActivated
+} from '../actions/historyViewActions'
 import SortByFilterView from '../components/SortByFilterView';
 import {
   DATE,
   TIME_LEFT,
-  SAVINGS
+  SAVINGS,
+  // USED,
+  // EXPIRED,
+  // ACTIVATED
 } from '../constants/SortByOptions';
 
 function mapStateToProps(state) {
@@ -23,12 +29,21 @@ function mapDispatchToProps(dispatch) {
       switch (type) {
         case DATE.value:
           return dispatch(sortCouponsByDate())
-          
+
         case TIME_LEFT.value:
           return dispatch(sortCouponsByTimeLeft())
 
         case SAVINGS.value:
           return dispatch(sortCouponsBySavings())
+
+        // case USED.value:
+        //   return dispatch(sortCouponsByUsed())
+        //
+        // case EXPIRED.value:
+        //   return dispatch(sortCouponsByExpired())
+        //
+        // case ACTIVATED.value:
+        //   return dispatch(sortCouponsByActivated())
 
         default:
           return;

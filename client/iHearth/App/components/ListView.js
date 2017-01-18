@@ -31,9 +31,6 @@ export default class ListView extends Component {
     this.props.fetchCoupons(this.user_id);
   }
 
-  componentDidMount() {
-  }
-
   static timeNow = new Date();
 
   render() {
@@ -45,10 +42,10 @@ export default class ListView extends Component {
     return (
       <View style={ styles.container }>
         {}
-        <Text style={{ textAlign: 'center' }}>{this.props.pushedCoupons.pushedCoupons[0] ? this.props.pushedCoupons.pushedCoupons[0].title : "searching for coupons..." }</Text>
+        <Text style={{ textAlign: 'center' }}>{this.props.pushedCoupons.pushedCoupons[0] ? this.props.pushedCoupons.pushedCoupons[0].title : "Searching for coupons..." }</Text>
         <List>
           {/* Render spinner */}
-          { this.props.coupons.isFetching && (<Spinner color='#484848' />)}
+          { this.props.coupons.isFetching && (<Spinner color='#484848' style={styles.spinner} />)}
           {/* Render based on sortBy state -- by creation_time/coupon_id */}
           { this.props.coupons.items && this.props.coupons.sortBy === DATE.key &&
               this.props.coupons.items.sort((a, b) => {
@@ -90,7 +87,7 @@ export default class ListView extends Component {
           ref={(ref) => this.dropdown = ref}
           titleNumOfLines={1}
           messageNumOfLines={5}
-          
+
           containerStyle={{
             backgroundColor: "#6441A4",
             margin: 30,
@@ -145,4 +142,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
   },
+  spinner: {
+    alignSelf: 'center'
+  }
 });

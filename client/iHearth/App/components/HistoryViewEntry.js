@@ -15,43 +15,42 @@ var {
 
 
 
-export default class ListViewEntry extends Component {
+export default class HistoryViewEntry extends Component {
   constructor(props) {
     super(props);
     this.state = {
       countdown: '',
-      interval: 30000,
+      interval: 60000,
       timeUnit: ''
     };
   }
 
   updateInterval() {
-    if (this.state.timeUnit === 'sec') { this.setState({ interval: 500 }); }
-    else if (this.state.timeUnit === 'min') { this.setState({ interval: 1000 }); }
-    else { this.setState({ interval: 30000 }); }
-    this.setState({ countdown: timeLeft(this.props.coupon.end_at) });
-    if (this.state.countdown === 'expired') {
-      this.setState({ interval: 1000 * 60 * 5 });
-      clearInterval(this.interval);
-    }
+    // if (this.state.timeUnit === 'sec') { this.setState({ interval: 500 }); }
+    // else if (this.state.timeUnit === 'min') { this.setState({ interval: 1000 }); }
+    // else { this.setState({ interval: 30000 }); }
+    // this.setState({ countdown: timeLeft(this.props.coupon.end_at) });
+    // if (this.state.countdown === 'expired') {
+    //   this.setState({ interval: 1000 * 60 * 5 });
+    //   clearInterval(this.interval);
+    // }
   }
 
   componentWillMount() {
     this.setState({ countdown: timeLeft(this.props.coupon.end_at) });
     this.setState({ timeUnit: timeLeftInterval(this.props.coupon.end_at) });
-    this.interval = setInterval(() => this.updateInterval(), this.state.interval);
+    // this.interval = setInterval(() => this.updateInterval(), this.state.interval);
   }
 
   componentWillUpdate() {
-    this.interval = setInterval(() => this.updateInterval(), this.state.interval);
+    // this.interval = setInterval(() => this.updateInterval(), this.state.interval);
   }
   // Image must be defined statically per docs
   // image = 'https://facebook.github.io/react/img/logo_og.png';
   render() {
-    console.log(this.props.img, 'this is the image')
     return (
       <ListItem button style={ styles.listItem } onPress={ (event) => { this.props.onPress() }} >
-        <View style={ styles.card }>
+        <View style={ this.props.used ? styles.cardUsed : styles.cardExpired }>
           <View style={ styles.topContainer }>
             <Image style={ styles.image } source={{ uri: this.props.coupon.image }} />
             <View style={ styles.descriptionContainer }>
@@ -123,7 +122,7 @@ const styles = StyleSheet.create({
     paddingBottom: -8,
     marginTop: 2,
     marginBottom: -8,
-    height: 115
+    height: 115,
   },
   originalPrice: {
     textDecorationLine: 'line-through',
@@ -163,10 +162,16 @@ const styles = StyleSheet.create({
     marginTop: 3
     // borderRadius: 47.5
   },
-  card: {
-    borderWidth: 0,
-    // borderRadius: 10,
-    borderColor: '#dddddd',
-    backgroundColor: 'white'
+  cardUsed: {
+    // borderWidth: 0.5,
+    // borderRadius: 2,
+    // borderColor: '#484848',
+    backgroundColor: 'rgba(107, 177, 234, 0.3)',
+  },
+  cardExpired: {
+    // borderWidth: 0.5,
+    // borderRadius: 2,
+    // borderColor: '#484848',
+    backgroundColor: 'rgba(255, 63, 78, 0.3)',
   },
 })

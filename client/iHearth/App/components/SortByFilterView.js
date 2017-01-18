@@ -8,12 +8,15 @@ import ModalDropdown from 'react-native-modal-dropdown';
 import {
   DATE,
   TIME_LEFT,
-  SAVINGS
+  SAVINGS,
+  // USED,
+  // EXPIRED,
+  // ACTIVATED
 } from '../constants/SortByOptions';
 
 export default class SortByFilterView extends Component {
 
-  static options = [ DATE.value, TIME_LEFT.value, SAVINGS.value ];
+  static options = [ DATE.value, TIME_LEFT.value, SAVINGS.value];
 
   render() {
     return (
