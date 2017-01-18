@@ -24,7 +24,7 @@ export default class Home extends Component {
             <h2>{config.app.description}</h2>
 
             <p>
-              <a className={styles.github} href="https://github.com/erikras/react-redux-universal-hot-example"
+              <a className={styles.github} href="https://github.com/conscientiouscucumbers/iHearth"
                  target="_blank">
                 <i className="fa fa-github"/> View on Github
               </a>
@@ -43,16 +43,8 @@ export default class Home extends Component {
                           count large/>
 
             <p className={styles.humility}>
-              Created and maintained by <a href="https://twitter.com/erikras" target="_blank">@erikras</a>.
+              Created and maintained by conscientiousCucumbers
             </p>
-          </div>
-        </div>
-
-        <div className="container">
-          <div className={styles.counterContainer}>
-            <CounterButton multireducerKey="counter1"/>
-            <CounterButton multireducerKey="counter2"/>
-            <CounterButton multireducerKey="counter3"/>
           </div>
         </div>
       </div>
