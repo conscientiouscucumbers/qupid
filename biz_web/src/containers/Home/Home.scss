@@ -16,17 +16,19 @@
     height: $size;
     width: $size;
     vertical-align: middle;
+    border-color: #E61727;
+    border-width: 10;
     p {
       line-height: $size;
       margin: 0px;
     }
     img {
-      width: 75%;
+      width: 100%;
       margin: auto;
     }
   }
   h1 {
-    color: $cyan;
+    color: #E61727;
     font-size: 4em;
   }
   h2 {
@@ -35,7 +37,7 @@
     margin: 20px;
   }
   a {
-    color: #ddd;
+    color: #E61727;
   }
   p {
     margin: 10px;
