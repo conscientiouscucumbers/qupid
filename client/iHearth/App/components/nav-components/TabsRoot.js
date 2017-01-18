@@ -72,7 +72,7 @@ class Tabs extends Component {
     // let temp;
     // this.props.pushedCoupons[0] === undefined? temp="null" : temp=this.props.pushedCoupons[0].title
     // console.log(temp);
-    const icons = ["heartbeat", "newspaper-o", "share-alt-square"];
+    const icons = ["heartbeat", "qrcode", "cart-arrow-down"];
     const tabs = this.props.tabs.map((tab, i) => {
       return (
         <Icon.TabBarItem key={ tab.key }

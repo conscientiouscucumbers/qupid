@@ -44,10 +44,6 @@ io.sockets.on('connection', (socket) => {
     })
   });
 
-  io.on('channel', (from, msg) => {
-    console.log('msg', from, 'saying'. msg);
-  });
-
 });
 
 app.use(express.static('socket.io'));
