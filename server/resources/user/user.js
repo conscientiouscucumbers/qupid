@@ -236,7 +236,7 @@ var sendBeaconCoupons = (params, callback) => {
   db.query(selectUsableCoupon, (err, usable) => {
     if(err) {
       console.log('Error in selectedUsableCoupon query');
-      callback(err);
+      return callback(err);
     }
     if(usable.length === 0){
       console.log('Currently there is no coupon to be sent');
@@ -247,11 +247,11 @@ var sendBeaconCoupons = (params, callback) => {
     db.query(selectRegistered, (err, registered) => {
       if(err) {
         console.log('Error in selectRegistered query');
-        callback(err);
+        return callback(err);
       }
       if(registered.length !== 0 ){
         console.log('Same coupon is already registered in user_coupon table');
-        callback(null, 'alreadyRegistered');
+        return callback(null, 'alreadyRegistered');
         // callback(err);
       }
       else {
@@ -261,7 +261,7 @@ var sendBeaconCoupons = (params, callback) => {
         db.query(insertQuery, (err, inserted) => {
           if (err) {
             console.log('Error occured when inserting newly recieved coupon to the user_coupon join table.');
-            callback(err);
+            return callback(err);
           } else {
             console.log('inserted');
             console.log(inserted);
@@ -273,11 +273,11 @@ var sendBeaconCoupons = (params, callback) => {
             db.query(selectQuery, (err, coupon) => {
               if(err) {
                 console.log('Error occured when selecting newly created coupon from coupon/user_coupon table.')
-                callback(err);
+                return callback(err);
               }
               console.log('last step');
               console.log(coupon);
-              callback(null, coupon);
+              return callback(null, coupon);
             });
           }
         });
