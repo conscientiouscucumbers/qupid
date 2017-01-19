@@ -81,21 +81,21 @@ export default class App extends Component {
           <Navbar.Collapse eventKey={0}>
             <Nav navbar>
               <LinkContainer to="/signup">
-                <NavItem eventKey={1}>Signup</NavItem>
+                <NavItem className="signup-link" eventKey={1}>Signup</NavItem>
               </LinkContainer>
               <LinkContainer to="/mycoupons">
-                <NavItem eventKey={2}>My Coupons</NavItem>
+                <NavItem className="mycoupons-link" eventKey={2}>My Coupons</NavItem>
               </LinkContainer>
               <LinkContainer to="/newcoupon">
-                <NavItem eventKey={3}>New Coupon</NavItem>
+                <NavItem className="newcoupon-link" eventKey={3}>New Coupon</NavItem>
               </LinkContainer>
               <LinkContainer to="/about">
-                <NavItem eventKey={4}>Meet the Team</NavItem>
+                <NavItem className="about-link" eventKey={4}>Meet the Team</NavItem>
               </LinkContainer>
 
               {!user &&
               <LinkContainer to="/login">
-                <NavItem eventKey={5}>Login</NavItem>
+                <NavItem className="login-link" eventKey={5}>Login</NavItem>
               </LinkContainer>}
               {user &&
               <LinkContainer to="/logout">

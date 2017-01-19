@@ -6,6 +6,7 @@
   },
   "private": true,
   "scripts": {
+    "test": "mocha -t 10000 biz_web/test/test.js",
     "start": "npm install && node biz_web/img_server/server/index.js"
   },
   "dependencies": {
