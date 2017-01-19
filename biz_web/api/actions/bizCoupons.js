@@ -10,9 +10,10 @@ export default function retrieveBizCoupons(req) {
     const queryCouponStr = `select * from coupon where business_id=${business.id}`;
     db.query(queryCouponStr, (err, bizCoupons) => {
       console.log(bizCoupons, 'this is bizCoupons')
-      if(err) {
-        console.log('could not find coupons with biz id');
-      }else{
+      if (err) {
+        console.error('could not find coupons with business id');
+        return reject(err);
+      } else {
         return resolve(bizCoupons);
       }
     });
