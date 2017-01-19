@@ -13,68 +13,72 @@ values ('josh', 'josh', false, 'joshdeviceid', 'Josh', 'Peng', '1985-10-20', 'ma
 
 -- // business
 insert into business (email, password, company_name, address, city, state, zipcode)
-values ('nike@gmail.com', 'password', 'Nike', '744 Market Street', 'San Francisco', 'CA', 94112);
-
-insert into business (email, password, company_name, address, city, state, zipcode)
-values ('thenorthface@gmail.com', 'password', 'The North Face', '744 Market Street', 'San Francisco', 'CA', 94112);
+values ('vineyardvines@gmail.com', 'password', 'Vineyard Vines', '744 Market Street', 'San Francisco', 'CA', 94112);
 
 insert into business (email, password, company_name, address, city, state, zipcode)
 values ('beardpapas@gmail.com', 'password', 'Beard Papas', '744 Market Street', 'San Francisco', 'CA', 94112);
 
--- // coupon
+insert into business (email, password, company_name, address, city, state, zipcode)
+values ('hackreactor@gmail.com', 'password', 'Hack Reactor', '744 Market Street', 'San Francisco', 'CA', 94112);
+
+-- // coupon: Active
 insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (1, 'qrcode1', '$5 OFF Hoodie', 'https://facebook.github.io/react/img/logo_og.png', 'Men\'s Half Dome Hoodie', 'Now crafted with an updated fit, this comfy pullover hooded sweatshirt is finished with athletic-style ribbed cuffs and hem.', 10.00, 5.00, 5.00, '2017-01-05 16:00:00', '2017-01-27 21:25:00');
+values (1, '$20 Off Polo', '$20 Off Polo', 'https://storage.cloud.google.com/ihearth-image/vineyardvines.jpg?_ga=1.32016830.1883200162.1484866290', 'Men’s Colorful Polo', "Now crafted with an updated fit, you'll never forget the colors of the rainbow!", 95.00, 75.00, 20.00, '2017-01-18 16:00:00', '2017-01-27 21:25:00');
 
 insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (2, 'qrcode2', '$20 OFF Sneakers', 'https://facebook.github.io/react/img/logo_og.png', 'Men’s Berkeley Redux Sneaker', 'This casual yet warm low-cut sneaker features a waterproof construction, synthetic insulation, and a grippy rubber sole.', 120.00, 100.00, 20.00, '2017-01-05 01:00:00', '2017-01-27 21:25:00');
+values (1, '$10 Off Shorts', '$10 Off Shorts', 'https://storage.googleapis.com/ihearth-image/vineyardvinesshorts.jpg', 'Men’s Redux Seersucker Shorts', 'These casual shorts are perfect for the summer, the boat and for you.', 80.00, 70.00, 10.00, '2017-01-15 16:00:00', '2017-01-27 21:25:00');
 
 insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (3, 'qrcode3', '$4 OFF Shampoo', 'https://facebook.github.io/react/img/logo_og.png', 'Amino Acid Shampoo', 'A naturally-derived shampoo that cleanses and softens hair. Creates a rich, creamy lather for a delightful shampoo experience. A special blend of moisturizing ingredients imparts softness and shine as the formula adds body and fullness. Suitable for all hair and scalp types when mildness is desired.', 8.00, 4.00, 4.00, '2017-01-06 03:00:00', '2017-01-27 21:25:00');
+values (2, 'Buy 1 Get 1 Free!', 'Buy 1 Get 1 Free!', 'https://storage.cloud.google.com/ihearth-image/beardpapas.jpg?_ga=1.207867538.1883200162.1484866290', 'Delicious Cream Puffs', 'Delicious and warms the soul. Get your Beard Papas today!', 5.00, 2.50, 2.50, '2017-01-17 16:00:00', '2017-01-27 21:25:00');
 
 insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (3, 'qrcode4', '$4 OFF Conditioner', 'https://facebook.github.io/react/img/logo_og.png', 'Conditioner', 'Lorem Ipsum.', 8.00, 4.00, 4.00, '2017-01-15 03:00:00', '2017-02-10 09:00:00');
+values (3, '30% Off Tuition', '30% Off Tuition', 'https://storage.cloud.google.com/ihearth-image/hackreactor.jpeg?_ga=1.40478498.1883200162.1484866290', 'JavaScript Skills', 'Reinvent your career in 12 weeks and level up your web dev skills!', 18000, 12600, 5400, '2017-01-15 03:00:00', '2017-02-10 09:00:00');
+
+-- // coupon: Expired
+insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
+values (2, '50% Off Cream Puff', '50% Off Cream Puff', 'https://storage.cloud.google.com/ihearth-image/beardpapas2.jpg?_ga=1.230256284.1883200162.1484866290', 'Delicious Cream Puffs', 'Delicious and warms the soul. Get your Beard Papas today!', 5.00, 2.50, 2.50, '2017-01-10 16:00:00', '2017-01-11 16:00:00');
 
 -- WARNING: DO NOT CHANGE THE ORDER OF QUERIES!
 -- // user_coupon
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (1, 1, 'qrcode1:1', false, false, true);
+values (1, 1, '$20 Off Polo:1', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (1, 2, 'qrcode2:1', false, false, true);
+values (1, 2, '$10 Off Shorts:1', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (1, 3, 'qrcode3:1', false, false, true);
+values (1, 3, 'Buy 1 Get 1 Free!:1', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (1, 4, 'qrcode4:1', false, false, true);
+values (1, 4, '30% Off Tuition:1', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (2, 1, 'qrcode1:2', false, false, true);
+values (2, 1, '$20 Off Polo:2', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (2, 2, 'qrcode2:2', false, false, true);
+values (2, 2, '$10 Off Shorts:2', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (3, 1, 'qrcode1:3', false, false, true);
+values (3, 1, '$20 Off Polo:3', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (3, 2, 'qrcode2:3', false, false, true);
+values (3, 2, '$10 Off Shorts:3', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (3, 3, 'qrcode3:3', false, false, true);
+values (3, 3, 'Buy 1 Get 1 Free!:3', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (3, 4, 'qrcode4:3', false, false, true);
+values (3, 4, '30% Off Tuition:3', false, false, true);
 
 -- // beacon
 insert into beacon (business_id, beacon_uuid, section)
-values (1, 'UUID1', 'Outers');
+values (1, 'UUID1', 'Menswear');
 
 insert into beacon (business_id, beacon_uuid, section)
-values (2, 'UUID2', 'Inner wear');
+values (2, 'UUID2', 'Sweets');
 
 insert into beacon (business_id, beacon_uuid, section)
-values (3, 'UUID3', 'Sweets');
+values (3, 'UUID3', 'JavaScript');
 
 -- // coupon_beacon
 insert into coupon_beacon (coupon_id, beacon_uuid) values (1, 'UUID1');
