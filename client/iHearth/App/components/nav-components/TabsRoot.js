@@ -68,10 +68,7 @@ class Tabs extends Component {
   }
 
   render() {
-    // console.log(this.props.pushedCoupons);
-    // let temp;
-    // this.props.pushedCoupons[0] === undefined? temp="null" : temp=this.props.pushedCoupons[0].title
-    // console.log(temp);
+
     const icons = ["heartbeat", "qrcode", "cart-arrow-down"];
     const tabs = this.props.tabs.map((tab, i) => {
       return (

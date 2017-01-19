@@ -33,10 +33,6 @@ const rootReducer = (state, action) => {
   if (action.type === USER_LOGOUT) {
     state = undefined;
   }
-  // if (action.type === CLEAR_QR_STATE) {
-  //   state.QRReducer = undefined;
-  //   state.couponReducer = undefined;
-  // }
 
   return appReducer(state, action);
 }

@@ -4,17 +4,12 @@ import {
   SORT_BY_DATE,
   SORT_BY_TIME_LEFT,
   SORT_BY_SAVINGS,
-  // SORT_BY_USED,
-  // SORT_BY_EXPIRED,
-  // SORT_BY_ACTIVATED
+
 } from '../constants/ActionTypes';
 import {
   DATE,
   TIME_LEFT,
   SAVINGS,
-  // USED,
-  // EXPIRED,
-  // ACTIVATED
 } from '../constants/SortByOptions';
 
 const initialState = {
@@ -59,27 +54,6 @@ export default function historyState(state = initialState, action) {
         ...state,
         sortBy: SAVINGS.key
       }
-
-    // case SORT_BY_USED:
-    //   if (state.sortBy === 'used') return state;
-    //   return {
-    //     ...state,
-    //     sortBy: USED.key
-    //   }
-    //
-    // case SORT_BY_EXPIRED:
-    //   if (state.sortBy === 'expired') return state;
-    //   return {
-    //     ...state,
-    //     sortBy: EXPIRED.key
-    //   }
-    //
-    // case SORT_BY_ACTIVATED:
-    //   if (state.sortBy === 'activated') return state;
-    //   return {
-    //     ...state,
-    //     sortBy: ACTIVATED.key
-    //   }
 
     default:
       return state;

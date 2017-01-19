@@ -39,7 +39,6 @@ export default function reducer(state = initialState, action = {}) {
         loggingIn: true
       };
     case LOGIN_SUCCESS:
-    console.log(action.result, 'this is action.result');
       return {
         ...state,
         loggingIn: false,

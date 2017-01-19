@@ -99,8 +99,6 @@ export default class ListView extends Component {
           onCancel={(data) => this.onClose(data)}
           showCancel={true}
           tapToCloseEnabled={true}
-
-          // imageSrc={'https://facebook.github.io/react/img/logo_og.png'}
         />
       </View>
     );
@@ -112,7 +110,6 @@ export default class ListView extends Component {
      switch (type) {
       case 'custom':
         this.dropdown.alert('A new coupon has arrived!', this.props.pushedCoupons.pushedCoupons[0].title);
-        // this.forceUpdate(); // Doesn't work
       break;
     }
 

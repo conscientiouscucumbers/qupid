@@ -7,18 +7,6 @@ import * as authActions from 'redux/modules/auth';
   state => ({user: state.auth.user}),
   authActions)
 export default class MyCouponsNavPanel extends Component {
-  // static propTypes = {
-  //   user: PropTypes.object,
-  //   login: PropTypes.func,
-  //   logout: PropTypes.func
-  // }
-
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const input = this.refs.username;
-  //   this.props.login(input.value);
-  //   input.value = '';
-  // }
 
   render() {
     // const {user, logout} = this.props;
@@ -34,16 +22,3 @@ export default class MyCouponsNavPanel extends Component {
     );
   }
 }
-// {user &&
-// <div>
-//   <form className="login-form form-inline" onSubmit={this.handleSubmit}>
-//     </button>
-//   </form>
-//   <p>Create new coupon.</p>
-// </div>
-// }
-// {user &&
-// <div>
-//   <p>You are currently logged in as {user.name}.</p>
-// </div>
-// }
