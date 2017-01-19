@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import CouponDescriptionView from '../components/CouponDescriptionView';
 import { fetchPosts } from '../actions/couponViewActions.js';
+import { clearQRState } from '../actions/QRCodeViewActions';
 
 function mapStateToProps(state) {
   return {
@@ -12,7 +13,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchCoupons: () => dispatch(fetchCoupon())
+    fetchCoupons: () => dispatch(fetchCoupon()),
+    clearQRState: () => dispatch(clearQRState())
   }
 }
 

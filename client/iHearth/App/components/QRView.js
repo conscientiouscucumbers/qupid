@@ -19,7 +19,7 @@ export default class QRView extends Component {
     return (
       <Container>
         <Header style={{ backgroundColor: '#ffffff' }}>
-          <Button transparent onPress={ _goBack }>
+          <Button transparent onPress={ () => { _goBack(); this.props.clearQRState(); } }>
             <Icon style={styles.arrow} name='ios-arrow-back' />
           </Button>
           <Title style={styles.title}>Selected QR Code</Title>

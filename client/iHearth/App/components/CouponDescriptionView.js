@@ -21,7 +21,10 @@ export default class CouponDescriptionView extends Component {
   // Coupon rendering will be handled from listView due to the need to fetch the
   // corresponding coupon to which was clicked
   render() {
-    let couponInfo = this.props.couponInfo;
+    const {
+      couponInfo,
+      clearQRState,
+    } = this.props
     return (
       <Container>
         <Content>
@@ -45,7 +48,7 @@ export default class CouponDescriptionView extends Component {
                 <Text style={{fontWeight: '400', fontSize:20, textAlign: 'center', color: '#FF3F4E'}}>NOW ${couponInfo ? couponInfo.coupon_price : ''}</Text>
               </CardItem>
               <View style={{ marginTop: 5, marginBottom: 5 }}></View>
-              <Button1 onPress={ () => { _handleNavigate(route) }} label='Use Coupon'></Button1>
+              <Button1 onPress={ () => { _handleNavigate(route); clearQRState() }} label='Use Coupon'></Button1>
             </CardItem>
           </Card>
         </Content>
