@@ -4,9 +4,6 @@ import {
   SORT_BY_DATE,
   SORT_BY_TIME_LEFT,
   SORT_BY_SAVINGS,
-  // SORT_BY_USED,
-  // SORT_BY_EXPIRED,
-  // SORT_BY_ACTIVATED
 } from '../constants/ActionTypes';
 import { URL } from '../constants/NetworkUrls';
 
@@ -43,24 +40,6 @@ export function sortCouponsBySavings() {
     type: SORT_BY_SAVINGS
   }
 }
-
-// export function sortCouponsByUsed() {
-//   return {
-//     type: SORT_BY_USED
-//   }
-// }
-//
-// export function sortCouponsByExpired() {
-//   return {
-//     type: SORT_BY_EXPIRED
-//   }
-// }
-//
-// export function sortCouponsByActivated() {
-//   return {
-//     type: SORT_BY_ACTIVATED
-//   }
-// }
 
 // Thunk action creator -- allows to pass function as action to further
 // customize dispatches, in this case, delay until response is received

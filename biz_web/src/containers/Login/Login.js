@@ -35,13 +35,13 @@ export default class Login extends Component {
             <div className="form-group">
               <label htmlFor="email" className="col-sm-2">Email</label>
               <div className="col-sm-8">
-                <input type="email" ref="email" className="form-control"/>
+                <input type="email" ref="email" className="form-control email"/>
               </div>
             </div>
             <div className="form-group">
               <label htmlFor="password" className="col-sm-2">Password</label>
               <div className="col-sm-8">
-                <input type="password" ref="password" className="form-control"/>
+                <input type="password" ref="password" className="form-control password"/>
               </div>
             </div>
             <div className="form-group">

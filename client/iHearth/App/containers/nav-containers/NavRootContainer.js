@@ -5,8 +5,6 @@ import { push, pop } from '../../actions/nav-actions/navRootActions'
 function mapStateToProps(state) {
   return {
     navigation: state.navReducer
-    // ,
-    // pushedCoupons: state.tabReducer.pushedCoupons
   }
 }
 

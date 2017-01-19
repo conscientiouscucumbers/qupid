@@ -6,16 +6,22 @@
   },
   "private": true,
   "scripts": {
-    "start": "npm install && node server/index.js"
+    "test": "mocha -t 10000 biz_web/test/test.js",
+    "start": "npm install && node biz_web/img_server/server/index.js"
   },
   "dependencies": {
+    "@google-cloud/storage": "^0.6.1",
     "bluebird": "^3.4.7",
     "body-parser": "^1.15.2",
+    "classnames": "^2.2.5",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
     "express": "^4.14.0",
     "fs": "0.0.1-security",
     "http": "0.0.0",
     "morgan": "^1.7.0",
     "mysql": "^2.12.0",
+    "multer": "^1.2.1",
     "node-schedule": "^1.2.0",
     "path": "^0.12.7",
     "socket.io": "^1.7.2",

@@ -42,6 +42,9 @@ export default function signup(req) {
             // save reference to signedup biz
             console.log('insertedBiz', insertedBiz);
             const returnBizStr = `select * from business where email = "${business.email}" AND password = "${business.password}"`;
+            
+            // queue up coupons
+
             db.query(returnBizStr, (err, selectedBiz) => {
               if (err) {
                 console.log('could not find specific business with email and password');

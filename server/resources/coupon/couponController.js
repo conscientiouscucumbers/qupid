@@ -15,7 +15,7 @@ exports.retrieveCoupons = (req, res) => {
 // POST request for /coupon
 // create new coupon in coupon table
 exports.createCoupon = (req, res) => {
-  // var params = [req.body.title, req.body.image, req.body.item_name, req.body.description, req.body.original_price, req.body.coupon_price, req.body.coupon_savings, req.body.start_at, req.body.end_at];
+
   var params = {
     qrcode: req.body.qrcode,
     title: req.body.title,

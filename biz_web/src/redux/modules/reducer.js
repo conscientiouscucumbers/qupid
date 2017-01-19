@@ -10,6 +10,7 @@ import {reducer as form} from 'redux-form';
 import info from './info';
 import widgets from './widgets';
 import newCoupon from './newCoupon';
+import myCoupons from './myCoupons';
 
 export default combineReducers({
   routing: routerReducer,
@@ -17,6 +18,7 @@ export default combineReducers({
   auth,
   form,
   newCoupon,
+  myCoupons,
   multireducer: multireducer({
     counter1: counter,
     counter2: counter,

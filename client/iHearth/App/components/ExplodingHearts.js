@@ -5,22 +5,10 @@ import {
   View,
   Dimensions,
   TouchableWithoutFeedback,
-  Animated
+  Animated,
+  Image
 } from 'react-native';
 import Art from 'ReactNativeART';
-
-// var React = require('react-native');
-//
-// var {
-//   AppRegistry,
-//   StyleSheet,
-//   View,
-//   Dimensions,
-//   TouchableWithoutFeedback,
-//   Animated
-// } = React;
-//
-// var Art = require('ReactNativeART');
 
 var HEART_SVG = "M130.4-0.8c25.4 0 46 20.6 46 46.1 0 13.1-5.5 24.9-14.2 33.3L88 153.6 12.5 77.3c-7.9-8.3-12.8-19.6-12.8-31.9 0-25.5 20.6-46.1 46-46.2 19.1 0 35.5 11.7 42.4 28.4C94.9 11 111.3-0.8 130.4-0.8"
 var HEART_COLOR = 'rgb(226,38,77,1)';
@@ -233,6 +221,7 @@ var ExplodingHearts = React.createClass({
                 {this.getSmallExplosions(75, {x:89, y:75})}
               </Group>
             </Surface>
+            <Image source={require('./global-components/sparkly.gif')} style={styles.eyes}/>
           </View>
         </TouchableWithoutFeedback>
       </View>
@@ -256,6 +245,12 @@ var styles = StyleSheet.create({
     flex: 1,
     borderColor: 'black',
     backgroundColor: 'transparent'
+  },
+  eyes: {
+    position: 'absolute',
+    transform: [{scale: 0.7}],
+    top: deviceHeight * (.19),
+    left: deviceWidth * (.31),
   }
 });
 

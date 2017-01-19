@@ -39,7 +39,6 @@ export default function reducer(state = initialState, action = {}) {
         loggingIn: true
       };
     case LOGIN_SUCCESS:
-    console.log(action.result, 'this is action.result');
       return {
         ...state,
         loggingIn: false,
@@ -96,19 +95,17 @@ export function login(email, password) {
     })
   };
 }
-export function retrieveBizCoupons(user) {
 
-  return {
-    types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => client.post('/retrieveBizCoupons', {
-      data: {
-        id: user.business_id,
-      }
-    })
-  };
-}
-
-
+// export function retrieveBizCoupons(user) {
+//   return {
+//     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
+//     promise: (client) => client.post('/retrieveBizCoupons', {
+//       data: {
+//         id: user.business_id,
+//       }
+//     })
+//   };
+// }
 
 export function logout() {
   return {

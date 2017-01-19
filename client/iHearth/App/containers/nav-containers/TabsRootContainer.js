@@ -5,9 +5,6 @@ import {
   sortCouponsBySavings,
   sortCouponsByDate,
   sortCouponsByTimeLeft,
-  // sortCouponsByUsed,
-  // sortCouponsByExpired,
-  // sortCouponsByActivated
 } from '../../actions/historyViewActions.js';
 import { fetchUserInfoByDevice } from '../../actions/nav-actions/loginNavRootActions';
 
@@ -24,14 +21,17 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     changeTab: (route) => dispatch(changeTab(route)),
+
     listenBeacon: (beacons) => dispatch(listenBeacon(beacons)),
+
     fetchBeaconCoupons: (user_id, beacon_uuid) => dispatch(fetchBeaconCoupons(user_id, beacon_uuid)),
+
     sortCouponsBySavings: () => dispatch(sortCouponsBySavings()),
+
     sortCouponsByDate: () => dispatch(sortCouponsByDate()),
+
     sortCouponsByTimeLeft: () => dispatch(sortCouponsByTimeLeft()),
-    // sortCouponsByUsed: () => dispatch(sortCouponsByUsed()),
-    // sortCouponsByExpired: () => dispatch(sortCouponsByExpired()),
-    // sortCouponsByActivated: () => dispatch(sortCouponsByActivated()),
+
     fetchUserInfoByDevice: (route, callback) => dispatch(fetchUserInfoByDevice(route, callback))
   }
 }

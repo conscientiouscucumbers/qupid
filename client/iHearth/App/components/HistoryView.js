@@ -7,11 +7,8 @@ import DropdownAlert from 'react-native-dropdownalert'
 import { sqlToJsDate } from '../lib/utils/formatUtils';
 import {
   DATE,
-  // TIME_LEFT,
   SAVINGS,
-  // USED,
-  // EXPIRED,
-  // ACTIVATED
+
 } from '../constants/SortByOptions';
 
 var {
@@ -47,7 +44,6 @@ export default class HistoryView extends Component {
     if(this.props.pushedCoupons.pushedCoupons[0] !== undefined && !this.props.pushedCoupons.pushedCoupons[0].empty){
       console.log('alert called');
       this.showAlert('custom');
-      // this.props.fetchCoupons(this.user_id);
     }
     return (
       <Container>

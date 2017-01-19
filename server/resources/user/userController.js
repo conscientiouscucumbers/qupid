@@ -128,19 +128,7 @@ exports.sendBeaconCoupons = (req, res) => {
   }).catch((err) => {
     res.status(404).send('could not send coupon from ' + params.beacon_uuid + ' to user_id' + params.user_id);
   });
-};// exports.sendBeaconCoupons = (req, res) => {
-//   var params = { user_id: req.params.user_id, beacon_uuid: req.params.beacon_uuid };
-//   console.log(params);
-//   userModel.sendBeaconCouponsAsync(params)
-//   .then(coupons => {
-//     console.log('successfully found entries in user_coupon table')
-//     res.status(200).json(coupons);
-//     console.log('this');
-//   }).catch((err) => {
-//     console.log('could not find a coupon with coupon_id', req.params.coupon_id, 'for user with user_id', req.params.user_id);
-//     res.status(404).send('could not find a coupon with coupon_id', req.params.coupon_id, 'for user with user_id', req.params.user_id);
-//   });
-// };
+};
 
 // PUT request for /user/:user_id/coupon/:coupon_id
 // set use = true for an existing coupon with coupon_id for user with user_id

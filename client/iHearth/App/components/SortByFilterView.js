@@ -9,9 +9,6 @@ import {
   DATE,
   TIME_LEFT,
   SAVINGS,
-  // USED,
-  // EXPIRED,
-  // ACTIVATED
 } from '../constants/SortByOptions';
 
 export default class SortByFilterView extends Component {

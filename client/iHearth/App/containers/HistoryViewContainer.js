@@ -8,9 +8,6 @@ import {
   sortCouponsBySavings,
   sortCouponsByDate,
   sortCouponsByTimeLeft,
-  // sortCouponsByUsed,
-  // sortCouponsByExpired,
-  // sortCouponsByActivated
 } from '../actions/historyViewActions.js';
 
 function mapStateToProps(state) {
@@ -30,9 +27,6 @@ function mapDispatchToProps(dispatch) {
     sortCouponsBySavings: () => dispatch(sortCouponsBySavings()),
     sortCouponsByDate: () => dispatch(sortCouponsByDate()),
     sortCouponsByTimeLeft: () => dispatch(sortCouponsByTimeLeft()),
-    // sortCouponsByUsed: () => dispatch(sortCouponsByUsed()),
-    // sortCouponsByExpired: () => dispatch(sortCouponsByExpired()),
-    // sortCouponsByActivated: () => dispatch(sortCouponsByActivated()),
   }
 }
 
