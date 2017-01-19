@@ -19,8 +19,6 @@ class QRCamera extends Component {
   }
 
   useCoupon(user_qrcode) {
-    console.log('CALLING USE COUPON!!!!!!!!!!!!!!!!')
-    // console.log('calling useCoupon with URL', URL + `business/${user_qrcode}`);
     var request = new Request(URL + `business/${user_qrcode}`, {
       method: 'PUT',
       headers: new Headers({
@@ -44,10 +42,6 @@ class QRCamera extends Component {
       (e) => { this.useCoupon(e.data); console.log('e in throttle', e.data) },
       3000)
     });
-    // setInterval(() => {
-    //   let e = { data: 'qrcode1:1' };
-    //   this.onBarCodeRead(e)},
-    //   100);
   }
 
   onBarCodeRead(e) {
@@ -101,14 +95,6 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height,
     width: Dimensions.get('window').width
   },
-  // capture: {
-  //   flex: 0,
-  //   backgroundColor: '#fff',
-  //   borderRadius: 5,
-  //   color: '#000',
-  //   padding: 10,
-  //   margin: 40
-  // }
 });
 
 export default QRCamera;
