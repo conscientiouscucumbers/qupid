@@ -132,6 +132,7 @@ export default class MyCoupons extends Component {
               )
           })}
         </div>
+
       </section>
     </div>
     );
