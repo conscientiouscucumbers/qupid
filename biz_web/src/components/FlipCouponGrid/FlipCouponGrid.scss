@@ -29,8 +29,11 @@ $degree: 90deg;
   .CardFront {
     position: relative;
     z-index: 1;
-    color: #69969C;
-    background-color: #FF9D81;
+    color: #000000;
+    background: linear-gradient(#FAF1D6 , #FF9D81);
+    border-color: #484848;
+    border-width: 20px;
+    border-radius: 10px;
 
     // Animations
     &.CardBackFlip {
@@ -58,7 +61,10 @@ $degree: 90deg;
     z-index: -1;
     top: -$card-size / 2;
     color: #012E34;
-    background-color: #FAF1D6;
+    background: linear-gradient(#FAF1D6, #FF9D81);
+    border-color: #484848;
+    border-width: 20px;
+    border-radius: 10px;
 
     // Animations
     transform: rotateY(-$degree);
@@ -81,4 +87,3 @@ $degree: 90deg;
     }
   }
 }
-
