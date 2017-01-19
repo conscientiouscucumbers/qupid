@@ -42,8 +42,5 @@ app.use(function(req, res, next) {
 app.use('/user', userRouter);
 app.use('/coupon', couponRouter);
 
-// app.get('/login', userController.login);
-// app.post('/signup', userController.signup);
-// app.post('/logout', userController.logout);
 
 module.exports = app;

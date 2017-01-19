@@ -17,11 +17,10 @@ export default class FilterView extends Component {
   render() {
     return (
       <View>
-          {/*<FilterDropdownView />*/}
           <View>
             <SortByFilterViewContainer />
           </View>
       </View>
     );
   }
-} 
+}
