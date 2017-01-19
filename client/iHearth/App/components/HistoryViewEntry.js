@@ -49,7 +49,7 @@ export default class HistoryViewEntry extends Component {
   // image = 'https://facebook.github.io/react/img/logo_og.png';
   render() {
     return (
-      <ListItem button style={ styles.listItem } onPress={ (event) => { this.props.onPress() }} >
+      <ListItem button style={ styles.listItem }>
         <View style={ this.props.used ? styles.cardUsed : styles.cardExpired }>
           <View style={ styles.topContainer }>
             <Image style={ styles.image } source={{ uri: this.props.coupon.image }} />
