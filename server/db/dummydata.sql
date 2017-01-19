@@ -66,15 +66,6 @@ values (3, 3, 'qrcode3:3', false, false, true);
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
 values (3, 4, 'qrcode4:3', false, false, true);
 
-insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (3, 1, 'qrcode1:3', false, false, true);
-
-insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (3, 2, 'qrcode2:3', false, false, true);
-
-insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (3, 1, 'qrcode1:3', false, false, true);
-
 -- // beacon
 insert into beacon (business_id, beacon_uuid, section)
 values (1, 'UUID1', 'Outers');

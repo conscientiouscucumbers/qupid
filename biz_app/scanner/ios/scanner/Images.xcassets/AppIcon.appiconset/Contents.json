@@ -3,7 +3,21 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
+<<<<<<< HEAD
+      "size" : "20x20",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "size" : "20x20",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "iphone",
+      "size" : "29x29",
+=======
       "filename" : "Icon-Small@2x.png",
+>>>>>>> feat/history
       "scale" : "2x"
     },
     {

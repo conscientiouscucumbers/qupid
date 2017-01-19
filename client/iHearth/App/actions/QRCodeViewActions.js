@@ -1,4 +1,4 @@
-import { REQUEST_USE_COUPON, RECEIVE_USE_COUPON } from '../constants/ActionTypes';
+import { REQUEST_USE_COUPON, RECEIVE_USE_COUPON, CLEAR_QR_STATE } from '../constants/ActionTypes';
 import { URL } from '../constants/NetworkUrls';
 import { fetchPosts } from '../actions/listViewActions';
 import ioClient from 'socket.io-client';
@@ -15,7 +15,14 @@ function receiveUseCoupon(json) {
   return {
     type: RECEIVE_USE_COUPON,
     couponInfo: json.couponInfo,
-    QRCode: json[0].user_qrcode
+    QRCode: json[0].user_qrcode,
+    used: json[0].used
+  }
+}
+
+export function clearQRState() {
+  return {
+    type: CLEAR_QR_STATE
   }
 }
 
@@ -45,18 +52,23 @@ export function useCoupon(user_id, coupon_id) {
   }
 }
 
-export function fetchCoupon(user_id, coupon_id) {
-
+export function fetchCoupon(user_id, coupon_id, cb) {
+  console.log('FETCHING COUPON FOR QR CODE VIEW.....')
   return dispatch => {
     dispatch(requestUseCoupon());
+
+    console.log('BEFOER FETCH......: ', user_id, coupon_id);
 
     return fetch(URL + `user/${user_id}/coupon/${coupon_id}`)
       .then(response => response.json())
       .then(json => {
-
-          console.log('json', json);
+          console.log('GETTING INSIDE HERE......');
           // Dispatch to update QR reducer state
-          return dispatch(receiveUseCoupon(json));
+          dispatch(receiveUseCoupon(json));
+          if (cb) {
+            cb();
+          }
+          return;
         })
       .catch((err) => {
         console.error('Error in updating user coupon in QRCodeViewActions.js', err.message);

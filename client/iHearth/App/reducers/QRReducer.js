@@ -1,8 +1,10 @@
-import { REQUEST_USE_COUPON, RECEIVE_USE_COUPON } from '../constants/ActionTypes';
+import { REQUEST_USE_COUPON, RECEIVE_USE_COUPON, CLEAR_QR_STATE } from '../constants/ActionTypes';
 
 const initialState = {
   isFetching: false,
-  coupon: []
+  coupons: [],
+  QRCode: [],
+  used: null,
 }
 
 export default function QRState(state = initialState, action) {
@@ -18,8 +20,18 @@ export default function QRState(state = initialState, action) {
         ...state,
         isFetching: false,
         coupon: action.coupons,
-        lastUpdated: action.receivedAt,
-        QRCode: action.QRCode
+        QRCode: action.QRCode,
+        used: action.used,
+      }
+
+    case CLEAR_QR_STATE:
+      console.log('CALLING CLEAR QR STATE!!!!!!!!!!!!!!!!!!!!!!!!!')
+      return {
+        ...state,
+        isFetching: false,
+        coupons: [],
+        QRCode: [],
+        used: null,
       }
 
     default:

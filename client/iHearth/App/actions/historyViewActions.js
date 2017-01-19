@@ -1,6 +1,6 @@
 import {
-  REQUEST_COUPONS,
-  RECEIVE_COUPONS,
+  HISTORY_REQUEST_COUPONS,
+  HISTORY_RECEIVE_COUPONS,
   SORT_BY_DATE,
   SORT_BY_TIME_LEFT,
   SORT_BY_SAVINGS,
@@ -13,13 +13,13 @@ import { URL } from '../constants/NetworkUrls';
 // Will change isFetching state of history to true
 function requestCoupons() {
   return {
-    type: REQUEST_COUPONS,
+    type: HISTORY_REQUEST_COUPONS,
   }
 }
 
 function receiveCoupons(json) {
   return {
-    type: RECEIVE_COUPONS,
+    type: HISTORY_RECEIVE_COUPONS,
     coupons: json,
     receivedAt: Date.now()
   }

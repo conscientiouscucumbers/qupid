@@ -11,7 +11,7 @@ import signupReducer from './logoutReducer';
 import QRReducer from './QRReducer';
 import forgotPasswordReducer from './forgotPasswordReducer';
 import historyReducer from './historyReducer';
-import { USER_LOGOUT } from '../constants/ActionTypes';
+import { USER_LOGOUT, CLEAR_QR_STATE } from '../constants/ActionTypes';
 
 const appReducer = combineReducers({
   navReducer,
@@ -33,6 +33,10 @@ const rootReducer = (state, action) => {
   if (action.type === USER_LOGOUT) {
     state = undefined;
   }
+  // if (action.type === CLEAR_QR_STATE) {
+  //   state.QRReducer = undefined;
+  //   state.couponReducer = undefined;
+  // }
 
   return appReducer(state, action);
 }
