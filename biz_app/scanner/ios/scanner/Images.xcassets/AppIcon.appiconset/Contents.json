@@ -4,6 +4,7 @@
       "size" : "20x20",
       "idiom" : "iphone",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "size" : "20x20",
       "scale" : "2x"
     },
@@ -18,6 +19,22 @@
 =======
       "filename" : "Icon-Small@2x.png",
 >>>>>>> feat/history
+=======
+      "filename" : "Icon-Small@2x.png",
+=======
+      "size" : "20x20",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "size" : "20x20",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "iphone",
+      "size" : "29x29",
+>>>>>>> overwrite icon changes
+>>>>>>> overwrite icon changes
       "scale" : "2x"
     },
     {

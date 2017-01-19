@@ -15,8 +15,8 @@ export default class About extends Component {
     const backCoupon = require('./backsideCoupon.jpg');
     const james = require('./JamesGu.jpg');
     const josh = require('./JoshuaPeng.jpg');
-    const susan = require('./Susan.jpg');
-    const blake = require('./Blake.jpg');
+    const susan = require('./SusanHong.jpg');
+    const blake = require('./BlakeFleck.jpg');
     const styles = require('./About.scss');
 
     return (
@@ -24,17 +24,22 @@ export default class About extends Component {
         <h1 className={styles.heading}>Meet The Team</h1>
         <Helmet title="Meet The Team"/>
 
-        <p><img src={james} align="left"/>
-        <font className={styles.about}>James Gu</font>
-
-        <img className= {styles.aboutRight} src={josh} align="left"/>
-        <font className={styles.about}>Joshua Peng</font></p>
-
-        <p><img src={susan} align="left"/>
-        <font className={styles.about}>Susan Hong</font>
-
-        <img className= {styles.aboutRightBlake} src={blake} align="left"/>
-        <font className={styles.about}>Blake Fleck</font></p>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td><img src={james} className="img-circle"/></td>
+              <td><img src={josh} className="img-circle"/></td>
+              <td><img src={susan} className="img-circle"/></td>
+              <td><img src={blake} className="img-circle"/></td>
+            </tr>
+            <tr>
+              <td><font className={styles.about}>James Gu</font></td>
+              <td><font className={styles.about}>Joshua Peng</font></td>
+              <td><font className={styles.about}>Susan Hong</font></td>
+              <td><font className={styles.about}>Blake Fleck</font></td>
+            </tr>
+          </tbody>
+        </table>
 
         <p className={styles.headingTwo}>
           Psst! Would you like to see an example coupon?
@@ -47,7 +52,7 @@ export default class About extends Component {
 
         {showCoupon && <div><img className={styles.headingTwo} src={coupon}/><img className={styles.heading} src={backCoupon}/></div>}
 
-         <p className={styles.headingTwo}>Coupons and great deals get washed out by the noise of everyday life. Instead of alerting your customers of deals in the local paper where the potential transaction is 4-5 hours away. iHearth gives the customer a notification of the coupon when it is most pertinant for them... In the store, making the decision.
+         <p className={styles.headingTwo}>Coupons and great deals get washed out by the noise of everyday life. Instead of alerting your customers of deals in the local paper where the potential transaction is 4-5 hours away. iHearth gives the customer a notification of the coupon when it is most pertinent for them... In the store, making the decision.
         </p>
 
       </div>

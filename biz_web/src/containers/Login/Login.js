@@ -31,22 +31,25 @@ export default class Login extends Component {
         <h1>Business Owner Portal</h1>
         {!user &&
         <div>
-          <form className="login-form form-inline" onSubmit={this.handleSubmit}>
+          <form className="form-horizontal" onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <table>
-                <tr>
-                  <td>Email</td>
-                  <td><input type="email" ref="email" className="form-control"/></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>Password&nbsp;</td>
-                  <td><input type="password" ref="password"
-                    secureTextEntry="true" className="form-control"/></td>
-                  <td><button className="btn btn-success" onClick={this.handleSubmit}><i className="fa fa-sign-in"/>{' '}Log In
-                  </button></td>
-                </tr>
-              </table>
+              <label htmlFor="email" className="col-sm-2">Email</label>
+              <div className="col-sm-8">
+                <input type="email" ref="email" className="form-control"/>
+              </div>
+            </div>
+            <div className="form-group">
+              <label htmlFor="password" className="col-sm-2">Password</label>
+              <div className="col-sm-8">
+                <input type="email" ref="email" className="form-control"/>
+              </div>
+            </div>
+            <div className="form-group">
+              <div className="col-sm-offset-2 col-sm-10">
+                <button className="btn btn-success" onClick={this.handleSubmit} style={{ marginLeft: 0 }}>
+                  <i className="fa fa-sign-in"/> Log In
+                </button>
+              </div>
             </div>
           </form>
         </div>

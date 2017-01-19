@@ -43,7 +43,7 @@ export default class Home extends Component {
                           count large/>
 
             <p className={styles.humility}>
-              Created and maintained by conscientiousCucumbers
+              Created and maintained by ConscientiousCucumbers
             </p>
           </div>
         </div>
