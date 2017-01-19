@@ -53,7 +53,7 @@ export default class App extends Component {
 
   handleDemo = (event) => {
     event.preventDefault();
-    alert("call 832-427-9017 for a free consultation");
+    alert("call 1-800-867-5309 for a free consultation");
   }
   handleLogout = (event) => {
     event.preventDefault();
