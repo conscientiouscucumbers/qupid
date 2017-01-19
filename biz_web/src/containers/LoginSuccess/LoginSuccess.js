@@ -18,7 +18,7 @@ class LoginSuccess extends Component {
       <div className="container">
         <h1>{user.company_name}</h1>
 
-        <div>
+        <div className="login-success">
           <p>Hi, {user.email}. You have just successfully logged in.
           </p>
           <div>
