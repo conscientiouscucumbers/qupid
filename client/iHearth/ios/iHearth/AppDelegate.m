@@ -8,6 +8,7 @@
  */
 
 #import "AppDelegate.h"
+
 #import "RCTPushNotificationManager.h"
 
 #import "RCTBundleURLProvider.h"
@@ -61,5 +62,6 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
   [RCTPushNotificationManager didReceiveLocalNotification:notification];
 }
+
 
 @end

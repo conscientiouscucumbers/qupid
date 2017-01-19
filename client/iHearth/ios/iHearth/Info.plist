@@ -61,12 +61,15 @@
       <string>Skia.ttf</string>
       <string>Times New Roman.ttf</string>
       <string>MaterialCommunityIcons.ttf</string>
-      <string>MaterialCommunityIcons.ttf</string>
     </array>
     <key>UIBackgroundModes</key>
     <array>
       <string>bluetooth-central</string>
+      <string>bluetooth-peripheral</string>
+      <string>external-accessory</string>
+      <string>fetch</string>
       <string>location</string>
+      <string>remote-notification</string>
     </array>
     <key>UILaunchStoryboardName</key>
     <string>LaunchScreen</string>
