@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 
 const styles = {
+  title: {
+    fontSize: '24px',
+    fontWeight: '400',
+    top: '10%',
+    padding: '10px 5px 0 5px',
+  },
+  imageDiv: {
+    fontSize: '24px',
+    fontWeight: '400',
+    top: '10%',
+    padding: '10px 5px 0 5px',
+  },
  image: {
-    width: 200,
-    height: 150,
-    alignSelf: 'flex-start',
+   width: 220,
+   height: 'auto',
+   overflow: 'hidden'
   }
 };
 
@@ -30,8 +42,8 @@ export default class FlipCouponGrid extends Component {
     return (
       <div className={style.Card} onClick={this.flip.bind(this)}>
         <div className={style.CardFront + ' ' + style[flippedCSS]}>
-          <h3>{this.props.title}</h3><br></br>
-          <img src ={this.props.img} style={ styles.image }/>
+          <div style={styles.title}>{this.props.title}</div>
+          <div style={styles.imageDiv}><img src={this.props.img} style={styles.image}></img></div>
         </div>
         <div className={style.CardBack + ' ' + style[flippedCSS]}>
           {this.props.children}
