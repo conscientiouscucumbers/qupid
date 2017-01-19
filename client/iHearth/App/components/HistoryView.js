@@ -57,8 +57,8 @@ export default class HistoryView extends Component {
         </Header>
         <FilterViewContainer />
           <View style={ styles.container }>
-            <Text style={{ textAlign: 'center', color: '#6BB1EA' }}>{this.props.pushedCoupons.pushedCoupons[0] ? this.props.pushedCoupons.pushedCoupons[0].title : "Used: blue" }</Text>
-            <Text style={{ textAlign: 'center', color: '#FF3F4E' }}>{this.props.pushedCoupons.pushedCoupons[0] ? this.props.pushedCoupons.pushedCoupons[0].title : "Unused: red" }</Text>
+            <Text style={{ textAlign: 'center', color: '#6BB1EA' }}>Used: blue</Text>
+            <Text style={{ textAlign: 'center', color: '#FF3F4E' }}>Expired: red</Text>
             <List>
               {/* Render spinner */}
               { this.props.coupons.isFetching && (<Spinner color='#484848' style={styles.spinner} />)}
