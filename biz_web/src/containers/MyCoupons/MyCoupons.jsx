@@ -51,18 +51,6 @@ const styles = {
     color: 'red',
     padding: '5px 5px 0 5px',
   }
- // footer: {
- //    position: 'absolute',
- //    bottom: 0,
- //    right: "5%",
- //    fontSize: "130%"
- //  },
- //  footerLeft: {
- //    position: 'absolute',
- //    bottom: 0,
- //    left: "5%",
- //    fontSize: "130%"
- //  }
 };
 
 @connect(

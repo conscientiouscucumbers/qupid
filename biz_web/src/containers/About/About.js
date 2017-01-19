@@ -50,21 +50,20 @@ export default class About extends Component {
             {showCoupon ? 'Okay, Thanks!' : 'Yes! Please!'}</button>
         </p>
 
-        {showCoupon &&    <table className="table">
+        {showCoupon &&
+        <table className="table">
           <tbody>
-            <tr>
-              <td><img className={styles.headingTwo} src={coupon}/></td>
-              <td><img className={styles.heading} src={backCoupon}/></td>
-            </tr>
             <tr>
               <td><font className={styles.aboutThree}>Coupon View</font></td>
               <td><font className={styles.aboutTwo}>QR Scanner View</font></td>
             </tr>
+            <tr>
+              <td><img src={coupon}/></td>
+              <td><img src={backCoupon}/></td>
+            </tr>
           </tbody>
         </table>}
-
-         <p className={styles.headingTwo}>Coupons and great deals get washed out by the noise of everyday life. Instead of alerting your customers of deals in the local paper where the potential transaction is 4-5 hours away. iHearth gives the customer a notification of the coupon when it is most pertinent for them... In the store, making the decision.
-        </p>
+        {showCoupon && <p className={styles.footer}>Integrate your store with virtual coupons using iBeacon Technology!</p>}
 
       </div>
     );
