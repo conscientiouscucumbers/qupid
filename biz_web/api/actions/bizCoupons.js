@@ -5,9 +5,9 @@ export default function retrieveBizCoupons(req) {
     const business = {
       id: req.body.id
     };
-    req.session.business = business;
+    //req.session.business = business;
 
-    const queryCouponStr = `select * from coupon where business_id="${business.id}"`;
+    const queryCouponStr = `select * from coupon where business_id=${business.id}`;
     db.query(queryCouponStr, (err, bizCoupons) => {
       console.log(bizCoupons, 'this is bizCoupons')
       if(err) {

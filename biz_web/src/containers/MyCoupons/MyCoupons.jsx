@@ -48,10 +48,17 @@ export default class MyCoupons extends Component {
     }
   }
   componentWillMount(){
+    if(Array.isArray(this.props.user) ){
+      this.setState({coupons:this.props.user})
+
+    }else{
+
+    console.log(this.props, 'this is props')
     this.props.retrieveBizCoupons(this.props.user)
     .then((coupons) => {
       this.setState({coupons: coupons});
     })
+    }
   }
 
   render() {
