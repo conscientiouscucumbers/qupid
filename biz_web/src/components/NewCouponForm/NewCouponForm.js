@@ -8,6 +8,7 @@ import Dropzone from 'react-dropzone';
 import Spinner from '../../../static/light_blue_material_design_loading.gif'
 
 const FILE_FIELD_NAME = 'files';
+const url = `https://mighty-wildwood-43490.herokuapp.com/img/image-upload`;
 
 // Can insert asyncValidation here if we want validation as user is entering info
 // (redux form compliant)
@@ -74,9 +75,7 @@ export default class NewCouponForm extends Component {
 
     const imgBody = new FormData();
     imgBody.append('image', acceptedFiles[0]);
-    const url = `http://127.0.0.1:9000/img/image-upload`;
 
-    console.log('BEFORE FETCH.....')
     fetch(url, {
       method: 'POST',
       // headers: {
