@@ -96,19 +96,17 @@ export function login(email, password) {
     })
   };
 }
-export function retrieveBizCoupons(user) {
 
-  return {
-    types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => client.post('/retrieveBizCoupons', {
-      data: {
-        id: user.business_id,
-      }
-    })
-  };
-}
-
-
+// export function retrieveBizCoupons(user) {
+//   return {
+//     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
+//     promise: (client) => client.post('/retrieveBizCoupons', {
+//       data: {
+//         id: user.business_id,
+//       }
+//     })
+//   };
+// }
 
 export function logout() {
   return {
