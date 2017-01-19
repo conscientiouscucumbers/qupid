@@ -37,7 +37,7 @@ const styles = {
   },
   startsAt: {
     fontSize: '16px',
-    fontWeight: '40',
+    fontWeight: '400',
     position: 'relative',
     top: '5%',
     color: 'blue',
