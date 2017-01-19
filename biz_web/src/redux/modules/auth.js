@@ -97,7 +97,7 @@ export function login(email, password) {
   };
 }
 export function retrieveBizCoupons(user) {
-  console.log(user, 'this is user')
+
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     promise: (client) => client.post('/retrieveBizCoupons', {
