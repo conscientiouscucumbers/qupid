@@ -33,10 +33,10 @@ export default class About extends Component {
               <td><img src={blake} className="img-circle"/></td>
             </tr>
             <tr>
-              <td><font className={styles.about}>James Gu</font></td>
-              <td><font className={styles.about}>Joshua Peng</font></td>
-              <td><font className={styles.about}>Susan Hong</font></td>
-              <td><font className={styles.about}>Blake Fleck</font></td>
+              <td><font className={styles.aboutJames}>James Gu</font></td>
+              <td><font className={styles.aboutJosh}>Joshua Peng</font></td>
+              <td><font className={styles.aboutSusan}>Susan Hong</font></td>
+              <td><font className={styles.aboutBlake}>Blake Fleck</font></td>
             </tr>
           </tbody>
         </table>
@@ -57,8 +57,8 @@ export default class About extends Component {
               <td><img className={styles.heading} src={backCoupon}/></td>
             </tr>
             <tr>
-              <td><font className={styles.about}>Coupon View</font></td>
-              <td><font className={styles.about}>QR Scanner View</font></td>
+              <td><font className={styles.aboutThree}>Coupon View</font></td>
+              <td><font className={styles.aboutTwo}>QR Scanner View</font></td>
             </tr>
           </tbody>
         </table>}
