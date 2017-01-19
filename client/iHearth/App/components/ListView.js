@@ -21,7 +21,7 @@ const route = {
 export default class ListView extends Component {
   constructor(props) {
     super(props);
-    _handleNavigate = this.props._handleNavigate;
+    // _handleNavigate = this.props._handleNavigate;
     this.showAlert = this.showAlert.bind(this);
   }
 
@@ -30,6 +30,19 @@ export default class ListView extends Component {
     this.user_id = this.props.userInfo.userInfo.user_id;
     this.props.fetchCoupons(this.user_id);
   }
+
+  // componentDidMount() {
+  //   this.timer = setInterval(() => {
+  //     // this.useQRCode();
+  //     this.user_id = this.props.userInfo.userInfo.user_id;
+  //     this.props.fetchCoupons(this.user_id);
+  //   }, 3000);
+  // }
+
+  // componentWillUnmount() {
+  //   clearTimeout(this.timer);
+  // }
+
 
   static timeNow = new Date();
 
@@ -53,7 +66,7 @@ export default class ListView extends Component {
               }).map((coupon) => (
                 <ListViewEntry
                   key={ coupon.coupon_id }
-                  onPress={ (event) => { _handleNavigate(route); this.props.fetchCoupon(coupon.coupon_id) }}
+                  onPress={ (event) => { this.props._handleNavigate(route); this.props.fetchCoupon(coupon.coupon_id) }}
                   coupon={ coupon } />
               ))
           }
@@ -67,7 +80,7 @@ export default class ListView extends Component {
               }).map((coupon) => (
                 <ListViewEntry
                   key={ coupon.coupon_id }
-                  onPress={ (event) => { _handleNavigate(route); this.props.fetchCoupon(coupon.coupon_id) }}
+                  onPress={ (event) => { this.props._handleNavigate(route); this.props.fetchCoupon(coupon.coupon_id) }}
                   coupon={ coupon } />
               ))
           }
@@ -78,7 +91,7 @@ export default class ListView extends Component {
               }).map((coupon) => (
                 <ListViewEntry
                   key={ coupon.coupon_id }
-                  onPress={ (event) => { _handleNavigate(route); this.props.fetchCoupon(coupon.coupon_id) }}
+                  onPress={ (event) => { this.props._handleNavigate(route); this.props.fetchCoupon(coupon.coupon_id) }}
                   coupon={ coupon } />
               ))
           }
@@ -146,3 +159,4 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   }
 });
+//
