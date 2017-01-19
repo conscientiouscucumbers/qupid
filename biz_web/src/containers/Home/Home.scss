@@ -6,7 +6,7 @@
   }
 }
 .masthead {
-  background: #2d2d2d;
+  background: linear-gradient(#FAF1D6 , #FF9D81);
   padding: 40px 20px;
   color: white;
   text-align: center;
@@ -30,9 +30,10 @@
   h1 {
     color: #E61727;
     font-size: 4em;
+    font-weight: lighter;
   }
   h2 {
-    color: #ddd;
+    color: #484848;
     font-size: 2em;
     margin: 20px;
   }

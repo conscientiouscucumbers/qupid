@@ -1,4 +1,5 @@
 require('babel-polyfill');
+import Logo from "./containers/Home/logo.png"
 
 const environment = {
   development: {
@@ -18,14 +19,14 @@ module.exports = Object.assign({
     title: 'Cupid',
     description: 'Connect Store Coupons using iBeacon Technology',
     head: {
-      titleTemplate: 'React Redux Example: %s',
+      titleTemplate: 'Cupid: %s',
       meta: [
         {name: 'description', content: 'Connect Store Coupons using iBeacon Technology'},
         {charset: 'utf-8'},
-        {property: 'og:site_name', content: 'React Redux Example'},
-        {property: 'og:image', content: 'https://react-redux.herokuapp.com/logo.jpg'},
+        {property: 'og:site_name', content: 'Cupid'},
+        {property: 'og:image', content: Logo},
         {property: 'og:locale', content: 'en_US'},
-        {property: 'og:title', content: 'React Redux Example'},
+        {property: 'og:title', content: 'Cupid'},
         {property: 'og:description', content: 'Connect Store Coupons using iBeacon Technology'},
         {property: 'og:card', content: 'summary'},
         {property: 'og:site', content: '@erikras'},
