@@ -172,7 +172,7 @@ module.exports.userLoginAsync = Promise.promisify(userLogin);
 
 var userLogout = (params, callback) => {
   var loggedOutUser;
-  // var queryStr = `select * from user where email = "${params.email}" && password = "${params.password}"`;
+
   var queryStr = `select * from user where device_id = "${params.device_id}"`;
   db.query(queryStr, (err, user) => {
     if (err) {
@@ -181,7 +181,7 @@ var userLogout = (params, callback) => {
     } else {
       loggedOutUser = user[0];
       console.log('successfully found user to log out = ', user[0]);
-      // var logoutStr = `update user set logged_in = false device_id = "${params.device_id}" where email = "${params.email}" && password = "${params.password}"`;
+
       var logoutStr = `update user set logged_in = false where device_id = "${params.device_id}"`;
       db.query(logoutStr, (err, loggedOut) => {
         if (err) {

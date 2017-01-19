@@ -1,7 +1,8 @@
 var Promise = require('bluebird');
 var db = require('../../db');
 
-var useCoupon = (params, socket, callback) => {
+// Add socket as second arg if need to incorporate sockets
+var useCoupon = (params, callback) => {
   var queryStr = `update user_coupon set used = true where user_qrcode = "${params.user_qrcode}"`;
   db.query(queryStr, (err, coupon) => {
     if (err) {
@@ -9,7 +10,7 @@ var useCoupon = (params, socket, callback) => {
       callback(err);
     } else {
       console.log('successfully used a coupon with user_qrcode', params.user_qrcode);
-      socket.emit(params.user_qrcode, {data: socket.id});
+      // socket.emit(params.user_qrcode, {data: socket.id});
       callback(null, coupon);
     }
   });

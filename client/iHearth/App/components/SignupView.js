@@ -3,7 +3,6 @@ import { View, Text, StyleSheet } from 'react-native';
 import Button from './global-components/Button';
 import { Container, Content, List, ListItem, InputGroup, Input, Icon, Picker } from 'native-base';
 import Foundation from 'react-native-vector-icons/Foundation';
-// import styles from './../styles';
 import DeviceInfo from 'react-native-device-info';
 import DatePicker from 'react-native-datepicker';
 const Item = Picker.Item;
@@ -41,9 +40,6 @@ class SignupView extends Component {
     // function to check logged_in state using device_id
   }
 
-  // onValueChange(value: string) {
-  //   this.setState({ gender: value });
-  // }
   allFilled() {
     console.log('signup state', this.state);
     console.log('signup props', this.props);

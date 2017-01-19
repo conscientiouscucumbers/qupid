@@ -75,36 +75,13 @@ export default class MyCoupons extends Component {
 
   constructor(props){
     super(props);
-
-    // this.state = {
-    //   coupons: [{
-    //     coupon_id: 3,
-    //     business_id: 3,
-    //     qrcode: "qrcode3",
-    //     title: "$4 OFF Shampoo",
-    //     image: "https://facebook.github.io/react/img/logo_og.png",
-    //     item_name: "Amino Acid Shampoo",
-    //     description: "A naturally-derived shampoo that cleanses and softens hair. Creates a rich, creamy lather for a delightful shampoo experience. A special blend of moisturizing ingredients imparts softness and shine as the formula adds body and fullness. Suitable for all hair and scalp types when mildness is desired.",
-    //     original_price: 8,
-    //     coupon_price: 4,
-    //     coupon_savings: 4,
-    //     start_at: "2017-01-06T11:00:00.000Z",
-    //     end_at: "2017-01-11T05:25:00.000Z",
-    //     created_at: "2017-01-12T00:16:19.000Z"
-    //   }]
-    // }
   }
 
   componentDidMount(){
     this.props.retrieveBizCoupons(this.props.user);
   }
 
-  // static fetchData() {
-  //   return this.props.retrieveBizCoupons(this.props.user).promise
-  // }
-
   render() {
-    console.log('MYPROPS: ', this.props);
     const style = require('./MyCoupons.scss');
     const content = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore dolores facilis perspiciatis. Excepturi temporibus laborum odio possimus error.';
     const {

@@ -160,18 +160,11 @@ const styles = StyleSheet.create({
     height: 95,
     alignSelf: 'flex-start',
     marginTop: 3
-    // borderRadius: 47.5
   },
   cardUsed: {
-    // borderWidth: 0.5,
-    // borderRadius: 2,
-    // borderColor: '#484848',
     backgroundColor: 'rgba(107, 177, 234, 0.3)',
   },
   cardExpired: {
-    // borderWidth: 0.5,
-    // borderRadius: 2,
-    // borderColor: '#484848',
     backgroundColor: 'rgba(255, 63, 78, 0.3)',
   },
 })
