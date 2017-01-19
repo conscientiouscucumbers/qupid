@@ -37,14 +37,14 @@ export default class NewCoupon extends Component {
     const {user} = this.props;
     console.log('USER HERE...', user);
     this.props.initialize('newCoupon', {
-      title: 'asdasdasd',
+      title: '',
       image: '',
-      item_name: 'asdasd',
-      description: 'asdasdas',
-      original_price: 5.00,
-      coupon_savings: 2.00,
-      start_at: '2017-01-25 12:00:00',
-      end_at: '2017-01-30 12:00:00',
+      item_name: '',
+      description: '',
+      original_price: '',
+      coupon_savings: '',
+      start_at: '',
+      end_at: '',
       business_id: user ? user.business_id : ''
     });
   }
