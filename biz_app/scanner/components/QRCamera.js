@@ -11,6 +11,7 @@ import Camera from 'react-native-camera';
 import _ from 'underscore';
 import Button from './Button';
 const URL = 'https://lit-brushlands-36263.herokuapp.com/';
+// const URL = 'http://127.0.0.1:4569/';
 
 class QRCamera extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class QRCamera extends Component {
   }
 
   useCoupon(user_qrcode) {
+    console.log('USING COUPON NOW...', URL + `business/${user_qrcode}`);
     var request = new Request(URL + `business/${user_qrcode}`, {
       method: 'PUT',
       headers: new Headers({
@@ -38,6 +40,7 @@ class QRCamera extends Component {
   }
 
   componentDidMount() {
+    // setTimeout(() => {this.useCoupon('qrcode1:1');}, 5000);
     this.setState({ throttled: _.throttle(
       (e) => { this.useCoupon(e.data); console.log('e in throttle', e.data) },
       3000)
