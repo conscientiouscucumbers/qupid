@@ -1,6 +1,6 @@
 import {
-  REQUEST_COUPONS,
-  RECEIVE_COUPONS,
+  HISTORY_REQUEST_COUPONS,
+  HISTORY_RECEIVE_COUPONS,
   SORT_BY_DATE,
   SORT_BY_TIME_LEFT,
   SORT_BY_SAVINGS,
@@ -23,15 +23,15 @@ const initialState = {
   items: []
 }
 
-export default function listState(state = initialState, action) {
+export default function historyState(state = initialState, action) {
   switch (action.type) {
-    case REQUEST_COUPONS:
+    case HISTORY_REQUEST_COUPONS:
       return {
         ...state,
         isFetching: true
       }
 
-    case RECEIVE_COUPONS:
+    case HISTORY_RECEIVE_COUPONS:
       return {
         ...state,
         isFetching: false,

@@ -15,7 +15,7 @@ import {
 
 function mapStateToProps(state) {
   return {
-    coupons: state.listReducer,
+    coupons: state.historyReducer,
     userInfo: state.loginReducer,
     pushedCoupons: state.tabReducer
   }

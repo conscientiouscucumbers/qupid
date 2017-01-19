@@ -7,7 +7,7 @@ import DropdownAlert from 'react-native-dropdownalert'
 import { sqlToJsDate } from '../lib/utils/formatUtils';
 import {
   DATE,
-  TIME_LEFT,
+  // TIME_LEFT,
   SAVINGS,
   // USED,
   // EXPIRED,
@@ -70,25 +70,6 @@ export default class HistoryView extends Component {
                   })
                   .sort((a, b) => {
                     return a.coupon_id - b.coupon_id;
-                  }).map((coupon) => (
-                    <HistoryViewEntry
-                      used={ coupon.used }
-                      key={ coupon.coupon_id }
-                      onPress={ (event) => { _handleNavigate(route); this.props.fetchCoupon(coupon.coupon_id) }}
-                      coupon={ coupon } />
-                  ))
-              }
-              {/* Render based on sortBy state -- by time left */}
-              { this.props.coupons.items && this.props.coupons.sortBy === TIME_LEFT.key &&
-                  this.props.coupons.items
-                  .filter((coupon) => {
-                    return (coupon.used === 1 || coupon.expired === 1);
-                  })
-                  .sort((a, b) => {
-                    // compare time left for item a and b
-                    let tl1 = sqlToJsDate(a.end_at) - this.constructor.timeNow;
-                    let tl2 = sqlToJsDate(b.end_at) - this.constructor.timeNow;
-                    return  tl1 - tl2;
                   }).map((coupon) => (
                     <HistoryViewEntry
                       used={ coupon.used }
