@@ -25,41 +25,35 @@ export default class QRCodeImageView extends Component {
     _handleNavigate = this.props._handleNavigate;
     _goBack = this.props._goBack;
 
-    this.interval = null;
-
     // Setup socket
-    this.socket = SocketIOClient(scannerURL);
+    // this.socket = SocketIOClient(scannerURL);
   }
 
   useQRCode() {
     // console.log('USE QR CODE CALLED', this.props);
     var context = this;
     this.props.fetchCoupon(this.user_id, this.coupon_id);
-    // console.log('-----------------------this.props.QRInfo USING COUPON: ', this.props);
-    // console.log('context HERE......', context.props)
-    // console.log('context USED......', context.props.QRInfo.used)
 
     if (context.props.QRInfo.used === 1) {
       console.log('SUCCESS')
       this.props.clearQRState();
-      _goBack();
-      _goBack();
-      console.log('PROPS HERE..............', this.props.QRInfo);
       this.props.fetchCoupons(this.user_id);
-      // clearInterval(this.interval);
+      _goBack();
+      _goBack();
     }
   }
 
-  componentWillMount() {
-    setTimeout(() => {this.useQRCode()}, 1000);
-    setTimeout(() => {this.useQRCode()}, 2000)
-    setTimeout(() => {this.useQRCode()}, 3000)
-    setTimeout(() => {this.useQRCode()}, 4000)
-    setTimeout(() => {this.useQRCode()}, 5000)
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      this.useQRCode();
+    }, 250);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // console.log('CHANNEL NAME HERE:', this.props.QRInfo.QRCode);
     // this.socket.disconnect('connect');
     // this.socket.on('connect', () => {
     //   // console.log('Socket connected to server, this.props.QRInfo.QRCode);

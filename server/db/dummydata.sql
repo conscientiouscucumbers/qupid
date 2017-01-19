@@ -40,12 +40,6 @@ insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activat
 values (1, 1, 'qrcode1:1', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (2, 1, 'qrcode1:2', false, false, true);
-
-insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
-values (2, 2, 'qrcode2:2', false, false, true);
-
-insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
 values (1, 2, 'qrcode2:1', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
@@ -53,6 +47,12 @@ values (1, 3, 'qrcode3:1', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
 values (1, 4, 'qrcode4:1', false, false, true);
+
+insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
+values (2, 1, 'qrcode1:2', false, false, true);
+
+insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
+values (2, 2, 'qrcode2:2', false, false, true);
 
 insert into user_coupon (user_id, coupon_id, user_qrcode, used, expired, activated)
 values (3, 1, 'qrcode1:3', false, false, true);
