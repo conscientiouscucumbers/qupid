@@ -83,7 +83,6 @@ export default class MyCoupons extends Component {
         <Helmet title="My Coupons" />
         <MyCouponsNavPanel />
         <div>
-          <h1>Example Data</h1>
           {mycoupons && mycoupons.map((item) => {
             return(
               <FlipCouponGrid title={item.item_name} img={item.image}>
