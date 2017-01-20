@@ -18,6 +18,7 @@ export default class About extends Component {
     const susan = require('./SusanHong.jpg');
     const blake = require('./BlakeFleck.jpg');
     const styles = require('./About.scss');
+    const myCoup = require('./myCouponView.jpg');
 
     return (
       <div className="container">
@@ -47,23 +48,25 @@ export default class About extends Component {
           <button className={'btn btn-' + (showCoupon ? 'danger' : 'success')}
                   style={{marginLeft: 50}}
                   onClick={this.handleToggleCoupon}>
-            {showCoupon ? 'Okay, Thanks!' : 'Yes! Please!'}</button>
+            {showCoupon ? 'Sign me up!' : 'Yes! Please!'}</button>
         </p>
 
         {showCoupon &&
         <table className="table">
           <tbody>
             <tr>
+              <td><font className={styles.aboutOne}>List View</font></td>
               <td><font className={styles.aboutThree}>Coupon View</font></td>
-              <td><font className={styles.aboutTwo}>QR Scanner View</font></td>
+              <td><font className={styles.aboutTwo}>QR Code View</font></td>
             </tr>
             <tr>
-              <td><img src={coupon}/></td>
-              <td><img src={backCoupon}/></td>
+              <td><img style={{width:300, height:'auto'}} src={myCoup}/></td>
+              <td><img style={{width:300, height:'auto'}} src={coupon}/></td>
+              <td><img style={{width:300, height:'auto'}} src={backCoupon}/></td>
             </tr>
           </tbody>
         </table>}
-        {showCoupon && <p className={styles.footer}>Integrate your store with virtual coupons using iBeacon Technology!</p>}
+        {showCoupon && <p className={styles.footer}>Qupid gives retailers the ability to create and distribute customized coupons with in-store customers</p>}
 
       </div>
     );
