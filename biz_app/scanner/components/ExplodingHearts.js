@@ -5,7 +5,8 @@ import {
   View,
   Dimensions,
   TouchableWithoutFeedback,
-  Animated
+  Animated,
+  Image
 } from 'react-native';
 import Art from 'ReactNativeART';
 
@@ -220,6 +221,7 @@ var ExplodingHearts = React.createClass({
                 {this.getSmallExplosions(75, {x:89, y:75})}
               </Group>
             </Surface>
+            <Image source={require('../images/smile.png')} style={styles.eyes}/>
           </View>
         </TouchableWithoutFeedback>
       </View>
@@ -243,6 +245,12 @@ var styles = StyleSheet.create({
     flex: 1,
     borderColor: 'black',
     backgroundColor: 'transparent'
+  },
+  eyes: {
+    position: 'absolute',
+    transform: [{scale: 0.65}],
+    top: deviceHeight * (.20),
+    left: deviceWidth * (.285),
   }
 });
 
