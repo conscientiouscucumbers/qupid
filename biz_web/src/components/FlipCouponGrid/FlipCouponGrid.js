@@ -14,8 +14,8 @@ const styles = {
     padding: '10px 5px 0 5px',
   },
  image: {
-   width: 220,
-   height: 'auto',
+   width: 'auto',
+   height: 220,
    overflow: 'hidden'
   }
 };
