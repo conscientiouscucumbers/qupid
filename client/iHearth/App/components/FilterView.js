@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FilterDropdownView from './FilterDropdownView';
+// import FilterDropdownView from './FilterDropdownView';
 import SortByFilterViewContainer from '../containers/SortByFilterViewContainer';
 import {
   Text,

@@ -60,8 +60,8 @@ export default class ListViewEntry extends Component {
                   <Text style={ styles.listItemTitle }> { this.props.coupon.title } </Text>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
-                  <Text style={ styles.newPrice }>{ formatDollars(this.props.coupon.original_price) + '  ' }</Text>
-                  <Text style={ styles.originalPrice }>{ formatDollars(this.props.coupon.coupon_price) }</Text>
+                  <Text style={ styles.newPrice }>{ formatDollars(this.props.coupon.coupon_price) + '  ' }</Text>
+                  <Text style={ styles.originalPrice }>{ formatDollars(this.props.coupon.original_price) }</Text>
                 </View>
               </View>
               <View>
