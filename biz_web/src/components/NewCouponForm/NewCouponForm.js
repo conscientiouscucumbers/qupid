@@ -118,7 +118,7 @@ export default class NewCouponForm extends Component {
     });
   }
 
-  // Called on submit for UI rendering purposes 
+  // Called on submit for UI rendering purposes
   clearState() {
     console.log('INITIALIZING LOCAL STATE')
     this.setState({
@@ -162,15 +162,15 @@ export default class NewCouponForm extends Component {
         <label htmlFor={field.name} className="col-sm-2">{label}</label>
         <div className={'col-sm-8 ' + styles.inputGroup}>
           {showAsyncValidating && asyncValidating && <i className={'fa fa-cog fa-spin ' + styles.cog}/>}
-          { (label === 'Coupon Title') && <input type="text" ref="company_name" className="form-control" placeholder={placeholder} id={field.name} {...field}/> }
-          { (label === 'Item Name') && <input type="text" ref="company_name" className="form-control" placeholder={placeholder} id={field.name} {...field}/> }
-          { (label === 'Description') && <input type="text" ref="company_name" className="form-control" placeholder={placeholder} id={field.name} {...field}/> }
-          { (label === 'Original') && <input type="text" ref="company_name" className="form-control" placeholder={placeholder} id={field.name} {...field}/> }
-          { (label === 'Savings') && <input type="text" ref="company_name" className="form-control" placeholder={placeholder} id={field.name} {...field}/> }
-          { (label === 'Start Time') && <input type="text" ref="company_name" className="form-control" placeholder={placeholder} id={field.name} {...field}/> }
-          { (label === 'End Time') && <input type="text" ref="company_name" className="form-control" placeholder={placeholder} id={field.name} {...field}/> }
-          { (label === 'Business ID') && <input type="text" ref="company_name" className="form-control" placeholder={placeholder} id={field.name} {...field}/> }
-          { (label === 'Coupon Image') && 
+          { (label === 'Coupon Title') && <input type="text" ref="company_name" className="form-control title" placeholder={placeholder} id={field.name} {...field}/> }
+          { (label === 'Item Name') && <input type="text" ref="company_name" className="form-control item_name" placeholder={placeholder} id={field.name} {...field}/> }
+          { (label === 'Description') && <input type="text" ref="company_name" className="form-control description" placeholder={placeholder} id={field.name} {...field}/> }
+          { (label === 'Original') && <input type="text" ref="company_name" className="form-control original" placeholder={placeholder} id={field.name} {...field}/> }
+          { (label === 'Savings') && <input type="text" ref="company_name" className="form-control savings" placeholder={placeholder} id={field.name} {...field}/> }
+          { (label === 'Start Time') && <input type="text" ref="company_name" className="form-control start_time" placeholder={placeholder} id={field.name} {...field}/> }
+          { (label === 'End Time') && <input type="text" ref="company_name" className="form-control end_time" placeholder={placeholder} id={field.name} {...field}/> }
+          { (label === 'Business ID') && <input type="text" ref="company_name" className="form-control business_id" placeholder={placeholder} id={field.name} {...field}/> }
+          { (label === 'Coupon Image') &&
                                         <div>
                                           <Dropzone
                                             name={field.name}
@@ -179,7 +179,7 @@ export default class NewCouponForm extends Component {
                                             <div>Try dropping some files here, or click to select files to upload.</div>
                                           </Dropzone>
                                         </div> }
-          { (label === 'Image URL') && <input type="text" className="form-control" value={placeholder} id={field.name} {...field}/> }
+          { (label === 'Image URL') && <input type="text" className="form-control image" value={placeholder} id={field.name} {...field}/> }
           {field.error && field.touched && <div className="text-danger">{field.error}</div>}
           <div className={styles.flags}>
             {field.dirty && <span className={styles.dirty} title="Dirty">D</span>}
