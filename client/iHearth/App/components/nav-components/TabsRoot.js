@@ -59,7 +59,7 @@ class Tabs extends Component {
         if(data['beacons'].length !==0 ){
           if(data['beacons'][0]['proximity'] === 'far' || data['beacons'][0]['proximity'] === 'near'){
             this._listenBeacon(data['beacons'][0]);
-            this.props.fetchBeaconCoupons(this.user_id, 'UUID3');
+            this.props.fetchBeaconCoupons(this.user_id, 'UUID4');
             Beacons.stopUpdatingLocation(); // doesn't seem like it's working.. but it's okay for now.
           }
         }

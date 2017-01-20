@@ -53,7 +53,7 @@ export default function isValidNewCoupon(req) {
                       "${coupon.end_at}")`;
 
     const UUID = 'UUID4';
-    const coupon_beaconQueryStr = `insert into coupon_beacon (coupon_id, beacon_uuid) values (${coupon.business_id}, "${UUID}")`;
+
 
     db.query(queryCheckerStr, (err, coupon) => {
       if (err) {
@@ -73,14 +73,27 @@ export default function isValidNewCoupon(req) {
             reject(err);
           } else {
 
-            // Also insert new entry into coupon_beacon table
-            db.query(coupon_beaconQueryStr, (err, coupon) => {
+            // Find max id of coupons table to insert into coupon_beacon as coupon_id 
+            var newCouponId;
+            db.query('SELECT MAX(coupon_id) AS coupon_id FROM coupon', (err, res) => {
               if (err) {
-                console.error('Error in connecting to db in coupon_beacon insert query in isValidNewCoupon.js');
+                console.error('Error in connecting to db in coupon_beacon finding max id of coupon table in isValidNewCoupon.js');
                 reject(err);
               } else {
-                console.log('Success! Inserting new coupon into database');
-                return resolve(coupon);
+                console.log('Success! Max coupon_id returned: ', res);
+                newCouponId = res[0].coupon_id;
+
+                // Also insert new entry into coupon_beacon table
+                const coupon_beaconQueryStr = `insert into coupon_beacon (coupon_id, beacon_uuid) values (${newCouponId}, "${UUID}")`;
+                db.query(coupon_beaconQueryStr, (err, coupon) => {
+                  if (err) {
+                    console.error('Error in connecting to db in coupon_beacon insert query in isValidNewCoupon.js');
+                    reject(err);
+                  } else {
+                    console.log('Success! Inserting new coupon into database');
+                    return resolve(coupon);
+                  }
+                })
               }
             })
           }
