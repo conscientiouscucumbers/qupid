@@ -197,7 +197,7 @@ var ExplodingHearts = React.createClass({
     return (
       <View style={styles.container}>
         <TouchableWithoutFeedback onPress={this.explode} style={styles.container}>
-          <View style={{transform: [{scale: .5}]}}>
+          <View style={{transform: [{scale: .65}]}}>
             <Surface width={deviceWidth} height={deviceHeight / 2}>
               <Group x={115} y={100}>
                 <AnimatedShape

@@ -69,7 +69,7 @@ class Tabs extends Component {
 
   render() {
 
-    const icons = ["heartbeat", "qrcode", "cart-arrow-down"];
+    const icons = ["heart", "qrcode", "heartbeat"];
     const tabs = this.props.tabs.map((tab, i) => {
       return (
         <Icon.TabBarItem key={ tab.key }
