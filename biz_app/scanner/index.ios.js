@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import QRCamera from './components/QRCamera';
 import Button from './components/Button';
-import ExplodingHearts from './components/ExplodingHearts';
 import LinearGradient from 'react-native-linear-gradient';
+import ExplodingHearts from './components/ExplodingHearts';
 
 console.disableYellowBox = true;
 
@@ -61,8 +61,8 @@ export default class scanner extends Component {
           </View>
           }
           { this.state.camera && <QRCamera cancelCamera={ this.cancelCamera.bind(this) }/> }
-          <ExplodingHearts />
         </View>
+        { !this.state.camera && <ExplodingHearts /> }
       </LinearGradient>
     );
   }
@@ -70,7 +70,9 @@ export default class scanner extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: deviceHeight * (.30)
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
     // zIndex: 0,
     // backgroundColor: '#F5FCFF',
   },
