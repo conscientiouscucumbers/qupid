@@ -197,9 +197,9 @@ var ExplodingHearts = React.createClass({
     return (
       <View style={styles.container}>
         <TouchableWithoutFeedback onPress={this.explode} style={styles.container}>
-          <View style={{transform: [{scale: .65}]}}>
+          <View style={{transform: [{scale: .60}]}}>
             <Surface width={deviceWidth} height={deviceHeight / 2}>
-              <Group x={115} y={100}>
+              <Group x={100} y={100}>
                 <AnimatedShape
                   d={HEART_SVG}
                   x={heart_x}
@@ -249,8 +249,8 @@ var styles = StyleSheet.create({
   eyes: {
     position: 'absolute',
     transform: [{scale: 0.7}],
-    top: deviceHeight * (.19),
-    left: deviceWidth * (.31),
+    top: deviceHeight * (.20),
+    left: deviceWidth * (.30),
   }
 });
 
