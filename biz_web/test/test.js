@@ -155,15 +155,9 @@ test.describe('Qupid Business Web App', function() {
 
   test.it('can fill out the new coupon form without uploading an image', function*() {
     yield driver.get('https://intense-brook-68129.herokuapp.com');
-<<<<<<< HEAD
     yield driver.wait(until.titleIs('Qupid: Home'), 2000);
     yield driver.get('https://intense-brook-68129.herokuapp.com/login');
     yield driver.wait(until.titleIs('Qupid: Login'), 2000);
-=======
-    yield driver.wait(until.titleIs('Qupid: Home'), 1000);
-    yield driver.get('https://intense-brook-68129.herokuapp.com/login');
-    yield driver.wait(until.titleIs('Qupid: Login'), 1000);
->>>>>>> (test/selenium2) add more selenium tests
     yield driver.findElement(By.className('form-control email')).click();
     yield driver.findElement(By.className('form-control email')).sendKeys(user.email);
     yield driver.findElement(By.className('form-control password')).click();
