@@ -33,7 +33,7 @@ insert into coupon (business_id, qrcode, title, image, item_name, description, o
 values (2, 'Buy 1 Get 1 Free!', 'Buy 1 Get 1 Free!', 'https://storage.googleapis.com/qupid-image/beardpapas.jpg', 'Delicious Cream Puffs', 'Delicious and warms the soul. Get your Beard Papas today!', 5.00, 2.50, 2.50, '2017-01-17 16:00:00', '2017-01-27 21:25:00');
 -- // picture checked
 insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (3, '30% Off Tuition', '30% Off Tuition', 'https://storage.googleapis.com/qupid-image/hackreactorstock1.jpeg', 'JavaScript Skills', 'Reinvent your career in 12 weeks and level up your web dev skills!', 18000, 12600, 5400, '2017-01-15 03:00:00', '2017-02-10 09:00:00');
+values (3, '30% Off Tuition', '30% Off Tuition', 'https://storage.googleapis.com/ihearth-image/hackreactorstock1_resized.jpeg', 'JavaScript Skills', 'Reinvent your career in 12 weeks and level up your web dev skills!', 18000, 12600, 5400, '2017-01-15 03:00:00', '2017-02-10 09:00:00');
 
 -- // coupon: Expired
 -- // picture checked
@@ -43,7 +43,11 @@ values (2, '50% Off Cream Puff', '50% Off Cream Puff', 'https://storage.googleap
 -- // coupon: Used
 -- // picture checked
 insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (3, 'Free Precourse', 'Free Precourse', 'https://storage.googleapis.com/qupid-image/hackreactorstock2.jpeg', 'Free Prep Materials', 'Scared you can’t do recursion? Well get your tail out from between your legs and let’s n-queen it up!', 2500, 0, 2500, '2017-01-15 16:00:00', '2017-01-27 16:00:00');
+values (3, 'Free Precourse', 'Free Precourse', 'https://storage.googleapis.com/ihearth-image/hackreactorstock2_resized.jpeg', 'Free Prep Materials', 'Scared you can’t do recursion? Well get your tail out from between your legs and let’s n-queen it up!', 2500, 0, 2500, '2017-01-15 16:00:00', '2017-01-27 16:00:00');
+
+-- // FOR DEMO
+insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
+values (3, 'Free New Elevator', 'Free New Elevator', 'https://storage.googleapis.com/ihearth-image/elevator_resized.JPG', 'Working Elevator', 'Stair wars? Nah.', 2500, 0, 2500, '2017-01-15 16:00:00', '2017-01-27 16:00:00');
 
 -- WARNING: DO NOT CHANGE THE ORDER OF QUERIES!
 -- // user_coupon
@@ -104,3 +108,4 @@ insert into coupon_beacon (coupon_id, beacon_uuid) values (3, 'UUID2');
 insert into coupon_beacon (coupon_id, beacon_uuid) values (4, 'UUID3');
 insert into coupon_beacon (coupon_id, beacon_uuid) values (5, 'UUID2');
 insert into coupon_beacon (coupon_id, beacon_uuid) values (6, 'UUID3');
+insert into coupon_beacon (coupon_id, beacon_uuid) values (7, 'UUID4');
