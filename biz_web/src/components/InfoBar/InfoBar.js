@@ -18,7 +18,7 @@ export default class InfoBar extends Component {
     return (
       <div className={styles.infoBar + ' well'}>
         <div className="container">
-          Cupid
+          Qupid
           {' '}
           <strong>{info ? info.message : 'no info!'}</strong>
           <span className={styles.time}>{info && new Date(info.time).toString()}</span>

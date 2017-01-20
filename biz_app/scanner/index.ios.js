@@ -54,7 +54,7 @@ export default class scanner extends Component {
           </View>
           :
           <View>
-            <Text style={styles.title}>Cupid</Text>
+            <Text style={styles.title}>Qupid</Text>
             <Text style={styles.text}>QR Code Scanner</Text>
             <Button label="Camera" raised={true} onPress={ () => this.activateCamera() }/>
           </View>

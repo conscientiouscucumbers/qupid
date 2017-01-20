@@ -14,7 +14,7 @@ export default class MyCouponsNavPanel extends Component {
     return (
       <div className={ styles.navPanel + ' container' }>
         <section>
-          <Helmet title="MyCouponsNavPanel"/>
+          <Helmet title="My Coupons"/>
           <button className="btn btn-success createCoupon" onClick={this.handleSubmit}><i className="fa fa-sign-in"/>{' '}Create New Coupon
           </button>
         </section>
