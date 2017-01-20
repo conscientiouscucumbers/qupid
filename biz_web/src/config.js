@@ -15,17 +15,17 @@ module.exports = Object.assign({
   apiHost: process.env.APIHOST || 'localhost',
   apiPort: process.env.APIPORT,
   app: {
-    title: 'Cupid',
+    title: 'Qupid',
     description: 'Connect Store Coupons using iBeacon Technology',
     head: {
-      titleTemplate: 'Cupid: %s',
+      titleTemplate: 'Qupid: %s',
       meta: [
         {name: 'description', content: 'Connect Store Coupons using iBeacon Technology'},
         {charset: 'utf-8'},
-        {property: 'og:site_name', content: 'Cupid'},
+        {property: 'og:site_name', content: 'Qupid'},
         {property: 'og:image', content: 'https://react-redux.herokuapp.com/logo.jpg'},
         {property: 'og:locale', content: 'en_US'},
-        {property: 'og:title', content: 'Cupid'},
+        {property: 'og:title', content: 'Qupid'},
         {property: 'og:description', content: 'Connect Store Coupons using iBeacon Technology'},
         {property: 'og:card', content: 'summary'},
         {property: 'og:site', content: '@erikras'},

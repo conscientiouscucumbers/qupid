@@ -56,7 +56,7 @@ export default class LoginView extends Component {
     return (
       <LinearGradient colors={['#FAF1D6', '#FF9D81']} style={styles.linearGradient}>
         <View style={styles.gradient}>
-          <Text style={styles.title}>Cupid</Text>
+          <Text style={styles.title}>Qupid</Text>
             <List style={{ marginTop: 20, marginBottom: 20 }}>
               <Kaede
                 label={'Email'}

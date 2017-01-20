@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import signupValidation from './signupValidation';
 import * as signupActions from 'redux/modules/signup';
+import * as authActions from 'redux/modules/auth';
 
 function asyncValidate(data, dispatch, {isValidEmail}) {
   console.log('CALLING ASYNC VALIDATE....', data, dispatch, {isValidEmail} );
@@ -12,9 +13,10 @@ function asyncValidate(data, dispatch, {isValidEmail}) {
   }
   return isValidEmail(data);
 }
-@connect(() => ({}),
+@connect(state => ({user: state.auth.user}), authActions,
   dispatch => bindActionCreators(signupActions, dispatch)
 )
+
 @reduxForm({
   form: 'signup',
   fields: ['company_name', 'email', 'password', 'address', 'city', 'state', 'zipcode'],
@@ -24,7 +26,13 @@ function asyncValidate(data, dispatch, {isValidEmail}) {
 })
 export default
 class SignupForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { signedUp: false, company_name: '' };
+  }
+
   static propTypes = {
+    user: PropTypes.object,
     active: PropTypes.string,
     asyncValidating: PropTypes.bool.isRequired,
     fields: PropTypes.object.isRequired,
@@ -36,8 +44,14 @@ class SignupForm extends Component {
     valid: PropTypes.bool.isRequired
   }
 
+  signUp(event) {
+    event.preventDefault();
+    this.setState({ signedUp: true, company_name: this.props.values.company_name });
+  }
+
   render() {
     const {
+      user,
       asyncValidating,
       dirty,
       fields: {company_name, email, password, address, city, state, zipcode},
@@ -54,13 +68,13 @@ class SignupForm extends Component {
         <label htmlFor={field.name} className="col-sm-2">{label}</label>
         <div className={'col-sm-8 ' + styles.inputGroup}>
           {showAsyncValidating && asyncValidating && <i className={'fa fa-cog fa-spin ' + styles.cog}/>}
-          { (label === 'Company Name') && <input type="text" ref="company_name" className="form-control" id={field.name} {...field}/> }
-          { (label === 'Email') && <input type="email" ref="email" className="form-control" id={field.name} {...field}/> }
-          { (label === 'Password') && <input type="password" ref="password" className="form-control" id={field.name} {...field}/> }
-          { (label === 'Address') && <input type="text" ref="text" className="form-control" id={field.name} {...field}/> }
-          { (label === 'City') && <input type="text" ref="text" className="form-control" id={field.name} {...field}/> }
-          { (label === 'State') && <input type="text" ref="text" className="form-control" id={field.name} {...field}/> }
-          { (label === 'Zip Code') && <input type="text" ref="number" className="form-control" id={field.name} {...field}/> }
+          { (label === 'Company Name') && <input type="text" ref="company_name" className="form-control company_name" id={field.name} {...field}/> }
+          { (label === 'Email') && <input type="email" ref="email" className="form-control email" id={field.name} {...field}/> }
+          { (label === 'Password') && <input type="password" ref="password" className="form-control password" id={field.name} {...field}/> }
+          { (label === 'Address') && <input type="text" ref="text" className="form-control address" id={field.name} {...field}/> }
+          { (label === 'City') && <input type="text" ref="text" className="form-control city" id={field.name} {...field}/> }
+          { (label === 'State') && <input type="text" ref="text" className="form-control state" id={field.name} {...field}/> }
+          { (label === 'Zip Code') && <input type="text" ref="number" className="form-control zip" id={field.name} {...field}/> }
           {field.error && field.touched && <div className="text-danger">{field.error}</div>}
           <div className={styles.flags}>
             {field.dirty && <span className={styles.dirty} title="Dirty">D</span>}
@@ -83,7 +97,7 @@ class SignupForm extends Component {
           {renderInput(zipcode, 'Zip Code')}
           <div className="form-group">
             <div className="col-sm-offset-2 col-sm-10">
-              <button className="btn btn-success" onClick={handleSubmit}>
+              <button className="btn btn-success" onClick={this.signUp.bind(this)}>
                 <i className="fa fa-paper-plane"/> Submit
               </button>
               <button className="btn btn-danger" onClick={resetForm} style={{marginLeft: 15}}>
@@ -92,7 +106,15 @@ class SignupForm extends Component {
             </div>
           </div>
         </form>
-      </div>
+        {this.state.signedUp ?
+          <div className="signup-success">
+            <p>Congratulations, you have created a new account as {this.state.company_name}.</p>
+          </div>
+          :
+          <div>
+          </div>
+        }
+    </div>
     );
   }
 }
