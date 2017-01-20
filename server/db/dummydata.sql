@@ -94,7 +94,13 @@ values (2, 'UUID2', 'Sweets');
 insert into beacon (business_id, beacon_uuid, section)
 values (3, 'UUID3', 'JavaScript');
 
+insert into beacon (business_id, beacon_uuid, section)
+values (3, 'UUID4', 'Demo');
+
 -- // coupon_beacon
 insert into coupon_beacon (coupon_id, beacon_uuid) values (1, 'UUID1');
-insert into coupon_beacon (coupon_id, beacon_uuid) values (2, 'UUID2');
-insert into coupon_beacon (coupon_id, beacon_uuid) values (3, 'UUID3');
+insert into coupon_beacon (coupon_id, beacon_uuid) values (2, 'UUID1');
+insert into coupon_beacon (coupon_id, beacon_uuid) values (3, 'UUID2');
+insert into coupon_beacon (coupon_id, beacon_uuid) values (4, 'UUID3');
+insert into coupon_beacon (coupon_id, beacon_uuid) values (5, 'UUID2');
+insert into coupon_beacon (coupon_id, beacon_uuid) values (6, 'UUID3');

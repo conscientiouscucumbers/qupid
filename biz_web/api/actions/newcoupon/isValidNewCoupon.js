@@ -52,6 +52,9 @@ export default function isValidNewCoupon(req) {
                       "${coupon.start_at}",
                       "${coupon.end_at}")`;
 
+    const UUID = 'UUID4';
+    const coupon_beaconQueryStr = `insert into coupon_beacon (coupon_id, beacon_uuid) values (${coupon.business_id}, "${UUID}")`;
+
     db.query(queryCheckerStr, (err, coupon) => {
       if (err) {
         console.error('Error in connecting to db in check query in isValidNewCoupon.js');
@@ -69,8 +72,17 @@ export default function isValidNewCoupon(req) {
             console.error('Error in connecting to db in insert query in isValidNewCoupon.js');
             reject(err);
           } else {
-            console.log('Success! Inserting new coupon into database');
-            return resolve(coupon);
+
+            // Also insert new entry into coupon_beacon table
+            db.query(coupon_beaconQueryStr, (err, coupon) => {
+              if (err) {
+                console.error('Error in connecting to db in coupon_beacon insert query in isValidNewCoupon.js');
+                reject(err);
+              } else {
+                console.log('Success! Inserting new coupon into database');
+                return resolve(coupon);
+              }
+            })
           }
         });
       }
