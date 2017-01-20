@@ -41,6 +41,8 @@ app.put('/business/:user_qrcode', (req, res) => {
   })
 });
 
+app.get('/', (req, res) => res.send("Hello, you've reached the scanner server!"));
+
   // socket.removeAllListeners();
   // Attach business routes
   // app.use('/business', businessRouter);
