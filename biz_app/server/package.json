@@ -1,0 +1,27 @@
+{
+  "name": "Biz-App-Server",
+  "version": "0.0.1",
+  "engines": {
+    "node": "6.1.0"
+  },
+  "private": true,
+  "scripts": {
+    "test": "mocha -t 10000 biz_web/test/test.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.7",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "~1.4.3",
+    "express": "^4.14.0",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "morgan": "^1.7.0",
+    "mysql": "^2.12.0",
+    "path": "^0.12.7",
+    "socket.io": "^1.7.2",
+    "url": "^0.11.0",
+    "ws": "^1.1.1"
+  },
+  "devDependencies": {}
+}

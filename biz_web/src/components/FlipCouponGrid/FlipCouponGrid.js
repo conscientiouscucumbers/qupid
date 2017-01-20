@@ -12,11 +12,11 @@ const styles = {
     fontWeight: '400',
     top: '10%',
     padding: '10px 5px 0 5px',
+    overflow: 'hidden',
+    height: 220
   },
  image: {
-   width: 'auto',
-   height: 220,
-   overflow: 'hidden'
+   width: 275,
   }
 };
 
