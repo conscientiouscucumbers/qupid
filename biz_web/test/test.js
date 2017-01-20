@@ -52,7 +52,7 @@ test.describe('Qupid Business Web App', function() {
   //   return driver.get('http://www.google.com')
   //       .then(_ => driver.findElement(By.name('q')).sendKeys('webdriver'))
   //       .then(_ => driver.findElement(By.name('btnG')).click())
-  //       .then(_ => driver.wait(until.titleIs('webdriver - Google Search'), 1000));
+  //       .then(_ => driver.wait(until.titleIs('webdriver - Google Search'), 2000));
   // });
 
   // Or you can define the test as a generator function. The test will wait for
@@ -62,18 +62,18 @@ test.describe('Qupid Business Web App', function() {
   //   yield driver.get('http://www.google.com/ncr');
   //   yield driver.findElement(By.name('q')).sendKeys('webdriver');
   //   yield driver.findElement(By.name('btnG')).click();
-  //   yield driver.wait(until.titleIs('webdriver - Google Search'), 1000);
+  //   yield driver.wait(until.titleIs('webdriver - Google Search'), 2000);
   // });
 
   test.it('can reach the home page', function*() {
     yield driver.get('https://intense-brook-68129.herokuapp.com');
-    yield driver.wait(until.titleIs('Qupid: Home'), 1000);
+    yield driver.wait(until.titleIs('Qupid: Home'), 2000);
     yield driver.findElement(By.tagName('a'));
   });
 
   test.it('can reach the login page and login as an existing user', function*() {
     yield driver.get('https://intense-brook-68129.herokuapp.com');
-    yield driver.wait(until.titleIs('Qupid: Home'), 1000);
+    yield driver.wait(until.titleIs('Qupid: Home'), 2000);
     yield driver.get('https://intense-brook-68129.herokuapp.com/login');
     yield driver.wait(until.titleIs('Qupid: Login'), 2000);
     yield driver.findElement(By.className('form-control email')).click();
@@ -87,7 +87,7 @@ test.describe('Qupid Business Web App', function() {
 
   test.it('can reach the signup page and create a new account', function*() {
     yield driver.get('https://intense-brook-68129.herokuapp.com');
-    yield driver.wait(until.titleIs('Qupid: Home'), 1000);
+    yield driver.wait(until.titleIs('Qupid: Home'), 2000);
     yield driver.findElement(By.className("signup-link")).click();
     yield driver.wait(until.titleIs('Qupid: Signup'), 2000);
     yield driver.findElement(By.className('form-control company_name')).click();
@@ -111,9 +111,9 @@ test.describe('Qupid Business Web App', function() {
 
   test.it('can go back and forth between "my coupons" and "new coupon" pages', function*() {
     yield driver.get('https://intense-brook-68129.herokuapp.com');
-    yield driver.wait(until.titleIs('Qupid: Home'), 1000);
+    yield driver.wait(until.titleIs('Qupid: Home'), 2000);
     yield driver.get('https://intense-brook-68129.herokuapp.com/login');
-    yield driver.wait(until.titleIs('Qupid: Login'), 1000);
+    yield driver.wait(until.titleIs('Qupid: Login'), 2000);
     yield driver.findElement(By.className('form-control email')).click();
     yield driver.findElement(By.className('form-control email')).sendKeys(user.email);
     yield driver.findElement(By.className('form-control password')).click();
@@ -139,9 +139,9 @@ test.describe('Qupid Business Web App', function() {
 
   test.it('can reach the "meet the team" page and click to show example screens of the user mobile app', function*() {
     yield driver.get('https://intense-brook-68129.herokuapp.com');
-    yield driver.wait(until.titleIs('Qupid: Home'), 1000);
+    yield driver.wait(until.titleIs('Qupid: Home'), 2000);
     yield driver.get('https://intense-brook-68129.herokuapp.com/login');
-    yield driver.wait(until.titleIs('Qupid: Login'), 1000);
+    yield driver.wait(until.titleIs('Qupid: Login'), 2000);
     yield driver.findElement(By.className('form-control email')).click();
     yield driver.findElement(By.className('form-control email')).sendKeys(user.email);
     yield driver.findElement(By.className('form-control password')).click();
@@ -155,9 +155,9 @@ test.describe('Qupid Business Web App', function() {
 
   test.it('can fill out the new coupon form without uploading an image', function*() {
     yield driver.get('https://intense-brook-68129.herokuapp.com');
-    yield driver.wait(until.titleIs('Qupid: Home'), 1000);
+    yield driver.wait(until.titleIs('Qupid: Home'), 2000);
     yield driver.get('https://intense-brook-68129.herokuapp.com/login');
-    yield driver.wait(until.titleIs('Qupid: Login'), 1000);
+    yield driver.wait(until.titleIs('Qupid: Login'), 2000);
     yield driver.findElement(By.className('form-control email')).click();
     yield driver.findElement(By.className('form-control email')).sendKeys(user.email);
     yield driver.findElement(By.className('form-control password')).click();
