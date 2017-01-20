@@ -66,7 +66,7 @@ export default class About extends Component {
             </tr>
           </tbody>
         </table>}
-        {showCoupon && <p className={styles.footer}>Qupid gives retailers the ability to create and distribute customized coupons with in-store customers</p>}
+        {showCoupon && <p id="summary" className={styles.footer}>Qupid gives retailers the ability to create and distribute customized coupons with in-store customers</p>}
 
       </div>
     );
