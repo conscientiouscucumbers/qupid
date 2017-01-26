@@ -24,19 +24,19 @@ export default class Home extends Component {
             <h2>{config.app.description}</h2>
 
             <p>
-              <a className={styles.github} href="https://github.com/conscientiouscucumbers/iHearth"
+              <a className={styles.github} href="https://github.com/conscientiouscucumbers/qupid"
                  target="_blank">
                 <i className="fa fa-github"/> View on Github
               </a>
             </p>
             <GithubButton user="conscientiouscucumbers"
-                          repo="iHearth"
+                          repo="qupid"
                           type="star"
                           width={160}
                           height={30}
                           count large/>
             <GithubButton user="conscientiouscucumbers"
-                          repo="iHearth"
+                          repo="qupid"
                           type="fork"
                           width={160}
                           height={30}

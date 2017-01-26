@@ -20,12 +20,12 @@ Currently, there is a disconnect between customer traffic and the number of onli
 1. [Contributing](#contributing)
 
 ## Usage
-### Users 
+### Users
 - Create a user account
-- Estimote beacons are constantly emitting low energy bluetooth signals which ios devices can pick up, coupons are automatically sent to users via push notifications when they are within close proximity of an Estimote beacon 
+- Estimote beacons are constantly emitting low energy bluetooth signals which ios devices can pick up, coupons are automatically sent to users via push notifications when they are within close proximity of an Estimote beacon
 - Users can browse through coupons and sort by time left, date, savings, used, expired, activated, store, etc.
 - When users select a coupon to use, the app will generate a unique QR code which can be scanned at checkout
-  
+
 ### Business Owners  
 - Create a business owner account
 - Business owners can register Estimote beacons that are placed in various areas/sections in their stores
