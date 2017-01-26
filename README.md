@@ -1,7 +1,7 @@
-# **qupid**
+# **Qupid**
 
-  **qupid**:  
-Currently, there is a disconnect between customer traffic and the number of online reviews. qupid provides a dynamic business-to-client store management system using the iBeacon technology platform to drive consumer traffic while cultivating in-depth client reviews. Users receive real-time coupons when they are in the vicinity of the qupid. In turn, business owners are provided data-driven statistics for consumer trends and given the opportunity to collect online reviews.
+  **Qupid**:  
+Currently, there is a disconnect between customer traffic and the number of online reviews. Qupid provides a dynamic business-to-client store management system using the iBeacon technology platform to drive consumer traffic while cultivating in-depth client reviews. Users receive real-time coupons when they are in the vicinity of the iHearth. In turn, business owners are provided data-driven statistics for consumer trends and given the opportunity to collect online reviews.
 
 ## Team
 
@@ -20,12 +20,12 @@ Currently, there is a disconnect between customer traffic and the number of onli
 1. [Contributing](#contributing)
 
 ## Usage
-### Users 
+### Users
 - Create a user account
-- Estimote beacons are constantly emitting low energy bluetooth signals which ios devices can pick up, coupons are automatically sent to users via push notifications when they are within close proximity of an Estimote beacon 
+- Estimote beacons are constantly emitting low energy bluetooth signals which ios devices can pick up, coupons are automatically sent to users via push notifications when they are within close proximity of an Estimote beacon
 - Users can browse through coupons and sort by time left, date, savings, used, expired, activated, store, etc.
 - When users select a coupon to use, the app will generate a unique QR code which can be scanned at checkout
-  
+
 ### Business Owners  
 - Create a business owner account
 - Business owners can register Estimote beacons that are placed in various areas/sections in their stores
