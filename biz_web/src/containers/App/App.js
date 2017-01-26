@@ -106,7 +106,7 @@ export default class App extends Component {
             </Nav>
             <Nav navbar pullRight>
             <NavItem eventKey={1} target="_blank" title="Schedule a Demo" onClick={this.handleDemo}>Schedule a Demo</NavItem>
-              <NavItem eventKey={2} target="_blank" title="View on Github" href="https://github.com/conscientiouscucumbers/iHearth">
+              <NavItem eventKey={2} target="_blank" title="View on Github" href="https://github.com/conscientiouscucumbers/qupid">
                 <i className="fa fa-github"/>
               </NavItem>
             </Nav>

@@ -70,7 +70,7 @@ export default class NewCouponForm extends Component {
   }
 
   // Takes acceptedFiles and passes image url in the form of
-  // "https://storage.googleapis.com/ihearth-image/Screen%20Shot%202017-01-17%20at%204.59.37%20PM.png"
+  // "https://storage.googleapis.com/qupid-image/Screen%20Shot%202017-01-17%20at%204.59.37%20PM.png"
   getPhotoURL(acceptedFiles, callback) {
 
     const imgBody = new FormData();
