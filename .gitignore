@@ -2,7 +2,7 @@ node_modules/
 bower_components/
 qupid.xcodeproj/
 *.log
-*.DS_Store
+**/*.DS_Store
 
 build/
 dist/

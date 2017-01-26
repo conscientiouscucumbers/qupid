@@ -45,9 +45,10 @@ values (2, '50% Off Cream Puff', '50% Off Cream Puff', 'https://storage.googleap
 insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
 values (3, 'Free Precourse', 'Free Precourse', 'https://storage.googleapis.com/ihearth-image/hackreactorstock2_resized.jpeg', 'Free Prep Materials', 'Scared you can’t do recursion? Well get your tail out from between your legs and let’s n-queen it up!', 2500, 0, 2500, '2017-01-15 16:00:00', '2017-01-27 16:00:00');
 
--- // FOR DEMO
-insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (3, 'Free New Elevator', 'Free New Elevator', 'https://storage.googleapis.com/ihearth-image/elevator_resized.JPG', 'Working Elevator', 'Stair wars? Nah.', 2500, 0, 2500, '2017-01-15 16:00:00', '2017-01-27 16:00:00');
+-- // FOR DEMO RECORDING...comment out for live ///////////////////////////////////////////////////////////////
+-- insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
+-- values (3, 'Free New Elevator', 'Free New Elevator', 'https://storage.googleapis.com/ihearth-image/elevator_resized.JPG', 'Working Elevator', 'Stair wars? Nah.', 2500, 0, 2500, '2017-01-15 16:00:00', '2017-01-27 16:00:00');
+-- ///////////////////////////////////////////////////////////////////////////
 
 -- WARNING: DO NOT CHANGE THE ORDER OF QUERIES!
 -- // user_coupon
@@ -108,4 +109,7 @@ insert into coupon_beacon (coupon_id, beacon_uuid) values (3, 'UUID2');
 insert into coupon_beacon (coupon_id, beacon_uuid) values (4, 'UUID3');
 insert into coupon_beacon (coupon_id, beacon_uuid) values (5, 'UUID2');
 insert into coupon_beacon (coupon_id, beacon_uuid) values (6, 'UUID3');
-insert into coupon_beacon (coupon_id, beacon_uuid) values (7, 'UUID4');
+
+-- // FOR DEMO ///////////////////////////////////////////////////////////////
+-- insert into coupon_beacon (coupon_id, beacon_uuid) values (7, 'UUID4');
+-- ///////////////////////////////////////////////////////////////////////////
