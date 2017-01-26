@@ -1,7 +1,7 @@
-# **qupid**
+# **Qupid**
 
-  **qupid**:  
-Currently, there is a disconnect between customer traffic and the number of online reviews. qupid provides a dynamic business-to-client store management system using the iBeacon technology platform to drive consumer traffic while cultivating in-depth client reviews. Users receive real-time coupons when they are in the vicinity of the qupid. In turn, business owners are provided data-driven statistics for consumer trends and given the opportunity to collect online reviews.
+  **Qupid**:  
+Currently, there is a disconnect between customer traffic and the number of online reviews. Qupid provides a dynamic business-to-client store management system using the iBeacon technology platform to drive consumer traffic while cultivating in-depth client reviews. Users receive real-time coupons when they are in the vicinity of the iHearth. In turn, business owners are provided data-driven statistics for consumer trends and given the opportunity to collect online reviews.
 
 ## Team
 
@@ -45,7 +45,7 @@ Currently, there is a disconnect between customer traffic and the number of onli
 
 ### Installing Dependencies
 
-From within the /client/qupid directory:
+From within the /client/iHearth directory:
 
 ```sh
 npm install
