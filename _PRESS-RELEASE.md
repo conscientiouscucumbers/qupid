@@ -18,15 +18,15 @@ Once the project moves into development, the press release can be used as a touc
 
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
-  iHearth
+  qupid
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
-  iHearth gives retailers the ability to connect with in-store customers with just a click of a button
+  qupid gives retailers the ability to connect with in-store customers with just a click of a button
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
-  Coupons and great deals get washed out by the noise of everyday life. Instead of alerting your customers of deals in the local paper where the potential transaction is 4-5 hours away. iHearth gives the customer a notification of the coupon when it is most pertinent for them... In the store, making the decision.
+  Coupons and great deals get washed out by the noise of everyday life. Instead of alerting your customers of deals in the local paper where the potential transaction is 4-5 hours away. qupid gives the customer a notification of the coupon when it is most pertinent for them... In the store, making the decision.
 
 ## Problem ##
   > Describe the problem your product solves.
@@ -39,19 +39,19 @@ Once the project moves into development, the press release can be used as a touc
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
-  "iHearth started as an idea, but soon we realized we taped into the hearts of all fellow americans looking to save some money during the holiday break!"
+  "qupid started as an idea, but soon we realized we taped into the hearts of all fellow americans looking to save some money during the holiday break!"
 
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
-  -Download iHearth
+  -Download qupid
   -Business Owner registers the store and place the iBeacons in hot locations based on products, while leaving one iBeacon by the cash register for the survey.
   -Inform your customers walking into the store of the new technology currently being used.
 
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
-  "iHearth saved me $98.88 in Christmas Shopping this year! I was able to collect all my coupons thorughout the stores by just walking around!"
+  "qupid saved me $98.88 in Christmas Shopping this year! I was able to collect all my coupons thorughout the stores by just walking around!"
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.

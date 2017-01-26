@@ -1,6 +1,6 @@
-drop database if exists ihearth;
-create database ihearth;
-use ihearth;
+drop database if exists qupid;
+create database qupid;
+use qupid;
 
 create table user (
   user_id int not null auto_increment,

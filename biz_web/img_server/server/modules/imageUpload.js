@@ -3,11 +3,11 @@ const storage = require('@google-cloud/storage');
 const fs = require('fs')
 
 const gcs = storage({
-  projectId: 'ihearth-154622',
+  projectId: 'qupid-154622',
   keyFilename: __dirname + '/config.json'
 });
 
-const bucketName = 'ihearth-image'
+const bucketName = 'qupid-image'
 const bucket = gcs.bucket(bucketName);
 
 function getPublicUrl(filename) {
