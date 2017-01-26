@@ -1,7 +1,7 @@
-# **iHearth**
+# **Qupid**
 
-  **iHearth**:  
-Currently, there is a disconnect between customer traffic and the number of online reviews. iHearth provides a dynamic business-to-client store management system using the iBeacon technology platform to drive consumer traffic while cultivating in-depth client reviews. Users receive real-time coupons when they are in the vicinity of the iHearth. In turn, business owners are provided data-driven statistics for consumer trends and given the opportunity to collect online reviews.
+  **Qupid**:  
+Currently, there is a disconnect between customer traffic and the number of online reviews. Qupid provides a dynamic business-to-client store management system using the iBeacon technology platform to drive consumer traffic while cultivating in-depth client reviews. Users receive real-time coupons when they are in the vicinity of the iHearth. In turn, business owners are provided data-driven statistics for consumer trends and given the opportunity to collect online reviews.
 
 ## Team
 
@@ -61,7 +61,7 @@ nodemon index.js
 
 ### Roadmap
 
-View our project roadmap [Github](https://github.com/conscientiouscucumbers/iHearth/issues) or [Waffle](https://waffle.io/conscientiouscucumbers/iHearth)
+View our project roadmap [Github](https://github.com/conscientiouscucumbers/qupid/issues) or [Waffle](https://waffle.io/conscientiouscucumbers/qupid)
 
 
 ## Contributing
