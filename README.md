@@ -45,7 +45,7 @@ Currently, there is a disconnect between customer traffic and the number of onli
 
 ### Installing Dependencies
 
-From within the /client/qupid directory:
+From within the /client/iHearth directory:
 
 ```sh
 npm install
