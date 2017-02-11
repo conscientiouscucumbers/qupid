@@ -20,7 +20,6 @@ class QRCamera extends Component {
   }
 
   useCoupon(user_qrcode) {
-    console.log('USING COUPON NOW...', URL + `business/${user_qrcode}`);
     var request = new Request(URL + `business/${user_qrcode}`, {
       method: 'PUT',
       headers: new Headers({
@@ -31,7 +30,6 @@ class QRCamera extends Component {
     return fetch(request)
       .then(response => response.json())
       .then(json => {
-          console.log('SUCCESS: Successfully updated user_coupon tables:', json);
           this.props.cancelCamera();
         })
       .catch((err) => {

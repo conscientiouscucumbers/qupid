@@ -86,7 +86,6 @@ export default class NewCouponForm extends Component {
     })
     .then((res) => res.json())
     .then((results) => {
-      console.log('RESPONSE FROM IMG SERVER>..', results);
       callback(results.imageUrl);
     })
     .catch((err) => {
@@ -102,7 +101,6 @@ export default class NewCouponForm extends Component {
       files: acceptedFiles
     }, () => {
       this.getPhotoURL(acceptedFiles, (url) => {
-        console.log('URL GOING INTO FIELD...', url);
         this.props.handleInitialize('newCoupon', {
           title: this.props.fields.title.value,
           image: url,
@@ -120,7 +118,6 @@ export default class NewCouponForm extends Component {
 
   // Called on submit for UI rendering purposes
   clearState() {
-    console.log('INITIALIZING LOCAL STATE')
     this.setState({
       files: []
     });
@@ -189,7 +186,6 @@ export default class NewCouponForm extends Component {
           </div>
         </div>
       </div>;
-    console.log('IMAGE PROP..', image);
     return (
       <div className="container">
         <form className="form-horizontal" onSubmit={handleSubmit}>

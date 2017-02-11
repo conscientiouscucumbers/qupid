@@ -35,7 +35,6 @@ export default class NewCoupon extends Component {
 
   handleInitialize = () => {
     const {user} = this.props;
-    console.log('USER HERE...', user);
     this.props.initialize('newCoupon', {
       title: '',
       image: '',
