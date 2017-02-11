@@ -14,7 +14,6 @@ export default function reducer(state = initialState, action = {}) {
         loading: true
       };
     case FETCH_SUCCESS:
-      console.log('FETCH SUCCESS.....', action);
       return {
         ...state,
         loading: false,

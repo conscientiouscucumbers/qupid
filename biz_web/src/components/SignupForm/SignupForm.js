@@ -7,14 +7,13 @@ import * as signupActions from 'redux/modules/signup';
 import * as authActions from 'redux/modules/auth';
 
 function asyncValidate(data, dispatch, {isValidEmail}) {
-  console.log('CALLING ASYNC VALIDATE....', data, dispatch, {isValidEmail} );
   if (!data.email) {
     return Promise.resolve({});
   }
   return isValidEmail(data);
 }
-@connect(state => ({user: state.auth.user}), authActions,
-  dispatch => bindActionCreators(signupActions, dispatch)
+@connect(state => ({user: state.auth.user}), signupActions//authActions,
+  // dispatch => bindActionCreators(signupActions, dispatch)
 )
 
 @reduxForm({
@@ -64,7 +63,7 @@ class SignupForm extends Component {
       } = this.props;
     const styles = require('./SignupForm.scss');
     const renderInput = (field, label, showAsyncValidating) =>
-      <div className={'form-group' + (field.error && field.touched ? ' has-error' : '')}>
+      <div className={'form-group' + (field.error && field.touched ? '' : '')}>
         <label htmlFor={field.name} className="col-sm-2">{label}</label>
         <div className={'col-sm-8 ' + styles.inputGroup}>
           {showAsyncValidating && asyncValidating && <i className={'fa fa-cog fa-spin ' + styles.cog}/>}
@@ -75,7 +74,7 @@ class SignupForm extends Component {
           { (label === 'City') && <input type="text" ref="text" className="form-control city" id={field.name} {...field}/> }
           { (label === 'State') && <input type="text" ref="text" className="form-control state" id={field.name} {...field}/> }
           { (label === 'Zip Code') && <input type="text" ref="number" className="form-control zip" id={field.name} {...field}/> }
-          {field.error && field.touched && <div className="text-danger">{field.error}</div>}
+          {/*field.error && field.touched && <div className="text-danger">{field.error}</div>*/}
           <div className={styles.flags}>
             {field.dirty && <span className={styles.dirty} title="Dirty">D</span>}
             {field.active && <span className={styles.active} title="Active">A</span>}
