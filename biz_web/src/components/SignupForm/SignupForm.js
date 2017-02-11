@@ -7,14 +7,13 @@ import * as signupActions from 'redux/modules/signup';
 import * as authActions from 'redux/modules/auth';
 
 function asyncValidate(data, dispatch, {isValidEmail}) {
-  console.log('CALLING ASYNC VALIDATE....', data, dispatch, {isValidEmail} );
   if (!data.email) {
     return Promise.resolve({});
   }
   return isValidEmail(data);
 }
-@connect(state => ({user: state.auth.user}), authActions,
-  dispatch => bindActionCreators(signupActions, dispatch)
+@connect(state => ({user: state.auth.user}), signupActions//authActions,
+  // dispatch => bindActionCreators(signupActions, dispatch)
 )
 
 @reduxForm({

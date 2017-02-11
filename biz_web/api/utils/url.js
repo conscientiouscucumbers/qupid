@@ -6,7 +6,6 @@ export function mapUrl(availableActions = {}, url = []) {
     return notFound;
   }
 
-  console.log('AVAILABLE ACTIONS....', url, availableActions);
   // url = ['newcoupon', isValidNewCoupon]
   // availableActions = { loadInfo: }
 
