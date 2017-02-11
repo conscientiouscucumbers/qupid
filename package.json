@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "test": "mocha -t 10000 biz_web/test/test.js",
-    "start": "node server/index.js"
+    "start": "node user_app/server/index.js"
   },
   "dependencies": {
     "@google-cloud/storage": "^0.6.1",

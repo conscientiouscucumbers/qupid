@@ -1,16 +1,15 @@
 # **Qupid**
+Qupid is an IoT-based mobile marketing platform that rethinks the way businesses interact with consumers and reinvigorates the in-store purchasing experience.
 
-  **Qupid**:  
-Currently, there is a disconnect between customer traffic and the number of online reviews. Qupid provides a dynamic business-to-client store management system using the iBeacon technology platform to drive consumer traffic while cultivating in-depth client reviews. Users receive real-time coupons when they are in the vicinity of the iHearth. In turn, business owners are provided data-driven statistics for consumer trends and given the opportunity to collect online reviews.
+Qupid integrates iBeacon technology with an iOS native app and web app to provide a B2C solution that distributes advertisements/coupons to shoppers in real-time, based on their vicinity to the beacons. Business owners are provided data-driven statistics regarding consumer trends while bargain-hunters are rewarded with curated coupons by their favorite brick-and-mortar stores.
 
 ## Team
-
-  - Product Owner: Blake Fleck
-  - Scrum Master: James Gu
-  - Development Team Members: Susan Hong, Joshua Peng
+  - [Blake Fleck](https://github.com/blakeFleck)
+  - [James Gu](https://github.com/james-gu)
+  - [Susan Hong](https://github.com/keepthemonochrome)
+  - [Joshua Peng](https://github.com/pengjoshua)
 
 ## Table of Contents
-
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
 1. [Development](#development)
@@ -21,6 +20,11 @@ Currently, there is a disconnect between customer traffic and the number of onli
 
 ## Usage
 ### Users
+Install iOS app from 
+```sh
+
+```
+
 - Create a user account
 - Estimote beacons are constantly emitting low energy bluetooth signals which ios devices can pick up, coupons are automatically sent to users via push notifications when they are within close proximity of an Estimote beacon
 - Users can browse through coupons and sort by time left, date, savings, used, expired, activated, store, etc.
