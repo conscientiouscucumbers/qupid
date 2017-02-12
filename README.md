@@ -27,12 +27,14 @@ Check it out at: http://www.qupid.biz/ !
   - [Joshua Peng](https://github.com/pengjoshua)
 
 ## Table of Contents
-1. [Usage](#Usage)
+1. [Usage](#usage)
+  1. [Consumers](#consumers)
+  1. [Business Owners](#business-owners)  
 1. [Technologies](#technologies)
-1. [Development](#development)
-  1. [Requirements](#requirements)
-  1. [Installing Dependencies](#installing-dependencies)
-1. [Team](#team)
+1. [Requirements](#requirements)
+1. [Installing Dependencies](#installing-dependencies)
+  1. [User iOS App](#user-ios-app)
+  1. [Business iOS Scanner App](#business-ios-scanner-app)  
 1. [Contributing](#contributing)
 
 ## Usage
