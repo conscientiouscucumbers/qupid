@@ -1,7 +1,24 @@
 # **Qupid**
 Qupid is an IoT-based mobile marketing platform that rethinks the way businesses interact with consumers and reinvigorates the in-store purchasing experience.
 
-Qupid integrates iBeacon technology with an iOS native app and web app to provide a B2C solution that distributes advertisements/coupons to shoppers in real-time, based on their vicinity to the beacons. Business owners are provided data-driven statistics regarding consumer trends while bargain-hunters are rewarded with curated coupons by their favorite brick-and-mortar stores.
+![](./doc/overview.png)
+
+Qupid integrates iBeacon technology with an iOS native app and web app to provide a B2C solution that distributes advertisements/coupons to shoppers in real-time, based on their vicinity to the beacons. Business owners are provided data-driven statistics regarding consumer trends while bargain-hunters are rewarded with curated coupons by their favorite brick-and-mortar stores. 
+
+### In this repo:
+- Consumer iOS app
+- Business iOS scanner
+- Business web portal
+
+#### User and Business iOS Features
+Live Location-Aware Advertising        | Business Owner QR Scanning Capability 
+:-------------------------:|:-------------------------:
+![](doc/fetchCoupon.gif)  |  ![](doc/scan.gif)
+
+#### Business Portal
+Check it out at: http://www.qupid.biz/ !
+
+----
 
 ## Team
   - [Blake Fleck](https://github.com/blakeFleck)
@@ -11,62 +28,106 @@ Qupid integrates iBeacon technology with an iOS native app and web app to provid
 
 ## Table of Contents
 1. [Usage](#Usage)
-1. [Requirements](#requirements)
+1. [Technologies](#technologies)
 1. [Development](#development)
-    1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
+  1. [Requirements](#requirements)
+  1. [Installing Dependencies](#installing-dependencies)
 1. [Team](#team)
 1. [Contributing](#contributing)
 
 ## Usage
-### Users
-Install iOS app from 
-```sh
-
-```
-
+### Consumers
 - Create a user account
-- Estimote beacons are constantly emitting low energy bluetooth signals which ios devices can pick up, coupons are automatically sent to users via push notifications when they are within close proximity of an Estimote beacon
-- Users can browse through coupons and sort by time left, date, savings, used, expired, activated, store, etc.
-- When users select a coupon to use, the app will generate a unique QR code which can be scanned at checkout
+- Estimote beacons are always "on" (for ~5 years if you were wondering) and constantly emit BLE signals which the Qupid iOS app listens for
+- When within close proximity with beacon, you will receive a coupon if there exists an active coupon related to the beacon and you have not already previously received that particular coupon
+- Browse through active and used/expired beacon-fetched coupons and sort by date, time to expiration and savings
+- When selecting a coupon to use, the app will generate a unique QR code which can be scanned at checkout by the business owner's Scanner App
+
+Sorting | Navigation
+:-------------------------:|:-------------------------:
+![](doc/sort.gif)  |  ![](doc/nav.gif) | 
 
 ### Business Owners  
-- Create a business owner account
-- Business owners can register Estimote beacons that are placed in various areas/sections in their stores
-- Business owners can utilize the business portal to create coupons, schedule coupons to be dispatched, and manage flash sales
+- Checkout the business portal prototype here: http://www.qupid.biz/
+- Signup for a business owner account
+- Login and navigate to the New Coupon screen where coupon metadata can be customized, allowing you to decide what coupons to distribute and when to distribute the coupons via the beacons
+- Business owners should install the business scanner app to verify customer coupons at checkout and deem them as used
 
 ## Technologies
 
-- Estimote location beacons with iBeacon technology
-- React, Redux, React-Native
-- Node, Express
+### Frontend
+- React (ES6)
+- React-Native
+- Redux
+- Estimote iBeacons using BLE tech
+- Navigation Experimental
+
+### Backend
+- Node
+- Express
+- Business web server written with Universal JavaScript
 - MySQL database
 
-## Development
+### DevOps/Other
+- Docker containers
+- AWS and Heroku for deployment
+- Google Cloud Platform
+- Google Cloud SQL
+- Selenium
+- Late nights and coffee
 
-- Server deployed using Heroku
-- MySQL database deployed with Google Cloud
+----------
+## Requirements
+- React Native ^0.40 (https://facebook.github.io/react-native/docs/getting-started.html) 
+- Xcode
 
-### Installing Dependencies
-
-From within the /client/iHearth directory:
-
+## Installing Dependencies
+### User iOS App
 ```sh
+git clone https://github.com/conscientiouscucumbers/qupid.git
+cd qupid/user_app/client/qupid/
 npm install
 rnpm link
-react-native run-ios
-```
-From within the /server directory:
 
+```
+Open project with Xcode within /user_app/client/qupid/ios/
+> Note:
+> - use Xcode to open qupid.xcodeproj
+- ensure iPhone is connected
+- may need reconfiguring of personal settings
+
+Using Xcode dashboard:
 ```sh
-npm install
-nodemon index.js
+select your device (e.g. John Smith)
+build project
 ```
 
-### Roadmap
+- To manually link RNBeacon.xcodeproj, from /:
+```sh
+rm user_app/client/qupid/ios/qupid.xcodeproj
+cp user_app/client/qupid/node_modules/react-native-ibeacon/RNBeacon.xcodeproj user_app/client/qupid/ios/qupid.xcodeproj/
+rnpm link
+```
 
-View our project roadmap [Github](https://github.com/conscientiouscucumbers/qupid/issues) or [Waffle](https://waffle.io/conscientiouscucumbers/qupid)
+> Note:
+> - Due to change in how React Native 0.40 includes headers, remove React/ prefix for all RCT*.h files (e.g. RNVectorIconsManager.h)
 
+### Business iOS Scanner App
+```sh
+git clone https://github.com/conscientiouscucumbers/qupid.git
+cd qupid/user_app/client/qupid/
+npm install
+```
+From within /biz_app/scanner/ios/
+> Note:
+> - use Xcode to open scanner.xcodeproj
+
+Using Xcode dashboard:
+```sh
+select your device (e.g. John Smith)
+build project
+```
+----------
 
 ## Contributing
 
