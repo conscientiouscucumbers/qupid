@@ -20,14 +20,14 @@ Qupid integrates iBeacon technology with an iOS native app and web app to provid
 
 ## Usage
 ### Users
-Install iOS app from 
-```sh
-
-```
-
 - Create a user account
-- Estimote beacons are constantly emitting low energy bluetooth signals which ios devices can pick up, coupons are automatically sent to users via push notifications when they are within close proximity of an Estimote beacon
-- Users can browse through coupons and sort by time left, date, savings, used, expired, activated, store, etc.
+- Estimote beacons are always "on" and constantly emit BLE signals which the Qupid iOS app is listening for
+- When within close proximity with beacon, user will receive a coupon if there exists an active coupon related to the beacon at the time and user does not already have a relation to coupon
+  - All usable coupons are displayed on the main view, shown below:
+
+
+- Users can browse through unused coupons and sort by date, time to expiration and savings
+- Users can also browse through history of used and expired coupons
 - When users select a coupon to use, the app will generate a unique QR code which can be scanned at checkout
 
 ### Business Owners  
@@ -48,6 +48,29 @@ Install iOS app from
 - MySQL database deployed with Google Cloud
 
 ### Installing Dependencies
+- Ensure you have React Native CLI and Xcode installed properly
+  - (https://facebook.github.io/react-native/docs/getting-started.html) 
+
+```sh
+git clone https://github.com/conscientiouscucumbers/qupid.git
+cd qupid/user_app/client/qupid/
+npm install
+rnpm link
+
+```
+From within /qupid/user_app/client/qupid/ios/
+> - use Xcode to open qupid.xcodeproj
+- ensure iPhone is plugged in
+- may need reconfiguring of personal settings
+
+Using Xcode dashboard:
+```sh
+select your device (e.g. John Smith)
+build project
+
+```
+
+> - Due to change in how React Native 0.40 includes headers, remove React/ prefix for all RCT*.h files (e.g. RNVectorIconsManager.h)
 
 From within the /client/iHearth directory:
 
