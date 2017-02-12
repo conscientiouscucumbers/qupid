@@ -1,6 +1,8 @@
 # **Qupid**
 Qupid is an IoT-based mobile marketing platform that rethinks the way businesses interact with consumers and reinvigorates the in-store purchasing experience.
 
+![](doc/overview.png =250x)
+
 Qupid integrates iBeacon technology with an iOS native app and web app to provide a B2C solution that distributes advertisements/coupons to shoppers in real-time, based on their vicinity to the beacons. Business owners are provided data-driven statistics regarding consumer trends while bargain-hunters are rewarded with curated coupons by their favorite brick-and-mortar stores. 
 
 ### In this repo:
@@ -17,7 +19,6 @@ Live Location-Aware Advertising | Business Owner QR Code Scanning Capability
 Check it out at: http://www.qupid.biz/ !
 
 ----
-![](doc/overview.png)
 
 ## Team
   - [Blake Fleck](https://github.com/blakeFleck)
