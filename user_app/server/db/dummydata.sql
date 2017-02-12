@@ -24,13 +24,13 @@ values ('hackreactor@gmail.com', 'password', 'Hack Reactor', '744 Market Street'
 -- // coupon: Active
 -- // picture checked
 insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (1, '$20 Off Polo', '$20 Off Polo', 'https://storage.googleapis.com/ihearth-image/vineyardvines.jpg', 'Men’s Colorful Polo', "Now crafted with an updated fit, you'll never forget the colors of the rainbow!", 95.00, 75.00, 20.00, '2017-01-18 16:00:00', '2018-02-27 21:25:00');
+values (1, '$20 Off Polo', '$20 Off Polo', 'https://storage.googleapis.com/ihearth-image/vineyardvines.jpg', 'Men’s Colorful Polo', "Now crafted with an updated fit, you'll never forget the colors of the rainbow!", 95.00, 75.00, 20.00, '2017-01-18 16:00:00', '2017-02-11 20:59:00');
 -- // picture checked
 insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (1, '$10 Off Shorts', '$10 Off Shorts', 'https://storage.googleapis.com/ihearth-image/vineyardvinesshorts.jpg', 'Men’s Redux Seersucker Shorts', 'These casual shorts are perfect for the summer, the boat and for you.', 80.00, 70.00, 10.00, '2017-01-15 16:00:00', '2018-02-27 21:25:00');
+values (1, '$10 Off Shorts', '$10 Off Shorts', 'https://storage.googleapis.com/ihearth-image/vineyardvinesshorts.jpg', 'Men’s Redux Seersucker Shorts', 'These casual shorts are perfect for the summer, the boat and for you.', 80.00, 70.00, 10.00, '2017-01-15 16:00:00', '2017-02-13 23:59:00');
 -- // picture checked
 insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (2, 'Buy 1 Get 1 Free!', 'Buy 1 Get 1 Free!', 'https://storage.googleapis.com/ihearth-image/beardpapas.jpg', 'Delicious Cream Puffs', 'Delicious and warms the soul. Get your Beard Papas today!', 5.00, 2.50, 2.50, '2017-01-17 16:00:00', '2018-02-27 21:25:00');
+values (2, 'Buy 1 Get 1 Free!', 'Buy 1 Get 1 Free!', 'https://storage.googleapis.com/ihearth-image/beardpapas.jpg', 'Delicious Cream Puffs', 'Delicious and warms the soul. Get your Beard Papas today!', 5.00, 2.50, 2.50, '2017-01-17 16:00:00', '2017-02-27 12:59:00');
 -- // picture checked
 insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
 values (3, '30% Off Tuition', '30% Off Tuition', 'https://storage.googleapis.com/ihearth-image/hackreactorstock1_resized.jpeg', 'JavaScript Skills', 'Reinvent your career in 12 weeks and level up your web dev skills!', 18000, 12600, 5400, '2017-01-15 03:00:00', '2018-02-27 16:00:00');
@@ -47,7 +47,7 @@ values (3, 'Free Precourse', 'Free Precourse', 'https://storage.googleapis.com/i
 
 -- // FOR DEMO RECORDING...comment out for live ///////////////////////////////////////////////////////////////
 insert into coupon (business_id, qrcode, title, image, item_name, description, original_price, coupon_price, coupon_savings, start_at, end_at)
-values (3, 'Free New Elevator', 'Free New Elevator', 'https://storage.googleapis.com/ihearth-image/elevator_resized.JPG', 'Working Elevator', 'Stair wars? Nah.', 2500, 0, 2500, '2017-01-15 16:00:00', '2018-02-27 16:00:00');
+values (3, 'Free New Elevator', 'Free New Elevator', 'https://storage.googleapis.com/ihearth-image/elevator_resized.JPG', 'Working Elevator', 'Stair wars? Nah.', 2500, 0, 2500, '2017-01-15 16:00:00', '2017-02-27 16:00:00');
 -- ///////////////////////////////////////////////////////////////////////////
 
 -- WARNING: DO NOT CHANGE THE ORDER OF QUERIES!
