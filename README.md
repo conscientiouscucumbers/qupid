@@ -117,7 +117,7 @@ rnpm link
 ### Business iOS Scanner App
 ```sh
 git clone https://github.com/conscientiouscucumbers/qupid.git
-cd qupid/user_app/client/qupid/
+cd qupid/biz_app/scanner/
 npm install
 ```
 From within /biz_app/scanner/ios/
