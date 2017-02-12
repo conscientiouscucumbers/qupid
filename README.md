@@ -106,7 +106,7 @@ build project
 
 - To manually link RNBeacon.xcodeproj, from /:
 ```sh
-rm user_app/client/qupid/ios/qupid.xcodeproj
+rm user_app/client/qupid/ios/qupid.xcodeproj/RNBeacon.xcodeproj
 cp user_app/client/qupid/node_modules/react-native-ibeacon/RNBeacon.xcodeproj user_app/client/qupid/ios/qupid.xcodeproj/
 rnpm link
 ```
