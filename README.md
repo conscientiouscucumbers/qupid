@@ -1,7 +1,7 @@
 # **Qupid**
 Qupid is an IoT-based mobile marketing platform that rethinks the way businesses interact with consumers and reinvigorates the in-store purchasing experience.
 
-![](doc/overview.png =250x)
+![](./doc/overview.png)
 
 Qupid integrates iBeacon technology with an iOS native app and web app to provide a B2C solution that distributes advertisements/coupons to shoppers in real-time, based on their vicinity to the beacons. Business owners are provided data-driven statistics regarding consumer trends while bargain-hunters are rewarded with curated coupons by their favorite brick-and-mortar stores. 
 
@@ -11,7 +11,7 @@ Qupid integrates iBeacon technology with an iOS native app and web app to provid
 - Business web portal
 
 #### User and Business iOS Features
-Live Location-Aware Advertising | Business Owner QR Code Scanning Capability 
+Live Location-Aware Advertising        | Business Owner QR Scanning Capability 
 :-------------------------:|:-------------------------:
 ![](doc/fetchCoupon.gif)  |  ![](doc/scan.gif)
 
@@ -31,12 +31,12 @@ Check it out at: http://www.qupid.biz/ !
 1. [Technologies](#technologies)
 1. [Development](#development)
   1. [Requirements](#requirements)
-    1. [Installing Dependencies](#installing-dependencies)
+  1. [Installing Dependencies](#installing-dependencies)
 1. [Team](#team)
 1. [Contributing](#contributing)
 
 ## Usage
-### iOS Users
+### Consumers
 - Create a user account
 - Estimote beacons are always "on" (for ~5 years if you were wondering) and constantly emit BLE signals which the Qupid iOS app listens for
 - When within close proximity with beacon, you will receive a coupon if there exists an active coupon related to the beacon and you have not already previously received that particular coupon
